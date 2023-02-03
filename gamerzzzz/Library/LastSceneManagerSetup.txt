@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Sams scen.unity
-=======
 - path: Assets/Scenes/tilda.unity
->>>>>>> 294c7ee806d6350bef477cae23240e9079a869b7
   isLoaded: 1
   isActive: 1
   isSubScene: 0
