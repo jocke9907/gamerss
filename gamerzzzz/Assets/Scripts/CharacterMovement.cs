@@ -6,10 +6,10 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] int jumpForce;
-    [SerializeField] KeyCode jumpButton;
+    public KeyCode jumpButton;
+    public bool isGrounded;
 
     [SerializeField] GameObject groundCheck;
-    [SerializeField] bool isGrounded;
     [SerializeField] LayerMask groundMask;
 
 
@@ -49,9 +49,9 @@ public class CharacterMovement : MonoBehaviour
            groundMask
            );
 
-        if (Input.GetKeyDown(jumpButton) && isGrounded)
-        {
-            GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce, 0));
-        }
+        //if (Input.GetKeyDown(jumpButton) && isGrounded)
+        //{
+        //    GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce, 0));
+        //}
     }
 }
