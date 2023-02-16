@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Animation : MonoBehaviour
 {
@@ -9,7 +8,6 @@ public class Animation : MonoBehaviour
     Animator anim;
     Vector3 oldPos;
     Vector3 newPos;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,22 +17,27 @@ public class Animation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        oldPos = transform.position;
-
+         oldPos = transform.position;
         if (anim != null)
         {
-            if (Input.GetKeyDown(characterMovement.jumpButton))
+            if (characterMovement.isGrounded && Input.GetKeyDown(characterMovement.attackButton))
+                anim.SetBool("Attacking", true);
+            else
+                anim.SetBool("Attacking", false);
+            if (characterMovement.isGrounded && Input.GetKeyDown(characterMovement.jumpButton))
             {
+                
+                GetComponent<Rigidbody>().AddForce(new Vector3(0, characterMovement.jumpForce, 0));
                 anim.SetBool("Jumping", true);
             }
-            if (oldPos != newPos && characterMovement.isGrounded)
-            {
+            else
                 anim.SetBool("Jumping", false);
+
+            if (oldPos != newPos)
                 anim.SetBool("Running", true);
-            }
             else
                 anim.SetBool("Running", false);
         }
-        newPos = transform.position;
+         newPos = transform.position;
     }
 }
