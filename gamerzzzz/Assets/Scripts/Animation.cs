@@ -26,7 +26,6 @@ public class Animation : MonoBehaviour
             if (Input.GetKeyDown(characterMovement.jumpButton))
             {
                 anim.SetBool("Jumping", true);
-               
             }
             if (oldPos != newPos && characterMovement.isGrounded)
             {
