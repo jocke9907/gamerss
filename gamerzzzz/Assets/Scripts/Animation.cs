@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Animation : MonoBehaviour
 {
+    public CharacterMovement characterMovement;
     Animator anim;
     Vector3 oldPos;
     Vector3 newPos;
@@ -19,6 +20,19 @@ public class Animation : MonoBehaviour
          oldPos = transform.position;
         if (anim != null)
         {
+            if (characterMovement.isGrounded && Input.GetKeyDown(characterMovement.attackButton))
+                anim.SetBool("Attacking", true);
+            else
+                anim.SetBool("Attacking", false);
+            if (characterMovement.isGrounded && Input.GetKeyDown(characterMovement.jumpButton))
+            {
+                
+                GetComponent<Rigidbody>().AddForce(new Vector3(0, characterMovement.jumpForce, 0));
+                anim.SetBool("Jumping", true);
+            }
+            else
+                anim.SetBool("Jumping", false);
+
             if (oldPos != newPos)
                 anim.SetBool("Running", true);
             else

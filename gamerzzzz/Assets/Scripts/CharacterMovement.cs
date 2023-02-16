@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] int jumpForce;
-    [SerializeField] KeyCode jumpButton;
+    public int jumpForce;
+    public KeyCode jumpButton;
+    public KeyCode attackButton;
 
     [SerializeField] GameObject groundCheck;
-    [SerializeField] bool isGrounded;
+    public bool isGrounded;
     [SerializeField] LayerMask groundMask;
 
 
@@ -28,6 +29,11 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGrounded = Physics.CheckBox(
+           groundCheck.transform.position,
+           groundCheck.GetComponent<Collider>().bounds.size, Quaternion.identity,
+           groundMask
+           );
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
@@ -43,15 +49,10 @@ public class CharacterMovement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
 
-        isGrounded = Physics.CheckBox(
-           groundCheck.transform.position,
-           groundCheck.GetComponent<Collider>().bounds.size, Quaternion.identity,
-           groundMask
-           );
 
-        if (Input.GetKeyDown(jumpButton) && isGrounded)
-        {
-            GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce, 0));
-        }
+        //if (Input.GetKeyDown(jumpButton) && isGrounded)
+        //{
+        //    GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce, 0));
+        //}
     }
 }
