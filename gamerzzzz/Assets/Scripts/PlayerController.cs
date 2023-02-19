@@ -74,37 +74,40 @@ public class PlayerController : MonoBehaviour
     {
 
         Vector2 inputVector = movementInput;
-
         
 
+
+
+        Vector3 moveDirGround = new Vector3(inputVector.x, -1f, inputVector.y);
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
         float intercartDistace = 2f;
 
-        if (moveDir != Vector3.zero)
+        if (moveDirGround != Vector3.zero)
         {
-            lastInteractDir = moveDir;
+            lastInteractDir = moveDirGround;
         }
 
-        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, intercartDistace))
+        if (Physics.Raycast(transform.position, moveDirGround, out RaycastHit raycastHit, intercartDistace))
         {
             if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
             {
-                // has CelarCouter
+                // has marker
                 marker.Interact();                
             }
             if (raycastHit.transform.TryGetComponent(out Bomb bomb))
             {
-                // has CelarCouter
+                // funkar inte, kollar bara marken
                 bomb.Interact();
             }
             //Debug.Log(raycastHit.transform);
 
-
-        }
+        }       
         else
         {
             Debug.Log("-");
         }
+
+        
     }
 }
