@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
    
     private Vector3 lastInteractDir;
     
-    public void HandleInteractions()
+    private void HandleInteractions()
     {
 
         Vector2 inputVector = movementInput;
@@ -83,6 +83,29 @@ public class PlayerController : MonoBehaviour
 
         float intercartDistace = 2f;
 
+        //Checks air
+        if (moveDirGround != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitAir, intercartDistace))
+        {
+            if (raycastHitAir.transform.TryGetComponent(out MarkerInteract marker))
+            {
+                // has marker
+                marker.Interact();
+            }
+            if (raycastHitAir.transform.TryGetComponent(out Bomb bomb))
+            {
+                // 
+                bomb.Interact();
+            }
+            //Debug.Log(raycastHit.transform);
+
+        }
+
+        // Checks ground
         if (moveDirGround != Vector3.zero)
         {
             lastInteractDir = moveDirGround;
@@ -97,7 +120,7 @@ public class PlayerController : MonoBehaviour
             }
             if (raycastHit.transform.TryGetComponent(out Bomb bomb))
             {
-                // funkar inte, kollar bara marken
+                // Has bomb
                 bomb.Interact();
             }
             //Debug.Log(raycastHit.transform);
