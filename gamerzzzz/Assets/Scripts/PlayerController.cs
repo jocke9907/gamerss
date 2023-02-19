@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    
+    
+
     private CharacterController controller;
     private Vector3 playerVelocity;
     public bool groundedPlayer;
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -56,5 +60,51 @@ public class PlayerController : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+
+        HandleInteractions();
+    }
+
+
+    // new
+   
+    private Vector3 lastInteractDir;
+    
+    public void HandleInteractions()
+    {
+
+        Vector2 inputVector = movementInput;
+
+        
+
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+        float intercartDistace = 2f;
+
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, intercartDistace))
+        {
+            if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
+            {
+                // has CelarCouter
+                marker.Interact();                
+            }
+            if (raycastHit.transform.TryGetComponent(out Bomb bomb))
+            {
+                // has CelarCouter
+                bomb.Interact();
+            }
+            //Debug.Log(raycastHit.transform);
+
+
+        }
+        else
+        {
+            Debug.Log("-");
+        }
     }
 }

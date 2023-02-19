@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    
+
+
     public int jumpForce;
     public KeyCode jumpButton;
     public KeyCode attackButton;
@@ -23,7 +26,7 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -54,5 +57,9 @@ public class CharacterMovement : MonoBehaviour
         //{
         //    GetComponent<Rigidbody>().AddForce(new Vector3(0, jumpForce, 0));
         //}
+
+        // new
+       
+        
     }
 }
