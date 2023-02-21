@@ -9,9 +9,19 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; private set; }
+
+    public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
+    public class OnSelectedCounterChangedEventargs : EventArgs
+    {
+        public MarkerInteract selectedMarker;
+    }
+
+    [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
     private bool inputE = false;
+    private MarkerInteract selectedMarker;
     
     
 
@@ -28,7 +38,9 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
-       
+
+
+        gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -81,10 +93,49 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // new
-   
+    //new
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e)
+    {
+        if (selectedMarker != null)
+        {
+            selectedMarker.Interact(); 
+        }
+
+        Vector2 inputVector = movementInput;
+
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        float intercartDistace = 2f;
+        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, intercartDistace, markerLayerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
+            {
+                // has CelarCouter
+                marker.Interact();
+            }
+        }
+    }
+    private void SetSelctedMarker(MarkerInteract selectedMarker)
+    {
+        this.selectedMarker = selectedMarker;
+        OnSelectedMarkerChanged?.Invoke(this, new OnSelectedCounterChangedEventargs
+        {
+            selectedMarker = selectedMarker
+        });
+    }
     private Vector3 lastInteractDir;
-    
+
+
+    /// <summary>
+    /// /
+    /// </summary>
+
     private void HandleInteractions()
     {
 
