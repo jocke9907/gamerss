@@ -1,11 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private LayerMask markerLayerMask;
+    private PlayerController action;
+    private bool inputE = false;
     
     
 
@@ -17,16 +23,24 @@ public class PlayerController : MonoBehaviour
     private float gravityValue = -9.81f;
     private Vector2 movementInput = Vector2.zero;
     private bool jumped = false;
+
+    
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
+       
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
     }
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        
+        inputE = context.action.triggered;
 
+    }
     public void OnJump(InputAction.CallbackContext context)
     {
         
@@ -63,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
 
         HandleInteractions();
+        
     }
 
 
@@ -73,10 +88,13 @@ public class PlayerController : MonoBehaviour
     private void HandleInteractions()
     {
 
+        if (inputE == true)
+        {
+            Debug.Log("e");
+        }
+
+
         Vector2 inputVector = movementInput;
-        
-
-
 
         Vector3 moveDirGround = new Vector3(inputVector.x, -1f, inputVector.y);
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
@@ -89,7 +107,7 @@ public class PlayerController : MonoBehaviour
             lastInteractDir = moveDir;
         }
 
-        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitAir, intercartDistace))
+        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitAir, intercartDistace, markerLayerMask))
         {
             if (raycastHitAir.transform.TryGetComponent(out MarkerInteract marker))
             {
@@ -129,8 +147,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("-");
-        }
-
-        
+        }        
     }
 }

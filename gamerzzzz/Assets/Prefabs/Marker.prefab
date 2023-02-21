@@ -4822,7 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1681492421220428871}
   - component: {fileID: 793362139706178358}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
