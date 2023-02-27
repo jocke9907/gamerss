@@ -15,10 +15,12 @@ public class SelectedMarker : MonoBehaviour
     {
         if (e.selectedMarker == marker)
         {
+            Debug.Log("show");
             Show();
         }
         else
         {
+            Debug.Log("hide");
             Hide();
         }
     }

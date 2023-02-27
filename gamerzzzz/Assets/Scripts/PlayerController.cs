@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         
         inputE = context.action.triggered;
-
+        
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
     {
         if (selectedMarker != null)
         {
+
             selectedMarker.Interact(); 
         }
 
