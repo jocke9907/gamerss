@@ -9,12 +9,20 @@ public class GameInput : MonoBehaviour
 
     private PlayerController playerInputActions;
 
+    BomberInput bomberInput;
+    PlayerController playerController;
+
     //private void Awake()
     //{
     //    playerInputActions = new PlayerInputActions();
     //    playerInputActions.Player.Enable();
 
     //    playerInputActions.Player.Interact.performed += Interact_performed;
+    //}
+    //private void Update()
+    //{
+        
+    //    bomberInput.UpdateTo();
     //}
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
