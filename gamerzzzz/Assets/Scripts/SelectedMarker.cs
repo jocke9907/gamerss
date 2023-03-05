@@ -8,7 +8,7 @@ public class SelectedMarker : MonoBehaviour
     [SerializeField] private GameObject visualGameObject;
     private void Start()
     {
-        PlayerController.Instance.OnSelectedMarkerChanged += Instance_OnSelectedMarkerChanged;
+        //PlayerController.Instance.OnSelectedMarkerChanged += Instance_OnSelectedMarkerChanged;
     }
 
     private void Instance_OnSelectedMarkerChanged(object sender, PlayerController.OnSelectedCounterChangedEventargs e)

@@ -13,13 +13,13 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get; private set; }
     public static Component component { get; private set; }
 
-    public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
+    //public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
     public class OnSelectedCounterChangedEventargs : EventArgs
     {
         public MarkerInteract selectedMarker;
     }
 
-    [SerializeField] private GameInput gameInput;
+    //[SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
     private bool inputE = false;
@@ -27,10 +27,10 @@ public class PlayerController : MonoBehaviour
 
 
     //
-    [SerializeField] private BomberInput bomberInput;
+    //[SerializeField] private BomberInput bomberInput;
     
 
-    private CharacterController controller;
+    public CharacterController controller;
     private Vector3 playerVelocity;
     public bool groundedPlayer;
     private float playerSpeed = 2.0f;
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
 
 
-        gameInput.OnInteractAction += bomberInput.GameInput_OnInteractAction;
+        //gameInput.OnInteractAction += bomberInput.GameInput_OnInteractAction;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        bomberInput.UpdateTo();
+        //bomberInput.UpdateTo();
 
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
+        
 
         //HandleInteractions();
         //bomberInput.UpdateTo();
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    
 
     ///!!!!!!! ta inte bort
 
