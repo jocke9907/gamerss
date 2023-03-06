@@ -16,14 +16,14 @@ public class PlayerController : MonoBehaviour
     //public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
     public class OnSelectedCounterChangedEventargs : EventArgs
     {
-        public MarkerInteract selectedMarker;
+        //public MarkerInteract selectedMarker;
     }
 
     //[SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
     private bool inputE = false;
-    private MarkerInteract selectedMarker;
+    //private MarkerInteract selectedMarker;
 
 
     //
