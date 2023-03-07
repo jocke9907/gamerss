@@ -10,7 +10,7 @@ public class cameraMan : MonoBehaviour
     public Transform player3;
     public Transform player4;
 
-    public Vector3 offset;
+    public Vector3 cameraPos;
 
     public float minFOV = 30f;
     public float maxFOV = 60f;
@@ -37,11 +37,11 @@ public class cameraMan : MonoBehaviour
         cam.fieldOfView = Mathf.Lerp(minFOV, maxFOV, t*2);
 
 
-        offset = new Vector3((player1.position.x + player2.position.x + player3.position.x + player4.position.x) / 4,
+        cameraPos = new Vector3((player1.position.x + player2.position.x + player3.position.x + player4.position.x) / 4,
             40,
             (player1.position.z + player2.position.z + player3.position.z + player4.position.z) / 4);
 
-        transform.position = offset;
+        transform.position = cameraPos;
 
     }
 }
