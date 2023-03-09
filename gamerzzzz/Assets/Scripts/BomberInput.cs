@@ -86,7 +86,7 @@ public class BomberInput : MonoBehaviour
 
         if (inputE == true)
         {
-            Debug.Log("e");
+            //Debug.Log("e");
         }
 
         
