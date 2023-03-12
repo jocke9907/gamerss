@@ -742,6 +742,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d505290349b53c4bb8d8e72af44f43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topWall: {fileID: 995671958}
+  bottomWall: {fileID: 801520175}
+  rightWall: {fileID: 242758659}
+  leftWall: {fileID: 1020906957}
 --- !u!1 &1641552099
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,6 +791,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca555b3fe71d3224892e333b8135c019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mazeGenerator: {fileID: 1641552102}
+  MazeCellPrefab: {fileID: 1444434507}
+  cellSize: 1
 --- !u!114 &1641552102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,6 +806,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0fe3bb097cc2941bbf1a390bffdf27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mazeWith: 5
+  mazeHight: 5
+  startX: 0
+  startY: 0
 --- !u!1 &1982190456
 GameObject:
   m_ObjectHideFlags: 0

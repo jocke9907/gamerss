@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
 {
-    [Range(5, 500)]
+    [Range(5, 300)]
     public int mazeWith = 5, mazeHight = 5;
     public int startX, startY;
     MazeCell[,] maze;
@@ -159,8 +159,8 @@ public class MazeCell
     public bool visited;
     public int x, y;
 
-    public bool topWall = true;
-    public bool leftWall = true;
+    public bool topWall;
+    public bool leftWall;
     public Vector2Int position
     {
         get
@@ -177,6 +177,6 @@ public class MazeCell
         this.y = y;
 
         visited = false;
-       // topWall = leftWall = true;
+        topWall = leftWall = true;
     }
 }
