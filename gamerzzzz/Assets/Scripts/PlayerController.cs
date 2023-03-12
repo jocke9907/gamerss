@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
-    private bool inputE = false;
+    
+
     private MarkerInteract selectedMarker;
 
 
@@ -39,8 +40,9 @@ public class PlayerController : MonoBehaviour
     public Vector2 movementInput { get; private set; } = Vector2.zero;
     
     private bool jumped = false;
+    public bool inputE = false;
 
-    
+
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
@@ -104,6 +106,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
+   
     
 
     ///!!!!!!! ta inte bort
