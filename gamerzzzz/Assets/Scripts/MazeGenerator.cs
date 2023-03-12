@@ -1,188 +1,182 @@
-using JetBrains.Annotations;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-//public class MazeGenerator : MonoBehaviour
-//{
-//    [Range(5, 500)]
-//    public int mazeWidth = 5, mazeHeight = 5; // dimensionen av labyrinten 
-//    public int startX, startY; // vart algoritmen startar 
-//    MazeCell[,] maze;
+public class MazeGenerator : MonoBehaviour
+{
+    [Range(5, 500)]
+    public int mazeWith = 5, mazeHight = 5;
+    public int startX, startY;
+    MazeCell[,] maze;
 
-//    Vector2Int currentCell; // vad vi tittar på nu 
+    Vector2Int currentCell;
 
-//    public MazeCell[,] GetMaze()
-//    {
-//        maze = new MazeCell[mazeWidth, mazeHeight];
-//        for (int x = 0; x < mazeWidth; x++)
-//        {
-//            for (int y = 0; y < mazeHeight; y++)
-//            {
-//                maze[x, y] = new MazeCell(x, y);
-//            }
-//        }
+    public MazeCell[,] GetMaze()
+    {
+        maze = new MazeCell[mazeWith, mazeHight];
 
-//        CarvePath(startX, startY);
-//        return maze;
-//    }
+        for (int x = 0; x < mazeWith; x++)
+        {
+            for (int y = 0; y < mazeHight; y++)
+            {
+                maze[x, y] = new MazeCell(x, y);
+            }
+        }
 
-//    List<Direction> directions = new List<Direction>
-//    {
-//        Direction.Up, Direction.Down, Direction.Left, Direction.Right,
-//    };
+        CarvePath(startX, startY); 
+        return maze;
 
-//    List<Direction> GetRandomDirections()
-//    {
-//        List<Direction> dir = new List<Direction>(directions); // kopia av första listan 
+    }
 
-//        List<Direction> rndDir = new List<Direction>();
+    List<Direction> directions = new List<Direction> { Direction.Right, Direction.Left, Direction.Down, Direction.Up };
 
-//        while (dir.Count > 0)
-//        {
-//            int rnd = UnityEngine.Random.Range(0, dir.Count);
-//            rndDir.Add(dir[rnd]);
-//            dir.RemoveAt(rnd);
-//        }
+    List<Direction> GetRandomDirections()
+    {
+        List<Direction> dir = new List<Direction>(directions);
 
-//        return rndDir;
-//    }
+        List<Direction> rndDir = new List<Direction>();
 
-//    bool IsCellValid(int x, int y)
-//    {
-//        if (x < 0 || y < 0 || x > mazeWidth - 1 || y > mazeHeight - 1 || maze[x, y].visited) return false;
-//        else return true;
-//    }
+        while (dir.Count > 0)
+        {
+            int rnd = Random.Range(0, dir.Count);
+            rndDir.Add(dir[rnd]);
+            dir.RemoveAt(rnd);
+        }
 
-//    Vector2Int CheckNeighbour()
-//    {
-//        List<Direction> rndDir = GetRandomDirections();
+        return rndDir;
+    }
 
-//        for (int i = 0; i < rndDir.Count; i++)
-//        {
+    bool IsCellValid(int x, int y)
+    {
+        if (x < 0 || y < 0 || x > mazeWith - 1 || y > mazeHight - 1 || maze[x, y].visited) return false;
+        else return true;
+    }
+
+    Vector2Int CheckNeighbour()
+    {
+        List<Direction> rndDir = GetRandomDirections();
+
+        for (int i = 0; i < rndDir.Count; i++)
+        {
+            Vector2Int neighbour = currentCell;
+
+            switch (rndDir[i])
+            {
+                case Direction.Up:
+                    neighbour.y++;
+                    break;
+                case Direction.Down:
+                    neighbour.y--;
+                    break;
+                case Direction.Left:
+                    neighbour.x--;
+                    break;
+                case Direction.Right:
+                    neighbour.x++;
+                    break;
+            }
+
+            if (IsCellValid(neighbour.x, neighbour.y)) return neighbour;
+        }
+
+        return currentCell;
+    }
+
+    void BreakWalls(Vector2Int primaryCell, Vector2Int secondaryCell)
+    {
+        if (primaryCell.x > secondaryCell.x)
+        {
+            maze[primaryCell.x, primaryCell.y].leftWall = false;
+        }
+        else if (primaryCell.x < secondaryCell.x)
+        {
+            maze[secondaryCell.x, secondaryCell.y].leftWall = false;
+        }
+        else if (primaryCell.y < secondaryCell.y)
+        {
+            maze[primaryCell.x, primaryCell.y].topWall = false;
+        }
+        else if (primaryCell.y > secondaryCell.y)
+        {
+            maze[secondaryCell.x, secondaryCell.y].topWall = false;
+        }
+    }
+
+    void CarvePath(int x, int y)
+    {
+        if (x < 0 || y < 0 || x > mazeWith - 1 || y > mazeWith - 1)
+        {
+            x = y = 0;
+        }
 
 
-//            Vector2Int neighbour = currentCell;
+        currentCell = new Vector2Int(x, y);
 
-//            switch (rndDir[i])
-//            {
-//                case Direction.Up:
-//                    neighbour.y++;
-//                    break;
-//                case Direction.Down:
-//                    neighbour.y--;
-//                    break;
-//                case Direction.Left:
-//                    neighbour.x--;
-//                    break;
-//                case Direction.Right:
-//                    neighbour.x++;
-//                    break;
-//            }
+        List<Vector2Int> path = new List<Vector2Int>();
 
-//            if (IsCellValid(neighbour.x, neighbour.y)) return neighbour;
-//        }
+        bool deadEnd = false;
 
-//        return currentCell;
-//    }
+        while (!deadEnd)
+        {
+            Vector2Int nextCell = CheckNeighbour();
 
-//    void BreakWalls(Vector2Int primaryCell, Vector2Int secondaryCell)
-//    {
-//        if (primaryCell.x > secondaryCell.x)
-//        {
-//            maze[primaryCell.x, primaryCell.y].leftWall = false;
-//        }
-//        else if (primaryCell.x < secondaryCell.x)
-//        {
-//            maze[secondaryCell.x, secondaryCell.y].leftWall= false; 
-//        }
-//       else if (primaryCell.y < secondaryCell.y)
-//        {
-//            maze[primaryCell.x, primaryCell.y].topWall = false;
-//        }
-//        else if (primaryCell.y > secondaryCell.y)
-//        {
-//            maze[secondaryCell.x, secondaryCell.y].topWall = false; 
-//        }
-//    }
+            if (nextCell == currentCell)
+            {
+                for (int i = path.Count - 1; i >= 0; i--)
+                {
+                    currentCell = path[i];
+                    path.RemoveAt(i);
+                    nextCell = CheckNeighbour();
 
-//    void CarvePath (int x, int y)
-//    {
-//        if (x < 0 || y < 0 || x > mazeWidth -1 || y > mazeHeight - 1)
-//        {
-//            x = y = 0;  
-             
-//        }
+                    if (nextCell != currentCell) break;
+                }
 
-//        currentCell = new Vector2Int(x, y);
+            }
+            else
+            {
+                BreakWalls(currentCell, nextCell);
+                maze[currentCell.x, currentCell.y].visited = true;
+                currentCell = nextCell;
+                path.Add(currentCell);
+            }
+        }
+    }
 
-//        List<Vector2Int> path = new List<Vector2Int>();
+}
 
-//        bool deadEnd = false;
-//        while (!deadEnd)
-//        {
-//            Vector2Int nextCell = CheckNeighbour();
-//            if(nextCell == currentCell)
-//            {
-//                for(int i =path.Count - 1; i >= 0; i--)
-//                {
-//                    currentCell = path[i];
-//                    path.RemoveAt(i);
-//                    nextCell = CheckNeighbour();
 
-//                    if (nextCell != currentCell) break;
-//                }
 
-//                if(nextCell == currentCell)
-//                {
-//                    deadEnd = true;
-//                }
-//            }
-//            else
-//            {
-//                BreakWalls (currentCell, nextCell);
-//                maze[currentCell.x, currentCell.y].visited = true;
-//                currentCell = nextCell;
-//                path.Add(currentCell);
-//            }
-//        }
-//    }
-//}
+public enum Direction
+{
+    Up,
+    Down,
+    Left,
+    Right
+}
 
-//public enum Direction
-//{
-//    Up,
-//    Down,
-//    Left,
-//    Right
-//}
+public class MazeCell
+{
+    public bool visited;
+    public int x, y;
 
-//public class MazeCell
-//{
-//    public bool visited;
-//    public int x, y;
+    public bool topWall = true;
+    public bool leftWall = true;
+    public Vector2Int position
+    {
+        get
+        {
+            return new Vector2Int(x, y);
 
-//    public bool topWall = true;
-//    public bool leftWall = true;
+        }
 
-//    public Vector2Int position
-//    {
-//        get
-//        {
-//            return new Vector2Int(x, y);
-//        }
-//    }
+    }
 
-//    public MazeCell(int x, int y)
-//    {
-//        this.x = x;
-//        this.y = y;
+    public MazeCell(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
 
-//        visited = false;
-//        // topWall = leftWall = true;
-
-//    }
-//}
-
+        visited = false;
+       // topWall = leftWall = true;
+    }
+}
