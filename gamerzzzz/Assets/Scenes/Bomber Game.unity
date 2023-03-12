@@ -12785,7 +12785,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   bomberInput: {fileID: 0}
+  controller: {fileID: 0}
   groundedPlayer: 0
+  inputE: 0
 --- !u!143 &828107563
 CharacterController:
   m_ObjectHideFlags: 0
@@ -19435,7 +19437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191493760}
   m_LocalRotation: {x: -0.4349073, y: 0.047506094, z: -0.022955209, w: -0.89892817}
-  m_LocalPosition: {x: 0.69174826, y: 7.769966, z: -6.1426325}
+  m_LocalPosition: {x: 0.69174826, y: 10, z: -6.1426325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
