@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class MazeRender : MonoBehaviour
               GameObject newCell = Instantiate (MazeCellPrefab, new Vector3((float)x * cellSize, 0f, (float)y * cellSize), Quaternion.identity, transform);
 
               MazeCellObject mazeCell = newCell.GetComponent<MazeCellObject>();
-
+                 
                 bool top = maze[x, y].topWall;
                 bool left = maze[x, y].leftWall;
 

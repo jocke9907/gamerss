@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
 {
-    [Range(5, 300)]
+    [Range(5, 200)]
     public int mazeWith = 5, mazeHight = 5;
     public int startX, startY;
     MazeCell[,] maze;
@@ -28,7 +28,7 @@ public class MazeGenerator : MonoBehaviour
 
     }
 
-    List<Direction> directions = new List<Direction> { Direction.Right, Direction.Left, Direction.Down, Direction.Up };
+    List<Direction> directions = new List<Direction> { Direction.Up, Direction.Down, Direction.Left, Direction.Right };
 
     List<Direction> GetRandomDirections()
     {
@@ -52,7 +52,7 @@ public class MazeGenerator : MonoBehaviour
         else return true;
     }
 
-    Vector2Int CheckNeighbour()
+    Vector2Int CheckNeighbour() 
     {
         List<Direction> rndDir = GetRandomDirections();
 
@@ -68,11 +68,11 @@ public class MazeGenerator : MonoBehaviour
                 case Direction.Down:
                     neighbour.y--;
                     break;
-                case Direction.Left:
-                    neighbour.x--;
-                    break;
                 case Direction.Right:
                     neighbour.x++;
+                    break;
+                case Direction.Left:
+                    neighbour.x--;
                     break;
             }
 
@@ -131,6 +131,11 @@ public class MazeGenerator : MonoBehaviour
                     if (nextCell != currentCell) break;
                 }
 
+                if(nextCell == currentCell)
+                {
+                    deadEnd = true;
+                }
+
             }
             else
             {
@@ -143,8 +148,6 @@ public class MazeGenerator : MonoBehaviour
     }
 
 }
-
-
 
 public enum Direction
 {
