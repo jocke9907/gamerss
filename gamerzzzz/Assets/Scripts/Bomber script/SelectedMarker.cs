@@ -11,25 +11,25 @@ public class SelectedMarker : MonoBehaviour
         //PlayerController.Instance.OnSelectedMarkerChanged += Instance_OnSelectedMarkerChanged;
     }
 
-    private void Instance_OnSelectedMarkerChanged(object sender, PlayerController.OnSelectedCounterChangedEventargs e)
-    {
-        if (e.selectedMarker == marker)
-        {
-            Debug.Log("show");
-            Show();
-        }
-        else
-        {
-            Debug.Log("hide");
-            Hide();
-        }
-    }
-    private void Show()
-    {
-        visualGameObject.SetActive(true);
-    }
-    private void Hide()
-    {
-        visualGameObject.SetActive(false);
-    }
+    //private void Instance_OnSelectedMarkerChanged(object sender, PlayerController.OnSelectedCounterChangedEventargs e)
+    //{
+    //    if (e.selectedMarker == marker)
+    //    {
+    //        Debug.Log("show");
+    //        Show();
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("hide");
+    //        Hide();
+    //    }
+    //}
+    //private void Show()
+    //{
+    //    visualGameObject.SetActive(true);
+    //}
+    //private void Hide()
+    //{
+    //    visualGameObject.SetActive(false);
+    //}
 }

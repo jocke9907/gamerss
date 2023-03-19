@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class GameInput : MonoBehaviour
 {
-    public event EventHandler OnInteractAction;
+    //public event EventHandler OnInteractAction;
 
-    private PlayerController playerInputActions;
+    //private PlayerController playerInputActions;
 
-    BomberInput bomberInput;
-    PlayerController playerController;
+    //BomberInput bomberInput;
+    //PlayerController playerController;
 
     //private void Awake()
     //{
@@ -25,9 +25,9 @@ public class GameInput : MonoBehaviour
     //    bomberInput.UpdateTo();
     //}
 
-    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    {
-        OnInteractAction?.Invoke(this, EventArgs.Empty);
+    //private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    //{
+    //    OnInteractAction?.Invoke(this, EventArgs.Empty);
 
-    }
+    //}
 }

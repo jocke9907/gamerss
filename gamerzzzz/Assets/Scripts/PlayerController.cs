@@ -13,18 +13,18 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get; private set; }
     public static Component component { get; private set; }
 
-    public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
-    public class OnSelectedCounterChangedEventargs : EventArgs
-    {
-        public MarkerInteract selectedMarker;
-    }
+    //public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
+    //public class OnSelectedCounterChangedEventargs : EventArgs
+    //{
+    //    public MarkerInteract selectedMarker;
+    //}
 
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
     
 
-    private MarkerInteract selectedMarker;
+    //private MarkerInteract selectedMarker;
 
 
     //
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
 
 
-        gameInput.OnInteractAction += bomberInput.GameInput_OnInteractAction;
+        //gameInput.OnInteractAction += bomberInput.GameInput_OnInteractAction;
     }
 
     public void OnMove(InputAction.CallbackContext context)

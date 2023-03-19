@@ -13,11 +13,11 @@ public class BomberInput : MonoBehaviour
 
     [SerializeField] private PlayerController playerController;
 
-    public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
-    public class OnSelectedCounterChangedEventargs : EventArgs
-    {
-        public MarkerInteract selectedMarker;
-    }
+    //public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
+    //public class OnSelectedCounterChangedEventargs : EventArgs
+    //{
+    //    public MarkerInteract selectedMarker;
+    //}
 
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
@@ -60,14 +60,14 @@ public class BomberInput : MonoBehaviour
             }
         }
     }
-    private void SetSelctedMarker(MarkerInteract selectedMarker)
-    {
-        this.selectedMarker = selectedMarker;
-        OnSelectedMarkerChanged?.Invoke(this, new OnSelectedCounterChangedEventargs
-        {
-            selectedMarker = selectedMarker
-        });
-    }
+    //private void SetSelctedMarker(MarkerInteract selectedMarker)
+    //{
+    //    this.selectedMarker = selectedMarker;
+    //    OnSelectedMarkerChanged?.Invoke(this, new OnSelectedCounterChangedEventargs
+    //    {
+    //        selectedMarker = selectedMarker
+    //    });
+    //}
     private Vector3 lastInteractDir;
 
 
