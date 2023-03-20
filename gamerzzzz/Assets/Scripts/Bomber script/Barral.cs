@@ -5,14 +5,12 @@ using UnityEngine;
 public class Barral : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    //DestroyScript destroy;
+    public void InteractB()
     {
-        
-    }
+       Debug.Log("Interact barral!");
+       
+        Destroy(gameObject);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

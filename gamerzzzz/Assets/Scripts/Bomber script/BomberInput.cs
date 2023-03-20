@@ -148,7 +148,7 @@ public class BomberInput : MonoBehaviour
         }
         else
         {
-            Debug.Log("-");
+            //Debug.Log("-");
         }
     }
 }

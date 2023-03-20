@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3724685933314199167}
   - component: {fileID: 3724685933314199166}
   - component: {fileID: 4096891006070404183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,6 +129,10 @@ PrefabInstance:
     - target: {fileID: 3078870226495961552, guid: 1c0376b8a6290434a90510d832b8aa74, type: 3}
       propertyPath: m_Name
       value: barrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078870226495961552, guid: 1c0376b8a6290434a90510d832b8aa74, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c0376b8a6290434a90510d832b8aa74, type: 3}

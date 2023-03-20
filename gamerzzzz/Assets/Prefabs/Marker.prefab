@@ -129,6 +129,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 3992017979566009723, guid: 00426dd3040aa2e4084bf76c66b025a7, type: 3}
   bombSpawn: {fileID: 1346977760498511145}
+  barralLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  targetTime: 20
 --- !u!1 &3573449922917102823
 GameObject:
   m_ObjectHideFlags: 0
