@@ -38,7 +38,7 @@ public class MarkerInteract : MonoBehaviour
         {
             if (raycastHit.transform.TryGetComponent(out Barral barral))
             {
-                Debug.Log("found obj");
+                //Debug.Log("found obj");
                 barral.InteractB();
             }
             
@@ -48,7 +48,7 @@ public class MarkerInteract : MonoBehaviour
     {       
         targetTime -= Time.deltaTime;
 
-        if (targetTime >= -1f &&targetTime <= 0.0f)
+        if (targetTime >= -0.5f &&targetTime <= 0.0f)
         {
             timerEnded();
         }

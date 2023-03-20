@@ -8,9 +8,12 @@ public class Barral : MonoBehaviour
     //DestroyScript destroy;
     public void InteractB()
     {
-       Debug.Log("Interact barral!");
+       //Debug.Log("Interact barral!");
        
         Destroy(gameObject);
+
+        // lägga till explotion effect
+        // lägga till special abilitys
 
     }
 }
