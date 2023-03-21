@@ -34,6 +34,7 @@ public class BomberInput : MonoBehaviour
 
     public void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
+        
         if (selectedMarker != null)
         {
 
@@ -55,7 +56,7 @@ public class BomberInput : MonoBehaviour
         {
             if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
             {
-                // has CelarCouter
+                
                 marker.Interact();
             }
         }

@@ -6,7 +6,7 @@ public class Bomb : MonoBehaviour
 {
     public void Interact()
     {
-        Debug.Log("Interact bomb!");
+        //Debug.Log("Interact bomb!");
         //Destroy(gameObject, 4);
     }
 

@@ -10,21 +10,21 @@ public class MarkerInteract : MonoBehaviour
     [SerializeField] private LayerMask barralLayerMask;
     private Barral Barral;
 
-    public float targetTime = 20.0f;
+    public float targetTime = 4.0f;
     Vector2 inputVector = new Vector2(1f, 0f);
+    bool bomPlaced;
 
     public void Interact()
     {
-        Debug.Log("Interact marker!");
+        //Debug.Log("Interact marker!");
         Transform bombTransform  =Instantiate(bombPrefab, bombSpawn);
         bombTransform.localPosition = Vector3.zero;
         targetTime = 4.0f;
-        
-    }
-    public void GameStart()
-    {
+        bomPlaced = true;
+
 
     }
+    
 
     void Explode()
     {
@@ -38,19 +38,24 @@ public class MarkerInteract : MonoBehaviour
         {
             if (raycastHit.transform.TryGetComponent(out Barral barral))
             {
-                //Debug.Log("found obj");
+                Debug.Log("found obj");
                 barral.InteractB();
             }
             
         }
     }
     void Update()
-    {       
-        targetTime -= Time.deltaTime;
+    {
+        if(bomPlaced == true)
+        {
+            targetTime -= Time.deltaTime;
+        }
+       
 
-        if (targetTime >= -0.5f &&targetTime <= 0.0f)
+        if (targetTime >= -0.2f && targetTime <= 0.0f)
         {
             timerEnded();
+            bomPlaced =false;
         }
     }
     
