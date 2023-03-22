@@ -22,13 +22,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
-    
+
 
     //private MarkerInteract selectedMarker;
 
 
-    //
-    [SerializeField] private BomberInput bomberInput;
+    // [SerializeField]
+    private BomberInput bomberInput;
+    //public BomberInput bomberInput;
     
 
     public CharacterController controller;
@@ -45,9 +46,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        bomberInput = FindObjectOfType<BomberInput>();
         controller = gameObject.GetComponent<CharacterController>();
 
-
+        
         //gameInput.OnInteractAction += bomberInput.GameInput_OnInteractAction;
     }
 

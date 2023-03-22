@@ -31,6 +31,10 @@ public class BomberInput : MonoBehaviour
     {
         HandleInteractions();
     }
+    public void Start()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
 
     public void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {

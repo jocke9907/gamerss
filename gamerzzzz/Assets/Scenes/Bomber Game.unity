@@ -855,17 +855,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &37941987 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6114338646223142829, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
-  m_PrefabInstance: {fileID: 1542312675}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c3fb7f8086d9e49980ac1c2745e0dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &40791705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8057,7 +8046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51b8d2e126643a4fa0eaae20c137694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 37941987}
+  playerController: {fileID: 0}
   gameInput: {fileID: 1093311171}
   markerLayerMask:
     serializedVersion: 2
@@ -13240,7 +13229,6 @@ MonoBehaviour:
   markerLayerMask:
     serializedVersion: 2
     m_Bits: 0
-  bomberInput: {fileID: 0}
   controller: {fileID: 0}
   groundedPlayer: 0
   inputE: 0
@@ -25629,18 +25617,6 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4747946701252202306, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4747946701252202306, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4747946701252202306, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4747946701252202306, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000011920929
       objectReference: {fileID: 0}
@@ -25692,10 +25668,6 @@ PrefabInstance:
       propertyPath: bomberInput
       value: 
       objectReference: {fileID: 478784818}
-    - target: {fileID: 6114338646223142829, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
-      propertyPath: markerLayerMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
 --- !u!1 &1544516664 stripped
