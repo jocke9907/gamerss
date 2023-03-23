@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3992017979566009723}
   - component: {fileID: 3992017979566009722}
+  - component: {fileID: 732301509388038839}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -46,6 +47,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &732301509388038839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3992017979566009720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7c58ac0b1e1de459bdf223a1e12b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 3992017979566009720}
 --- !u!1001 &3992017979772854825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,19 +158,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6724331070912105124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397143485060150504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a7c58ac0b1e1de459bdf223a1e12b7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obj: {fileID: 1397143485060150504}
 --- !u!4 &7461720627013876893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5830794085472444084, guid: 732e12a252da64507987819a344450d8, type: 3}

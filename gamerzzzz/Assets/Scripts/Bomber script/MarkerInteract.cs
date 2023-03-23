@@ -8,7 +8,11 @@ public class MarkerInteract : MonoBehaviour
     [SerializeField] private Transform bombSpawn;
 
     [SerializeField] private LayerMask barralLayerMask;
+    [SerializeField] private LayerMask playerLayer;
+
     private Barral Barral;
+    
+    
 
     public float targetTime = 4.0f;
     Vector2 inputVector = new Vector2(1f, 0f);
@@ -38,10 +42,20 @@ public class MarkerInteract : MonoBehaviour
         {
             if (raycastHit.transform.TryGetComponent(out Barral barral))
             {
-                Debug.Log("found obj");
+                //Debug.Log("found obj");
                 barral.InteractB();
             }
             
+        }
+
+        if(Physics.Raycast(transform.position, explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        {
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                Debug.Log("found Player");
+                
+            }
+
         }
     }
     void Update()
@@ -70,7 +84,9 @@ public class MarkerInteract : MonoBehaviour
         Explode();
         inputVector = new Vector2(0f, -1f);
         Explode();
+
+
         //förstör markern och det som har spawnat på den
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

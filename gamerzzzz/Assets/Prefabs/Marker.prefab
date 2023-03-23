@@ -230,6 +230,9 @@ MonoBehaviour:
   barralLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 131072
   targetTime: 20
 --- !u!1 &3573449922917102823
 GameObject:
