@@ -87,6 +87,6 @@ public class MarkerInteract : MonoBehaviour
 
 
         //förstör markern och det som har spawnat på den
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
