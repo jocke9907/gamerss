@@ -9,9 +9,9 @@ using UnityEngine.InputSystem;
 public class BomberInput : MonoBehaviour
 {
 
-    //public static PlayerController Instance { get; private set; }
+    //public static PlayerController Instance { get; private set; }  [SerializeField]
 
-    [SerializeField] private PlayerController playerController;
+    private PlayerController playerController;
 
     //public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
     //public class OnSelectedCounterChangedEventargs : EventArgs
@@ -29,16 +29,18 @@ public class BomberInput : MonoBehaviour
 
     public void UpdateTo()
     {
+        playerController = FindObjectOfType<PlayerController>();
         HandleInteractions();
     }
     public void Start()
     {
-        playerController = FindObjectOfType<PlayerController>();
+        
     }
 
     public void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
         
+
         if (selectedMarker != null)
         {
 
