@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
 
         //HandleInteractions();
         //bomberInput.UpdateTo();
-        bomberInput.UpdateTo();
+        //bomberInput.UpdateTo();
 
     }
 
