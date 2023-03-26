@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MarkerInteract : MonoBehaviour
@@ -11,12 +12,18 @@ public class MarkerInteract : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
 
     private Barral Barral;
+    PlayerController playerController;
     
+    //playerController = FindObjectOfType<BomberInput>();
     
 
     public float targetTime = 4.0f;
     Vector2 inputVector = new Vector2(1f, 0f);
     bool bomPlaced;
+    public void Awake()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
 
     public void Interact()
     {
@@ -32,10 +39,11 @@ public class MarkerInteract : MonoBehaviour
 
     void Explode()
     {
-        float maxDistans = 10f;
+        
+        float maxDistans = 12f;
        
        
-        Vector3 explodeDir = new Vector3(inputVector.x, 0f, inputVector.y);
+        Vector3 explodeDir = new Vector3(inputVector.x, 0.1f, inputVector.y);
         
 
         if (Physics.Raycast(transform.position, explodeDir,  out RaycastHit raycastHit, maxDistans, barralLayerMask))
@@ -50,9 +58,14 @@ public class MarkerInteract : MonoBehaviour
 
         if(Physics.Raycast(transform.position, explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {
+            Debug.Log("casting");
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
                 Debug.Log("found Player");
+                Destroy(playerController);
+                BomberManger.playerCountBomber--;
+                Debug.Log(BomberManger.playerCountBomber);
+                BomberManger.PlayerCounter();
                 
             }
 
@@ -60,16 +73,19 @@ public class MarkerInteract : MonoBehaviour
     }
     void Update()
     {
-        if(bomPlaced == true)
+        
+        if (bomPlaced == true)
         {
             targetTime -= Time.deltaTime;
         }
-       
 
-        if (targetTime >= -0.2f && targetTime <= 0.0f)
+
+        //&& bomPlaced == true
+        if (targetTime >= -0.2f && targetTime <= 0.0f )
         {
             timerEnded();
             bomPlaced =false;
+            
         }
     }
     
