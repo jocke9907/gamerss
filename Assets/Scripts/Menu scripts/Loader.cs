@@ -6,10 +6,14 @@ using System;
 
 public static class Loader
 {
+
+    public static bool bomberGamePlaying;
     public enum Scene
     {
         Loading, Menu, CreateGame, BomberGame, 
     }
+    //Scene curentGameState = Scene.Menu;
+
     private static Action onLoaderCallBack;
 
     public static void Load(Scene scene)
@@ -36,5 +40,6 @@ public static class Loader
         }
 
     }
+    
 
 }

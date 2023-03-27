@@ -7,5 +7,6 @@ public class CreateGameUI : MonoBehaviour
     public void ChangeSceneBomber()
     {      
         Loader.Load(Loader.Scene.BomberGame);
+        Loader.bomberGamePlaying = true;
     }
 }

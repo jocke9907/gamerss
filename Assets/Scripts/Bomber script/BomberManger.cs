@@ -10,6 +10,7 @@ public static class BomberManger
         if (playerCountBomber == 0)
         {
             Debug.Log("ChangeToMenu");
+            Loader.bomberGamePlaying = false;
             Loader.Load(Loader.Scene.Menu);
         }
    }
