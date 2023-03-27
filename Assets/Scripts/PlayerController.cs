@@ -18,9 +18,10 @@ public class PlayerController : MonoBehaviour
     //{
     //    public MarkerInteract selectedMarker;
     //}
-
+    [SerializeField] private Transform backTransform;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
+    
     private PlayerController action;
 
 
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     private Vector3 playerVelocity;
     public bool groundedPlayer;
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 4.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
@@ -103,8 +104,13 @@ public class PlayerController : MonoBehaviour
 
         //HandleInteractions();
         //bomberInput.UpdateTo();
-        bomberInput.UpdateTo();
+        //bomberInput.UpdateTo();
 
+    }
+    public void PickUpItem(GameObject gameObject)
+    {
+        gameObject.transform.position = backTransform.position;
+        gameObject.transform.parent= backTransform;
     }
 
 
