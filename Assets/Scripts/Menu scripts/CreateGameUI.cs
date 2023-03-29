@@ -9,4 +9,14 @@ public class CreateGameUI : MonoBehaviour
         Loader.Load(Loader.Scene.BomberGame);
         Loader.bomberGamePlaying = true;
     }
+
+    public void ChangeSceneRandom() 
+    {
+        Loader.Load(Loader.Scene.ViggesScene);
+    }
+
+    public void ChangeLobbyScene()
+    {
+        Loader.Load(Loader.Scene.Lobby);
+    }
 }

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     // [SerializeField]
     private BomberInput bomberInput;
+    private ChangeMap changeMap;
     //public BomberInput bomberInput;
     
 
@@ -47,6 +48,9 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         bomberInput = FindObjectOfType<BomberInput>();
+
+        changeMap = FindObjectOfType<ChangeMap>();
+        
         controller = gameObject.GetComponent<CharacterController>();
 
         
