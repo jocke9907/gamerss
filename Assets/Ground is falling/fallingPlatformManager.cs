@@ -12,6 +12,7 @@ public class fallingPlatformManager : MonoBehaviour
     float fallingTimer = 5.0f;
     int randomObj;
     float speedup = 0f;
+    [SerializeField] SpawnPoint spawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -45,26 +46,22 @@ public class fallingPlatformManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fallingTimer -= Time.deltaTime;
-        particleTimer -= Time.deltaTime;
-
-        //if (particleTimer <= 0.0f)
-        //{
-        //    particleTimer = 3.0f - speedup;
-        //    Debug.Log("BING");
-        //    particles[randomObj].Play();
-        //}
-
-        if (fallingTimer <= 0.0f)
+        if (spawnPoint.gameStarted)
         {
-            fallingTimer = 5.0f - speedup;
-            rbs[randomObj].useGravity = true;
-            randomObj = Random.Range(0, platforms.Count);
-            particles[randomObj].Play();
+            fallingTimer -= Time.deltaTime;
+            particleTimer -= Time.deltaTime;
 
-            if (speedup <= 3.0f)
+            if (fallingTimer <= 0.0f)
             {
-                speedup = speedup + 0.5f;
+                fallingTimer = 5.0f - speedup;
+                rbs[randomObj].useGravity = true;
+                randomObj = Random.Range(0, platforms.Count);
+                particles[randomObj].Play();
+
+                if (speedup <= 3.0f)
+                {
+                    speedup = speedup + 0.5f;
+                }
             }
         }
 
