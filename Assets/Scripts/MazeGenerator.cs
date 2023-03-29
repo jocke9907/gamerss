@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
 {
-    [Range(5, 200)]
+    [Range(5, 100)]
     public int mazeWith = 5, mazeHight = 5;
     public int startX, startY;
     MazeCell[,] maze;
