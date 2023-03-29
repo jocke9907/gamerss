@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     private Vector3 playerVelocity;
     public bool groundedPlayer;
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 5.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
