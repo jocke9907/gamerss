@@ -8,7 +8,7 @@ public class movementPilar : MonoBehaviour
     float verticalInput;
     Vector3 movementDirection;
 
-    int speed = 5;
+    public int speed = 5;
     float rotationSpeed = 720;
     // Start is called before the first frame update
     void Start()
