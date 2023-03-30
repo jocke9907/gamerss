@@ -209,7 +209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 198540798}
         m_TargetAssemblyTypeName: CreateGameUI, Assembly-CSharp
-        m_MethodName: ChangeSceneBomber
+        m_MethodName: ChangeLobbyScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

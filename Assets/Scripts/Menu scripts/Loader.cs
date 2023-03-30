@@ -10,7 +10,7 @@ public static class Loader
     public static bool bomberGamePlaying;
     public enum Scene
     {
-        Loading, Menu, CreateGame, BomberGame, 
+        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby
     }
     //Scene curentGameState = Scene.Menu;
 
