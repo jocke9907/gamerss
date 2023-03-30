@@ -10,6 +10,7 @@ public class FlagPickUp : MonoBehaviour
         if(other.tag=="Player")
         {
             this.playerController= other.GetComponent<PlayerController>();
+            playerController.PickUpFlag();
              playerController.PickUpItem(gameObject);
            
         }
@@ -22,4 +23,5 @@ public class FlagPickUp : MonoBehaviour
         }
     }
     
+
 }
