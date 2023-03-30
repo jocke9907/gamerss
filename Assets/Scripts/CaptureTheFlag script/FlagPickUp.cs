@@ -11,7 +11,15 @@ public class FlagPickUp : MonoBehaviour
         {
             this.playerController= other.GetComponent<PlayerController>();
              playerController.PickUpItem(gameObject);
-            //Destroy(gameObject);
+           
         }
     }
+    public void Use()
+    {
+        if(playerController!=null)
+        {
+            playerController.PickUpItem(gameObject);
+        }
+    }
+    
 }
