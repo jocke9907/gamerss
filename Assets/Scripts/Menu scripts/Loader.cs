@@ -6,7 +6,7 @@ using System;
 
 public static class Loader
 {
-
+    public static bool PlatformGamePlaying;
     public static bool bomberGamePlaying;
     public enum Scene
     {

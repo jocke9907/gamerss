@@ -8,7 +8,7 @@ public class ChangeMap : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
 
     [SerializeField] bool bomber;
-    [SerializeField] bool groundIsFalling;
+    [SerializeField]public bool groundIsFalling = false;
 
     PlayerController playerController;
 
@@ -22,12 +22,14 @@ public class ChangeMap : MonoBehaviour
         {
             ChangeMapToBomber();
         }
-       
+
 
         if (groundIsFalling)
         {
             ChangeMapToGroundFalling();
         }
+        
+        
         
 
     }
@@ -60,8 +62,9 @@ public class ChangeMap : MonoBehaviour
 
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
+                Debug.Log("now true");
+                Loader.PlatformGamePlaying= true;
                 Loader.Load(Loader.Scene.ViggesScene);
-                
 
             }
 
