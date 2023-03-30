@@ -6,7 +6,7 @@ public class PlatformSpawnPoint : MonoBehaviour
 {
     public static Vector3 platformSpawnPoint;
 
-    private void Awake()
+    private void start()
     {
         platformSpawnPoint= transform.position;
     }

@@ -6,36 +6,43 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLevel : MonoBehaviour
 {
-    bool playerSpawned = false;
+    private static bool platformSceneLoaded = false;
     private PlayerScore playerScore;
 
     bool alive = true;
     // Start is called before the first frame update
     void Start()
     {
-        playerScore= GetComponent<PlayerScore>();
+        DontDestroyOnLoad(gameObject);
+        playerScore = GetComponent<PlayerScore>();
     }
     // Update is called once per frame
     void Update()
     {
         //Ground is falling
-        if(Loader.PlatformGamePlaying == true && alive)
+        if (Loader.PlatformGamePlaying == true && alive)
         {
-            if (!playerSpawned)
+            if (!platformSceneLoaded)
             {
-                playerSpawned = true;
-                transform.position = new Vector3(0,2,0);
-                
+                gameObject.transform.position = new Vector3 (0,3,0);
+                Debug.Log(transform.position);
+                if(gameObject.transform.position == new Vector3 (0,3,0))
+                {
+                    Debug.Log(transform.position);
+                    platformSceneLoaded = true;
+                }
             }
+
             if (transform.position.y < -10)
             {
                 playerScore.currentScore = playerScore.currentScore + KillerBox.points;
-                Debug.Log("Player x is now out and is awarded "+ KillerBox.points+ " points!");
-                    alive = false;  
-                
+                Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
+                alive = false;
+
             }
         }
     }
+
 
 
 }
