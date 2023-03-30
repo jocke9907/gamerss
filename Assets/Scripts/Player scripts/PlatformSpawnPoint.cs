@@ -8,7 +8,7 @@ public class PlatformSpawnPoint : MonoBehaviour
 
     private void start()
     {
-        platformSpawnPoint= transform.position;
+        platformSpawnPoint = transform.position;
     }
 }
 

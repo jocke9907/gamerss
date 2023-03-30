@@ -19,21 +19,16 @@ public class PlayerLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Ground is falling
-        if (Loader.PlatformGamePlaying == true && alive)
+        //Ground is falling gamemode
+        if (Loader.PlatformGamePlaying == true && !platformSceneLoaded)
         {
-            if (!platformSceneLoaded)
-            {
-                gameObject.transform.position = new Vector3 (0,3,0);
-                Debug.Log(transform.position);
-                if(gameObject.transform.position == new Vector3 (0,3,0))
-                {
-                    Debug.Log(transform.position);
-                    platformSceneLoaded = true;
-                }
-            }
+            gameObject.transform.position = PlatformSpawnPoint.platformSpawnPoint;
+            platformSceneLoaded = true;
+        }
+        if (Loader.PlatformGamePlaying == true)
+        {
 
-            if (transform.position.y < -10)
+            if (alive && transform.position.y < -10)
             {
                 playerScore.currentScore = playerScore.currentScore + KillerBox.points;
                 Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
@@ -42,7 +37,4 @@ public class PlayerLevel : MonoBehaviour
             }
         }
     }
-
-
-
 }
