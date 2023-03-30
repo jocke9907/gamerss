@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using UnityEngine;
 
 public class objectGrabber : MonoBehaviour
@@ -55,8 +56,8 @@ public class objectGrabber : MonoBehaviour
     //    grabbedObject = null;
     //    isGrabbing = false;
     //}
-    public float maxGrabDistance = 0.5f;
-    public KeyCode grabButton = KeyCode.E;
+    public float maxGrabDistance = 1f;
+    public KeyCode grabButton = KeyCode.Tab;
 
     private GameObject grabbedObject = null;
     private Vector3 objectOffset = Vector3.zero;
@@ -64,7 +65,16 @@ public class objectGrabber : MonoBehaviour
     public movementPilar movementScript;
     public Transform grabPoint;
     public LayerMask movable;
-    
+    BoxCollider bc;
+    Rigidbody rb;
+    float test;
+
+
+
+    private void Start()
+    {
+       
+    }
     void Update()
     {
         
@@ -75,9 +85,10 @@ public class objectGrabber : MonoBehaviour
             {
                 
                 grabbedObject = hit.collider.gameObject;
-
-                //grabbedObject.transform.position = grabPoint.position;
-
+                
+                bc=grabbedObject.GetComponent<BoxCollider>();
+                rb = grabbedObject.GetComponent<Rigidbody>();
+                
             }
         }
 
@@ -86,16 +97,21 @@ public class objectGrabber : MonoBehaviour
             grabbedObject = null;
         }
 
-        if (grabbedObject != null /*&& grabbedObject.tag=="Movable object"*/)
+        if (grabbedObject != null)
         {
-            movementScript.speed = (int)2.5;
+            bc.isTrigger = true;
+            //rb.useGravity = false;
+            //movementScript.speed = (int)2.5;
             grabbedObject.transform.position = grabPoint.position;
-            //grabbedObject.transform.position = transform.position + objectOffset;
-            //grabbedObject.transform.position = transform.position + new Vector3(0, 1f, 2);
+            
         }
         else
         {
+            bc.isTrigger = false;
+            //rb.useGravity = true;
             movementScript.speed = (int)5;
         }
+
+        
     }
 }

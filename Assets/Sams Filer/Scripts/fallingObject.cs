@@ -11,7 +11,7 @@ public class fallingObject : MonoBehaviour
 
         foreach (Transform child in transform)
         {
-            if(child.gameObject.tag == "Movable object")
+            if(child.gameObject.tag == "Movable object" || child.gameObject.tag == "Player")
             {
                 listObject.Add(child.gameObject);
             }
