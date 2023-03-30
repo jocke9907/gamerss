@@ -62,7 +62,8 @@ public class objectGrabber : MonoBehaviour
     private Vector3 objectOffset = Vector3.zero;
 
     public movementPilar movementScript;
-    
+    public Transform grabPoint;
+    public LayerMask movable;
     
     void Update()
     {
@@ -70,12 +71,12 @@ public class objectGrabber : MonoBehaviour
         if (Input.GetKeyDown(grabButton))
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance,movable))
             {
                 
                 grabbedObject = hit.collider.gameObject;
-                
-                objectOffset = grabbedObject.transform.position - transform.position;
+
+                //grabbedObject.transform.position = grabPoint.position;
 
             }
         }
@@ -85,11 +86,12 @@ public class objectGrabber : MonoBehaviour
             grabbedObject = null;
         }
 
-        if (grabbedObject != null && grabbedObject.tag=="Movable object")
+        if (grabbedObject != null /*&& grabbedObject.tag=="Movable object"*/)
         {
             movementScript.speed = (int)2.5;
+            grabbedObject.transform.position = grabPoint.position;
             //grabbedObject.transform.position = transform.position + objectOffset;
-            grabbedObject.transform.position = transform.position + new Vector3(0, 1f, 2);
+            //grabbedObject.transform.position = transform.position + new Vector3(0, 1f, 2);
         }
         else
         {
