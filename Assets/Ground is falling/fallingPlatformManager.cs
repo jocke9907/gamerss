@@ -8,8 +8,8 @@ public class fallingPlatformManager : MonoBehaviour
     List<GameObject> platforms = new List<GameObject>();
     List<Rigidbody> rbs = new List<Rigidbody>();
     List<ParticleSystem> particles = new List<ParticleSystem>();
-    float particleTimer = 3.0f;
-    float fallingTimer = 5.0f;
+    float particleTimer = 1.0f;
+    float fallingTimer = 4.0f;
     int randomObj;
     float speedup = 0f;
     [SerializeField] SpawnPoint spawnPoint;
@@ -53,7 +53,7 @@ public class fallingPlatformManager : MonoBehaviour
 
             if (fallingTimer <= 0.0f)
             {
-                fallingTimer = 5.0f - speedup;
+                fallingTimer = 4.0f - speedup;
                 rbs[randomObj].useGravity = true;
                 randomObj = Random.Range(0, platforms.Count);
                 particles[randomObj].Play();
