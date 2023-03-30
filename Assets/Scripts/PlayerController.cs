@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -21,7 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform backTransform;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
-    
+    [SerializeField] private GameObject heldItem;
+
     private PlayerController action;
 
 
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
     // [SerializeField]
     private BomberInput bomberInput;
     //public BomberInput bomberInput;
-    
+
 
     public CharacterController controller;
     private Vector3 playerVelocity;
@@ -40,9 +42,10 @@ public class PlayerController : MonoBehaviour
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
-    
+
     private bool jumped = false;
     public bool inputE = false;
+    
 
 
     private void Start()
@@ -50,7 +53,7 @@ public class PlayerController : MonoBehaviour
         bomberInput = FindObjectOfType<BomberInput>();
         controller = gameObject.GetComponent<CharacterController>();
 
-        
+
         //gameInput.OnInteractAction += bomberInput.GameInput_OnInteractAction;
     }
 
@@ -60,20 +63,20 @@ public class PlayerController : MonoBehaviour
     }
     public void OnInteract(InputAction.CallbackContext context)
     {
-        
+
         inputE = context.action.triggered;
-        
+
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        
+
         jumped = context.action.triggered;
     }
 
     void Update()
     {
 
-        
+
 
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
@@ -83,12 +86,12 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
         controller.Move(move * Time.deltaTime * playerSpeed);
-        
+
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
-          
-           
+
+
         }
 
         // Changes the height position of the player..
@@ -107,15 +110,19 @@ public class PlayerController : MonoBehaviour
         //bomberInput.UpdateTo();
 
     }
-    public void PickUpItem(GameObject gameObject)
+    public void PickUpItem(GameObject item)
     {
-        gameObject.transform.position = backTransform.position;
-        gameObject.transform.parent= backTransform;
+        Debug.Log("PickUpItem methos called with item:" + item.name);
+        heldItem = item;
+        item.transform.position = backTransform.position;
+        item.transform.parent = backTransform;
     }
-
-
    
-    
+
+
+
+
+
 
     ///!!!!!!! ta inte bort
 

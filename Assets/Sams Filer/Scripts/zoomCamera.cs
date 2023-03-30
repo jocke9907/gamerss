@@ -33,7 +33,7 @@ public class zoomCamera : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
     public float distance;
-    Camera camera;
+    //Camera camera;
     public float distanceTest;
 
     public float minFOV = 30f;
