@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlagPickUp : MonoBehaviour
-{
-    private void OnTriggerEnter(Collider collider)
+{ 
+   PlayerController playerController;
+    private void OnTriggerEnter(Collider other)
     {
-        if (collider.gameObject.tag == "Player")
+        if(other.tag=="Player")
         {
-            print("Item picked up");
-            Destroy(gameObject);
+            this.playerController= other.GetComponent<PlayerController>();
+             playerController.PickUpItem(gameObject);
+            //Destroy(gameObject);
         }
     }
 }
