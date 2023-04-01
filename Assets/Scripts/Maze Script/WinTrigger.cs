@@ -5,27 +5,44 @@ using UnityEngine.SceneManagement;
 
 public class WinTrigger : MonoBehaviour
 {
+
     public GameObject youWinText;
     public float delay;
+
+    public float timer = 63f;
+    public string loadScene;
 
     void Start()
     {
         youWinText.SetActive(false);
     }
-    
 
-    void OnTriggerEnter (Collider other)
+    private void Update()
     {
-        if (other.gameObject.tag == "Player")
+        timer -= Time.deltaTime;
+        if (timer <= 0 )
         {
-            youWinText.SetActive (true);
-            StartCoroutine(Countdown());
+            SceneManager.LoadScene(2);
         }
     }
 
-    IEnumerator Countdown()
-    {
-        yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(0);
-    }
+
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        youWinText.SetActive(true);
+    //        StartCoroutine(Countdown());
+    //    }
+    //    else if (timer == 0f)
+    //    {
+    //        Debug.Log("You Lose");
+    //    }
+    //}
+
+    //IEnumerator Countdown()
+    //{
+    //    yield return new WaitForSeconds(delay);
+    //    SceneManager.LoadScene(2);
+    //}
 }
