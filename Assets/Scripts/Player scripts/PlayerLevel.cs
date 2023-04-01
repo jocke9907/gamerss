@@ -35,6 +35,11 @@ public class PlayerLevel : MonoBehaviour
                 
             }
         }
+
+        //if(Loader.maze == true && alive)
+        //{
+            
+        //}
     }
 
 

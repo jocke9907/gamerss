@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScenes/Lobby.unity
     guid: 9f3eb4edaf1b63a4d849b78481a3e3b0
+  - enabled: 1
+    path: Assets/Scenes/TheMaze.unity
+    guid: 5d2301930bf474447a2693e37c7ba4f2
+  - enabled: 1
+    path: Assets/Scenes/PostLobby.unity
+    guid: 0b892a7abda975b428e95024407040a6
   m_configObjects: {}

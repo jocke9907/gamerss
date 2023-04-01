@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 public class WinTrigger : MonoBehaviour
 {
 
+   // GameObject player = GameObject.Find("Player");
+   // PlayerController playerController = player.GetComponent<PlayerController>();
+
     public GameObject youWinText;
-    public float delay;
+    //public float delay;
 
     public float timer = 63f;
     public string loadScene;
+    public static int points = 0;
+
+    PlayerScore playerScore;
 
     void Start()
     {
@@ -22,7 +28,16 @@ public class WinTrigger : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0 )
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(7);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerScore>();
+            playerScore.currentScore += 50;
         }
     }
 
