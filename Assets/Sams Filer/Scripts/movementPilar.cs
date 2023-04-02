@@ -8,7 +8,7 @@ public class movementPilar : MonoBehaviour
     float horizontalInput;
     float verticalInput;
     Vector3 movementDirection;
-
+    public Collider finishLine;
     public int speed = 5;
     float rotationSpeed = 720;
 
@@ -54,6 +54,10 @@ public class movementPilar : MonoBehaviour
         {
             isOnGround = true;
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("test");
     }
 
 

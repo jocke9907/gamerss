@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class fallingObject : MonoBehaviour
 {
+
+    LayerMask player;
     List<GameObject> listObject = new List<GameObject>();
     void Start()
     {
