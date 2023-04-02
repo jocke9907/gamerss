@@ -16,6 +16,7 @@ public class movementPilar : MonoBehaviour
     private Rigidbody playerRB;
 
     public bool isOnGround = true;
+    public bool finished = false;
 
     void Start()
     {
