@@ -81,7 +81,7 @@ public class MarkerInteract : MonoBehaviour
 
 
         //&& bomPlaced == true
-        if (targetTime >= -0.2f && targetTime <= 0.0f )
+        if (targetTime >= -0.2f && targetTime <= 0.0f && bomPlaced == true)
         {
             timerEnded();
             bomPlaced =false;
