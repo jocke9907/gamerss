@@ -17,15 +17,15 @@ public class PlayerChooser : MonoBehaviour
     }
     void OnPlayerJoined(PlayerInput input)
     {
-        if (player1 == null) 
-        { 
-            player1 = input.gameObject;
-            playerInputManager.playerPrefab = playerPrefab2;
-        }
-        else if (player2 == null)
-        {
-            player2 = input.gameObject;
-        }
+        //if (player1 == null) 
+        //{ 
+        //    player1 = input.gameObject;
+        //    playerInputManager.playerPrefab = playerPrefab2;
+        //}
+        //else if (player2 == null)
+        //{
+        //    player2 = input.gameObject;
+        //}
     }
     // Start is called before the first frame update
    
