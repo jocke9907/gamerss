@@ -5,20 +5,22 @@ using UnityEngine;
 public class KillerBox : MonoBehaviour
 {
     static public int points = 0;
-    [SerializeField] int playercounter = 0;
+    public static int playercounter = 4;
 
     // Start is called before the first frame update
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             points = points + 1;
-            playercounter++;
+            playercounter--;
         }
-        if(playercounter >=4)
+        if(playercounter <= 0)
         {
             Loader.Load(Loader.Scene.Lobby);
         }
+        
     }
 
 }
