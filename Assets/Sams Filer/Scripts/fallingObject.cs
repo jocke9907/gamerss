@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class fallingObject : MonoBehaviour
 {
-
-    LayerMask player;
     List<GameObject> listObject = new List<GameObject>();
     void Start()
     {
 
         foreach (Transform child in transform)
         {
-            if(child.gameObject.tag == "Movable object" || child.gameObject.tag == "Player")
+            if(child.gameObject.tag == "Movable object")
             {
                 listObject.Add(child.gameObject);
             }
