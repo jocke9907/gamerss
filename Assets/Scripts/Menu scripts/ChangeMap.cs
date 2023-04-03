@@ -9,7 +9,10 @@ public class ChangeMap : MonoBehaviour
 
     [SerializeField] bool bomber;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     [SerializeField] bool maze;
     [SerializeField]public  bool capture;
 >>>>>>> Stashed changes
@@ -128,6 +131,9 @@ public class ChangeMap : MonoBehaviour
 
         }
     }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 }

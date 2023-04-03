@@ -240,7 +240,10 @@ MonoBehaviour:
     m_Bits: 131072
   bomber: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   maze: 0
   capture: 0
 >>>>>>> Stashed changes
@@ -262,7 +265,10 @@ MonoBehaviour:
     m_Bits: 0
   bomber: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   maze: 0
   capture: 0
 >>>>>>> Stashed changes
@@ -639,6 +645,9 @@ Transform:
 =======
   - {fileID: 331747137}
   - {fileID: 1878039313}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -991,7 +1000,10 @@ MonoBehaviour:
     m_Bits: 131072
   bomber: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   maze: 0
   capture: 0
 >>>>>>> Stashed changes

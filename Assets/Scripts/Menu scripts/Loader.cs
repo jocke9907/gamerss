@@ -12,7 +12,11 @@ public static class Loader
     public enum Scene
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby
+=======
+        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze
+>>>>>>> Stashed changes
 =======
         Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze
 >>>>>>> Stashed changes
