@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using TMPro;
 public class finishLine : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -16,8 +16,8 @@ public class finishLine : MonoBehaviour
     //        SceneManager.LoadScene("SampleScene");
     //    }
     //}
-    public Text positionText;
-    public Text scoreText;
+    public TextMeshProUGUI positionText;
+    public TextMeshProUGUI scoreText;
     private Dictionary<string, int> positions = new Dictionary<string, int>();
     private Dictionary<string, int> scores = new Dictionary<string, int>();
     private int playersFinished = 0;
@@ -42,7 +42,7 @@ public class finishLine : MonoBehaviour
         {
             player = other.GetComponent<movementPilar>();
             if (player.finished) return; // Player has already crossed the finish line
-
+            
             player.finished = true;
             playersFinished++;
 
