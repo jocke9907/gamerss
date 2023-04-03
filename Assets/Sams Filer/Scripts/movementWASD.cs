@@ -8,7 +8,7 @@ public class movementWASD : MonoBehaviour
     float xDirection;
     float zDirection;
     public float speed = 0.5f;
-    //float rotationSpeed = 720;
+    float rotationSpeed = 720;
     // Update is called once per frame
     void Update()
     {
