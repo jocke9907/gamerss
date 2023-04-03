@@ -19,4 +19,25 @@ public class CreateGameUI : MonoBehaviour
     {
         Loader.Load(Loader.Scene.Lobby);
     }
+
+    public void OnePlayer()
+    {
+        Loader.Load(Loader.Scene.Lobby);
+        BomberManger.playerCountBomber = 1;
+    }
+    public void TwoPlayer()
+    {
+        Loader.Load(Loader.Scene.Lobby);
+        BomberManger.playerCountBomber = 2;
+    }
+    public void ThreePlayer()
+    {
+        Loader.Load(Loader.Scene.Lobby);
+        BomberManger.playerCountBomber = 3;
+    }
+    public void FourPlayer()
+    {
+        Loader.Load(Loader.Scene.Lobby);
+        BomberManger.playerCountBomber = 4;
+    }
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public static class BomberManger 
 {
-   public static int playerCountBomber =1;
+   public static int playerCountBomber;
    public static void PlayerCounter()
    {
+        Debug.Log(playerCountBomber);
         if (playerCountBomber == 0)
         {
             Debug.Log("ChangeToMenu");

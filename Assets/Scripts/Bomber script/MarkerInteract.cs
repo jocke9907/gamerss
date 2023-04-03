@@ -91,6 +91,7 @@ public class MarkerInteract : MonoBehaviour
     
     void timerEnded()
     {
+        
         Debug.Log("bomb explod");
         inputVector = new Vector2(1f, 0f);
         Explode();
@@ -100,6 +101,7 @@ public class MarkerInteract : MonoBehaviour
         Explode();
         inputVector = new Vector2(0f, -1f);
         Explode();
+        Debug.Log(BomberManger.playerCountBomber);
 
 
         //förstör markern och det som har spawnat på den

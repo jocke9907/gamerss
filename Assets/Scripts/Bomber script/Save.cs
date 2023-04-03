@@ -7,7 +7,7 @@ public class Save : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(BomberManger.playerCountBomber);
     }
 
     // Update is called once per frame
