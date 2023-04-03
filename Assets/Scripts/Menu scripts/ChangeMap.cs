@@ -8,6 +8,7 @@ public class ChangeMap : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
 
     [SerializeField] bool bomber;
+    [SerializeField]public  bool capture;
     [SerializeField]public bool groundIsFalling = false;
 
     PlayerController playerController;
@@ -28,9 +29,14 @@ public class ChangeMap : MonoBehaviour
         {
             ChangeMapToGroundFalling();
         }
-        
-        
-        
+
+        if (capture)
+        {
+            ChangeToMapCapture();
+        }
+
+
+
 
     }
     public void ChangeMapToBomber()
@@ -65,6 +71,24 @@ public class ChangeMap : MonoBehaviour
                 Debug.Log("now true");
                 Loader.PlatformGamePlaying= true;
                 Loader.Load(Loader.Scene.ViggesScene);
+
+            }
+
+        }
+    }
+    public void ChangeToMapCapture()
+    {
+
+        float maxDistans = 12f;
+        Vector3 dir = new Vector3(0, 1f, 0);
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        {
+
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                
+                Loader.Load(Loader.Scene.CaptureTheFlag);
 
             }
 

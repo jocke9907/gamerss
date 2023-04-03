@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PostLobby.unity
     guid: 0b892a7abda975b428e95024407040a6
+  - enabled: 1
+    path: Assets/Scenes/CaptureTheFlag.unity
+    guid: abe8be6ce8d77d24eb9ddccb34ddb0a7
   m_configObjects: {}
