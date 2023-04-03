@@ -7,6 +7,7 @@ public class ChangeMap : MonoBehaviour
 
     [SerializeField] private LayerMask playerLayer;
 
+    [SerializeField] bool maze;
     [SerializeField] bool bomber;
     [SerializeField]public  bool capture;
     [SerializeField]public bool groundIsFalling = false;
@@ -34,7 +35,10 @@ public class ChangeMap : MonoBehaviour
         {
             ChangeToMapCapture();
         }
-
+        if (maze)
+        {
+            ChangeToMapMaze();
+        }
 
 
 
@@ -89,6 +93,24 @@ public class ChangeMap : MonoBehaviour
             {
                 
                 Loader.Load(Loader.Scene.CaptureTheFlag);
+
+            }
+
+        }
+    }
+    public void ChangeToMapMaze()
+    {
+
+        float maxDistans = 12f;
+        Vector3 dir = new Vector3(0, 1f, 0);
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        {
+
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                Loader.TheMazePlaying = true;
+                Loader.Load(Loader.Scene.TheMaze);
 
             }
 

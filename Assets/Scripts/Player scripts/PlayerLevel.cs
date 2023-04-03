@@ -35,11 +35,11 @@ public class PlayerLevel : MonoBehaviour
                 
             }
         }
-
-        //if(Loader.maze == true && alive)
-        //{
-            
-        //}
+        if (Loader.TheMazePlaying == true && alive)
+        {
+            gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        }
+        
     }
 
 

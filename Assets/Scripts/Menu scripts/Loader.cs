@@ -8,9 +8,10 @@ public static class Loader
 {
     public static bool PlatformGamePlaying;
     public static bool bomberGamePlaying;
+    public static bool TheMazePlaying;
     public enum Scene
     {
-        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag
+        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze
     }
     //Scene curentGameState = Scene.Menu;
 
