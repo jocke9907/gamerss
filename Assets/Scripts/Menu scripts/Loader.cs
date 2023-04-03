@@ -8,9 +8,14 @@ public static class Loader
 {
     public static bool PlatformGamePlaying;
     public static bool bomberGamePlaying;
+    public static bool TheMazePlaying;
     public enum Scene
     {
+<<<<<<< Updated upstream
         Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby
+=======
+        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze
+>>>>>>> Stashed changes
     }
     //Scene curentGameState = Scene.Menu;
 

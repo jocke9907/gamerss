@@ -8,6 +8,11 @@ public class ChangeMap : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
 
     [SerializeField] bool bomber;
+<<<<<<< Updated upstream
+=======
+    [SerializeField] bool maze;
+    [SerializeField]public  bool capture;
+>>>>>>> Stashed changes
     [SerializeField]public bool groundIsFalling = false;
 
     PlayerController playerController;
@@ -28,9 +33,24 @@ public class ChangeMap : MonoBehaviour
         {
             ChangeMapToGroundFalling();
         }
+<<<<<<< Updated upstream
         
         
         
+=======
+
+        if (capture)
+        {
+            ChangeToMapCapture();
+        }
+        if (maze)
+        {
+            ChangeToMapMaze();
+        }
+
+
+
+>>>>>>> Stashed changes
 
     }
     public void ChangeMapToBomber()
@@ -70,5 +90,44 @@ public class ChangeMap : MonoBehaviour
 
         }
     }
+<<<<<<< Updated upstream
+=======
+    public void ChangeToMapCapture()
+    {
+
+        float maxDistans = 12f;
+        Vector3 dir = new Vector3(0, 1f, 0);
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        {
+
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                
+                Loader.Load(Loader.Scene.CaptureTheFlag);
+
+            }
+
+        }
+    }
+    public void ChangeToMapMaze()
+    {
+
+        float maxDistans = 12f;
+        Vector3 dir = new Vector3(0, 1f, 0);
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        {
+
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                Loader.TheMazePlaying = true;
+                Loader.Load(Loader.Scene.TheMaze);
+
+            }
+
+        }
+    }
+>>>>>>> Stashed changes
 
 }

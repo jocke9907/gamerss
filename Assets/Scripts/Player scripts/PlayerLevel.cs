@@ -8,12 +8,14 @@ public class PlayerLevel : MonoBehaviour
 {
     bool playerSpawned = false;
     private PlayerScore playerScore;
+    Transform transform;
 
     bool alive = true;
     // Start is called before the first frame update
     void Start()
     {
         playerScore= GetComponent<PlayerScore>();
+        transform = GetComponent<Transform>();
     }
     // Update is called once per frame
     void Update()
@@ -36,10 +38,10 @@ public class PlayerLevel : MonoBehaviour
             }
         }
 
-        //if(Loader.maze == true && alive)
-        //{
-            
-        //}
+        if (Loader.TheMazePlaying == true && alive)
+        {
+          gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        }
     }
 
 
