@@ -13,7 +13,7 @@ public class ChangeMap : MonoBehaviour
     [SerializeField]public bool groundIsFalling = false;
 
     PlayerController playerController;
-
+   
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -54,6 +54,23 @@ public class ChangeMap : MonoBehaviour
             
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
+                if(CreateGameUI.onePlayer == true)
+                {
+                    BomberManger.playerCountBomber = 1;
+                }
+                if (CreateGameUI.twoPlayer == true)
+                {
+                    BomberManger.playerCountBomber = 1;
+                }
+                if (CreateGameUI.threePlayer == true)
+                {
+                    BomberManger.playerCountBomber = 2;
+                }
+                if (CreateGameUI.fourPlayer == true)
+                {
+                    BomberManger.playerCountBomber = 3;
+                }
+
                 Loader.Load(Loader.Scene.BomberGame);
                 Loader.bomberGamePlaying = true;
 

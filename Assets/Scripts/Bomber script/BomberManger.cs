@@ -12,7 +12,7 @@ public static class BomberManger
         {
             Debug.Log("ChangeToMenu");
             Loader.bomberGamePlaying = false;
-            Loader.Load(Loader.Scene.Menu);
+            Loader.Load(Loader.Scene.Lobby);
         }
    }
         

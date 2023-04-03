@@ -62,7 +62,8 @@ public class MarkerInteract : MonoBehaviour
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
                 Debug.Log("found Player");
-                Destroy(playerController);
+                //Destroy(playerController);
+                playerController.transform.position = new Vector3(0,40,0);
                 BomberManger.playerCountBomber--;
                 Debug.Log(BomberManger.playerCountBomber);
                 BomberManger.PlayerCounter();
