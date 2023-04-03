@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform backTransform;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
-    [SerializeField] private GameObject heldItem;
+    [SerializeField] public GameObject heldItem;
 
     private PlayerController action;
 
@@ -110,14 +110,7 @@ public class PlayerController : MonoBehaviour
         //bomberInput.UpdateTo();
 
     }
-    public void PickUpItem(GameObject item)
-    {
-        Debug.Log("PickUpItem methos called with item:" + item.name);
-        heldItem = item;
-        item.transform.position = backTransform.position;
-        item.transform.parent = backTransform;
-    }
-   
+
 
 
 
@@ -235,4 +228,12 @@ public class PlayerController : MonoBehaviour
     //        Debug.Log("-");
     //    }        
     //}
+    public void PickUpItem(GameObject item)
+    {
+        heldItem = item;
+        item.transform.position = backTransform.position;
+        item.transform.parent = backTransform;
+
+    }
+ 
 }
