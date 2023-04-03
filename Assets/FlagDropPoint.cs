@@ -1,35 +1,30 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class FlagDropPoint : MonoBehaviour
 {
+    public Transform spawnPos;
+    FlagPickUp flag;
     
-    [SerializeField] public GameObject flag;
-    [SerializeField] public Vector3 spawnPosition;
-    PlayerController playerController;
-    
+ 
     private void OnTriggerEnter(Collider other)
     {
-        //playerController.HasFlag();
-        if (other.tag == "Player")
+        
+        PlayerController player=other.GetComponent<PlayerController>();
+        if(other.tag=="Player"&&player.heldItem!=null)
         {
-            if(flag!=null&&playerController!=null&&playerController.HasFlag(flag))
-            {
-                flag.transform.position = spawnPosition;
-                playerController.DropItem(flag);
-                playerController.DropFlag();
-            }
+            Destroy(player.heldItem);
+            player.heldItem=null;
+            Invoke("RespawnFlag", 5F);
+        }
 
-        }
     }
-    private void OnTriggerExit(Collider other)
+    private void RespawnFlag()
     {
-        if(other.CompareTag("Player"))
-        {
-            playerController=other.GetComponent<PlayerController>();
-        }
+        GameObject newFlag= Instantiate(Resources.Load<GameObject>("Flag"), spawnPos.position,spawnPos.rotation);
+        newFlag.tag = "Flag";
     }
 
 }
