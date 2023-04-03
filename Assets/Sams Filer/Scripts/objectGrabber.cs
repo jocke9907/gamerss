@@ -13,7 +13,7 @@ public class objectGrabber : MonoBehaviour
     private GameObject grabbedObject = null;
     private Vector3 objectOffset = Vector3.zero;
 
-    public movementPilar movementScript;
+    //public movementPilar movementScript;
     public Transform grabPoint;
     public LayerMask movable;
     BoxCollider bc;
@@ -64,7 +64,7 @@ public class objectGrabber : MonoBehaviour
         {
             bc.isTrigger = false;
             //rb.useGravity = true;
-            movementScript.speed = (int)5;
+            //movementScript.speed = (int)5;
         }
 
         
