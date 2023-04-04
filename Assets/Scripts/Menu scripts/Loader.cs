@@ -11,7 +11,7 @@ public static class Loader
     public static bool TheMazePlaying;
     public enum Scene
     {
-        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze
+        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze, SamScen
     }
     //Scene curentGameState = Scene.Menu;
 
