@@ -9,6 +9,9 @@ public class PlayerLevel : MonoBehaviour
     bool playerSpawned = false;
     private PlayerScore playerScore;
 
+    bool playerDead;
+    bool scoreGiven;
+
     bool alive = true;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,7 @@ public class PlayerLevel : MonoBehaviour
             
         //Ground is falling
         OnGroundIsFalling();
+        OnBomber();
 
         if (Loader.TheMazePlaying == true && alive)
         {
@@ -49,5 +53,17 @@ public class PlayerLevel : MonoBehaviour
         }
     }
 
+    private void OnBomber()
+    {
+        if (transform.position.y > 25 && scoreGiven == false)
+        {
+            playerDead = true;
+        }
+        if (playerDead && scoreGiven == false)
+        {
+            playerScore.currentScore = playerScore.currentScore + BomberManger.bomberPoints;
+            scoreGiven = true;
+        }
+    }
 
 }
