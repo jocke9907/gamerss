@@ -13,6 +13,7 @@ public class MarkerInteract : MonoBehaviour
 
     private Barral Barral;
     PlayerController playerController;
+    PlayerScore playerScore;
     
     //playerController = FindObjectOfType<BomberInput>();
     
@@ -63,11 +64,16 @@ public class MarkerInteract : MonoBehaviour
             {
                 Debug.Log("found Player");
                 //Destroy(playerController);
+
+                
+
                 playerController.transform.position = new Vector3(0,40,0);
                 BomberManger.playerCountBomber--;
+                BomberManger.bomberPoints += 1;
                 Debug.Log(BomberManger.playerCountBomber);
                 BomberManger.PlayerCounter();
                 
+
             }
 
         }

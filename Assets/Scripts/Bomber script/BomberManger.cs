@@ -5,6 +5,7 @@ using UnityEngine;
 public static class BomberManger 
 {
    public static int playerCountBomber;
+   public static int bomberPoints = 1;
    public static void PlayerCounter()
    {
         Debug.Log(playerCountBomber);
@@ -15,6 +16,6 @@ public static class BomberManger
             Loader.Load(Loader.Scene.Lobby);
         }
    }
-        
 
+    //playerScore.currentScore = playerScore.currentScore
 }
