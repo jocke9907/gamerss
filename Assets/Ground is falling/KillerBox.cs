@@ -13,12 +13,16 @@ public class KillerBox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            points = points + 1;
+            points++;
             playercounter--;
+            //other.gameObject.transform.position = new Vector3(0,3,0);
+            //other.gameObject.SetActive(false);
         }
         if(playercounter <= 0)
         {
+            Loader.PlatformGamePlaying = false;
             Loader.Load(Loader.Scene.Lobby);
+            
         }
         
     }

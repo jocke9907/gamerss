@@ -9,6 +9,7 @@ TagManager:
   - Flag
   - movable
   - Plattform
+  - Killbox
   layers:
   - Default
   - TransparentFX
