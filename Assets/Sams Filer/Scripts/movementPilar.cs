@@ -11,6 +11,7 @@ public class movementPilar : MonoBehaviour
     public Collider finishLine;
     public int speed = 5;
     float rotationSpeed = 720;
+    int finishedPlayers = 0;
 
     public float jumpForce = 5f;
     private Rigidbody playerRB;
@@ -56,10 +57,7 @@ public class movementPilar : MonoBehaviour
             isOnGround = true;
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("test");
-    }
+    
 
 
 

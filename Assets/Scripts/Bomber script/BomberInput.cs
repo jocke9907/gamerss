@@ -13,6 +13,10 @@ public class BomberInput : MonoBehaviour
 
     private PlayerController playerController;
 
+    bool playerDead;
+    bool scoreGiven;
+    PlayerScore playerScore;
+
     //public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
     //public class OnSelectedCounterChangedEventargs : EventArgs
     //{
@@ -31,10 +35,24 @@ public class BomberInput : MonoBehaviour
     {
         playerController = FindObjectOfType<PlayerController>();
         HandleInteractions();
+        //CheckIfPlayerDead();
     }
     public void Start()
     {
         
+    }
+
+    public void CheckIfPlayerDead()
+    {
+        if (transform.position.y > 25 && scoreGiven == false)
+        {
+            playerDead = true;
+        }
+        if (playerDead && scoreGiven == false)
+        {
+            playerScore.currentScore = playerScore.currentScore + BomberManger.bomberPoints;
+            scoreGiven = true;
+        }
     }
 
     public void GameInput_OnInteractAction(object sender, System.EventArgs e)

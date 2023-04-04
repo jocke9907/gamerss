@@ -13,6 +13,7 @@ public class MarkerInteract : MonoBehaviour
 
     private Barral Barral;
     PlayerController playerController;
+    PlayerScore playerScore;
     
     //playerController = FindObjectOfType<BomberInput>();
     
@@ -62,11 +63,17 @@ public class MarkerInteract : MonoBehaviour
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
                 Debug.Log("found Player");
-                Destroy(playerController);
+                //Destroy(playerController);
+
+                
+
+                playerController.transform.position = new Vector3(0,40,0);
                 BomberManger.playerCountBomber--;
+                BomberManger.bomberPoints += 1;
                 Debug.Log(BomberManger.playerCountBomber);
                 BomberManger.PlayerCounter();
                 
+
             }
 
         }

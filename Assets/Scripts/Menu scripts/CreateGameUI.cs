@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class CreateGameUI : MonoBehaviour
 {
+
+    public static bool onePlayer;
+    public static bool twoPlayer;
+    public static bool threePlayer;
+    public static bool fourPlayer;
+
     public void ChangeSceneBomber()
     {      
         Loader.Load(Loader.Scene.BomberGame);
@@ -23,21 +29,29 @@ public class CreateGameUI : MonoBehaviour
     public void OnePlayer()
     {
         Loader.Load(Loader.Scene.Lobby);
+        onePlayer = true;
         BomberManger.playerCountBomber = 1;
+        KillerBox.playercounter = 2;
     }
     public void TwoPlayer()
     {
+        twoPlayer = true;
         Loader.Load(Loader.Scene.Lobby);
-        BomberManger.playerCountBomber = 2;
+        BomberManger.playerCountBomber = 1;
+        KillerBox.playercounter = 4;
     }
     public void ThreePlayer()
     {
+        threePlayer = true;
         Loader.Load(Loader.Scene.Lobby);
-        BomberManger.playerCountBomber = 3;
+        BomberManger.playerCountBomber = 2;
+        KillerBox.playercounter = 6;
     }
     public void FourPlayer()
     {
+        fourPlayer = true;
         Loader.Load(Loader.Scene.Lobby);
-        BomberManger.playerCountBomber = 4;
+        BomberManger.playerCountBomber = 3;
+        KillerBox.playercounter = 8;
     }
 }
