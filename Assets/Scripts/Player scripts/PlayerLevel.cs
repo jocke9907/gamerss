@@ -9,8 +9,8 @@ public class PlayerLevel : MonoBehaviour
     bool playerSpawned = false;
     private PlayerScore playerScore;
 
-    bool playerDead;
-    bool scoreGiven;
+    public bool playerDead;
+    public bool scoreGiven;
 
     bool alive = true;
     // Start is called before the first frame update
@@ -64,14 +64,14 @@ public class PlayerLevel : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(Loader.PlatformGamePlaying == true && other.CompareTag("Killbox"))
+        if (Loader.PlatformGamePlaying == true && other.CompareTag("Killbox"))
         {
-                    playerScore.currentScore = playerScore.currentScore + KillerBox.points;
-                    Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
-                    alive = false;
+            playerScore.currentScore = playerScore.currentScore + KillerBox.points;
+            Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
+            alive = false;
         }
 
-        }
+
     }
 
     private void OnBomber()
@@ -86,3 +86,6 @@ public class PlayerLevel : MonoBehaviour
             scoreGiven = true;
         }
     }
+}
+
+
