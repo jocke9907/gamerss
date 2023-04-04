@@ -23,7 +23,7 @@ public class FlagDropPoint : MonoBehaviour
     }
     private void RespawnFlag()
     {
-        GameObject newFlag= Instantiate(Resources.Load<GameObject>("Flag"), spawnPos.position,spawnPos.rotation);
+        GameObject newFlag = Instantiate(Resources.Load<GameObject>("Flag"), spawnPos.position, spawnPos.rotation);
         newFlag.tag = "Flag";
     }
 

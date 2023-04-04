@@ -7,7 +7,8 @@ public class FlagPickUp : MonoBehaviour
     private PlayerController playerController;
     //public Transform pickUpPosition;
 
-    private Vector3? lastPos = null;
+     Vector3? lastPos = null;
+     GameObject spawnPos;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,17 +17,22 @@ public class FlagPickUp : MonoBehaviour
             playerController = other.GetComponent<PlayerController>();
             playerController.PickUpItem(gameObject);
             lastPos = transform.position;
+            
+            spawnPos = Instantiate(new GameObject("spawnPos"), transform.position, Quaternion.identity);
+           
+            
         }
     }
+    
 
-    public void RespawnFlag()
-    {
-        if (lastPos != null)
-        {
-            GameObject newFlag = Instantiate(Resources.Load<GameObject>("Flag"), (Vector3)lastPos, transform.rotation);
-            newFlag.tag = "Flag";
-            lastPos = null;
-        }
-    }
+    //public void RespawnFlag()
+    //{
+    //    if (lastPos != null)
+    //    {
+    //        GameObject newFlag = Instantiate(Resources.Load<GameObject>("Flag"), (Vector3)lastPos, transform.rotation);
+    //        newFlag.tag = "Flag";
+    //        lastPos = null;
+    //    }
+    //}
 
 }

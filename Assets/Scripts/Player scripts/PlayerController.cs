@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
-    [SerializeField] private GameObject heldItem;
+    [SerializeField] public GameObject heldItem;
     [SerializeField] private Transform backTransform;
 
 
