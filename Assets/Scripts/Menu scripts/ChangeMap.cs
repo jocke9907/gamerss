@@ -7,6 +7,8 @@ public class ChangeMap : MonoBehaviour
 
     [SerializeField] private LayerMask playerLayer;
 
+
+    [SerializeField] bool wallClimber;
     [SerializeField] bool maze;
     [SerializeField] bool bomber;
     [SerializeField]public  bool capture;
@@ -38,6 +40,10 @@ public class ChangeMap : MonoBehaviour
         if (maze)
         {
             ChangeToMapMaze();
+        }
+        if (wallClimber)
+        {
+            ChangeToMapWallClimber();
         }
 
 
@@ -128,6 +134,24 @@ public class ChangeMap : MonoBehaviour
             {
                 Loader.TheMazePlaying = true;
                 Loader.Load(Loader.Scene.TheMaze);
+
+            }
+
+        }
+    }
+    public void ChangeToMapWallClimber()
+    {
+
+        float maxDistans = 12f;
+        Vector3 dir = new Vector3(0, 1f, 0);
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        {
+
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                Loader.TheMazePlaying = true;
+                Loader.Load(Loader.Scene.SamScen);
 
             }
 
