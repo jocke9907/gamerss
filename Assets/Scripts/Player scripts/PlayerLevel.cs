@@ -64,6 +64,7 @@ public class PlayerLevel : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //Ground is falling
         if (Loader.PlatformGamePlaying == true && other.CompareTag("Killbox"))
         {
             playerScore.currentScore = playerScore.currentScore + KillerBox.points;
