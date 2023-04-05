@@ -6,9 +6,11 @@ using System;
 
 public static class Loader
 {
+    // skirve med små bokstäver i början?
     public static bool PlatformGamePlaying;
     public static bool bomberGamePlaying;
     public static bool TheMazePlaying;
+    public static bool wallClimberPlaying;
     public enum Scene
     {
         Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze, SamScen

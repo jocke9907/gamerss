@@ -133,6 +133,7 @@ public class ChangeMap : MonoBehaviour
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
                 Loader.TheMazePlaying = true;
+                Loader.wallClimberPlaying = false;
                 Loader.Load(Loader.Scene.TheMaze);
 
             }
@@ -150,7 +151,8 @@ public class ChangeMap : MonoBehaviour
 
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
-                Loader.TheMazePlaying = true;
+                Loader.wallClimberPlaying = true;
+                Loader.TheMazePlaying = false;
                 Loader.Load(Loader.Scene.SamScen);
 
             }

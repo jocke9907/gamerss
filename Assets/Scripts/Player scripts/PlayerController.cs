@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     // [SerializeField]
     private BomberInput bomberInput;
+    private WallClimberInput wallClimberInput;
     private ChangeMap changeMap;
     //public BomberInput bomberInput;
     
@@ -51,6 +52,8 @@ public class PlayerController : MonoBehaviour
     {
         bomberInput = FindObjectOfType<BomberInput>();
 
+        wallClimberInput = FindObjectOfType<WallClimberInput>();
+
         changeMap = FindObjectOfType<ChangeMap>();
         
         controller = gameObject.GetComponent<CharacterController>();
@@ -64,10 +67,8 @@ public class PlayerController : MonoBehaviour
         movementInput = context.ReadValue<Vector2>();
     }
     public void OnInteract(InputAction.CallbackContext context)
-    {
-        
-        inputE = context.action.triggered;
-        
+    {        
+        inputE = context.action.triggered;        
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -113,6 +114,10 @@ public class PlayerController : MonoBehaviour
         if(Loader.bomberGamePlaying == true) 
         { 
              bomberInput.UpdateTo();
+        }
+        if(Loader.wallClimberPlaying == true)
+        {
+            wallClimberInput.UpdateWallClimberTo();
         }
        
 

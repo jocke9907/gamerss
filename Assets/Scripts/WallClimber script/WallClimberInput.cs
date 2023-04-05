@@ -1,35 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Schema;
 using UnityEngine;
 
-public class objectGrabber : MonoBehaviour
+public class WallClimberInput : MonoBehaviour
 {
 
-  
-    public float maxGrabDistance = 1f;
-    public KeyCode grabButton = KeyCode.Tab;
-
-    private GameObject grabbedObject = null;
-    private Vector3 objectOffset = Vector3.zero;
-
-    //public movementPilar movementScript;
+    private PlayerController playerController;
     public Transform grabPoint;
     public LayerMask movable;
     BoxCollider bc;
+    private GameObject grabbedObject = null;
+    private Vector3 objectOffset = Vector3.zero;
     Rigidbody rb;
     float test;
-
-
-
-    private void Start()
+    public void UpdateWallClimberTo()
     {
-       
+        HandelGrabbing();
     }
-    void Update()
-    {
 
-        if (Input.GetKeyDown(grabButton))
+    public void HandelGrabbing()
+    {
+        float maxGrabDistance = 1f;
+
+
+        if (playerController.inputE == true)
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
@@ -43,7 +37,7 @@ public class objectGrabber : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(grabButton) && grabbedObject != null)
+        if (playerController.inputE == true && grabbedObject != null)
         {
             grabbedObject = null;
         }
@@ -66,7 +60,5 @@ public class objectGrabber : MonoBehaviour
             //rb.useGravity = true;
             //movementScript.speed = (int)5;
         }
-
-
     }
 }
