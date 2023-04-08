@@ -6791,6 +6791,7 @@ MonoBehaviour:
   markerLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  canPlaceBomb: 1
 --- !u!4 &478784819
 Transform:
   m_ObjectHideFlags: 0

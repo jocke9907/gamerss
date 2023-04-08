@@ -7,6 +7,8 @@ public class MarkerInteract : MonoBehaviour
 {
     [SerializeField] private Transform bombPrefab;
     [SerializeField] private Transform bombSpawn;
+    //[SerializeField] private Transform dropPrefab;
+    //[SerializeField] private Transform dropSpawn;
 
     [SerializeField] private LayerMask barralLayerMask;
     [SerializeField] private LayerMask playerLayer;
@@ -15,9 +17,9 @@ public class MarkerInteract : MonoBehaviour
     PlayerController playerController;
     PlayerScore playerScore;
     BomberInput bomberInput;
-    
+
     //playerController = FindObjectOfType<BomberInput>();
-    
+   
 
     public float targetTime = 4.0f;
     Vector2 inputVector = new Vector2(1f, 0f);
@@ -44,7 +46,16 @@ public class MarkerInteract : MonoBehaviour
 
 
     }
-    
+
+    private void DropChance()
+    {
+        int dropChance = Random.Range(1, 6);
+        if (dropChance == 1 ) 
+        {
+            //Transform dropTansform = Instantiate(dropPrefab, dropSpawn);
+            Debug.Log("drop");
+        }
+    }
 
     void Explode()
     {
@@ -61,19 +72,18 @@ public class MarkerInteract : MonoBehaviour
             {
                 //Debug.Log("found obj");
                 barral.InteractB();
+                DropChance();
             }
             
         }
 
         if(Physics.Raycast(transform.position, explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {
-            Debug.Log("casting");
+           
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
-                Debug.Log("found Player");
-                //Destroy(playerController);
-
                 
+                //Destroy(playerController);
 
                 playerController.transform.position = new Vector3(0,40,0);
                 BomberManger.playerCountBomber--;
@@ -119,10 +129,7 @@ public class MarkerInteract : MonoBehaviour
         Explode();
         inputVector = new Vector2(0f, -1f);
         Explode();
-        Debug.Log(BomberManger.playerCountBomber);
        
-
-
         //förstör markern och det som har spawnat på den
         //Destroy(gameObject);
     }
