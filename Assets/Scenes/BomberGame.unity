@@ -6791,6 +6791,9 @@ MonoBehaviour:
   markerLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  dropLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
   canPlaceBomb: 1
 --- !u!4 &478784819
 Transform:

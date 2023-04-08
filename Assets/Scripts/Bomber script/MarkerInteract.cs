@@ -6,9 +6,10 @@ using UnityEngine;
 public class MarkerInteract : MonoBehaviour
 {
     [SerializeField] private Transform bombPrefab;
+    [SerializeField] private Transform bombUp1Prefab;
     [SerializeField] private Transform bombSpawn;
-    //[SerializeField] private Transform dropPrefab;
-    //[SerializeField] private Transform dropSpawn;
+    [SerializeField] private Transform dropPrefab;
+    [SerializeField] private Transform dropSpawn;
 
     [SerializeField] private LayerMask barralLayerMask;
     [SerializeField] private LayerMask playerLayer;
@@ -18,6 +19,7 @@ public class MarkerInteract : MonoBehaviour
     PlayerScore playerScore;
     BomberInput bomberInput;
 
+    
     //playerController = FindObjectOfType<BomberInput>();
    
 
@@ -36,23 +38,34 @@ public class MarkerInteract : MonoBehaviour
         //Debug.Log("Interact marker!");
         if (bomberInput.canPlaceBomb == true)
         {
-            Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
-            bombTransform.localPosition = Vector3.zero;
+            if(BomberManger.bombUppgrade >1)
+            {
+                Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
+                bombTransform.localPosition = Vector3.zero;
+            }
+            else
+            {
+                Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
+                bombTransform.localPosition = Vector3.zero;
+            }
+
+            
+            
             targetTime = 4.0f;
             bomPlaced = true;
             bomberInput.canPlaceBomb = false;
-        }
-        
-
-
+        }        
     }
-
+    public void StrongBomb()
+    {
+        Debug.Log("pickUp");
+    }
     private void DropChance()
     {
         int dropChance = Random.Range(1, 6);
         if (dropChance == 1 ) 
         {
-            //Transform dropTansform = Instantiate(dropPrefab, dropSpawn);
+            Transform dropTansform = Instantiate(dropPrefab, dropSpawn);
             Debug.Log("drop");
         }
     }
@@ -60,7 +73,7 @@ public class MarkerInteract : MonoBehaviour
     void Explode()
     {
         
-        float maxDistans = 12f;
+        float maxDistans = 12f +BomberManger.bombUppgrade*2;
        
        
         Vector3 explodeDir = new Vector3(inputVector.x, 0.1f, inputVector.y);
@@ -78,22 +91,16 @@ public class MarkerInteract : MonoBehaviour
         }
 
         if(Physics.Raycast(transform.position, explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
-        {
-           
+        {           
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
                 
-                //Destroy(playerController);
-
                 playerController.transform.position = new Vector3(0,40,0);
                 BomberManger.playerCountBomber--;
                 BomberManger.bomberPoints += 1;
                 Debug.Log(BomberManger.playerCountBomber);
-                BomberManger.PlayerCounter();
-                
-
+                BomberManger.PlayerCounter();                
             }
-
         }
     }
     void Update()
@@ -113,7 +120,6 @@ public class MarkerInteract : MonoBehaviour
             timerEnded();
             bomPlaced =false;
             bomberInput.canPlaceBomb = true;
-
         }
     }
     
@@ -131,6 +137,10 @@ public class MarkerInteract : MonoBehaviour
         Explode();
        
         //förstör markern och det som har spawnat på den
-        //Destroy(gameObject);
+
+        if(BomberManger.bombUppgrade >5)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -25,13 +25,14 @@ public class BomberInput : MonoBehaviour
 
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
+    [SerializeField] private LayerMask dropLayerMask;
     private PlayerController action;
     private bool placeBomb = false;
     private MarkerInteract selectedMarker;
 
     private Vector2 movement = Vector2.zero;
     public bool canPlaceBomb = true;
-
+   
     public void UpdateTo()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -80,8 +81,7 @@ public class BomberInput : MonoBehaviour
         if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, intercartDistace, markerLayerMask))
         {
             if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
-            {
-                
+            {                
                 marker.Interact();
             }
         }
@@ -137,18 +137,21 @@ public class BomberInput : MonoBehaviour
         {
             if (raycastHitAir.transform.TryGetComponent(out MarkerInteract marker))
             {
-                // has marker
                 marker.Interact();
             }
             if (raycastHitAir.transform.TryGetComponent(out Bomb bomb))
             {
-                // 
                 bomb.Interact();
-            }
-            //Debug.Log(raycastHit.transform);
-
+            }            
         }
-
+        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitDrop, intercartDistace, dropLayerMask))
+        {
+            if (raycastHitDrop.transform.TryGetComponent(out MarkerInteract marker))
+            {
+                marker.StrongBomb();
+            }
+            
+        }
         // Checks ground
         if (moveDirGround != Vector3.zero)
         {

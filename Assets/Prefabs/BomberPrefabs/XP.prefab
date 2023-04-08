@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 399516846911263665}
   - component: {fileID: 8767764973189776311}
   - component: {fileID: 4769671132023334643}
+  - component: {fileID: 4010625986868761943}
+  - component: {fileID: 3900322153400691931}
   m_Layer: 0
   m_Name: XP
   m_TagString: Untagged
@@ -92,8 +94,33 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7826941886466855108}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &4010625986868761943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7826941886466855108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4503562, y: 1.4452846, z: 2.7759717}
+  m_Center: {x: 0.022996664, y: 0.07079147, z: -0.0817211}
+--- !u!114 &3900322153400691931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7826941886466855108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5036784ebe87b14bb0e9691994a5473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

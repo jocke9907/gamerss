@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 3992017979566009723, guid: 00426dd3040aa2e4084bf76c66b025a7, type: 3}
+  bombUp1Prefab: {fileID: 3992017979566009723, guid: 0ddb0220c0f91e84a9b706143b7d8030, type: 3}
   bombSpawn: {fileID: 1346977760498511145}
   dropPrefab: {fileID: 6180676168893548544, guid: 6f31d0a8510a4b648b472eeaeb3c295f, type: 3}
   dropSpawn: {fileID: 7295560285784947420}
