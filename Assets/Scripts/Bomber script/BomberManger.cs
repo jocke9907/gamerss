@@ -7,28 +7,31 @@ public static class BomberManger
 {
     public static int playerCountBomber;
     public static int bomberPoints = 1;
-    private static Thread trd;
-
+    //private static Thread trd;
+    public static bool ch;
+    public static bool changeGame;
+    
+   
 
     public static void PlayerCounter()
     {
-        trd = new Thread(ThreadS);
+        //trd = new Thread(ThreadS);
 
-        Debug.Log(playerCountBomber);
+        Debug.Log(changeGame);
         if (playerCountBomber == 0)
         {
-            trd.Start();
-            Thread.Sleep(2000);
-            Debug.Log("ChangeToLobby");
-            Loader.bomberGamePlaying = false;
-            Loader.Load(Loader.Scene.Lobby);
+            
+            ch = true;
+
         }
+        
+
     }
 
-    private static void ThreadS()
-    {
-        Thread.Sleep(2000);
-    }
+    //private static void ThreadS()
+    //{
+    //    Thread.Sleep(2000);
+    //}
 
     //playerScore.currentScore = playerScore.currentScore
 }
