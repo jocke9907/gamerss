@@ -5,13 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class WinTrigger : MonoBehaviour
 {
-
-   // GameObject player = GameObject.Find("Player");
-   // PlayerController playerController = player.GetComponent<PlayerController>();
-
-   // public GameObject youWinText;
-    //public float delay;
-
     public float timer = 63f;
     public string loadScene;
     public static int points = 0;
@@ -28,7 +21,7 @@ public class WinTrigger : MonoBehaviour
     private void Update()
     {
         timer -= Time.deltaTime;
-        if (timer <= 0 || isFinnished == true)
+        if (timer <= 0 /*|| isFinnished == true*/)
         {
             SceneManager.LoadScene(5);
         }
@@ -40,27 +33,8 @@ public class WinTrigger : MonoBehaviour
         {
             other.GetComponent<PlayerScore>();
             playerScore.currentScore += 50;
-            isFinnished=true;
+            other.GetComponent<CharacterMovement>().enabled = false;
+           // isFinnished=true;
         }
     }
-
-
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Player")
-    //    {
-    //        youWinText.SetActive(true);
-    //        StartCoroutine(Countdown());
-    //    }
-    //    else if (timer == 0f)
-    //    {
-    //        Debug.Log("You Lose");
-    //    }
-    //}
-
-    //IEnumerator Countdown()
-    //{
-    //    yield return new WaitForSeconds(delay);
-    //    SceneManager.LoadScene(2);
-    //}
 }

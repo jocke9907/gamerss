@@ -29,6 +29,11 @@ public class RotateCamera : MonoBehaviour
             }
             transform.rotation = targetRotation;
             startRotation = targetRotation;
+
+            // Pause for five seconds
+            yield return new WaitForSeconds(5.0f);
+
+            // Set the new target rotation
             targetRotation *= Quaternion.Euler(0, 0, 90);
         }
     }
