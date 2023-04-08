@@ -30,6 +30,7 @@ public class BomberInput : MonoBehaviour
     private MarkerInteract selectedMarker;
 
     private Vector2 movement = Vector2.zero;
+    public bool canPlaceBomb = true;
 
     public void UpdateTo()
     {

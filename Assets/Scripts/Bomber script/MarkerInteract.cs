@@ -14,6 +14,7 @@ public class MarkerInteract : MonoBehaviour
     private Barral Barral;
     PlayerController playerController;
     PlayerScore playerScore;
+    BomberInput bomberInput;
     
     //playerController = FindObjectOfType<BomberInput>();
     
@@ -21,18 +22,25 @@ public class MarkerInteract : MonoBehaviour
     public float targetTime = 4.0f;
     Vector2 inputVector = new Vector2(1f, 0f);
     bool bomPlaced;
+    //bool canPlaceBomb = true;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
+        bomberInput = FindObjectOfType<BomberInput>();
     }
 
     public void Interact()
     {
         //Debug.Log("Interact marker!");
-        Transform bombTransform  =Instantiate(bombPrefab, bombSpawn);
-        bombTransform.localPosition = Vector3.zero;
-        targetTime = 4.0f;
-        bomPlaced = true;
+        if (bomberInput.canPlaceBomb == true)
+        {
+            Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
+            bombTransform.localPosition = Vector3.zero;
+            targetTime = 4.0f;
+            bomPlaced = true;
+            bomberInput.canPlaceBomb = false;
+        }
+        
 
 
     }
@@ -80,9 +88,11 @@ public class MarkerInteract : MonoBehaviour
     }
     void Update()
     {
-        
+
+        //Debug.Log(bomberInput.canPlaceBomb);
         if (bomPlaced == true)
         {
+            bomberInput.canPlaceBomb = false;
             targetTime -= Time.deltaTime;
         }
 
@@ -92,7 +102,8 @@ public class MarkerInteract : MonoBehaviour
         {
             timerEnded();
             bomPlaced =false;
-            
+            bomberInput.canPlaceBomb = true;
+
         }
     }
     
@@ -109,6 +120,7 @@ public class MarkerInteract : MonoBehaviour
         inputVector = new Vector2(0f, -1f);
         Explode();
         Debug.Log(BomberManger.playerCountBomber);
+       
 
 
         //förstör markern och det som har spawnat på den
