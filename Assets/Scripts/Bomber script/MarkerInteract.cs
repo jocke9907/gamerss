@@ -19,12 +19,13 @@ public class MarkerInteract : MonoBehaviour
     PlayerScore playerScore;
     BomberInput bomberInput;
 
-    
+
     //playerController = FindObjectOfType<BomberInput>();
-   
+    public bool randomBomb = true;
 
     public float targetTime = 4.0f;
     Vector2 inputVector = new Vector2(1f, 0f);
+    float vectorZ;
     bool bomPlaced;
     //bool canPlaceBomb = true;
     public void Awake()
@@ -33,28 +34,51 @@ public class MarkerInteract : MonoBehaviour
         bomberInput = FindObjectOfType<BomberInput>();
     }
 
+    //public void DropBombs()
+    //{
+    //    Debug.Log("yes");
+    //    Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
+    //    bombTransform.localPosition = Vector3.zero;
+    //    randomBomb = false;
+    //}
     public void Interact()
     {
         //Debug.Log("Interact marker!");
-        if (bomberInput.canPlaceBomb == true)
-        {
-            if(BomberManger.bombUppgrade >1)
-            {
-                Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
-                bombTransform.localPosition = Vector3.zero;
-            }
-            else
-            {
-                Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
-                bombTransform.localPosition = Vector3.zero;
-            }
+        //if (bomberInput.canPlaceBomb == true)
+        //{
+        //    if(BomberManger.bombUppgrade >1)
+        //    {
+        //        Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
+        //        bombTransform.localPosition = Vector3.zero;
+        //    }
+        //    else
+        //    {
+        //        Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
+        //        bombTransform.localPosition = Vector3.zero;
+        //    }
 
-            
-            
-            targetTime = 4.0f;
-            bomPlaced = true;
-            bomberInput.canPlaceBomb = false;
-        }        
+
+
+        //    targetTime = 4.0f;
+        //    bomPlaced = true;
+        //    bomberInput.canPlaceBomb = false;
+        //}        
+        if (BomberManger.bombUppgrade > 4)
+        {
+            Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
+            bombTransform.localPosition = Vector3.zero;
+        }
+        else
+        {
+            Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
+            bombTransform.localPosition = Vector3.zero;
+        }
+
+
+
+        targetTime = 4.0f;
+        bomPlaced = true;
+        bomberInput.canPlaceBomb = false;
     }
 
     public void RandomBombs()
@@ -67,7 +91,7 @@ public class MarkerInteract : MonoBehaviour
     //}
     private void DropChance()
     {
-        int dropChance = Random.Range(1, 6);
+        int dropChance = Random.Range(1, 8);
         if (dropChance == 1 ) 
         {
             Transform dropTansform = Instantiate(dropPrefab, dropSpawn);
@@ -77,19 +101,19 @@ public class MarkerInteract : MonoBehaviour
 
     void Explode()
     {
-        
-        float maxDistans = 12f +BomberManger.bombUppgrade*2;
+        //+BomberManger.bombUppgrade*2
+        float maxDistans = 10f ;
        
        
-        Vector3 explodeDir = new Vector3(inputVector.x, 0.1f, inputVector.y);
+        Vector3 explodeDir = new Vector3(inputVector.x, vectorZ, inputVector.y);
         
 
-        if (Physics.Raycast(transform.position, explodeDir,  out RaycastHit raycastHit, maxDistans, barralLayerMask))
+        if (Physics.Raycast(transform.position , explodeDir,  out RaycastHit raycastHit, maxDistans, barralLayerMask))
         {
             if (raycastHit.transform.TryGetComponent(out Barral barral))
             {
                 //Debug.Log("found obj");
-                barral.InteractB();
+                barral.InteractB(); 
                 DropChance();
             }
             
@@ -130,7 +154,7 @@ public class MarkerInteract : MonoBehaviour
     
     void timerEnded()
     {
-        
+        vectorZ = 0.1f;
         Debug.Log("bomb explod");
         inputVector = new Vector2(1f, 0f);
         Explode();
@@ -140,10 +164,19 @@ public class MarkerInteract : MonoBehaviour
         Explode();
         inputVector = new Vector2(0f, -1f);
         Explode();
-       
+        vectorZ = 0.5f;
+        inputVector = new Vector2(1f, 0f);
+        Explode();
+        inputVector = new Vector2(0f, 1f);
+        Explode();
+        inputVector = new Vector2(-1f, 0f);
+        Explode();
+        inputVector = new Vector2(0f, -1f);
+        Explode();
+
         //förstör markern och det som har spawnat på den
 
-        if(BomberManger.bombUppgrade >5)
+        if (BomberManger.bombUppgrade >5)
         {
             Destroy(gameObject);
         }

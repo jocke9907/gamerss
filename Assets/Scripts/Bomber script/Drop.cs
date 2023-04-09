@@ -15,6 +15,8 @@ public class Drop : MonoBehaviour
             playerController.PickUpItem(gameObject);
             BomberManger.bombUppgrade += 1;
             Debug.Log("found item");
+            
         }
+        Destroy(gameObject);
     }
 }
