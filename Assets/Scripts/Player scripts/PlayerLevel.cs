@@ -12,6 +12,7 @@ public class PlayerLevel : MonoBehaviour
     public bool playerDead;
     public bool scoreGiven;
 
+
     bool alive = true;
     // Start is called before the first frame update
     void Start()

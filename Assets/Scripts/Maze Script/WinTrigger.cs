@@ -13,6 +13,8 @@ public class WinTrigger : MonoBehaviour
 
     PlayerScore playerScore;
 
+    GameObject firstPlayer = null;
+
     void Start()
     {
        // youWinText.SetActive(false);
@@ -31,6 +33,19 @@ public class WinTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if(firstPlayer == null)
+            {
+                firstPlayer = gameObject;
+                points = 50;
+            }
+            else if(other.gameObject == firstPlayer)
+            {
+                return;
+            }
+            else
+            {
+                points = 30;
+            }
             other.GetComponent<PlayerScore>();
             playerScore.currentScore += 50;
             other.GetComponent<CharacterMovement>().enabled = false;
