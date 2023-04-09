@@ -144,14 +144,14 @@ public class BomberInput : MonoBehaviour
                 bomb.Interact();
             }            
         }
-        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitDrop, intercartDistace, dropLayerMask))
-        {
-            if (raycastHitDrop.transform.TryGetComponent(out MarkerInteract marker))
-            {
-                marker.StrongBomb();
-            }
+        //if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitDrop, intercartDistace, dropLayerMask))
+        //{
+        //    if (raycastHitDrop.transform.TryGetComponent(out MarkerInteract marker))
+        //    {
+        //        marker.StrongBomb();
+        //    }
             
-        }
+        //}
         // Checks ground
         if (moveDirGround != Vector3.zero)
         {

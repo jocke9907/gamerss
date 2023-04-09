@@ -30,10 +30,4 @@ public static class BomberManger
 
     }
 
-    //private static void ThreadS()
-    //{
-    //    Thread.Sleep(2000);
-    //}
-
-    //playerScore.currentScore = playerScore.currentScore
 }

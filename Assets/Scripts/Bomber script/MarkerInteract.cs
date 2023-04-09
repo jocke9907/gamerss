@@ -56,10 +56,15 @@ public class MarkerInteract : MonoBehaviour
             bomberInput.canPlaceBomb = false;
         }        
     }
-    public void StrongBomb()
+
+    public void RandomBombs()
     {
-        Debug.Log("pickUp");
+
     }
+    //public void StrongBomb()
+    //{
+    //    Debug.Log("pickUp");
+    //}
     private void DropChance()
     {
         int dropChance = Random.Range(1, 6);
