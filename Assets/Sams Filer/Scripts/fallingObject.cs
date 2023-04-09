@@ -24,13 +24,14 @@ public class fallingObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float randX = Random.Range(-5, 5);
-        float randz = Random.Range(-5, 5);
+        
 
         foreach (GameObject child in listObject)
         {
             if (child.transform.position.y < -10)
             {
+                float randX = Random.Range(-10, 10);
+                float randz = Random.Range(-10, 10);
                 child.transform.position = new Vector3(randX, 25, randz);
             }
         }
