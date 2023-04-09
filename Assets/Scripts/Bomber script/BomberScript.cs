@@ -38,11 +38,6 @@ public class BomberScript : MonoBehaviour
             
             Winner();
             targetTime1 -= Time.deltaTime;
-            //trd.Start();
-
-
-
-
         }
         
         if (targetTime1 >= -0.2f && targetTime1 <= 0.0f)
@@ -66,9 +61,4 @@ public class BomberScript : MonoBehaviour
     }
 
    
-    //private static void ThreadS()
-    //{
-    //    //Thread.Sleep(200);
-    //    changeGame = true;
-    //}
 }
