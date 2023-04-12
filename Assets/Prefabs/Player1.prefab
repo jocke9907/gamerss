@@ -7791,10 +7791,10 @@ Animator:
   m_GameObject: {fileID: 5381741025298503160}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 503415fc3fea44f7bb0eebf41e58e8be, type: 3}
-  m_Controller: {fileID: 9100000, guid: 80563ffef909472a932b2d46b1aaf5ee, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7466400ba5d940d882bbb7dee5ef9201, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -7917,6 +7917,7 @@ MonoBehaviour:
   groundedPlayer: 0
   inputE: 0
   grab: 0
+  anim: {fileID: 6114338646223142822}
   maxGrabDistance: 1
   grabButton: 9
   grabPoint: {fileID: 8092368116886265394}

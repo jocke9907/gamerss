@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     public bool groundedPlayer;
     private float playerSpeed = 5.0f;
-    private float jumpHeight = 1.0f;
+    private float jumpHeight = 2.0f;
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
     
@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public bool inputE = false;
     public bool grab = false;
 
+    [SerializeField] Animator anim;
 
     //------------Sam----------------------------------
     public float maxGrabDistance = 1f;
@@ -61,7 +62,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask movable;
     BoxCollider bc;
     Rigidbody rb;
-    float test;
 //--------------------------------------------------
 
 
@@ -84,12 +84,12 @@ public class PlayerController : MonoBehaviour
         movementInput = context.ReadValue<Vector2>();
     }
     public void OnInteract(InputAction.CallbackContext context)
-    {        
+    {
+        anim.SetTrigger("Interaction");
         inputE = context.action.triggered;        
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        
         jumped = context.action.triggered;
     }
     public void OnGrab(InputAction.CallbackContext context)
@@ -99,9 +99,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-        
-
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -110,19 +107,23 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
         controller.Move(move * Time.deltaTime * playerSpeed);
-        
+
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
-          
-           
+            anim.SetBool("Running", true);
         }
+        else
+            anim.SetBool("Running", false);
 
         // Changes the height position of the player..
         if (jumped && groundedPlayer)
         {
+            anim.SetBool("Jumping", true);
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
+        else
+            anim.SetBool("Jumping", false);
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
@@ -145,8 +146,9 @@ public class PlayerController : MonoBehaviour
     }
     private void GrabObject()
     {
-        if(grab)
+        if (grab)
         {
+            anim.SetBool("Grabbing", true);
             RaycastHit hit;
             Debug.Log("casting");
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
@@ -159,6 +161,9 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        else
+            anim.SetBool("Grabbing", false);
+
         if (grab && grabbedObject != null)
         {
             grabbedObject = null;
