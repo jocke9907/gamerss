@@ -29,7 +29,7 @@ public class fallingObject : MonoBehaviour
 
         foreach (GameObject child in listObject)
         {
-            if (child.transform.position.y < -10)
+            if (child.transform.position.y < -20)
             {
                 child.transform.position = new Vector3(randX, 25, randz);
             }
