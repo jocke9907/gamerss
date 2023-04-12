@@ -3192,7 +3192,7 @@ GameObject:
   - component: {fileID: 1817767332}
   - component: {fileID: 1817767331}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: FallingTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

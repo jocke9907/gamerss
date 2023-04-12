@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     public bool groundedPlayer;
     private float playerSpeed = 5.0f;
-    private float jumpHeight = 1.0f;
+    private float jumpHeight = 1.5f;
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
     
@@ -145,30 +145,13 @@ public class PlayerController : MonoBehaviour
     }
     private void GrabObject()
     {
-        if(grab)
-        {
-            RaycastHit hit;
-            Debug.Log("casting");
-            if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
-            {
-                Debug.Log("hit");
-                grabbedObject = hit.collider.gameObject;
-
-                bc = grabbedObject.GetComponent<BoxCollider>();
-                rb = grabbedObject.GetComponent<Rigidbody>();
-
-            }
-        }
-        if (grab && grabbedObject != null)
-        {
-            grabbedObject = null;
-        }
-        //if (Input.GetKeyDown(grabButton))
+        //if (grab)
         //{
         //    RaycastHit hit;
+        //    Debug.Log("casting");
         //    if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
         //    {
-
+        //        Debug.Log("hit");
         //        grabbedObject = hit.collider.gameObject;
 
         //        bc = grabbedObject.GetComponent<BoxCollider>();
@@ -176,11 +159,34 @@ public class PlayerController : MonoBehaviour
 
         //    }
         //}
-
-        //if (Input.GetKeyUp(grabButton) && grabbedObject != null)
+        //if (grab && grabbedObject != null)
         //{
         //    grabbedObject = null;
         //}
+
+
+
+        if (Input.GetKeyDown(grabButton))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
+            {
+
+                grabbedObject = hit.collider.gameObject;
+
+                bc = grabbedObject.GetComponent<BoxCollider>();
+                rb = grabbedObject.GetComponent<Rigidbody>();
+
+            }
+        }
+
+        if (Input.GetKeyUp(grabButton) && grabbedObject != null)
+        {
+            grabbedObject = null;
+        }
+
+
+
 
         if (grabbedObject != null)
         {
