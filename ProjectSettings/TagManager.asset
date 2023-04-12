@@ -10,6 +10,8 @@ TagManager:
   - movable
   - Plattform
   - Killbox
+  - FlagDropZone
+  - Back
   layers:
   - Default
   - TransparentFX
