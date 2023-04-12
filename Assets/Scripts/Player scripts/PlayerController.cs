@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     
     private bool jumped = false;
     public bool inputE = false;
+    public bool grab = false;
 
 
     //------------Sam----------------------------------
@@ -90,6 +91,10 @@ public class PlayerController : MonoBehaviour
     {
         
         jumped = context.action.triggered;
+    }
+    public void OnGrab(InputAction.CallbackContext context)
+    {
+        grab = context.action.triggered;
     }
 
     void Update()
@@ -140,13 +145,13 @@ public class PlayerController : MonoBehaviour
     }
     private void GrabObject()
     {
-
-        if (Input.GetKeyDown(grabButton))
+        if(grab)
         {
             RaycastHit hit;
+            Debug.Log("casting");
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
             {
-
+                Debug.Log("hit");
                 grabbedObject = hit.collider.gameObject;
 
                 bc = grabbedObject.GetComponent<BoxCollider>();
@@ -154,11 +159,28 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-
-        if (Input.GetKeyUp(grabButton) && grabbedObject != null)
+        if (grab && grabbedObject != null)
         {
             grabbedObject = null;
         }
+        //if (Input.GetKeyDown(grabButton))
+        //{
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
+        //    {
+
+        //        grabbedObject = hit.collider.gameObject;
+
+        //        bc = grabbedObject.GetComponent<BoxCollider>();
+        //        rb = grabbedObject.GetComponent<Rigidbody>();
+
+        //    }
+        //}
+
+        //if (Input.GetKeyUp(grabButton) && grabbedObject != null)
+        //{
+        //    grabbedObject = null;
+        //}
 
         if (grabbedObject != null)
         {
