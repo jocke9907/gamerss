@@ -10,6 +10,8 @@ TagManager:
   - movable
   - Plattform
   - Killbox
+  - TrackingObject
+  - Actors
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Markers
   - Barrals
   - movable
-  - 
-  - 
+  - Drop
+  - RandomBomb
   - 
   - 
   - 
