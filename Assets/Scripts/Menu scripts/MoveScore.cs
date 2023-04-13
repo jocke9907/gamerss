@@ -19,8 +19,8 @@ public class MoveScore : MonoBehaviour
     public void MoveBlock()
     {
        
-        playerScore.currentScore = height;
-        //playerController.totalScore = height;
+        //playerScore.currentScore = height;
+         height = playerController.totalScore;
     }
     public void Update()
     {
