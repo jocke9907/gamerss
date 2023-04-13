@@ -32,6 +32,7 @@ public class BomberInput : MonoBehaviour
     BomberManger bomberManger;
     private Vector2 movement = Vector2.zero;
     public bool canPlaceBomb = true;
+    public bool veryDead = false;
    
     public void UpdateTo()
     {

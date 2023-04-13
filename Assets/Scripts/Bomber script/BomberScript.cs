@@ -40,14 +40,15 @@ public class BomberScript : MonoBehaviour
             targetTime1 -= Time.deltaTime;
         }
         
-        if (targetTime1 >= -0.2f && targetTime1 <= 0.0f)
+        if (targetTime1 <= 0.0f)
         {
-
+            playerController.transform.position = new Vector3(0, 40, 0);
             Loader.bomberGamePlaying = false;
 
-            targetTime1 = 5.0f;
+            
             bomberManger.ch = false;
-            Loader.Load(Loader.Scene.Lobby);
+            Loader.Load(Loader.Scene.PostLobby);
+            targetTime1 = 5.0f;
 
         }
     }

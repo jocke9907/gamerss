@@ -22,11 +22,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
-   
+
 
 
     //private MarkerInteract selectedMarker;
-
+    public int totalScore;
 
     // [SerializeField]
     private BomberInput bomberInput;

@@ -12,9 +12,15 @@ public class BomberManger : MonoBehaviour
   
     public  bool ch;
     public  bool changeGame;
-    
-   // byt från static
+    PlayerController playerController;
+    PlayerLevel playerLevel;
+    // byt från static
 
+    private void Awake()
+    {
+        playerController = GetComponent<PlayerController>();
+        playerLevel = GetComponent<PlayerLevel>();
+    }
     public void PlayerCounter()
     {
         //trd = new Thread(ThreadS);
@@ -22,7 +28,9 @@ public class BomberManger : MonoBehaviour
         Debug.Log(changeGame);
         if (playerCountBomber == 0)
         {
+            //playerController.transform.position =  new Vector3(0, 40, 0);
             bombUppgrade = 0;
+            playerLevel.playerDead = true;
             ch = true;
 
         }
