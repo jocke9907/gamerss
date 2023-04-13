@@ -5,11 +5,14 @@ using UnityEngine;
 public class GroundKill : MonoBehaviour
 {
     PlayerController playerController;
-
+    BomberManger bomberManger;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
-        //bomberInput = FindObjectOfType<BomberInput>();
+        //bomberInput = FindObjectOfType<BomberInput>(); private void Awake()
+        
+        bomberManger = FindObjectOfType<BomberManger>();
+        
     }
     private void OnTriggerExit(Collider other)
     {
@@ -18,10 +21,10 @@ public class GroundKill : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerController.transform.position = new Vector3(0, 40, 0);
-            BomberManger.playerCountBomber--;
-            BomberManger.bomberPoints += 1;
-            Debug.Log(BomberManger.playerCountBomber);
-            BomberManger.PlayerCounter();
+            bomberManger.playerCountBomber--;
+            bomberManger.bomberPoints += 1;
+            Debug.Log(bomberManger.playerCountBomber);
+            bomberManger.PlayerCounter();
         }
         
 

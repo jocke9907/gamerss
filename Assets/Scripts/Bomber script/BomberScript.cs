@@ -8,21 +8,21 @@ using UnityEngine.UI;
 
 public class BomberScript : MonoBehaviour
 {
-    public static int playerLeft ;
+    public  int playerLeft ;
    
     public TextMeshProUGUI players;
     public TextMeshProUGUI winner;
     PlayerScore playerScore;
     PlayerController playerController;
     private Thread trd;
-    public static float targetTime1 = 4.0f;
+    public  float targetTime1 = 4.0f;
 
-
+    BomberManger bomberManger;
     public void Awake()
     {
-        playerController = FindObjectOfType<PlayerController>();
-        //playerScore = GetComponent<PlayerScore>();
-        //trd = new Thread(ThreadS);
+        playerController = FindObjectOfType<PlayerController>();       
+        bomberManger = FindObjectOfType<BomberManger>();
+        
     }
 
     // Update is called once per frame
@@ -30,10 +30,10 @@ public class BomberScript : MonoBehaviour
     {
         
         //scoreValue = BomberManger.bomberPoints;
-        playerLeft = BomberManger.playerCountBomber;
+        playerLeft = bomberManger.playerCountBomber;
         players.text = "Players left " + (playerLeft +1);
         //score.text = "score:" + playerScore.currentScore;
-        if(BomberManger.ch == true )
+        if (bomberManger.ch == true )
         {
             
             Winner();
@@ -45,8 +45,8 @@ public class BomberScript : MonoBehaviour
 
             Loader.bomberGamePlaying = false;
 
-            BomberScript.targetTime1 = 5.0f;
-            BomberManger.ch = false;
+            targetTime1 = 5.0f;
+            bomberManger.ch = false;
             Loader.Load(Loader.Scene.Lobby);
 
         }
@@ -55,7 +55,7 @@ public class BomberScript : MonoBehaviour
     private void Winner()
     {
         winner.text = "The winner is ---- \nSecond place ----";
-        BomberManger.changeGame = true;
+        bomberManger.changeGame = true;
 
 
     }

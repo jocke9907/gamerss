@@ -9,7 +9,13 @@ public class CreateGameUI : MonoBehaviour
     public static bool twoPlayer;
     public static bool threePlayer;
     public static bool fourPlayer;
+    BomberManger bomberManger;
 
+    public void Awake()
+    {
+        bomberManger = FindObjectOfType<BomberManger>();
+
+    }
     public void ChangeSceneBomber()
     {      
         Loader.Load(Loader.Scene.BomberGame);
@@ -30,31 +36,33 @@ public class CreateGameUI : MonoBehaviour
     {
         
         onePlayer = true;
-        BomberManger.playerCountBomber = 1;
+        
+        bomberManger.playerCountBomber = 1;
+       // BomberManger.playerCountBomber = 1;
         KillerBox.playercounter = 2;
         Loader.Load(Loader.Scene.Lobby);
     }
     public void TwoPlayer()
     {
         twoPlayer = true;
-        
-        BomberManger.playerCountBomber = 1;
+
+        bomberManger.playerCountBomber = 1;
         KillerBox.playercounter = 4;
         Loader.Load(Loader.Scene.Lobby);
     }
     public void ThreePlayer()
     {
         threePlayer = true;
-        
-        BomberManger.playerCountBomber = 2;
+
+        bomberManger.playerCountBomber = 2;
         KillerBox.playercounter = 6;
         Loader.Load(Loader.Scene.Lobby);
     }
     public void FourPlayer()
     {
         fourPlayer = true;
-       
-        BomberManger.playerCountBomber = 3;
+
+        bomberManger.playerCountBomber = 3;
         KillerBox.playercounter = 8;
         Loader.Load(Loader.Scene.Lobby);
     }

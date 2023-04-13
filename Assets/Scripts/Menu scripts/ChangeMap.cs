@@ -15,10 +15,12 @@ public class ChangeMap : MonoBehaviour
     [SerializeField]public bool groundIsFalling = false;
 
     PlayerController playerController;
+    BomberManger bomberManger;
    
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
+        bomberManger = FindObjectOfType<BomberManger>();
     }
     public void Update()
     {
@@ -62,19 +64,19 @@ public class ChangeMap : MonoBehaviour
             {
                 if(CreateGameUI.onePlayer == true)
                 {
-                    BomberManger.playerCountBomber = 1;
+                    bomberManger.playerCountBomber = 1;
                 }
                 if (CreateGameUI.twoPlayer == true)
                 {
-                    BomberManger.playerCountBomber = 1;
+                    bomberManger.playerCountBomber = 1;
                 }
                 if (CreateGameUI.threePlayer == true)
                 {
-                    BomberManger.playerCountBomber = 2;
+                    bomberManger.playerCountBomber = 2;
                 }
                 if (CreateGameUI.fourPlayer == true)
                 {
-                    BomberManger.playerCountBomber = 3;
+                    bomberManger.playerCountBomber = 3;
                 }
 
                 Loader.Load(Loader.Scene.BomberGame);

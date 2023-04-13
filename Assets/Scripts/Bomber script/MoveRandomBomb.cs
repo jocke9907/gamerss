@@ -24,7 +24,7 @@ public class MoveRandomBomb : MonoBehaviour
         targetTime2 -= Time.deltaTime;
         if (targetTime2 < 0 )
         {
-            for( int i = 0; i < 13; i++ )
+            for( int i = 0; i < 12; i++ )
             {
                 CastRay();
             }                      
@@ -44,12 +44,12 @@ public class MoveRandomBomb : MonoBehaviour
     void CastRay()
     {
         
-        y += 4;
+        y += 8;
         float maxDistans = 10f ;
         //float maxDistans = 12f;
 
 
-        Vector3 placeDir = new Vector3(1, 0f, 0);
+        Vector3 placeDir = new Vector3(10, 0f, 0);
 
         if (marker != null)
         {
@@ -58,7 +58,7 @@ public class MoveRandomBomb : MonoBehaviour
         }
         if (Physics.Raycast(transform.position, placeDir, out RaycastHit raycastHit, maxDistans, markerLayerMask))
         {
-            Debug.Log("fire");
+           // Debug.Log("fire");
             //if (raycastHit.transform.TryGetComponent(out RandomBomb randomBomb))
             //{
             //    Debug.Log("hit");
@@ -66,7 +66,7 @@ public class MoveRandomBomb : MonoBehaviour
             //}
             if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
             {
-                Debug.Log("hit");
+                //Debug.Log("hit");
                 marker.Interact();
                 
             }
