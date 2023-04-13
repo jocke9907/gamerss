@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private BomberInput bomberInput;
     private WallClimberInput wallClimberInput;
     private ChangeMap changeMap;
+    BomberManger bomberManger;
     //public BomberInput bomberInput;
     
 
@@ -62,9 +63,12 @@ public class PlayerController : MonoBehaviour
     BoxCollider bc;
     Rigidbody rb;
     float test;
-//--------------------------------------------------
+    //--------------------------------------------------
 
-
+    public void Awake()
+    {
+        bomberManger = FindObjectOfType<BomberManger>();
+    }
     private void Start()
     {
         bomberInput = FindObjectOfType<BomberInput>();
@@ -141,7 +145,7 @@ public class PlayerController : MonoBehaviour
             //wallClimberInput.UpdateWallClimberTo();
         }
 
-        GrabObject();
+        //GrabObject();
     }
     private void GrabObject()
     {

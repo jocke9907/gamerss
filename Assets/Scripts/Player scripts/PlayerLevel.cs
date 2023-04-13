@@ -11,9 +11,13 @@ public class PlayerLevel : MonoBehaviour
 
     public bool playerDead;
     public bool scoreGiven;
-
+    BomberManger bomberManger;
     bool alive = true;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        bomberManger = FindObjectOfType<BomberManger>();
+    }
     void Start()
     {
         playerScore = GetComponent<PlayerScore>();
@@ -83,7 +87,7 @@ public class PlayerLevel : MonoBehaviour
         }
         if (playerDead && scoreGiven == false)
         {
-            playerScore.currentScore = playerScore.currentScore + BomberManger.bomberPoints;
+            playerScore.currentScore = playerScore.currentScore + bomberManger.bomberPoints;
             scoreGiven = true;
         }
     }

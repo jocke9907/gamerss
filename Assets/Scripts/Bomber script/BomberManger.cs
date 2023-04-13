@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public static class BomberManger 
+public class BomberManger : MonoBehaviour
 {
-    public static int playerCountBomber;
-    public static int bomberPoints = 1;
-    public static int bombUppgrade = 0;
+    public int playerCountBomber;
+    public  int bomberPoints = 1;
+    public  int bombUppgrade = 0;
 
   
-    public static bool ch;
-    public static bool changeGame;
+    public  bool ch;
+    public  bool changeGame;
     
-   
+   // byt från static
 
-    public static void PlayerCounter()
+    public void PlayerCounter()
     {
         //trd = new Thread(ThreadS);
 
