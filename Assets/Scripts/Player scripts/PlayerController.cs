@@ -22,8 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
-    [SerializeField] public GameObject heldItem;
-    [SerializeField] private Transform backTransform;
+   
 
 
     //private MarkerInteract selectedMarker;
@@ -325,29 +324,5 @@ public class PlayerController : MonoBehaviour
     //        Debug.Log("-");
     //    }        
     //}
-    public void PickUpItem(GameObject item)
-    {
-        heldItem = item;
-        item.transform.position=backTransform.position;
-        item.transform.parent = backTransform;
-    }
-    public bool HasFlag(GameObject flag)
-    {
-        return heldItem == flag;
-    }
-
-    public void DropItem(GameObject item)
-    {
-        item.transform.parent = null;
-        heldItem = null;
-    }
-    public bool HasFlagg { get;private set; }
-    public void PickUpFlag()
-    {
-        HasFlagg = true;
-    }
-    public void DropFlag()
-    {
-        HasFlagg = false;
-    }
+   
 }
