@@ -135,20 +135,27 @@ public class MarkerInteract : MonoBehaviour
         {           
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
-                Debug.Log("playerDead");
-                //playerController.transform.position = new Vector3(0,40,0);
                 
-                if(!bomberInput.veryDead )
-                {
-                    //playerController.transform.position = reset;
-                    bomberManger.playerCountBomber--;
-                    bomberManger.bomberPoints += 1;
-                    Debug.Log(bomberManger.playerCountBomber);
-                    bomberManger.PlayerCounter();
+                //playerController.transform.position = new Vector3(0,40,0);
+                Debug.Log("playerDead");
+                playerController.transform.position = new Vector3(0, 40, 0);
+
+                //bomberManger.playerCountBomber ;
+                bomberManger.redusePlayers = true;
+                bomberManger.bomberPoints += 1;
+                Debug.Log(bomberManger.playerCountBomber);
+                bomberManger.PlayerCounter();
+                //if (!bomberInput.veryDead )
+                //{
+                //    //playerController.transform.position = reset;
+                //    bomberManger.playerCountBomber--;
+                //    bomberManger.bomberPoints += 1;
+                //    Debug.Log(bomberManger.playerCountBomber);
+                //    bomberManger.PlayerCounter();
                     
-                    //playerController.transform.position = reset;
-                    bomberInput.veryDead = true;
-                }
+                //    //playerController.transform.position = reset;
+                //    bomberInput.veryDead = true;
+                //}
 
                 
                 

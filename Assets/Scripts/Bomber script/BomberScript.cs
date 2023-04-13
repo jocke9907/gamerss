@@ -20,10 +20,11 @@ public class BomberScript : MonoBehaviour
     BomberManger bomberManger;
     public void Awake()
     {
-        playerController = FindObjectOfType<PlayerController>();       
+        playerController = FindObjectOfType<PlayerController>();
         bomberManger = FindObjectOfType<BomberManger>();
-        
+       
     }
+   
 
     // Update is called once per frame
     void Update()
@@ -33,7 +34,7 @@ public class BomberScript : MonoBehaviour
         playerLeft = bomberManger.playerCountBomber;
         players.text = "Players left " + (playerLeft +1);
         //score.text = "score:" + playerScore.currentScore;
-        if (bomberManger.ch == true )
+        if (bomberManger.ch )
         {
             
             Winner();
