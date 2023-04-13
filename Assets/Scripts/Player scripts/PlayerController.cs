@@ -10,6 +10,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //
+
+    public bool playerOne;
+    public bool playerTwo;    
+    public bool playerThree;
+    public bool playerFour;
     public static PlayerController Instance { get; private set; }
     public static Component component { get; private set; }
 

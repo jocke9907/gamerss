@@ -8,7 +8,12 @@ public class MoveScore : MonoBehaviour
     PlayerController playerController;
     PlayerLevel playerLevel;
     PlayerScore playerScore;
-   [SerializeField] int height;
+    [SerializeField] int height;
+    [SerializeField] bool pl1;
+    [SerializeField] bool pl2;
+    [SerializeField] bool pl3;
+    [SerializeField] bool pl4;
+    float y;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -19,12 +24,50 @@ public class MoveScore : MonoBehaviour
     public void MoveBlock()
     {
        
+        if (pl1)
+        {
+            if (playerController.playerOne)
+            {
+                height = playerController.totalScore;
+                y = -10.5f;
+            }
+        }
+
+        if (pl2)
+        {
+            if (playerController.playerTwo)
+            {
+                height = playerController.totalScore;
+                y = -3.5f;
+            }
+        }
+
+        if (pl3)
+        {
+            if (playerController.playerThree)
+            {
+                height = playerController.totalScore;
+                y = 3.5f;
+            }
+        }
+
+        if (pl4)
+        {
+            if (playerController.playerFour)
+            {
+                height = playerController.totalScore;
+                y = 10.5f;
+            }
+        }
+
         //playerScore.currentScore = height;
-         height = playerController.totalScore;
+
     }
     public void Update()
     {
         MoveBlock();
-        transform.position = new Vector3(-10.5f,(height) -5,8);
+        transform.position = new Vector3(y, (height) - 5, 8);
+        
+
     }
 }
