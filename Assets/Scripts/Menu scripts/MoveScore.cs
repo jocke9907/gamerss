@@ -6,15 +6,21 @@ public class MoveScore : MonoBehaviour
 {
 
     PlayerController playerController;
+    PlayerLevel playerLevel;
+    PlayerScore playerScore;
    [SerializeField] int height;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
+        playerLevel = FindObjectOfType<PlayerLevel>();
+        playerScore = FindObjectOfType<PlayerScore>();
     }
 
     public void MoveBlock()
     {
-        playerController.totalScore = height;
+       
+        playerScore.currentScore = height;
+        //playerController.totalScore = height;
     }
     public void Update()
     {

@@ -103,8 +103,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        
-
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {

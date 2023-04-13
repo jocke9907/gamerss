@@ -101,7 +101,7 @@ public class MarkerInteract : MonoBehaviour
         if (dropChance == 1 ) 
         {
             Transform dropTansform = Instantiate(dropPrefab, dropSpawn);
-            Debug.Log("drop");
+            //Debug.Log("drop");
         }
     }
 
@@ -137,14 +137,15 @@ public class MarkerInteract : MonoBehaviour
             {
                 
                 //playerController.transform.position = new Vector3(0,40,0);
-                Debug.Log("playerDead");
-                playerController.transform.position = new Vector3(0, 40, 0);
+                //Debug.Log("playerDead");
+                //playerController.transform.position = new Vector3(0, 40, 0);
 
                 //bomberManger.playerCountBomber ;
                 bomberManger.redusePlayers = true;
                 bomberManger.bomberPoints += 1;
-                Debug.Log(bomberManger.playerCountBomber);
+               
                 bomberManger.PlayerCounter();
+                
                 //if (!bomberInput.veryDead )
                 //{
                 //    //playerController.transform.position = reset;
@@ -152,13 +153,13 @@ public class MarkerInteract : MonoBehaviour
                 //    bomberManger.bomberPoints += 1;
                 //    Debug.Log(bomberManger.playerCountBomber);
                 //    bomberManger.PlayerCounter();
-                    
+
                 //    //playerController.transform.position = reset;
                 //    bomberInput.veryDead = true;
                 //}
 
-                
-                
+
+
             }
         }
 
@@ -218,7 +219,7 @@ public class MarkerInteract : MonoBehaviour
         {
             timerEnded();
             
-            Debug.Log("timer");
+            //Debug.Log("timer");
             
             bomberInput.canPlaceBomb = true;
             bomPlaced = false;
@@ -231,7 +232,7 @@ public class MarkerInteract : MonoBehaviour
     void timerEnded()
     {
         vectorZ = 0.1f;
-        Debug.Log("bomb explod");
+        //Debug.Log("bomb explod");
         inputVector = new Vector2(8f, 0f);
         Explode();
         inputVector = new Vector2(0f, 8f);

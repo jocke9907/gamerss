@@ -21,46 +21,41 @@ public class BomberScript : MonoBehaviour
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
-        bomberManger = FindObjectOfType<BomberManger>();
-       
+        bomberManger = FindObjectOfType<BomberManger>();       
     }
    
 
     // Update is called once per frame
     void Update()
     {
-        
+        bomberManger.GetComponent<BomberManger>();
         //scoreValue = BomberManger.bomberPoints;
-        playerLeft = bomberManger.playerCountBomber;
-        players.text = "Players left " + (playerLeft +1);
+       
         //score.text = "score:" + playerScore.currentScore;
-        if (bomberManger.ch )
-        {
-            
-            Winner();
-            targetTime1 -= Time.deltaTime;
-        }
+        //if (bomberManger.ch == true )
+        //{
+        //    Debug.Log("now");
+        //    Winner();
+        //    targetTime1 -= Time.deltaTime;
+        //}
         
-        if (targetTime1 <= 0.0f)
-        {
-            playerController.transform.position = new Vector3(0, 40, 0);
-            Loader.bomberGamePlaying = false;
+        playerLeft = bomberManger.playerCountBomber;
+        players.text = "Players left " + (playerLeft + 1);
 
-            
-            bomberManger.ch = false;
-            Loader.Load(Loader.Scene.PostLobby);
-            targetTime1 = 5.0f;
+        //if (targetTime1 <= 0.0f)
+        //{
+        //    playerController.transform.position = new Vector3(0, 40, 0);
+        //    Loader.bomberGamePlaying = false;            
+        //    bomberManger.ch = false;
+        //    Loader.Load(Loader.Scene.PostLobby);
+        //    targetTime1 = 5.0f;
 
-        }
+        //}
     }
 
-    private void Winner()
+    public void Winner()
     {
         winner.text = "The winner is ---- \nSecond place ----";
         bomberManger.changeGame = true;
-
-
-    }
-
-   
+    }   
 }

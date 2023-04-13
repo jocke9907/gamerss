@@ -17,38 +17,72 @@ public class BomberManger : MonoBehaviour
     PlayerLevel playerLevel;
     // byt från static
     public bool redusePlayers;
+    public float targetTime2 = 4.0f;
+    BomberScript bomberScript;
 
     ////
     ///
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
-        playerLevel = GetComponent<PlayerLevel>();
+        playerLevel = FindObjectOfType<PlayerLevel>();
     }
     public void PlayerCounter()
     {
         //trd = new Thread(ThreadS);
 
-        Debug.Log(changeGame);
+        Debug.Log(ch);
         if (playerCountBomber == 0)
         {
             ch = true;
-            //playerController.transform.position =  new Vector3(0, 40, 0);
-            bombUppgrade = 0;
-            playerLevel.playerDead = true;
-            
 
+            playerLevel = FindObjectOfType<PlayerLevel>();
+
+            //bomberScript = GetComponent<BomberScript>();
+
+            //Loader.Load(Loader.Scene.PostLobby);
         }
-        
+
 
     }
-    public void Update()
+    void Update()
     {
+
         if (redusePlayers)
         {
             playerCountBomber--;
             redusePlayers = false;
         }
+
+        //if (playerCountBomber == 0)
+        //{
+        //    ch = true;
+
+        //    bombUppgrade = 0;
+        //    playerLevel.playerDead = true;
+        //    //bomberScript = GetComponent<BomberScript>();
+        //    //bomberScript.Winner();
+        //    targetTime2 -= Time.deltaTime;
+        //}
+        if(ch)
+        {
+            targetTime2 -= Time.deltaTime;
+            //bomberScript.Winner();
+        }
+        Debug.Log(targetTime2);
+        if (targetTime2 <= 0.0f)
+        {
+            //playerController.transform.position = new Vector3(0, 40, 0);
+            Loader.bomberGamePlaying = false;
+            ch = false;
+            playerLevel.playerDead = true;
+            bombUppgrade = 0;
+            
+            Loader.Load(Loader.Scene.PostLobby);
+            targetTime2 = 5.0f;
+            
+        }
+
     }
     
 }

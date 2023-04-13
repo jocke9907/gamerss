@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerLevel : MonoBehaviour
 {
     bool playerSpawned = false;
-    private PlayerScore playerScore;
+    PlayerScore playerScore;
     PlayerController playerController;
 
     public bool playerDead;
