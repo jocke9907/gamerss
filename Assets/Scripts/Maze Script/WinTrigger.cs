@@ -1,163 +1,172 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WinTrigger : MonoBehaviour
 {
-    public float timer = 63f;
+    public float timer = 62f;
     public string loadScene;
-    public static int points = 0;
 
     public bool isFinnished = false;
 
-    public int numOfPlayers = 4;
-    int playerEnteredTrigger = 0;
+    public static int points;
 
+    //public int numOfPlayers = 4;
+    //int playerEnteredTrigger = 0;
+
+    List<GameObject> playersEnteredTrigger = new List<GameObject>();
+
+    Dictionary<GameObject, int> playerPoints = new Dictionary<GameObject, int>();
     PlayerScore playerScore;
 
-    Dictionary<GameObject, int> playerScores = new Dictionary<GameObject, int>();
-
-    void Start()
+    private void Start()
     {
-        playerScore = FindObjectOfType<PlayerScore>();
+        playerScore = GameObject.FindObjectOfType<PlayerScore>();
+        if (playerScore == null)
+        {
+            Debug.LogError("Could not find PlayerScore component.");
+        }
     }
 
     private void Update()
     {
         timer -= Time.deltaTime;
-        if (playerEnteredTrigger == numOfPlayers || timer <= 0)
+        if (/*playersEnteredTrigger.Count == numOfPlayers ||*/ timer <= 0)
         {
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(7);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !playerPoints.ContainsKey(other.gameObject))
         {
+            int pointsToAdd = CalculatePoints();
+            PlayerScore playerScore = other.gameObject.GetComponent<PlayerScore>();
+            playerScore.AddPoints(pointsToAdd);
+            playerPoints.Add(other.gameObject, pointsToAdd);
 
-            GameObject player = other.gameObject;
 
-            if (!playerScores.ContainsKey(player))
+            // Add the player to the list if it's not already there
+            if (!playersEnteredTrigger.Contains(other.gameObject))
             {
-                int scoreValue = 0;
-
-                switch (playerScores.Count)
-                {
-                    case 0:
-                        scoreValue += 50;
-                        break;
-
-                    case 1:
-                        scoreValue += 30;
-                        break;
-
-                    case 2:
-                        scoreValue += 20;
-                        break;
-
-                    case 3:
-                        scoreValue += 10;
-                        break;
-                }
-
-                playerScores[player] = scoreValue;
+                playersEnteredTrigger.Add(other.gameObject);
             }
 
-            playerScore.currentScore = playerScores[player];
-            playerEnteredTrigger ++;
+            // Count the number of players in the scene
+            int numOfPlayers = FindObjectsOfType<PlayerChooser>().Length;
 
-            other.GetComponent<PlayerScore>();
-            //playerScore.currentScore += 50;
+            // Check if all players have entered the trigger
+            if (playersEnteredTrigger.Count == numOfPlayers)
+            {
+                SceneManager.LoadScene(7);
+            }
 
+            //playerEnteredTrigger++;
         }
     }
 
+    private int CalculatePoints()
+    {
+        int points = 0;
+
+        int playersEntered = playerPoints.Count;
+
+        if (playersEntered == 0)
+        {
+            points += 50;
+        }
+        else if (playersEntered == 1)
+        {
+            points += 30;
+        }
+        else if (playersEntered == 2)
+        {
+            points += 20;
+        }
+        else if (playersEntered == 3)
+        {
+            points += 10;
+        }
+
+        return points;
+    }
+
+    //public float timer = 63f;
+    //public string loadScene;
+    //public static int points = 0;
+
+    //public bool isFinnished = false;
+
+    //public int numOfPlayers = 4;
+    //int playerEnteredTrigger = 0;
+
+    //PlayerScore playerScore;
+
+    //Dictionary<GameObject, int> playerScores = new Dictionary<GameObject, int>();
+
+    //void Start()
+    //{
+    //    playerScore = FindObjectOfType<PlayerScore>();
+    //}
+
+    //private void Update()
+    //{
+    //    timer -= Time.deltaTime;
+    //    if (playerEnteredTrigger == numOfPlayers || timer <= 0)
+    //    {
+    //        SceneManager.LoadScene(5);
+    //    }
+    //}
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+
+    //        GameObject player = other.gameObject;
+
+    //        if (!playerScores.ContainsKey(player))
+    //        {
+    //            int scoreValue = 0;
+
+    //            switch (playerScores.Count)
+    //            {
+    //                case 0:
+    //                    scoreValue += 50;
+    //                    break;
+
+    //                case 1:
+    //                    scoreValue += 30;
+    //                    break;
+
+    //                case 2:
+    //                    scoreValue += 20;
+    //                    break;
+
+    //                case 3:
+    //                    scoreValue += 10;
+    //                    break;
+    //            }
+
+    //            playerScores[player] = scoreValue;
+    //        }
+
+    //        playerScore.currentScore = playerScores[player];
+    //        playerEnteredTrigger ++;
+
+    //        other.GetComponent<PlayerScore>();
+    //        //playerScore.currentScore += 50;
+
+    //    }
+    // }
+
 }
-
-
-
-
-
-
-
-
-//public float timer = 63f;
-//public string loadScene;
-//public static int[] points = { 50, 30, 20, 10 };
-//// array of points for each player based on finishing position
-//// the first player to reach the center gets points[0] points,
-//// the second player gets points[1] points, and so on.
-
-//private List<GameObject> players = new List<GameObject>();
-//// a list of all players in the game
-
-//private int playersReachedGoal = 0;
-//// number of players who have reached the goal
-
-//private void Update()
-//{
-//    timer -= Time.deltaTime;
-//    if (timer <= 0f)
-//    {
-//        // timer has run out, trigger scene change
-//        SceneManager.LoadScene(loadScene);
-//    }
-//}
-
-//private void OnTriggerEnter(Collider other)
-//{
-//    if (other.CompareTag("Player"))
-//    {
-//        if (!players.Contains(other.gameObject))
-//        {
-//            // add new player to the list of players
-//            players.Add(other.gameObject);
-//        }
-
-//        if (players.Count == 1)
-//        {
-//            // first player to reach the center gets points[0] points
-//            PlayerScore playerScore = other.GetComponent<PlayerScore>();
-//            playerScore.currentScore += points[0];
-//        }
-//        else
-//        {
-//            // sort the list of players by their distance to the center
-//            players.Sort((a, b) =>
-//            {
-//                float distanceToCenterA = Vector3.Distance(a.transform.position, transform.position);
-//                float distanceToCenterB = Vector3.Distance(b.transform.position, transform.position);
-//                return distanceToCenterA.CompareTo(distanceToCenterB);
-//            });
-
-//            // assign points to each player based on their position in the race
-//            for (int i = 0; i < players.Count; i++)
-//            {
-//                PlayerScore playerScore = players[i].GetComponent<PlayerScore>();
-//                playerScore.currentScore += points[i];
-//            }
-//        }
-
-//        // disable player movement and mark game as finished
-//        other.GetComponent<CharacterMovement>().enabled = false;
-//        //isFinished = true;
-
-//        // increment the number of players who have reached the goal
-//        playersReachedGoal++;
-
-//        // check if all players have reached the goal
-//        if (playersReachedGoal == players.Count)
-//        {
-//            // all players have reached the goal, trigger scene change
-//            SceneManager.LoadScene(5);
-//        }
-//    }
-//}
-
 
 
 
