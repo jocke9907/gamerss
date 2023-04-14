@@ -13,7 +13,7 @@ public static class Loader
     public static bool wallClimberPlaying;
     public enum Scene
     {
-        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze, SamScen
+        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze, SamScen, PostLobby
     }
     //Scene curentGameState = Scene.Menu;
 

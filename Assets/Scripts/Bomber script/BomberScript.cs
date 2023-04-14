@@ -8,57 +8,54 @@ using UnityEngine.UI;
 
 public class BomberScript : MonoBehaviour
 {
-    public static int playerLeft ;
+    public  int playerLeft ;
    
     public TextMeshProUGUI players;
     public TextMeshProUGUI winner;
     PlayerScore playerScore;
     PlayerController playerController;
     private Thread trd;
-    public static float targetTime1 = 4.0f;
+    public  float targetTime1 = 4.0f;
 
-
+    BomberManger bomberManger;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
-        //playerScore = GetComponent<PlayerScore>();
-        //trd = new Thread(ThreadS);
+        bomberManger = FindObjectOfType<BomberManger>();       
     }
+   
 
     // Update is called once per frame
     void Update()
     {
-        
+        bomberManger.GetComponent<BomberManger>();
         //scoreValue = BomberManger.bomberPoints;
-        playerLeft = BomberManger.playerCountBomber;
-        players.text = "Players left " + (playerLeft +1);
+       
         //score.text = "score:" + playerScore.currentScore;
-        if(BomberManger.ch == true )
-        {
-            
-            Winner();
-            targetTime1 -= Time.deltaTime;
-        }
+        //if (bomberManger.ch == true )
+        //{
+        //    Debug.Log("now");
+        //    Winner();
+        //    targetTime1 -= Time.deltaTime;
+        //}
         
-        if (targetTime1 >= -0.2f && targetTime1 <= 0.0f)
-        {
+        playerLeft = bomberManger.playerCountBomber;
+        players.text = "Players left " + (playerLeft + 1);
 
-            Loader.bomberGamePlaying = false;
+        //if (targetTime1 <= 0.0f)
+        //{
+        //    playerController.transform.position = new Vector3(0, 40, 0);
+        //    Loader.bomberGamePlaying = false;            
+        //    bomberManger.ch = false;
+        //    Loader.Load(Loader.Scene.PostLobby);
+        //    targetTime1 = 5.0f;
 
-            BomberScript.targetTime1 = 5.0f;
-            BomberManger.ch = false;
-            Loader.Load(Loader.Scene.Lobby);
-
-        }
+        //}
     }
 
-    private void Winner()
+    public void Winner()
     {
         winner.text = "The winner is ---- \nSecond place ----";
-        BomberManger.changeGame = true;
-
-
-    }
-
-   
+        bomberManger.changeGame = true;
+    }   
 }

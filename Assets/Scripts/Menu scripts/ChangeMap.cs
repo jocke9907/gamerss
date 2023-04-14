@@ -14,11 +14,18 @@ public class ChangeMap : MonoBehaviour
     [SerializeField]public  bool capture;
     [SerializeField]public bool groundIsFalling = false;
 
+    [SerializeField] bool pl1;
+    [SerializeField] bool pl2;
+    [SerializeField] bool pl3;
+    [SerializeField] bool pl4;
+
     PlayerController playerController;
+    BomberManger bomberManger;
    
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
+        bomberManger = FindObjectOfType<BomberManger>();
     }
     public void Update()
     {
@@ -45,7 +52,22 @@ public class ChangeMap : MonoBehaviour
         {
             ChangeToMapWallClimber();
         }
-
+        if(pl1)
+        {
+            Pl1();
+        }
+        if (pl2)
+        {
+            Pl2();
+        }
+        if (pl3)
+        {
+            Pl3();
+        }
+        if (pl4)
+        {
+            Pl4();
+        }
 
 
     }
@@ -62,23 +84,23 @@ public class ChangeMap : MonoBehaviour
             {
                 if(CreateGameUI.onePlayer == true)
                 {
-                    BomberManger.playerCountBomber = 1;
+                    bomberManger.playerCountBomber = 1;
                 }
                 if (CreateGameUI.twoPlayer == true)
                 {
-                    BomberManger.playerCountBomber = 1;
+                    bomberManger.playerCountBomber = 1;
                 }
                 if (CreateGameUI.threePlayer == true)
                 {
-                    BomberManger.playerCountBomber = 2;
+                    bomberManger.playerCountBomber = 2;
                 }
                 if (CreateGameUI.fourPlayer == true)
                 {
-                    BomberManger.playerCountBomber = 3;
+                    bomberManger.playerCountBomber = 3;
                 }
-
-                Loader.Load(Loader.Scene.BomberGame);
                 Loader.bomberGamePlaying = true;
+                Loader.Load(Loader.Scene.BomberGame);
+                
 
             }
 
@@ -142,13 +164,11 @@ public class ChangeMap : MonoBehaviour
     }
     public void ChangeToMapWallClimber()
     {
-
         float maxDistans = 12f;
         Vector3 dir = new Vector3(0, 1f, 0);
 
         if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {
-
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
                 Loader.wallClimberPlaying = true;
@@ -157,6 +177,63 @@ public class ChangeMap : MonoBehaviour
 
             }
 
+        }
+    }
+
+    public void Pl1()
+    {
+        float maxDistans = 12f;
+        Vector3 dir = new Vector3(0, 1f, 0);
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        {
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                Debug.Log("pl1");
+                playerController.playerOne = true;
+            }
+        }
+    }
+    public void Pl2()
+    {
+        float maxDistans = 12f;
+        Vector3 dir = new Vector3(0, 1f, 0);
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        {
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                Debug.Log("pl2");
+                playerController.playerTwo = true;
+            }
+        }
+    }
+    public void Pl3()
+    {
+        float maxDistans = 12f;
+        Vector3 dir = new Vector3(0, 1f, 0);
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        {
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                Debug.Log("pl3");
+                playerController.playerThree = true;
+            }
+        }
+    }
+    public void Pl4()
+    {
+        float maxDistans = 12f;
+        Vector3 dir = new Vector3(0, 1f, 0);
+
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        {
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                Debug.Log("pl4");
+                playerController.playerFour = true;
+            }
         }
     }
 

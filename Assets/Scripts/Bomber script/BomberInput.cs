@@ -29,9 +29,10 @@ public class BomberInput : MonoBehaviour
     private PlayerController action;
     private bool placeBomb = false;
     private MarkerInteract selectedMarker;
-
+    BomberManger bomberManger;
     private Vector2 movement = Vector2.zero;
     public bool canPlaceBomb = true;
+    public bool veryDead = false;
    
     public void UpdateTo()
     {
@@ -52,7 +53,7 @@ public class BomberInput : MonoBehaviour
         }
         if (playerDead && scoreGiven == false)
         {
-            playerScore.currentScore = playerScore.currentScore + BomberManger.bomberPoints;
+            playerScore.currentScore = playerScore.currentScore + bomberManger.bomberPoints;
             scoreGiven = true;
         }
     }

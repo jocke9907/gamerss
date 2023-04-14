@@ -17,21 +17,25 @@ public class MarkerInteract : MonoBehaviour
     private Barral Barral;
     PlayerController playerController;
     PlayerScore playerScore;
+    PlayerLevel playerLevel;
     BomberInput bomberInput;
-
+    BomberManger bomberManger;
+    private Vector3 lastInteractDir;
+    public Vector3 reset = new Vector3 (0, 40, 0);
 
     //playerController = FindObjectOfType<BomberInput>();
     public bool randomBomb = true;
 
     public float targetTime = 4.0f;
-    Vector2 inputVector = new Vector2(1f, 0f);
-    float vectorZ;
+    Vector2 inputVector = new Vector2(8f, 0f);
+    float vectorZ = .1f;
     bool bomPlaced;
     //bool canPlaceBomb = true;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
         bomberInput = FindObjectOfType<BomberInput>();
+        bomberManger = FindObjectOfType<BomberManger>();
     }
 
     //public void DropBombs()
@@ -63,18 +67,20 @@ public class MarkerInteract : MonoBehaviour
         //    bomPlaced = true;
         //    bomberInput.canPlaceBomb = false;
         //}        
-        if (BomberManger.bombUppgrade > 4)
+        if (bomberManger.bombUppgrade > 4)
         {
             Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
             bombTransform.localPosition = Vector3.zero;
+            targetTime = 4.0f;
         }
         else
         {
             Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
             bombTransform.localPosition = Vector3.zero;
+            targetTime = 4.0f;
         }
 
-
+        
 
         targetTime = 4.0f;
         bomPlaced = true;
@@ -95,7 +101,7 @@ public class MarkerInteract : MonoBehaviour
         if (dropChance == 1 ) 
         {
             Transform dropTansform = Instantiate(dropPrefab, dropSpawn);
-            Debug.Log("drop");
+            //Debug.Log("drop");
         }
     }
 
@@ -106,79 +112,154 @@ public class MarkerInteract : MonoBehaviour
        
        
         Vector3 explodeDir = new Vector3(inputVector.x, vectorZ, inputVector.y);
-        
+        if (explodeDir != Vector3.zero)
+        {
+            lastInteractDir = explodeDir;
+        }
 
         if (Physics.Raycast(transform.position , explodeDir,  out RaycastHit raycastHit, maxDistans, barralLayerMask))
         {
             if (raycastHit.transform.TryGetComponent(out Barral barral))
             {
-                //Debug.Log("found obj");
+                
                 barral.InteractB(); 
                 DropChance();
             }
             
         }
-
-        if(Physics.Raycast(transform.position, explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        if (explodeDir != Vector3.zero)
+        {
+            lastInteractDir = explodeDir;
+        }
+        if (Physics.Raycast(transform.position, explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {           
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
                 
-                playerController.transform.position = new Vector3(0,40,0);
-                BomberManger.playerCountBomber--;
-                BomberManger.bomberPoints += 1;
-                Debug.Log(BomberManger.playerCountBomber);
-                BomberManger.PlayerCounter();                
+                //playerController.transform.position = new Vector3(0,40,0);
+                //Debug.Log("playerDead");
+                //playerController.transform.position = new Vector3(0, 40, 0);
+
+                //bomberManger.playerCountBomber ;
+                bomberManger.redusePlayers = true;
+                bomberManger.bomberPoints += 1;
+               
+                bomberManger.PlayerCounter();
+                
+                //if (!bomberInput.veryDead )
+                //{
+                //    //playerController.transform.position = reset;
+                //    bomberManger.playerCountBomber--;
+                //    bomberManger.bomberPoints += 1;
+                //    Debug.Log(bomberManger.playerCountBomber);
+                //    bomberManger.PlayerCounter();
+
+                //    //playerController.transform.position = reset;
+                //    bomberInput.veryDead = true;
+                //}
+
+
+
             }
         }
+
+        //if (Physics.SphereCast(transform.position, 8f, Vector3.zero, out RaycastHit hit, Mathf.Infinity))
+        //{
+
+        //    if (hit.transform.TryGetComponent(out Barral barral))
+        //    {
+        //        //Debug.Log("found obj");
+        //        barral.InteractB();
+        //        DropChance();
+        //    }
+        //}
+        //if (Physics.SphereCast(transform.position, 8f, Vector3.zero, out RaycastHit hit2, Mathf.Infinity))
+        //{
+
+        //    if (hit2.transform.TryGetComponent(out PlayerController playerController))
+        //    {
+        //        Debug.Log("playerDead");
+        //        playerController.transform.position = new Vector3(0, 40, 0);
+        //        playerController.transform.position = new Vector3(0, 40, 0);
+        //        bomberManger.playerCountBomber--;
+        //        bomberManger.bomberPoints += 1;
+        //        Debug.Log(bomberManger.playerCountBomber);
+        //        bomberManger.PlayerCounter();
+        //    }
+        //}
+    }
+    //sphereCollider
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 explodeDir = new Vector3(inputVector.x, vectorZ, inputVector.y);
+        Gizmos.color = Color.yellow;
+        //Gizmos.DrawSphere(transform.position, 8f);
+        Gizmos.DrawRay(transform.position, explodeDir);
     }
     void Update()
     {
 
         //Debug.Log(bomberInput.canPlaceBomb);
-        if (bomPlaced == true)
+        if (bomPlaced)
         {
+            //OnDrawGizmosSelected();
             bomberInput.canPlaceBomb = false;
             targetTime -= Time.deltaTime;
         }
 
 
         //&& bomPlaced == true
-        if (targetTime >= -0.2f && targetTime <= 0.0f && bomPlaced == true)
+        //if (targetTime >= -0.2f && targetTime <= 0.0f && bomPlaced == true)
+        //{
+        //    timerEnded();
+        //    bomPlaced =false;
+        //    bomberInput.canPlaceBomb = true;
+        //}
+        if ( bomPlaced && targetTime <= 0.0f)
         {
             timerEnded();
-            bomPlaced =false;
+            
+            //Debug.Log("timer");
+            
             bomberInput.canPlaceBomb = true;
+            bomPlaced = false;
         }
     }
-    
+    public void DestroyMarker()
+    {
+        Destroy(gameObject);
+    }
     void timerEnded()
     {
         vectorZ = 0.1f;
-        Debug.Log("bomb explod");
-        inputVector = new Vector2(1f, 0f);
+        //Debug.Log("bomb explod");
+        inputVector = new Vector2(8f, 0f);
         Explode();
-        inputVector = new Vector2(0f, 1f);
+        inputVector = new Vector2(0f, 8f);
         Explode();
-        inputVector = new Vector2(-1f, 0f);
+        inputVector = new Vector2(-8f, 0f);
         Explode();
-        inputVector = new Vector2(0f, -1f);
+        inputVector = new Vector2(0f, -8f);
         Explode();
-        vectorZ = 0.5f;
-        inputVector = new Vector2(1f, 0f);
+
+        vectorZ = 1.2f;
+        inputVector = new Vector2(8f, 0f);
         Explode();
-        inputVector = new Vector2(0f, 1f);
+        inputVector = new Vector2(0f, 8f);
         Explode();
-        inputVector = new Vector2(-1f, 0f);
+        inputVector = new Vector2(-8f, 0f);
         Explode();
-        inputVector = new Vector2(0f, -1f);
+        inputVector = new Vector2(0f, -8f);
         Explode();
 
         //förstör markern och det som har spawnat på den
 
-        if (BomberManger.bombUppgrade >5)
+        if (bomberManger.bombUppgrade >2)
         {
-            Destroy(gameObject);
+
+            DestroyMarker();
         }
+        //Destroy(gameObject);
+        //DestroyMarker();
     }
 }

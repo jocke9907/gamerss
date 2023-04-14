@@ -10,6 +10,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //
+
+    public bool playerOne;
+    public bool playerTwo;    
+    public bool playerThree;
+    public bool playerFour;
     public static PlayerController Instance { get; private set; }
     public static Component component { get; private set; }
 
@@ -22,17 +27,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
-   
+
 
 
     //private MarkerInteract selectedMarker;
-
+    public int totalScore;
 
     // [SerializeField]
     private BomberInput bomberInput;
     private WallClimberInput wallClimberInput;
     private ChangeMap changeMap;
+    BomberManger bomberManger;
     //public BomberInput bomberInput;
+
+    //Animator
+    [SerializeField] Animator anim;
     
 
     public CharacterController controller;
@@ -61,9 +70,12 @@ public class PlayerController : MonoBehaviour
     BoxCollider bc;
     Rigidbody rb;
     float test;
-//--------------------------------------------------
+    //--------------------------------------------------
 
-
+    public void Awake()
+    {
+        bomberManger = FindObjectOfType<BomberManger>();
+    }
     private void Start()
     {
         bomberInput = FindObjectOfType<BomberInput>();
@@ -83,7 +95,8 @@ public class PlayerController : MonoBehaviour
         movementInput = context.ReadValue<Vector2>();
     }
     public void OnInteract(InputAction.CallbackContext context)
-    {        
+    {
+        anim.SetTrigger("Interacting");
         inputE = context.action.triggered;        
     }
     public void OnJump(InputAction.CallbackContext context)
@@ -99,8 +112,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        
-
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -109,19 +120,23 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
         controller.Move(move * Time.deltaTime * playerSpeed);
-        
+
         if (move != Vector3.zero)
         {
+            anim.SetBool("Running", true);
             gameObject.transform.forward = move;
-          
-           
         }
+        else
+            anim.SetBool("Running", false);
 
         // Changes the height position of the player..
         if (jumped && groundedPlayer)
         {
+            anim.SetBool("Jumping", true);
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
+        else
+            anim.SetBool("Jumping", false);
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
@@ -167,6 +182,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(grabButton))
         {
+            anim.SetBool("Grabbing", true);
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
             {
@@ -181,6 +197,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyUp(grabButton) && grabbedObject != null)
         {
+            anim.SetBool("Grabbing", false);
             grabbedObject = null;
         }
 
