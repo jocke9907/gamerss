@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class PlayerLevel : MonoBehaviour
 {
     bool playerSpawned = false;
-    private PlayerScore playerScore;
+    PlayerScore playerScore;
+    PlayerController playerController;
 
     public bool playerDead;
     public bool scoreGiven;
@@ -17,6 +18,7 @@ public class PlayerLevel : MonoBehaviour
     private void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
+        playerController = FindObjectOfType<PlayerController>();
     }
     void Start()
     {
@@ -81,13 +83,15 @@ public class PlayerLevel : MonoBehaviour
 
     private void OnBomber()
     {
-        if (transform.position.y > 25 && scoreGiven == false)
-        {
-            playerDead = true;
-        }
+        //if (transform.position.y > 25 && scoreGiven == false)
+        //{
+        //    playerDead = true;
+        //}
         if (playerDead && scoreGiven == false)
         {
+            Debug.Log("score given");
             playerScore.currentScore = playerScore.currentScore + bomberManger.bomberPoints;
+            playerController.totalScore += bomberManger.bomberPoints;
             scoreGiven = true;
         }
     }

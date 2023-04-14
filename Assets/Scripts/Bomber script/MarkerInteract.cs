@@ -17,16 +17,18 @@ public class MarkerInteract : MonoBehaviour
     private Barral Barral;
     PlayerController playerController;
     PlayerScore playerScore;
+    PlayerLevel playerLevel;
     BomberInput bomberInput;
     BomberManger bomberManger;
-
+    private Vector3 lastInteractDir;
+    public Vector3 reset = new Vector3 (0, 40, 0);
 
     //playerController = FindObjectOfType<BomberInput>();
     public bool randomBomb = true;
 
     public float targetTime = 4.0f;
     Vector2 inputVector = new Vector2(8f, 0f);
-    float vectorZ =0.5f;
+    float vectorZ = .1f;
     bool bomPlaced;
     //bool canPlaceBomb = true;
     public void Awake()
@@ -99,7 +101,7 @@ public class MarkerInteract : MonoBehaviour
         if (dropChance == 1 ) 
         {
             Transform dropTansform = Instantiate(dropPrefab, dropSpawn);
-            Debug.Log("drop");
+            //Debug.Log("drop");
         }
     }
 
@@ -110,41 +112,79 @@ public class MarkerInteract : MonoBehaviour
        
        
         Vector3 explodeDir = new Vector3(inputVector.x, vectorZ, inputVector.y);
-        
+        if (explodeDir != Vector3.zero)
+        {
+            lastInteractDir = explodeDir;
+        }
 
         if (Physics.Raycast(transform.position , explodeDir,  out RaycastHit raycastHit, maxDistans, barralLayerMask))
         {
             if (raycastHit.transform.TryGetComponent(out Barral barral))
             {
-                //Debug.Log("found obj");
+                
                 barral.InteractB(); 
                 DropChance();
             }
             
         }
-
-        if(Physics.Raycast(transform.position, explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        if (explodeDir != Vector3.zero)
+        {
+            lastInteractDir = explodeDir;
+        }
+        if (Physics.Raycast(transform.position, explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {           
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
-                Debug.Log("playerDead");
-                playerController.transform.position = new Vector3(0,40,0);
-                playerController.transform.position = new Vector3(0, 40, 0);
-                bomberManger.playerCountBomber--;
+                
+                //playerController.transform.position = new Vector3(0,40,0);
+                //Debug.Log("playerDead");
+                //playerController.transform.position = new Vector3(0, 40, 0);
+
+                //bomberManger.playerCountBomber ;
+                bomberManger.redusePlayers = true;
                 bomberManger.bomberPoints += 1;
-                Debug.Log(bomberManger.playerCountBomber);
-                bomberManger.PlayerCounter();                
+               
+                bomberManger.PlayerCounter();
+                
+                //if (!bomberInput.veryDead )
+                //{
+                //    //playerController.transform.position = reset;
+                //    bomberManger.playerCountBomber--;
+                //    bomberManger.bomberPoints += 1;
+                //    Debug.Log(bomberManger.playerCountBomber);
+                //    bomberManger.PlayerCounter();
+
+                //    //playerController.transform.position = reset;
+                //    bomberInput.veryDead = true;
+                //}
+
+
+
             }
         }
-       
-        //if (Physics.SphereCast(transform.position, 8f, Vector3.zero ,out RaycastHit hit ,Mathf.Infinity))
+
+        //if (Physics.SphereCast(transform.position, 8f, Vector3.zero, out RaycastHit hit, Mathf.Infinity))
         //{
-            
+
         //    if (hit.transform.TryGetComponent(out Barral barral))
         //    {
         //        //Debug.Log("found obj");
         //        barral.InteractB();
         //        DropChance();
+        //    }
+        //}
+        //if (Physics.SphereCast(transform.position, 8f, Vector3.zero, out RaycastHit hit2, Mathf.Infinity))
+        //{
+
+        //    if (hit2.transform.TryGetComponent(out PlayerController playerController))
+        //    {
+        //        Debug.Log("playerDead");
+        //        playerController.transform.position = new Vector3(0, 40, 0);
+        //        playerController.transform.position = new Vector3(0, 40, 0);
+        //        bomberManger.playerCountBomber--;
+        //        bomberManger.bomberPoints += 1;
+        //        Debug.Log(bomberManger.playerCountBomber);
+        //        bomberManger.PlayerCounter();
         //    }
         //}
     }
@@ -179,7 +219,7 @@ public class MarkerInteract : MonoBehaviour
         {
             timerEnded();
             
-            Debug.Log("timer");
+            //Debug.Log("timer");
             
             bomberInput.canPlaceBomb = true;
             bomPlaced = false;
@@ -192,7 +232,7 @@ public class MarkerInteract : MonoBehaviour
     void timerEnded()
     {
         vectorZ = 0.1f;
-        Debug.Log("bomb explod");
+        //Debug.Log("bomb explod");
         inputVector = new Vector2(8f, 0f);
         Explode();
         inputVector = new Vector2(0f, 8f);
@@ -202,15 +242,15 @@ public class MarkerInteract : MonoBehaviour
         inputVector = new Vector2(0f, -8f);
         Explode();
 
-        //vectorZ = 0.5f;
-        //inputVector = new Vector2(8f, 0f);
-        //Explode();
-        //inputVector = new Vector2(0f, 8f);
-        //Explode();
-        //inputVector = new Vector2(-8f, 0f);
-        //Explode();
-        //inputVector = new Vector2(0f, -8f);
-        //Explode();
+        vectorZ = 1.2f;
+        inputVector = new Vector2(8f, 0f);
+        Explode();
+        inputVector = new Vector2(0f, 8f);
+        Explode();
+        inputVector = new Vector2(-8f, 0f);
+        Explode();
+        inputVector = new Vector2(0f, -8f);
+        Explode();
 
         //förstör markern och det som har spawnat på den
 

@@ -6,14 +6,15 @@ public class Drop : MonoBehaviour
 {
 
     BomberManger bomberManger;
-
+    PlayerController playerController;
     private void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
+        playerController = FindObjectOfType<PlayerController>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        PlayerController playerController;
+        
         MarkerInteract markerInteract;
         BomberInput input;
         

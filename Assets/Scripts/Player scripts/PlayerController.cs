@@ -10,6 +10,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //
+
+    public bool playerOne;
+    public bool playerTwo;    
+    public bool playerThree;
+    public bool playerFour;
     public static PlayerController Instance { get; private set; }
     public static Component component { get; private set; }
 
@@ -22,11 +27,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
-   
+
 
 
     //private MarkerInteract selectedMarker;
-
+    public int totalScore;
 
     // [SerializeField]
     private BomberInput bomberInput;
@@ -106,8 +111,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-        
 
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)

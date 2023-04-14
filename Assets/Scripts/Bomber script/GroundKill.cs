@@ -8,10 +8,11 @@ public class GroundKill : MonoBehaviour
     BomberManger bomberManger;
     public void Awake()
     {
+        bomberManger = FindObjectOfType<BomberManger>();
         playerController = FindObjectOfType<PlayerController>();
         //bomberInput = FindObjectOfType<BomberInput>(); private void Awake()
         
-        bomberManger = FindObjectOfType<BomberManger>();
+       
         
     }
     private void OnTriggerExit(Collider other)
@@ -20,10 +21,16 @@ public class GroundKill : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            playerController.transform.position = new Vector3(0, 40, 0);
-            bomberManger.playerCountBomber--;
+            Debug.Log("fell on ground");
+            other.gameObject.transform.position = new Vector3(0, 40, 0);
+            //bomberManger.playerCountBomber--;
+            //bomberManger.bomberPoints += 1;
+            //Debug.Log(bomberManger.playerCountBomber);
+            //bomberManger.PlayerCounter();
+
+            bomberManger.redusePlayers = true;
             bomberManger.bomberPoints += 1;
-            Debug.Log(bomberManger.playerCountBomber);
+
             bomberManger.PlayerCounter();
         }
         
