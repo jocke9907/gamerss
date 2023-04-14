@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     public bool groundedPlayer;
     private float playerSpeed = 5.0f;
-    private float jumpHeight = 1.5f;
+    private float jumpHeight = 2.75f;
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
     
@@ -60,8 +60,8 @@ public class PlayerController : MonoBehaviour
     //------------Sam----------------------------------
     public float maxGrabDistance = 1f;
     public KeyCode grabButton = KeyCode.Tab;
-
-    private GameObject grabbedObject = null;
+    //public KeyCode testButton;
+    public GameObject grabbedObject = null;
     private Vector3 objectOffset = Vector3.zero;
 
     //public movementPilar movementScript;
@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
     BoxCollider bc;
     Rigidbody rb;
     float test;
+    public bool alreadyGrabbed = false;
     //--------------------------------------------------
 
     public void Awake()
@@ -107,6 +108,7 @@ public class PlayerController : MonoBehaviour
     public void OnGrab(InputAction.CallbackContext context)
     {
         grab = context.action.triggered;
+        
     }
 
     void Update()
@@ -149,23 +151,70 @@ public class PlayerController : MonoBehaviour
         if(Loader.bomberGamePlaying == true) 
         { 
              bomberInput.UpdateTo();
+            
         }
         if(Loader.wallClimberPlaying == true)
         {
             //wallClimberInput.UpdateWallClimberTo();
         }
 
-        //GrabObject();
+        GrabObject();
     }
     private void GrabObject()
     {
-        //if (grab)
+        if (grab)
+        {
+            RaycastHit hit;
+            Debug.Log("casting");
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
+            {
+                if (alreadyGrabbed == false)
+                {
+                    Debug.Log("hit");
+                    grabbedObject = hit.collider.gameObject;
+
+                    bc = grabbedObject.GetComponent<BoxCollider>();
+                    //rb = grabbedObject.GetComponent<Rigidbody>();
+                    alreadyGrabbed = true;
+                }
+                
+
+            }
+        }
+        if (!grab && grabbedObject != null && alreadyGrabbed==true)
+        {
+            grabbedObject = null;
+            alreadyGrabbed = false;
+        }
+
+        if (grabbedObject != null)
+        {
+            bc.isTrigger = true;
+            //grabbedObject.transform.rotation = Quaternion.identity.x;
+            //grabbedObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+            Quaternion newRotation = Quaternion.Euler(0f, grabPoint.rotation.eulerAngles.y, 0f);
+            grabbedObject.transform.rotation = newRotation;
+            //rb.useGravity = false;
+            //movementScript.speed = (int)2.5;
+            grabbedObject.transform.position = grabPoint.position;
+
+        }
+        else
+        {
+            bc.isTrigger = false;
+            //rb.useGravity = true;
+            //movementScript.speed = (int)5;
+        }
+
+
+        //---------------------------------------------------------------------------------------------------------------
+        //if (Input.GetKeyDown(grabButton))
         //{
+        //    //anim.SetBool("Grabbing", true);
         //    RaycastHit hit;
-        //    Debug.Log("casting");
         //    if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
         //    {
-        //        Debug.Log("hit");
+
         //        grabbedObject = hit.collider.gameObject;
 
         //        bc = grabbedObject.GetComponent<BoxCollider>();
@@ -173,33 +222,12 @@ public class PlayerController : MonoBehaviour
 
         //    }
         //}
-        //if (grab && grabbedObject != null)
+
+        //if (Input.GetKeyUp(grabButton) && grabbedObject != null)
         //{
+        //    //anim.SetBool("Grabbing", false);
         //    grabbedObject = null;
         //}
-
-
-
-        if (Input.GetKeyDown(grabButton))
-        {
-            anim.SetBool("Grabbing", true);
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
-            {
-
-                grabbedObject = hit.collider.gameObject;
-
-                bc = grabbedObject.GetComponent<BoxCollider>();
-                rb = grabbedObject.GetComponent<Rigidbody>();
-
-            }
-        }
-
-        if (Input.GetKeyUp(grabButton) && grabbedObject != null)
-        {
-            anim.SetBool("Grabbing", false);
-            grabbedObject = null;
-        }
 
 
 
