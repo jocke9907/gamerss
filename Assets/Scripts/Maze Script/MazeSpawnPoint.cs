@@ -11,6 +11,7 @@ public class MazeSpawnPoint : MonoBehaviour
     private void Awake()
     {
         mazeSpawnPoint = transform.position;
+        Debug.Log("Maze spawn point set to " + mazeSpawnPoint);
 
     }
     private void Start()
@@ -27,9 +28,11 @@ public class MazeSpawnPoint : MonoBehaviour
         if (frameCounter >= waitForFrames)
         {
             PlayerController[] players = FindObjectsOfType<PlayerController>();
+            Debug.Log("Found " + players.Length + " player objects in scene.");
             foreach (PlayerController player in players)
             {
                 player.gameObject.transform.position = mazeSpawnPoint;
+                Debug.Log("Set player object position to " + mazeSpawnPoint);
             }
             hasSpawned = true;
         }
