@@ -23,7 +23,7 @@ public class RandomMap : MonoBehaviour
     {
         bomberManger = FindObjectOfType<BomberManger>();
         int randMap = Random.Range(1, 5);
-        randMap = 2;
+        //randMap = 2;
         if (randMap == 1)
         {
             Loader.PlatformGamePlaying = true;
