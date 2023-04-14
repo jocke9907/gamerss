@@ -54,7 +54,7 @@ public class MoveRandomBomb : MonoBehaviour
         if (marker != null)
         {
 
-            marker.RandomBombs();
+            marker.Interact();
         }
         if (Physics.Raycast(transform.position, placeDir, out RaycastHit raycastHit, maxDistans, markerLayerMask))
         {
@@ -67,7 +67,7 @@ public class MoveRandomBomb : MonoBehaviour
             if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
             {
                 //Debug.Log("hit");
-                marker.RandomBombs();
+                marker.Interact();
                 
             }
             
