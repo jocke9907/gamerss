@@ -12,7 +12,7 @@ public class Drop : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerController = other.GetComponent<PlayerController>();
-            playerController.PickUpItem(gameObject);
+            //playerController.PickUpItem(gameObject);
             BomberManger.bombUppgrade += 1;
             Debug.Log("found item");
             

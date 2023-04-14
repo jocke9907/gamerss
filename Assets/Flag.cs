@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class Flag : MonoBehaviour
 {
-    public GameObject flagRespawnPoint; 
+    public GameObject flagRespawnPoint;
     public float flagRespawnTime = 5f;
-    //public Transform playerBack;
+    PlayerScore score;
 
-    private bool hasFlag = false;
+
+    private static bool hasFlag = false;
     private Vector3 flagOriginalPosition;
     private float flagDropTime;
+    private GameObject playerWithFlag;
+
 
     void Start()
     {
         flagOriginalPosition = transform.position;
     }
+
     private void OnTriggerEnter(Collider other)
     {
+
         if (!hasFlag && other.CompareTag("Player"))
         {
             hasFlag = true;
-            
+            Debug.Log(hasFlag);
+            playerWithFlag = other.gameObject;
             transform.parent = other.transform;
             transform.localPosition = new Vector3(0, 1f, -0.40f);
         }
@@ -30,9 +36,13 @@ public class Flag : MonoBehaviour
             hasFlag = false;
             transform.parent = null;
             transform.position = other.transform.position;
+            transform.localPosition = new Vector3(100, 0, 0);
             flagDropTime = Time.time;
             StartCoroutine(FlagRespawn());
+            //score.currentScore++;
+            
         }
+
     }
     private IEnumerator FlagRespawn()
     {
@@ -52,6 +62,6 @@ public class Flag : MonoBehaviour
     {
         return Time.time > flagDropTime + flagRespawnTime;
     }
-   
+
 
 }
