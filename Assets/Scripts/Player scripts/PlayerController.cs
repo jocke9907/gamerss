@@ -204,24 +204,24 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (grabbedObject != null)
-        {
-            bc.isTrigger = true;
-            //grabbedObject.transform.rotation = Quaternion.identity.x;
-            //grabbedObject.transform.rotation = Quaternion.Euler(0, 90, 0);
-            Quaternion newRotation = Quaternion.Euler(0f, grabPoint.rotation.eulerAngles.y, 0f);
-            grabbedObject.transform.rotation = newRotation;
-            //rb.useGravity = false;
-            //movementScript.speed = (int)2.5;
-            grabbedObject.transform.position = grabPoint.position;
+        //if (grabbedObject != null)
+        //{
+        //    bc.isTrigger = true;
+        //    //grabbedObject.transform.rotation = Quaternion.identity.x;
+        //    //grabbedObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+        //    Quaternion newRotation = Quaternion.Euler(0f, grabPoint.rotation.eulerAngles.y, 0f);
+        //    grabbedObject.transform.rotation = newRotation;
+        //    //rb.useGravity = false;
+        //    //movementScript.speed = (int)2.5;
+        //    grabbedObject.transform.position = grabPoint.position;
 
-        }
-        else
-        {
-            bc.isTrigger = false;
-            //rb.useGravity = true;
-            //movementScript.speed = (int)5;
-        }
+        //}
+        //else
+        //{
+        //    bc.isTrigger = false;
+        //    //rb.useGravity = true;
+        //    //movementScript.speed = (int)5;
+        //}
 
 
     }
