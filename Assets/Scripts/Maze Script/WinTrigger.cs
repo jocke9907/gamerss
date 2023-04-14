@@ -1,66 +1,172 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WinTrigger : MonoBehaviour
 {
-
-   // GameObject player = GameObject.Find("Player");
-   // PlayerController playerController = player.GetComponent<PlayerController>();
-
-   // public GameObject youWinText;
-    //public float delay;
-
-    public float timer = 63f;
+    public float timer = 62f;
     public string loadScene;
-    public static int points = 0;
 
     public bool isFinnished = false;
 
+    public static int points;
+
+    //public int numOfPlayers = 4;
+    //int playerEnteredTrigger = 0;
+
+    List<GameObject> playersEnteredTrigger = new List<GameObject>();
+
+    Dictionary<GameObject, int> playerPoints = new Dictionary<GameObject, int>();
     PlayerScore playerScore;
 
-    void Start()
+    private void Start()
     {
-       // youWinText.SetActive(false);
+        playerScore = GameObject.FindObjectOfType<PlayerScore>();
+        if (playerScore == null)
+        {
+            Debug.LogError("Could not find PlayerScore component.");
+        }
     }
 
     private void Update()
     {
         timer -= Time.deltaTime;
-        if (timer <= 0 || isFinnished == true)
+        if (/*playersEnteredTrigger.Count == numOfPlayers ||*/ timer <= 0)
         {
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(7);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !playerPoints.ContainsKey(other.gameObject))
         {
-            other.GetComponent<PlayerScore>();
-            playerScore.currentScore += 50;
-            isFinnished=true;
+            int pointsToAdd = CalculatePoints();
+            PlayerScore playerScore = other.gameObject.GetComponent<PlayerScore>();
+            playerScore.AddPoints(pointsToAdd);
+            playerPoints.Add(other.gameObject, pointsToAdd);
+
+
+            // Add the player to the list if it's not already there
+            if (!playersEnteredTrigger.Contains(other.gameObject))
+            {
+                playersEnteredTrigger.Add(other.gameObject);
+            }
+
+            // Count the number of players in the scene
+            int numOfPlayers = FindObjectsOfType<PlayerChooser>().Length;
+
+            // Check if all players have entered the trigger
+            if (playersEnteredTrigger.Count == numOfPlayers)
+            {
+                SceneManager.LoadScene(7);
+            }
+
+            //playerEnteredTrigger++;
         }
     }
 
+    private int CalculatePoints()
+    {
+        int points = 0;
 
-    //void OnTriggerEnter(Collider other)
+        int playersEntered = playerPoints.Count;
+
+        if (playersEntered == 0)
+        {
+            points += 50;
+        }
+        else if (playersEntered == 1)
+        {
+            points += 30;
+        }
+        else if (playersEntered == 2)
+        {
+            points += 20;
+        }
+        else if (playersEntered == 3)
+        {
+            points += 10;
+        }
+
+        return points;
+    }
+
+    //public float timer = 63f;
+    //public string loadScene;
+    //public static int points = 0;
+
+    //public bool isFinnished = false;
+
+    //public int numOfPlayers = 4;
+    //int playerEnteredTrigger = 0;
+
+    //PlayerScore playerScore;
+
+    //Dictionary<GameObject, int> playerScores = new Dictionary<GameObject, int>();
+
+    //void Start()
     //{
-    //    if (other.gameObject.tag == "Player")
+    //    playerScore = FindObjectOfType<PlayerScore>();
+    //}
+
+    //private void Update()
+    //{
+    //    timer -= Time.deltaTime;
+    //    if (playerEnteredTrigger == numOfPlayers || timer <= 0)
     //    {
-    //        youWinText.SetActive(true);
-    //        StartCoroutine(Countdown());
-    //    }
-    //    else if (timer == 0f)
-    //    {
-    //        Debug.Log("You Lose");
+    //        SceneManager.LoadScene(5);
     //    }
     //}
 
-    //IEnumerator Countdown()
+    //private void OnTriggerEnter(Collider other)
     //{
-    //    yield return new WaitForSeconds(delay);
-    //    SceneManager.LoadScene(2);
-    //}
+    //    if (other.CompareTag("Player"))
+    //    {
+
+    //        GameObject player = other.gameObject;
+
+    //        if (!playerScores.ContainsKey(player))
+    //        {
+    //            int scoreValue = 0;
+
+    //            switch (playerScores.Count)
+    //            {
+    //                case 0:
+    //                    scoreValue += 50;
+    //                    break;
+
+    //                case 1:
+    //                    scoreValue += 30;
+    //                    break;
+
+    //                case 2:
+    //                    scoreValue += 20;
+    //                    break;
+
+    //                case 3:
+    //                    scoreValue += 10;
+    //                    break;
+    //            }
+
+    //            playerScores[player] = scoreValue;
+    //        }
+
+    //        playerScore.currentScore = playerScores[player];
+    //        playerEnteredTrigger ++;
+
+    //        other.GetComponent<PlayerScore>();
+    //        //playerScore.currentScore += 50;
+
+    //    }
+    // }
+
 }
+
+
+
