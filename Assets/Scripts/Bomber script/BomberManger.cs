@@ -69,7 +69,7 @@ public class BomberManger : MonoBehaviour
             targetTime2 -= Time.deltaTime;
             //bomberScript.Winner();
         }
-        Debug.Log(targetTime2);
+        
         if (targetTime2 <= 0.0f)
         {
             //playerController.transform.position = new Vector3(0, 40, 0);

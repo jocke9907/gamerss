@@ -98,9 +98,9 @@ public class ChangeMap : MonoBehaviour
                 {
                     bomberManger.playerCountBomber = 3;
                 }
-
-                Loader.Load(Loader.Scene.BomberGame);
                 Loader.bomberGamePlaying = true;
+                Loader.Load(Loader.Scene.BomberGame);
+                
 
             }
 

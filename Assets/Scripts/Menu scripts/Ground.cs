@@ -17,8 +17,8 @@ public class Ground : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerController.transform.position = new Vector3(0, 40, 0);
-           
+            other.gameObject.transform.position = new Vector3(0, 40, 0);
+
         }
 
 
