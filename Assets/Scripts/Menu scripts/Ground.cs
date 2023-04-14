@@ -13,11 +13,14 @@ public class Ground : MonoBehaviour
         //bomberInput = FindObjectOfType<BomberInput>(); private void Awake()
 
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.transform.position = new Vector3(0, 40, 0);
+            other.transform.position = new Vector3(0, 40, 0);
+            Debug.Log(other.transform.position);
+            other.transform.position = new Vector3(0, 40, 0);
+            other.transform.position = new Vector3(0, 40, 0);
 
         }
 

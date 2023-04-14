@@ -72,6 +72,21 @@ public class PlayerController : MonoBehaviour
     float test;
     //--------------------------------------------------
 
+    //[SerializeField] private GameInput gameInput;
+    //[SerializeField] private LayerMask markerLayerMask;
+    [SerializeField] private LayerMask dropLayerMask;
+    //private PlayerController action;
+    [SerializeField] bool placeBomb = false;
+    private MarkerInteract selectedMarker;
+    //BomberManger bomberManger;
+    private Vector2 movement = Vector2.zero;
+    public bool canPlaceBomb = true;
+    public bool veryDead = false;
+
+    //-----------------------------------------------
+
+
+
     public void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
@@ -96,8 +111,9 @@ public class PlayerController : MonoBehaviour
     }
     public void OnInteract(InputAction.CallbackContext context)
     {
+        inputE = context.action.triggered;
         anim.SetTrigger("Interacting");
-        inputE = context.action.triggered;        
+              
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -148,7 +164,7 @@ public class PlayerController : MonoBehaviour
 
         if(Loader.bomberGamePlaying == true) 
         { 
-             bomberInput.UpdateTo();
+             UpdateTo();
         }
         if(Loader.wallClimberPlaying == true)
         {
@@ -225,6 +241,129 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+
+
+
+    
+
+    public void UpdateTo()
+    {
+        //playerController = FindObjectOfType<PlayerController>();
+        HandleInteractions();
+        //CheckIfPlayerDead();
+    }
+
+    public void GameInput_OnInteractAction(object sender, System.EventArgs e)
+    {
+
+
+        if (selectedMarker != null)
+        {
+            selectedMarker.Interact();
+        }
+
+        Vector2 inputVector = movementInput;
+
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        float intercartDistace = 2f;
+        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, intercartDistace, markerLayerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
+            {
+                marker.Interact();
+            }
+        }
+    }
+
+    private Vector3 lastInteractDir;
+
+    private void HandleInteractions()
+    {
+
+        if (inputE == true)
+        {
+            placeBomb = true;
+        }
+        else if (inputE == false) 
+        {
+            placeBomb = false;
+        }
+
+
+        Vector2 inputVector = movementInput;
+        Vector3 moveDirGround = new Vector3(inputVector.x, -1f, inputVector.y);
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+        float intercartDistace = 2f;
+
+        //Checks air
+        //if (moveDirGround != Vector3.zero)
+        //{
+        //    lastInteractDir = moveDir;
+        //}
+
+        //if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitAir, intercartDistace, markerLayerMask))
+        //{
+        //    if (raycastHitAir.transform.TryGetComponent(out MarkerInteract marker))
+        //    {
+        //        //marker.Interact();
+        //    }
+        //    if (raycastHitAir.transform.TryGetComponent(out Bomb bomb))
+        //    {
+        //        bomb.Interact();
+        //    }
+        //}
+
+        // Checks ground
+        if (moveDirGround != Vector3.zero)
+        {
+            lastInteractDir = moveDirGround;
+        }
+
+        Component component = transform;
+
+        if (Physics.Raycast(component.transform.position, moveDirGround, out RaycastHit raycastHit, intercartDistace))
+        {
+            if (placeBomb && raycastHit.transform.TryGetComponent(out MarkerInteract marker) )
+            {
+                // has marker
+                marker.Interact();
+            }
+            if (raycastHit.transform.TryGetComponent(out Bomb bomb))
+            {
+                // Has bomb
+                bomb.Interact();
+            }
+
+
+        }
+        else
+        {
+            //Debug.Log("-");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -341,5 +480,5 @@ public class PlayerController : MonoBehaviour
     //        Debug.Log("-");
     //    }        
     //}
-   
+
 }

@@ -15,13 +15,7 @@ public class BomberInput : MonoBehaviour
 
     bool playerDead;
     bool scoreGiven;
-    PlayerScore playerScore;
-
-    //public event EventHandler<OnSelectedCounterChangedEventargs> OnSelectedMarkerChanged;
-    //public class OnSelectedCounterChangedEventargs : EventArgs
-    //{
-    //    public MarkerInteract selectedMarker;
-    //}
+  
 
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
@@ -39,23 +33,6 @@ public class BomberInput : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
         HandleInteractions();
         //CheckIfPlayerDead();
-    }
-    public void Start()
-    {
-        
-    }
-
-    public void CheckIfPlayerDead()
-    {
-        if (transform.position.y > 25 && scoreGiven == false)
-        {
-            playerDead = true;
-        }
-        if (playerDead && scoreGiven == false)
-        {
-            playerScore.currentScore = playerScore.currentScore + bomberManger.bomberPoints;
-            scoreGiven = true;
-        }
     }
 
     public void GameInput_OnInteractAction(object sender, System.EventArgs e)
@@ -87,26 +64,8 @@ public class BomberInput : MonoBehaviour
             }
         }
     }
-    //private void SetSelctedMarker(MarkerInteract selectedMarker)
-    //{
-    //    this.selectedMarker = selectedMarker;
-    //    OnSelectedMarkerChanged?.Invoke(this, new OnSelectedCounterChangedEventargs
-    //    {
-    //        selectedMarker = selectedMarker
-    //    });
-    //}
+    
     private Vector3 lastInteractDir;
-
-
-    /// <summary>
-    /// /
-    /// </summary>
-
-    //private void OnMove(InputAction.CallbackContext context)
-    //{
-    //    movement = context.ReadValue<Vector2>();
-    //}/// 
-
 
     private void HandleInteractions()
     {
@@ -122,7 +81,6 @@ public class BomberInput : MonoBehaviour
 
         
         Vector2 inputVector = playerController.movementInput;
-
         Vector3 moveDirGround = new Vector3(inputVector.x, -1f, inputVector.y);
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
@@ -145,14 +103,7 @@ public class BomberInput : MonoBehaviour
                 bomb.Interact();
             }            
         }
-        //if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitDrop, intercartDistace, dropLayerMask))
-        //{
-        //    if (raycastHitDrop.transform.TryGetComponent(out MarkerInteract marker))
-        //    {
-        //        marker.StrongBomb();
-        //    }
-            
-        //}
+        
         // Checks ground
         if (moveDirGround != Vector3.zero)
         {
@@ -173,7 +124,7 @@ public class BomberInput : MonoBehaviour
                 // Has bomb
                 bomb.Interact();
             }
-            //Debug.Log(raycastHit.transform);
+           
 
         }
         else
