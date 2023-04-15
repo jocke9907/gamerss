@@ -71,6 +71,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     float test;
     public bool alreadyGrabbed = false;
+    public bool finished = false;
+
     //--------------------------------------------------
     //[SerializeField] private GameInput gameInput;
     //[SerializeField] private LayerMask markerLayerMask;
@@ -167,7 +169,7 @@ public class PlayerController : MonoBehaviour
             //wallClimberInput.UpdateWallClimberTo();
         }
 
-        GrabObject();
+        //GrabObject();
     }
 
 //----------------------------------------SAM-----------------------------------------------------------------------
