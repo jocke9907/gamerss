@@ -19,6 +19,11 @@ public class movementPilar : MonoBehaviour
     public bool isOnGround = true;
     public bool finished = false;
 
+    
+
+    public int totalScore;
+    
+
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
@@ -58,7 +63,10 @@ public class movementPilar : MonoBehaviour
         }
     }
     
-
+    public void AddScore(int score)
+    {
+        totalScore = totalScore + score;
+    }
 
 
 }

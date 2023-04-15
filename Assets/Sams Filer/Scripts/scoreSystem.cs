@@ -7,40 +7,61 @@ using UnityEngine.UI;
 public class scoreSystem : MonoBehaviour
 {
     public GameObject[] players;
-    public TextMeshPro scoreText;
+    public TMP_Text scoreText;
+    //public TextMeshPro scoreText;
+    int placement = 0;
 
     private List<GameObject> finishOrder = new List<GameObject>();
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.GetComponent<movementPilar>().finished==false)
         {
-            // Add the player to the list of finishers
+            other.GetComponent<movementPilar>().finished = true;
+            
             finishOrder.Add(other.gameObject);
+            
 
-            // Sort the finishers by their distance from the trigger
-            finishOrder.Sort((a, b) => Vector3.Distance(a.transform.position, transform.position).CompareTo(Vector3.Distance(b.transform.position, transform.position)));
-
-            // Calculate and display the scores
-            for (int i = 0; i < finishOrder.Count; i++)
+            if (placement == 0)
             {
-                if (i == 0)
-                {
-                    finishOrder[i].GetComponent<PlayerController>().AddScore(4);
-                }
-                else if (i == 1)
-                {
-                    finishOrder[i].GetComponent<PlayerController>().AddScore(3);
-                }
-                else if (i == 2)
-                {
-                    finishOrder[i].GetComponent<PlayerController>().AddScore(2);
-                }
-                else
-                {
-                    finishOrder[i].GetComponent<PlayerController>().AddScore(1);
-                }
+                finishOrder[placement].GetComponent<movementPilar>().AddScore(4);
             }
+            else if(placement == 1)
+            {
+                finishOrder[placement].GetComponent<movementPilar>().AddScore(3);
+            }
+            else if (placement == 2)
+            {
+                finishOrder[placement].GetComponent<movementPilar>().AddScore(2);
+            }
+            else if (placement == 3)
+            {
+                finishOrder[placement].GetComponent<movementPilar>().AddScore(1);
+            }
+            placement++;
+
+
+
+
+            //for (int i = 0; i < finishOrder.Count; i++)
+            //{
+            //    if (i == 0)
+            //    {
+            //        finishOrder[i].GetComponent<movementPilar>().AddScore(4);
+            //    }
+            //    else if (i == 1)
+            //    {
+            //        finishOrder[i].GetComponent<movementPilar>().AddScore(3);
+            //    }
+            //    else if (i == 2)
+            //    {
+            //        finishOrder[i].GetComponent<movementPilar>().AddScore(2);
+            //    }
+            //    else
+            //    {
+            //        finishOrder[i].GetComponent<movementPilar>().AddScore(1);
+            //    }
+            //}
 
             // Update the score display
             UpdateScoreText();
@@ -55,7 +76,7 @@ public class scoreSystem : MonoBehaviour
         // Display the new scores
         for (int i = 0; i < players.Length; i++)
         {
-            scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().totalScore + "\n";
+            scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<movementPilar>().totalScore + "\n";
         }
     }
 }
