@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,6 +36,10 @@ public class PlayerLevel : MonoBehaviour
         if (Loader.TheMazePlaying == true && alive)
         {
             gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        }
+        else
+        {
+            gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
         }
 
     }
