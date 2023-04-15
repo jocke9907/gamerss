@@ -134,20 +134,20 @@ public class PlayerController : MonoBehaviour
 
         if (move != Vector3.zero)
         {
-            anim.SetBool("Running", true);
+            //anim.SetBool("Running", true);
             gameObject.transform.forward = move;
         }
         else
-            anim.SetBool("Running", false);
+            //anim.SetBool("Running", false);
 
         // Changes the height position of the player..
         if (jumped && groundedPlayer)
         {
-            anim.SetBool("Jumping", true);
+            //anim.SetBool("Jumping", true);
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
         else
-            anim.SetBool("Jumping", false);
+            //anim.SetBool("Jumping", false);
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
@@ -165,9 +165,10 @@ public class PlayerController : MonoBehaviour
         if(Loader.wallClimberPlaying == true)
         {
             //wallClimberInput.UpdateWallClimberTo();
+            GrabObject();
         }
 
-        GrabObject();
+        //GrabObject();
     }
 
 //----------------------------------------SAM-----------------------------------------------------------------------

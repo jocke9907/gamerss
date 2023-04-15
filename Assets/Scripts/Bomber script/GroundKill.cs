@@ -22,7 +22,7 @@ public class GroundKill : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("fell on ground");
-            other.transform.position = new Vector3(0, 40, 0);
+            other.transform.position = new Vector3(0, 60, 0);
             //bomberManger.playerCountBomber--;
             //bomberManger.bomberPoints += 1;
             //Debug.Log(bomberManger.playerCountBomber);

@@ -10,13 +10,13 @@ public class MazeSpawnPoint : MonoBehaviour
     int frameCounter;
     private void Awake()
     {
-        mazeSpawnPoint = transform.position;
+s        mazeSpawnPoint = transform.position;
         Debug.Log("Maze spawn point set to " + mazeSpawnPoint);
 
     }
     private void Start()
     {
-
+       
     }
     private void Update()
     {
