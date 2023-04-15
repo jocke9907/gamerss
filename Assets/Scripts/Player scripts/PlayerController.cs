@@ -160,14 +160,18 @@ public class PlayerController : MonoBehaviour
 
         GrabObject();
     }
+
+//----------------------------------------SAM-----------------------------------------------------------------------
     private void GrabObject()
     {
         if (grab)
         {
+
             RaycastHit hit;
             Debug.Log("casting");
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
             {
+                //anim.SetBool("Grabbing", true);
                 if (alreadyGrabbed == false)
                 {
                     Debug.Log("hit");
@@ -183,6 +187,7 @@ public class PlayerController : MonoBehaviour
         }
         if (!grab && grabbedObject != null && alreadyGrabbed==true)
         {
+            //anim.SetBool("Grabbing", false);
             grabbedObject = null;
             alreadyGrabbed = false;
         }
@@ -206,54 +211,18 @@ public class PlayerController : MonoBehaviour
             //movementScript.speed = (int)5;
         }
 
-
-        //---------------------------------------------------------------------------------------------------------------
-        //if (Input.GetKeyDown(grabButton))
-        //{
-        //    //anim.SetBool("Grabbing", true);
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
-        //    {
-
-        //        grabbedObject = hit.collider.gameObject;
-
-        //        bc = grabbedObject.GetComponent<BoxCollider>();
-        //        rb = grabbedObject.GetComponent<Rigidbody>();
-
-        //    }
-        //}
-
-        //if (Input.GetKeyUp(grabButton) && grabbedObject != null)
-        //{
-        //    //anim.SetBool("Grabbing", false);
-        //    grabbedObject = null;
-        //}
-
-
-
-
-        //if (grabbedObject != null)
-        //{
-        //    bc.isTrigger = true;
-        //    //grabbedObject.transform.rotation = Quaternion.identity.x;
-        //    //grabbedObject.transform.rotation = Quaternion.Euler(0, 90, 0);
-        //    Quaternion newRotation = Quaternion.Euler(0f, grabPoint.rotation.eulerAngles.y, 0f);
-        //    grabbedObject.transform.rotation = newRotation;
-        //    //rb.useGravity = false;
-        //    //movementScript.speed = (int)2.5;
-        //    grabbedObject.transform.position = grabPoint.position;
-
-        //}
-        //else
-        //{
-        //    bc.isTrigger = false;
-        //    //rb.useGravity = true;
-        //    //movementScript.speed = (int)5;
-        //}
-
-
     }
 
+//----------------SAM-----------------------------------------------------------------------------------------------
+
+
+    public void AddScore(int score)
+    {
+        totalScore = totalScore + score;
+    }
+
+
+//------------------------------------------------------------------------------------------------------------------
 
 
 
