@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     public bool groundedPlayer;
     private float playerSpeed = 5.0f;
-    private float jumpHeight = 1.5f;
+    private float jumpHeight = 2.75f;
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
     
@@ -60,8 +60,8 @@ public class PlayerController : MonoBehaviour
     //------------Sam----------------------------------
     public float maxGrabDistance = 1f;
     public KeyCode grabButton = KeyCode.Tab;
-
-    private GameObject grabbedObject = null;
+    //public KeyCode testButton;
+    public GameObject grabbedObject = null;
     private Vector3 objectOffset = Vector3.zero;
 
     //public movementPilar movementScript;
@@ -70,22 +70,8 @@ public class PlayerController : MonoBehaviour
     BoxCollider bc;
     Rigidbody rb;
     float test;
+    public bool alreadyGrabbed = false;
     //--------------------------------------------------
-
-    //[SerializeField] private GameInput gameInput;
-    //[SerializeField] private LayerMask markerLayerMask;
-    [SerializeField] private LayerMask dropLayerMask;
-    //private PlayerController action;
-    [SerializeField] bool placeBomb = false;
-    private MarkerInteract selectedMarker;
-    //BomberManger bomberManger;
-    private Vector2 movement = Vector2.zero;
-    public bool canPlaceBomb = true;
-    public bool veryDead = false;
-
-    //-----------------------------------------------
-
-
 
     public void Awake()
     {
@@ -111,9 +97,8 @@ public class PlayerController : MonoBehaviour
     }
     public void OnInteract(InputAction.CallbackContext context)
     {
-        inputE = context.action.triggered;
         anim.SetTrigger("Interacting");
-              
+        inputE = context.action.triggered;        
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -123,6 +108,7 @@ public class PlayerController : MonoBehaviour
     public void OnGrab(InputAction.CallbackContext context)
     {
         grab = context.action.triggered;
+        
     }
 
     void Update()
@@ -164,24 +150,71 @@ public class PlayerController : MonoBehaviour
 
         if(Loader.bomberGamePlaying == true) 
         { 
-             UpdateTo();
+             bomberInput.UpdateTo();
+            
         }
         if(Loader.wallClimberPlaying == true)
         {
             //wallClimberInput.UpdateWallClimberTo();
         }
 
-        //GrabObject();
+        GrabObject();
     }
     private void GrabObject()
     {
-        //if (grab)
+        if (grab)
+        {
+            RaycastHit hit;
+            Debug.Log("casting");
+            if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
+            {
+                if (alreadyGrabbed == false)
+                {
+                    Debug.Log("hit");
+                    grabbedObject = hit.collider.gameObject;
+
+                    bc = grabbedObject.GetComponent<BoxCollider>();
+                    //rb = grabbedObject.GetComponent<Rigidbody>();
+                    alreadyGrabbed = true;
+                }
+                
+
+            }
+        }
+        if (!grab && grabbedObject != null && alreadyGrabbed==true)
+        {
+            grabbedObject = null;
+            alreadyGrabbed = false;
+        }
+
+        if (grabbedObject != null)
+        {
+            bc.isTrigger = true;
+            //grabbedObject.transform.rotation = Quaternion.identity.x;
+            //grabbedObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+            Quaternion newRotation = Quaternion.Euler(0f, grabPoint.rotation.eulerAngles.y, 0f);
+            grabbedObject.transform.rotation = newRotation;
+            //rb.useGravity = false;
+            //movementScript.speed = (int)2.5;
+            grabbedObject.transform.position = grabPoint.position;
+
+        }
+        else
+        {
+            bc.isTrigger = false;
+            //rb.useGravity = true;
+            //movementScript.speed = (int)5;
+        }
+
+
+        //---------------------------------------------------------------------------------------------------------------
+        //if (Input.GetKeyDown(grabButton))
         //{
+        //    //anim.SetBool("Grabbing", true);
         //    RaycastHit hit;
-        //    Debug.Log("casting");
         //    if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
         //    {
-        //        Debug.Log("hit");
+
         //        grabbedObject = hit.collider.gameObject;
 
         //        bc = grabbedObject.GetComponent<BoxCollider>();
@@ -189,33 +222,12 @@ public class PlayerController : MonoBehaviour
 
         //    }
         //}
-        //if (grab && grabbedObject != null)
+
+        //if (Input.GetKeyUp(grabButton) && grabbedObject != null)
         //{
+        //    //anim.SetBool("Grabbing", false);
         //    grabbedObject = null;
         //}
-
-
-
-        if (Input.GetKeyDown(grabButton))
-        {
-            anim.SetBool("Grabbing", true);
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
-            {
-
-                grabbedObject = hit.collider.gameObject;
-
-                bc = grabbedObject.GetComponent<BoxCollider>();
-                rb = grabbedObject.GetComponent<Rigidbody>();
-
-            }
-        }
-
-        if (Input.GetKeyUp(grabButton) && grabbedObject != null)
-        {
-            anim.SetBool("Grabbing", false);
-            grabbedObject = null;
-        }
 
 
 
@@ -241,129 +253,6 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
-
-
-
-    
-
-    public void UpdateTo()
-    {
-        //playerController = FindObjectOfType<PlayerController>();
-        HandleInteractions();
-        //CheckIfPlayerDead();
-    }
-
-    public void GameInput_OnInteractAction(object sender, System.EventArgs e)
-    {
-
-
-        if (selectedMarker != null)
-        {
-            selectedMarker.Interact();
-        }
-
-        Vector2 inputVector = movementInput;
-
-        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-
-
-        if (moveDir != Vector3.zero)
-        {
-            lastInteractDir = moveDir;
-        }
-
-        float intercartDistace = 2f;
-        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, intercartDistace, markerLayerMask))
-        {
-            if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
-            {
-                marker.Interact();
-            }
-        }
-    }
-
-    private Vector3 lastInteractDir;
-
-    private void HandleInteractions()
-    {
-
-        if (inputE == true)
-        {
-            placeBomb = true;
-        }
-        else if (inputE == false) 
-        {
-            placeBomb = false;
-        }
-
-
-        Vector2 inputVector = movementInput;
-        Vector3 moveDirGround = new Vector3(inputVector.x, -1f, inputVector.y);
-        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-
-        float intercartDistace = 2f;
-
-        //Checks air
-        //if (moveDirGround != Vector3.zero)
-        //{
-        //    lastInteractDir = moveDir;
-        //}
-
-        //if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitAir, intercartDistace, markerLayerMask))
-        //{
-        //    if (raycastHitAir.transform.TryGetComponent(out MarkerInteract marker))
-        //    {
-        //        //marker.Interact();
-        //    }
-        //    if (raycastHitAir.transform.TryGetComponent(out Bomb bomb))
-        //    {
-        //        bomb.Interact();
-        //    }
-        //}
-
-        // Checks ground
-        if (moveDirGround != Vector3.zero)
-        {
-            lastInteractDir = moveDirGround;
-        }
-
-        Component component = transform;
-
-        if (Physics.Raycast(component.transform.position, moveDirGround, out RaycastHit raycastHit, intercartDistace))
-        {
-            if (placeBomb && raycastHit.transform.TryGetComponent(out MarkerInteract marker) )
-            {
-                // has marker
-                marker.Interact();
-            }
-            if (raycastHit.transform.TryGetComponent(out Bomb bomb))
-            {
-                // Has bomb
-                bomb.Interact();
-            }
-
-
-        }
-        else
-        {
-            //Debug.Log("-");
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -480,5 +369,5 @@ public class PlayerController : MonoBehaviour
     //        Debug.Log("-");
     //    }        
     //}
-
+   
 }
