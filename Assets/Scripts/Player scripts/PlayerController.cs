@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
+    
+    public bool HasFlag { get; set; } //picked up flag or not
+
 
 
 
