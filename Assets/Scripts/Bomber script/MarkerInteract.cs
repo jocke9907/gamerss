@@ -30,7 +30,7 @@ public class MarkerInteract : MonoBehaviour
     Vector2 inputVector = new Vector2(8f, 0f);
     float vectorZ = .1f;
     bool bomPlaced;
-    //bool canPlaceBomb = true;
+    public bool canPlaceBomb = true;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -47,10 +47,10 @@ public class MarkerInteract : MonoBehaviour
     //}
     public void Interact()
     {
-        //Debug.Log("Interact marker!");
-        //if (bomberInput.canPlaceBomb == true)
+        Debug.Log("Interact marker!");
+        //if (playerController.canPlaceBomb == true)
         //{
-        //    if(BomberManger.bombUppgrade >1)
+        //    if (bomberManger.bombUppgrade > 1)
         //    {
         //        Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
         //        bombTransform.localPosition = Vector3.zero;
@@ -65,8 +65,9 @@ public class MarkerInteract : MonoBehaviour
 
         //    targetTime = 4.0f;
         //    bomPlaced = true;
-        //    bomberInput.canPlaceBomb = false;
-        //}        
+        //    playerController.canPlaceBomb = false;
+        //}
+
         if (bomberManger.bombUppgrade > 4)
         {
             Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
@@ -80,16 +81,30 @@ public class MarkerInteract : MonoBehaviour
             targetTime = 4.0f;
         }
 
-        
+
 
         targetTime = 4.0f;
         bomPlaced = true;
-        bomberInput.canPlaceBomb = false;
+
+        canPlaceBomb = false;
+
+        //bomberInput.canPlaceBomb = false;
     }
 
     public void RandomBombs()
     {
-
+        if (bomberManger.bombUppgrade > 4)
+        {
+            Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
+            bombTransform.localPosition = Vector3.zero;
+            targetTime = 4.0f;
+        }
+        else
+        {
+            Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
+            bombTransform.localPosition = Vector3.zero;
+            targetTime = 4.0f;
+        }
     }
     //public void StrongBomb()
     //{
@@ -202,8 +217,10 @@ public class MarkerInteract : MonoBehaviour
         //Debug.Log(bomberInput.canPlaceBomb);
         if (bomPlaced)
         {
+            canPlaceBomb = false;
             //OnDrawGizmosSelected();
-            bomberInput.canPlaceBomb = false;
+            //----
+            //bomberInput.canPlaceBomb = false;
             targetTime -= Time.deltaTime;
         }
 
@@ -218,10 +235,10 @@ public class MarkerInteract : MonoBehaviour
         if ( bomPlaced && targetTime <= 0.0f)
         {
             timerEnded();
-            
+
             //Debug.Log("timer");
-            
-            bomberInput.canPlaceBomb = true;
+            canPlaceBomb = true;
+            //bomberInput.canPlaceBomb = true;
             bomPlaced = false;
         }
     }

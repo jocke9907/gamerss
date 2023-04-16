@@ -6,5 +6,8 @@ public class PlayerScore : MonoBehaviour
 {
     public int currentScore = 0;
     
-    
+    public void AddPoints(int pointsToAdd)
+    {
+        currentScore += pointsToAdd;
+    }
 }

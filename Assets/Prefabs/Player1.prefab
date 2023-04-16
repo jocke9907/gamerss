@@ -2744,7 +2744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407434147192847915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.92, z: 2}
+  m_LocalPosition: {x: 0, y: 0.87, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7731,7 +7731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5381741025298503160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.29, z: 0}
+  m_LocalPosition: {x: 0, y: 4.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7923,10 +7923,12 @@ MonoBehaviour:
   grab: 0
   maxGrabDistance: 1
   grabButton: 9
+  grabbedObject: {fileID: 0}
   grabPoint: {fileID: 8092368116886265394}
   movable:
     serializedVersion: 2
     m_Bits: 256
+  alreadyGrabbed: 0
 --- !u!65 &8464007729040168787
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomMap : MonoBehaviour
 {
     BomberManger bomberManger;
-    float targetTime3 = 15f;
+    float targetTime3 = 35f;
     private void Awake()
     {
        
@@ -23,7 +23,7 @@ public class RandomMap : MonoBehaviour
     {
         bomberManger = FindObjectOfType<BomberManger>();
         int randMap = Random.Range(1, 5);
-        //randMap = 2;
+        randMap = 2;
         if (randMap == 1)
         {
             Loader.PlatformGamePlaying = true;
