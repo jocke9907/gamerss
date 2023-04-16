@@ -18,14 +18,17 @@ public class ChangeMap : MonoBehaviour
     [SerializeField] bool pl2;
     [SerializeField] bool pl3;
     [SerializeField] bool pl4;
+   
 
     PlayerController playerController;
     BomberManger bomberManger;
+    Counter counter;
    
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
         bomberManger = FindObjectOfType<BomberManger>();
+        counter = FindObjectOfType<Counter>(); ;
     }
     public void Update()
     {
@@ -187,10 +190,14 @@ public class ChangeMap : MonoBehaviour
 
         if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {
-            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController) && !playerController.no)
             {
+                counter.numbr++;
                 Debug.Log("pl1");
                 playerController.playerOne = true;
+                playerController.no = true;
+
+
             }
         }
     }
@@ -201,10 +208,12 @@ public class ChangeMap : MonoBehaviour
 
         if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {
-            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController) && !playerController.no)
             {
+                counter.numbr++;
                 Debug.Log("pl2");
                 playerController.playerTwo = true;
+                playerController.no = true;
             }
         }
     }
@@ -215,10 +224,12 @@ public class ChangeMap : MonoBehaviour
 
         if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {
-            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController) && !playerController.no)
             {
+                counter.numbr++;
                 Debug.Log("pl3");
                 playerController.playerThree = true;
+                playerController.no = true;
             }
         }
     }
@@ -229,10 +240,12 @@ public class ChangeMap : MonoBehaviour
 
         if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {
-            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController) && !playerController.no)
             {
+                counter.numbr++;
                 Debug.Log("pl4");
                 playerController.playerFour = true;
+                playerController.no = true;
             }
         }
     }

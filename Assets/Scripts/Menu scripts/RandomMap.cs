@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomMap : MonoBehaviour
 {
     BomberManger bomberManger;
-    float targetTime3 = 15f;
+    float targetTime3 = 35f;
     private void Awake()
     {
        

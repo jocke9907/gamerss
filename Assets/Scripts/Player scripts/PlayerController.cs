@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool playerTwo;    
     public bool playerThree;
     public bool playerFour;
+    public bool no;
     public static PlayerController Instance { get; private set; }
     public static Component component { get; private set; }
 
@@ -165,9 +166,10 @@ public class PlayerController : MonoBehaviour
         if(Loader.wallClimberPlaying == true)
         {
             //wallClimberInput.UpdateWallClimberTo();
+            GrabObject();
         }
 
-        GrabObject();
+        //GrabObject();
     }
 
 //----------------------------------------SAM-----------------------------------------------------------------------
