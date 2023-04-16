@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MazeSpawnPoint : MonoBehaviour
+public class SpawnPost : MonoBehaviour
 {
-    public static Vector3 mazeSpawnPoint;
+    public static Vector3 spawnPointPost;
     bool hasSpawned = false;
     int waitForFrames = 3;
     int frameCounter;
     private void Awake()
     {
-        mazeSpawnPoint = transform.position;
-        Debug.Log("Maze spawn point set to " + mazeSpawnPoint);
+        spawnPointPost = transform.position;
 
     }
-    private void Start()
-    {
-       
-    }
-    private void Update()
+   
+    private void FixedUpdate()
     {
         if (hasSpawned)
         {
@@ -28,11 +24,9 @@ public class MazeSpawnPoint : MonoBehaviour
         if (frameCounter >= waitForFrames)
         {
             PlayerController[] players = FindObjectsOfType<PlayerController>();
-            Debug.Log("Found " + players.Length + " player objects in scene.");
             foreach (PlayerController player in players)
             {
-                player.gameObject.transform.position = mazeSpawnPoint;
-                Debug.Log("Set player object position to " + mazeSpawnPoint);
+                player.gameObject.transform.position = spawnPointPost;
             }
             hasSpawned = true;
         }

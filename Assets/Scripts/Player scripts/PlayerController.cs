@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool playerTwo;    
     public bool playerThree;
     public bool playerFour;
+    public bool no;
     public static PlayerController Instance { get; private set; }
     public static Component component { get; private set; }
 
@@ -134,20 +135,20 @@ public class PlayerController : MonoBehaviour
 
         if (move != Vector3.zero)
         {
-            //anim.SetBool("Running", true);
+            anim.SetBool("Running", true);
             gameObject.transform.forward = move;
         }
         else
-            //anim.SetBool("Running", false);
+            anim.SetBool("Running", false);
 
         // Changes the height position of the player..
         if (jumped && groundedPlayer)
         {
-            //anim.SetBool("Jumping", true);
+            anim.SetBool("Jumping", true);
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
         else
-            //anim.SetBool("Jumping", false);
+            anim.SetBool("Jumping", false);
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
