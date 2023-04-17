@@ -19,12 +19,13 @@ public class WinTrigger : MonoBehaviour
     List<GameObject> playersEnteredTrigger = new List<GameObject>();
 
     Dictionary<GameObject, int> playerPoints = new Dictionary<GameObject, int>();
-    PlayerScore playerScore;
+    //PlayerScore playerScore;
+    PlayerController playerController;
 
     private void Start()
     {
-        playerScore = GameObject.FindObjectOfType<PlayerScore>();
-        if (playerScore == null)
+        playerController = GameObject.FindObjectOfType<PlayerController>();
+        if (playerController == null)
         {
             Debug.LogError("Could not find PlayerScore component.");
         }
