@@ -42,6 +42,8 @@ public class Flag : MonoBehaviour
                 flagDropTime = Time.time;
                 isFlagPickedUp = false;
                 StartCoroutine(FlagRespawn());
+                player.FlagScore++;
+                Debug.Log(player.FlagScore);
             }
         }
     }

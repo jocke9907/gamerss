@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private PlayerController action;
     
     public bool HasFlag { get; set; } //picked up flag or not
-
+    public int FlagScore { get; set; }
 
 
 
