@@ -95,6 +95,10 @@ public class PlayerLevel : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         }
+        else
+        {
+            gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 }
 
