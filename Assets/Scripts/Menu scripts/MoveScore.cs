@@ -23,42 +23,75 @@ public class MoveScore : MonoBehaviour
 
     public void MoveBlock()
     {
-       
-        if (pl1)
+        PlayerController[] players = FindObjectsOfType<PlayerController>();
+        foreach (PlayerController player in players)
         {
-            if (playerController.playerOne)
+            if (pl1)
             {
-                height = playerController.totalScore;
+                height = players[0].totalScore;
                 y = -10.5f;
             }
-        }
-
-        if (pl2)
-        {
-            if (playerController.playerTwo)
+            if (pl2)
             {
-                height = playerController.totalScore;
-                y = -3.5f;
+                if (playerController.playerTwo)
+                {
+                    height = players[1].totalScore;
+                    y = -3.5f;
+                }
             }
-        }
-
-        if (pl3)
-        {
-            if (playerController.playerThree)
+            if (pl3 )
             {
-                height = playerController.totalScore;
-                y = 3.5f;
+                if (playerController.playerThree)
+                {
+                    height = players[1].totalScore;
+                    y = 3.5f;
+                }
             }
-        }
-
-        if (pl4)
-        {
-            if (playerController.playerFour)
+            if (pl4)
             {
-                height = playerController.totalScore;
-                y = 10.5f;
+                if (playerController.playerFour)
+                {
+                    height = players[1].totalScore;
+                    y = 10.5f;
+                }
             }
+
         }
+        //if (pl1)
+        //{
+        //    if (playerController.playerOne)
+        //    {
+        //        height = playerController.totalScore;
+        //        y = -10.5f;
+        //    }
+        //}
+
+        //if (pl2)
+        //{
+        //    if (playerController.playerTwo)
+        //    {
+        //        height = playerController.totalScore;
+        //        y = -3.5f;
+        //    }
+        //}
+
+        //if (pl3)
+        //{
+        //    if (playerController.playerThree)
+        //    {
+        //        height = playerController.totalScore;
+        //        y = 3.5f;
+        //    }
+        //}
+
+        //if (pl4)
+        //{
+        //    if (playerController.playerFour)
+        //    {
+        //        height = playerController.totalScore;
+        //        y = 10.5f;
+        //    }
+        //}
 
         //playerScore.currentScore = height;
 

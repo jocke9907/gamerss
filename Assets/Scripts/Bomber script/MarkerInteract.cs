@@ -148,7 +148,7 @@ public class MarkerInteract : MonoBehaviour
         }
         if (Physics.Raycast(transform.position, explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {           
-            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController1))
             {
                 
                 //playerController.transform.position = new Vector3(0,40,0);
@@ -158,13 +158,21 @@ public class MarkerInteract : MonoBehaviour
                 //bomberManger.playerCountBomber ;
                 bomberManger.redusePlayers = true;
                 bomberManger.bomberPoints += 1;
-               
-                bomberManger.PlayerCounter();
+                playerController1.totalScore += bomberManger.bomberPoints;
+                //bomberManger.playerCountBomber--;
+                //if (playerDead && scoreGiven == false)
+                //{
+                //    Debug.Log("score given");
+                //    playerScore.currentScore = playerScore.currentScore + bomberManger.bomberPoints;
+                //    playerController.totalScore += bomberManger.bomberPoints;
+                //    scoreGiven = true;
+                //}
+                //bomberManger.PlayerCounter();
                 
                 //if (!bomberInput.veryDead )
                 //{
                 //    //playerController.transform.position = reset;
-                //    bomberManger.playerCountBomber--;
+                //    
                 //    bomberManger.bomberPoints += 1;
                 //    Debug.Log(bomberManger.playerCountBomber);
                 //    bomberManger.PlayerCounter();

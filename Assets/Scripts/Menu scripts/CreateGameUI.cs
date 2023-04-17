@@ -58,7 +58,7 @@ public class CreateGameUI : MonoBehaviour
 
         twoPlayer = true;
 
-        bomberManger.playerCountBomber = 1;
+        bomberManger.playerCountBomber += 1;
         KillerBox.playercounter = 4;
         Loader.Load(Loader.Scene.Lobby);
     }

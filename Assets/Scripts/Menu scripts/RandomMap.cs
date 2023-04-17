@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomMap : MonoBehaviour
 {
     BomberManger bomberManger;
-    float targetTime3 = 35f;
+    float targetTime3 = 5f;
     private void Awake()
     {
        
@@ -31,6 +31,7 @@ public class RandomMap : MonoBehaviour
         }
         else if (randMap == 2)
         {
+            bomberManger.GameStart();
             if (CreateGameUI.onePlayer == true)
             {
                 bomberManger.playerCountBomber = 1;
