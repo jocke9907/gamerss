@@ -13,6 +13,13 @@ public class RotateCamera : MonoBehaviour
     {
         startRotation = transform.rotation;
         targetRotation = startRotation * Quaternion.Euler(0, 0, 90);
+        
+        StartCoroutine(DelayedRotation());
+    }
+
+    IEnumerator DelayedRotation()
+    {
+        yield return new WaitForSeconds(1.0f);
         StartCoroutine(RotateEveryFiveSeconds());
     }
 
@@ -21,9 +28,9 @@ public class RotateCamera : MonoBehaviour
         while (true)
         {
             float elapsedTime = 0.0f;
-            while (elapsedTime < 5.0f)
+            while (elapsedTime < 3.0f)
             {
-                transform.rotation = Quaternion.Lerp(startRotation, targetRotation, elapsedTime / 5.0f);
+                transform.rotation = Quaternion.Lerp(startRotation, targetRotation, elapsedTime / 3.0f);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
@@ -31,7 +38,7 @@ public class RotateCamera : MonoBehaviour
             startRotation = targetRotation;
 
             // Pause for five seconds
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(2.0f);
 
             // Set the new target rotation
             targetRotation *= Quaternion.Euler(0, 0, 90);

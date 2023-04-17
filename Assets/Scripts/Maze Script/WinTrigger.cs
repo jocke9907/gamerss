@@ -59,7 +59,7 @@ public class WinTrigger : MonoBehaviour
             }
 
             // Count the number of players in the scene
-            int numOfPlayers = FindObjectsOfType<PlayerChooser>().Length;
+            int numOfPlayers = FindObjectsOfType<PlayerController>().Length;
 
             // Check if all players have entered the trigger
             if (playersEnteredTrigger.Count == numOfPlayers)
