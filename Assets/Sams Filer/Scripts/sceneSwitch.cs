@@ -18,6 +18,7 @@ public class sceneSwitch : MonoBehaviour
             {
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 //SceneManager.LoadScene("PostLobby");
+                Loader.Load(Loader.Scene.PostLobby);
             }
             
         }

@@ -23,8 +23,8 @@ public class RandomMap : MonoBehaviour
     {
         Loader.TheMazePlaying = false;
         bomberManger = FindObjectOfType<BomberManger>();
-        int randMap = Random.Range(1, 3);
-        randMap = 3;
+        int randMap = Random.Range(1, 6);
+        randMap = 5;
         if (randMap == 1)
         {
             Loader.PlatformGamePlaying = true;
