@@ -13,7 +13,7 @@ public class PlayerLevel : MonoBehaviour
     public bool playerDead;
     public bool scoreGiven;
     BomberManger bomberManger;
-    bool alive = true;
+    [SerializeField] bool alive = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -27,16 +27,9 @@ public class PlayerLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //Ground is falling
         OnGroundIsFalling();
         OnBomber();
-
-        if (Loader.TheMazePlaying == true && alive)
-        {
-            gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-        }
-
+        OnMaze();
     }
 
     private void OnGroundIsFalling()
@@ -73,7 +66,7 @@ public class PlayerLevel : MonoBehaviour
         //Ground is falling
         if (Loader.PlatformGamePlaying == true && other.CompareTag("Killbox"))
         {
-            playerScore.currentScore = playerScore.currentScore + KillerBox.points;
+            playerController.totalScore = playerController.totalScore + KillerBox.points;
             Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
             alive = false;
         }
@@ -93,6 +86,14 @@ public class PlayerLevel : MonoBehaviour
             playerScore.currentScore = playerScore.currentScore + bomberManger.bomberPoints;
             playerController.totalScore += bomberManger.bomberPoints;
             scoreGiven = true;
+        }
+    }
+
+    private void OnMaze()
+    {
+        if (Loader.TheMazePlaying == true && alive)
+        {
+            gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         }
     }
 }

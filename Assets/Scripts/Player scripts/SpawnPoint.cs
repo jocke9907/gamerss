@@ -6,10 +6,11 @@ public class SpawnPoint : MonoBehaviour
 {
     public bool gameStarted = false;
     int collisionCount = 0;
+    [SerializeField] BoxCollider collider;
     // Start is called before the first frame update
     void Start()
     {
-
+        collider.enabled = false;
     }
 
     // Update is called once per frame
@@ -17,7 +18,10 @@ public class SpawnPoint : MonoBehaviour
     {
         //Debug.Log("Current Count"+collisionCount);
         if(gameStarted == true)
+        {
         Debug.Log("Game has started");
+        collider.enabled = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

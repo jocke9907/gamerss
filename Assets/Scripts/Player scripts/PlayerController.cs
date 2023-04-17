@@ -175,7 +175,16 @@ public class PlayerController : MonoBehaviour
         //GrabObject();
     }
 
-//----------------------------------------SAM-----------------------------------------------------------------------
+    private void FixedUpdate()
+    {
+        //Bara respawn ifall man ramlar utanför
+        if(transform.position.y <= -40)
+        {
+            transform.position = new Vector3(0,3,0);
+        }
+    }
+
+    //----------------------------------------SAM-----------------------------------------------------------------------
     private void GrabObject()
     {
         if (grab)
