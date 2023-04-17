@@ -171,10 +171,10 @@ public class PlayerController : MonoBehaviour
         if(Loader.wallClimberPlaying == true)
         {
             //wallClimberInput.UpdateWallClimberTo();
-            GrabObject();
+            //GrabObject();
         }
 
-        //GrabObject();
+        
     }
 
     private void FixedUpdate()
