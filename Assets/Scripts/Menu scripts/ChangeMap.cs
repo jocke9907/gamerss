@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class ChangeMap : MonoBehaviour
 {
@@ -21,11 +22,12 @@ public class ChangeMap : MonoBehaviour
 
     PlayerController playerController;
     BomberManger bomberManger;
-   
+    Counter counter;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
         bomberManger = FindObjectOfType<BomberManger>();
+        counter = FindObjectOfType<Counter>();
     }
     public void Update()
     {
@@ -185,13 +187,15 @@ public class ChangeMap : MonoBehaviour
         float maxDistans = 12f;
         Vector3 dir = new Vector3(0, 1f, 0);
 
-        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer) )
         {
-            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController) && !playerController.no)
             {
                 Debug.Log("pl1");
                 playerController.playerOne = true;
                 playerController.gameObject.name = "Player1";
+                playerController.no = true;
+                counter.numbr++;
             }
         }
     }
@@ -200,13 +204,15 @@ public class ChangeMap : MonoBehaviour
         float maxDistans = 12f;
         Vector3 dir = new Vector3(0, 1f, 0);
 
-        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer) )
         {
-            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController) && !playerController.no)
             {
                 Debug.Log("pl2");
                 playerController.playerTwo = true;
                 playerController.gameObject.name = "Player2";
+                playerController.no = true;
+                counter.numbr++;
             }
         }
     }
@@ -215,13 +221,15 @@ public class ChangeMap : MonoBehaviour
         float maxDistans = 12f;
         Vector3 dir = new Vector3(0, 1f, 0);
 
-        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer) )
         {
-            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController) && !playerController.no)
             {
                 Debug.Log("pl3");
                 playerController.playerThree = true;
                 playerController.gameObject.name = "Player3";
+                playerController.no = true;
+                counter.numbr++;
             }
         }
     }
@@ -230,13 +238,15 @@ public class ChangeMap : MonoBehaviour
         float maxDistans = 12f;
         Vector3 dir = new Vector3(0, 1f, 0);
 
-        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        if (Physics.Raycast(transform.position, dir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer) )
         {
-            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController) && !playerController.no)
             {
                 Debug.Log("pl4");
                 playerController.playerFour = true;
                 playerController.gameObject.name = "Player4";
+                playerController.no = true;
+                counter.numbr++;
             }
         }
     }
