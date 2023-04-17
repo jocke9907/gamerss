@@ -106,6 +106,11 @@ public class PlayerController : MonoBehaviour
         //gameInput.OnInteractAction += bomberInput.GameInput_OnInteractAction;
     }
 
+    public void AddPoints(int pointsToAdd)
+    {
+        totalScore += pointsToAdd;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();

@@ -45,8 +45,8 @@ public class WinTrigger : MonoBehaviour
         if (other.CompareTag("Player") && !playerPoints.ContainsKey(other.gameObject))
         {
             int pointsToAdd = CalculatePoints();
-            PlayerScore playerScore = other.gameObject.GetComponent<PlayerScore>();
-            playerScore.AddPoints(pointsToAdd);
+            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            playerController.AddPoints(pointsToAdd);
             playerPoints.Add(other.gameObject, pointsToAdd);
 
 
