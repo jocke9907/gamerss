@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         //HandleInteractions();
         //bomberInput.UpdateTo();
 
-        if(Loader.bomberGamePlaying == true) 
+        if (Loader.bomberGamePlaying == true) 
         { 
              UpdateTo();
             
