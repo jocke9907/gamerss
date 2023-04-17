@@ -26,7 +26,7 @@ public class Flag : MonoBehaviour
                 player.HasFlag = true;
                 playerWithFlag = other.gameObject;
                 transform.parent = other.transform;
-                transform.localPosition = new Vector3(0, 1f, -0.40f);
+                transform.localPosition = new Vector3(0, 1f, -0.40f); //where the flag ends up on the back
                 isFlagPickedUp = true;
             }
         }
@@ -38,7 +38,7 @@ public class Flag : MonoBehaviour
                 player.HasFlag = false;
                 transform.parent = null;
                 transform.position = other.transform.position;
-                transform.localPosition = new Vector3(100, 0, 0);
+                transform.localPosition = new Vector3(100, 0, 0); //sends the flag away so it looks like it dissapears 
                 flagDropTime = Time.time;
                 isFlagPickedUp = false;
                 StartCoroutine(FlagRespawn());
