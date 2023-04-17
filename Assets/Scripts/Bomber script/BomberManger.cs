@@ -11,7 +11,7 @@ public class BomberManger : MonoBehaviour
     public  int bombUppgrade = 0;
 
   
-    public  bool ch;
+    public  bool playerCount;
     public  bool changeGame;
     PlayerController playerController;
     PlayerLevel playerLevel;
@@ -26,15 +26,22 @@ public class BomberManger : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         playerLevel = FindObjectOfType<PlayerLevel>();
+        //playerCountBomber--;
+    }
+
+    public void GameStart()
+    {
+        playerCount = false;
+        //redusePlayers = false;
     }
     public void PlayerCounter()
     {
         //trd = new Thread(ThreadS);
 
-        Debug.Log(ch);
-        if (playerCountBomber == 0)
+        Debug.Log(playerCount);
+        if (playerCountBomber <= 0)
         {
-            ch = true;
+            playerCount = true;
 
             playerLevel = FindObjectOfType<PlayerLevel>();
 
@@ -47,6 +54,7 @@ public class BomberManger : MonoBehaviour
     }
     void Update()
     {
+        PlayerCounter();
 
         if (redusePlayers)
         {
@@ -64,18 +72,18 @@ public class BomberManger : MonoBehaviour
         //    //bomberScript.Winner();
         //    targetTime2 -= Time.deltaTime;
         //}
-        if(ch)
+        if(playerCount && Loader.bomberGamePlaying)
         {
             targetTime2 -= Time.deltaTime;
             //bomberScript.Winner();
         }
         
-        if (targetTime2 <= 0.0f)
+        if (targetTime2 <= 0f  )
         {
             //playerController.transform.position = new Vector3(0, 40, 0);
             Loader.bomberGamePlaying = false;
-            ch = false;
-            playerLevel.playerDead = true;
+            playerCount = false;
+            ////playerLevel.playerDead = true;
             bombUppgrade = 0;
             
             Loader.Load(Loader.Scene.PostLobby);

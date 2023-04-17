@@ -10,6 +10,7 @@ public class SpawnPlay : MonoBehaviour
     int frameCounter;
   
     PlayerController playerController;
+    BomberManger bomberManger;
     Vector3 spawn1 = new Vector3(16, 12, 16);
     Vector3 spawn2 = new Vector3(16, 12, -16);
     Vector3 spawn3 = new Vector3(-16, 12, 16);
@@ -19,18 +20,21 @@ public class SpawnPlay : MonoBehaviour
     {
         spawn = transform.position;
         playerController = FindObjectOfType<PlayerController>();
+        //bomberManger = FindObjectOfType<BomberManger>();
 
     }
-    private void Start()
-    {
-
-    }
+    //private void Start()
+    //{
+    //    bomberManger.GameStart();
+    //}
     private void FixedUpdate()
     {
+        
         if (hasSpawned)
         {
             return;
         }
+        
         frameCounter++;
         if (frameCounter >= waitForFrames)
         {
