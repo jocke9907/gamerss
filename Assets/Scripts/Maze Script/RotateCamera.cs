@@ -38,7 +38,7 @@ public class RotateCamera : MonoBehaviour
             startRotation = targetRotation;
 
             // Pause for five seconds
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(1.0f);
 
             // Set the new target rotation
             targetRotation *= Quaternion.Euler(0, 0, 90);

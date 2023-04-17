@@ -16,9 +16,6 @@ public class WinTrigger : MonoBehaviour
 
     public static int points;
 
-    //public int numOfPlayers = 4;
-    //int playerEnteredTrigger = 0;
-
     List<GameObject> playersEnteredTrigger = new List<GameObject>();
 
     Dictionary<GameObject, int> playerPoints = new Dictionary<GameObject, int>();
@@ -67,7 +64,6 @@ public class WinTrigger : MonoBehaviour
                 SceneManager.LoadScene(7);
             }
 
-            //playerEnteredTrigger++;
         }
     }
 
@@ -96,75 +92,6 @@ public class WinTrigger : MonoBehaviour
 
         return points;
     }
-
-    //public float timer = 63f;
-    //public string loadScene;
-    //public static int points = 0;
-
-    //public bool isFinnished = false;
-
-    //public int numOfPlayers = 4;
-    //int playerEnteredTrigger = 0;
-
-    //PlayerScore playerScore;
-
-    //Dictionary<GameObject, int> playerScores = new Dictionary<GameObject, int>();
-
-    //void Start()
-    //{
-    //    playerScore = FindObjectOfType<PlayerScore>();
-    //}
-
-    //private void Update()
-    //{
-    //    timer -= Time.deltaTime;
-    //    if (playerEnteredTrigger == numOfPlayers || timer <= 0)
-    //    {
-    //        SceneManager.LoadScene(5);
-    //    }
-    //}
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-
-    //        GameObject player = other.gameObject;
-
-    //        if (!playerScores.ContainsKey(player))
-    //        {
-    //            int scoreValue = 0;
-
-    //            switch (playerScores.Count)
-    //            {
-    //                case 0:
-    //                    scoreValue += 50;
-    //                    break;
-
-    //                case 1:
-    //                    scoreValue += 30;
-    //                    break;
-
-    //                case 2:
-    //                    scoreValue += 20;
-    //                    break;
-
-    //                case 3:
-    //                    scoreValue += 10;
-    //                    break;
-    //            }
-
-    //            playerScores[player] = scoreValue;
-    //        }
-
-    //        playerScore.currentScore = playerScores[player];
-    //        playerEnteredTrigger ++;
-
-    //        other.GetComponent<PlayerScore>();
-    //        //playerScore.currentScore += 50;
-
-    //    }
-    // }
 
 }
 
