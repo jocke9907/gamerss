@@ -16,7 +16,7 @@ public class objectGrabber : MonoBehaviour
     //public movementPilar movementScript;
     public Transform grabPoint;
     public LayerMask movable;
-    BoxCollider bc;
+    BoxCollider bc = null;
     Rigidbody rb;
     float test;
 
