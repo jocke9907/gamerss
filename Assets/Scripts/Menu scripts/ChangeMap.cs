@@ -191,6 +191,7 @@ public class ChangeMap : MonoBehaviour
             {
                 Debug.Log("pl1");
                 playerController.playerOne = true;
+                playerController.gameObject.name = "Player1";
             }
         }
     }
@@ -205,6 +206,7 @@ public class ChangeMap : MonoBehaviour
             {
                 Debug.Log("pl2");
                 playerController.playerTwo = true;
+                playerController.gameObject.name = "Player2";
             }
         }
     }
@@ -219,6 +221,7 @@ public class ChangeMap : MonoBehaviour
             {
                 Debug.Log("pl3");
                 playerController.playerThree = true;
+                playerController.gameObject.name = "Player3";
             }
         }
     }
@@ -233,6 +236,7 @@ public class ChangeMap : MonoBehaviour
             {
                 Debug.Log("pl4");
                 playerController.playerFour = true;
+                playerController.gameObject.name = "Player4";
             }
         }
     }

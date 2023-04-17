@@ -10,14 +10,14 @@ public class CreateGameUI : MonoBehaviour
     public static bool threePlayer;
     public static bool fourPlayer;
     BomberManger bomberManger;
-    nrPlayers playerSelection;
+    nrPlayers _nrPlayers;
 
 
     
     public void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
-        playerSelection= FindObjectOfType<nrPlayers>(); //Sam
+        _nrPlayers= FindObjectOfType<nrPlayers>(); //Sam
     }
     public void ChangeSceneBomber()
     {      
@@ -37,7 +37,11 @@ public class CreateGameUI : MonoBehaviour
 
     public void OnePlayer()
     {
-        playerSelection.playerCount = 1; //Sam
+        
+        _nrPlayers.playerCount = 1; //Sam
+        _nrPlayers.UpdatePlayerCount();
+
+
         onePlayer = true;
         
         bomberManger.playerCountBomber = 1;
@@ -49,6 +53,9 @@ public class CreateGameUI : MonoBehaviour
     }
     public void TwoPlayer()
     {
+        _nrPlayers.playerCount = 2; //Sam
+        _nrPlayers.UpdatePlayerCount();
+
         twoPlayer = true;
 
         bomberManger.playerCountBomber = 1;
@@ -57,6 +64,9 @@ public class CreateGameUI : MonoBehaviour
     }
     public void ThreePlayer()
     {
+
+        _nrPlayers.playerCount = 3; //Sam
+        _nrPlayers.UpdatePlayerCount();
         threePlayer = true;
 
         bomberManger.playerCountBomber = 2;
@@ -65,6 +75,8 @@ public class CreateGameUI : MonoBehaviour
     }
     public void FourPlayer()
     {
+        _nrPlayers.playerCount = 4; //Sam
+        _nrPlayers.UpdatePlayerCount();
         fourPlayer = true;
 
         bomberManger.playerCountBomber = 3;

@@ -23,16 +23,16 @@ public class scoreSystem1 : MonoBehaviour
 
     private void Start()
     {
-
-        player1 = GameObject.Find("Player1(Clone)");
-        player2 = GameObject.Find("Player1(Clone)");
-        //player3 = GameObject.Find("Player1(Clone)2");
-        //player4 = GameObject.Find("Player1(Clone)3");
+        numberPlayers = (NumberPlayers)FindObjectOfType<nrPlayers>().playerCount-1; //sätter värden på enum med int
+        player1 = GameObject.Find("Player1");
+        player2 = GameObject.Find("Player2");
+        player3 = GameObject.Find("Player3");
+        player4 = GameObject.Find("Player4");
 
         players[0] = player1;
         players[1] = player2;
-        //players[2] = player3;
-        //players[3] = player4;
+        players[2] = player3;
+        players[3] = player4;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -73,6 +73,10 @@ public class scoreSystem1 : MonoBehaviour
                 {
                     foreach (GameObject player in players)
                     {
+                        if (!player)
+                        {
+                            continue; //går till nästa objekt i foreach loopen.
+                        }
                         if (player.CompareTag("Player") && player.GetComponent<PlayerController>().finished == false)
                         {
                             player.GetComponent<PlayerController>().finished = true;
@@ -108,6 +112,10 @@ public class scoreSystem1 : MonoBehaviour
                 {
                     foreach (GameObject player in players)
                     {
+                        if (!player)
+                        {
+                            continue; //går till nästa objekt i foreach loopen.
+                        }
                         if (player.GetComponent<PlayerController>().finished == false)
                         {
                             player.GetComponent<PlayerController>().finished = true;
@@ -146,6 +154,10 @@ public class scoreSystem1 : MonoBehaviour
                 {
                     foreach (GameObject player in players)
                     {
+                        if (!player)
+                        {
+                            continue; //går till nästa objekt i foreach loopen.
+                        }
                         if (player.GetComponent<PlayerController>().finished == false)
                         {
                             player.GetComponent<PlayerController>().finished = true;
