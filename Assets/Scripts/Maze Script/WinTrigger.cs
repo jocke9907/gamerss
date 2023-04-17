@@ -35,6 +35,7 @@ public class WinTrigger : MonoBehaviour
         timer -= Time.deltaTime;
         if (/*playersEnteredTrigger.Count == numOfPlayers ||*/ timer <= 0)
         {
+            Loader.TheMazePlaying = false;
             SceneManager.LoadScene(7);
         }
     }
@@ -61,7 +62,9 @@ public class WinTrigger : MonoBehaviour
             // Check if all players have entered the trigger
             if (playersEnteredTrigger.Count == numOfPlayers)
             {
+                Loader.TheMazePlaying = false;
                 SceneManager.LoadScene(7);
+
             }
 
         }
@@ -75,19 +78,19 @@ public class WinTrigger : MonoBehaviour
 
         if (playersEntered == 0)
         {
-            points += 50;
+            points += 4;
         }
         else if (playersEntered == 1)
         {
-            points += 30;
+            points += 3;
         }
         else if (playersEntered == 2)
         {
-            points += 20;
+            points += 2;
         }
         else if (playersEntered == 3)
         {
-            points += 10;
+            points += 1;
         }
 
         return points;

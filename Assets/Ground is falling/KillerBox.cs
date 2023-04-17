@@ -21,7 +21,7 @@ public class KillerBox : MonoBehaviour
         if(playercounter <= 0)
         {
             Loader.PlatformGamePlaying = false;
-            Loader.Load(Loader.Scene.Lobby);
+            Loader.Load(Loader.Scene.PostLobby);
             
         }
         

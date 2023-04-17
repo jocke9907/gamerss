@@ -8,7 +8,7 @@ public class RandomMap : MonoBehaviour
     float targetTime3 = 5f;
     private void Awake()
     {
-       
+        
     }
     void Update()
     {
@@ -21,9 +21,10 @@ public class RandomMap : MonoBehaviour
     }
     void ChangeMaps()
     {
+        Loader.TheMazePlaying = false;
         bomberManger = FindObjectOfType<BomberManger>();
-        int randMap = Random.Range(1, 5);
-        randMap = 2;
+        int randMap = Random.Range(1, 3);
+        randMap = 3;
         if (randMap == 1)
         {
             Loader.PlatformGamePlaying = true;
@@ -51,11 +52,11 @@ public class RandomMap : MonoBehaviour
             Loader.bomberGamePlaying = true;
             Loader.Load(Loader.Scene.BomberGame);
         }
-        else if (randMap == 3)
+        else if (randMap == 4)
         {
             Loader.Load(Loader.Scene.CaptureTheFlag);
         }
-        else if (randMap == 4)
+        else if (randMap == 3)
         {
             Loader.TheMazePlaying = true;
             Loader.wallClimberPlaying = false;
