@@ -39,7 +39,7 @@ public class MoveScore : MonoBehaviour
                     y = -3.5f;
                 }
             }
-            if (pl3)
+            if (pl3 )
             {
                 if (playerController.playerThree)
                 {

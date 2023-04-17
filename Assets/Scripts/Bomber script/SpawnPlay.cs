@@ -20,7 +20,7 @@ public class SpawnPlay : MonoBehaviour
     {
         spawn = transform.position;
         playerController = FindObjectOfType<PlayerController>();
-        //bomberManger = FindObjectOfType<BomberManger>();
+        bomberManger = FindObjectOfType<BomberManger>();
 
     }
     //private void Start()
@@ -43,17 +43,38 @@ public class SpawnPlay : MonoBehaviour
 
             //int[] array1 = new int[5];
 
-
-            foreach (PlayerController player in players)
+            if (bomberManger.playerCountBomber == 2)
             {
-                players[0].gameObject.transform.position = spawn1;
-
-                players[1].gameObject.transform.position = spawn2;
-                players[1].gameObject.transform.position = spawn3;
-                players[1].gameObject.transform.position = spawn4;
-
-
+                foreach (PlayerController player in players)
+                {
+                    players[0].gameObject.transform.position = spawn1;
+                    players[1].gameObject.transform.position = spawn2;
+                    players[2].gameObject.transform.position = spawn3;
+                    //players[1].gameObject.transform.position = spawn4;
+                }
             }
+            else if(bomberManger.playerCountBomber == 3)
+            {
+                foreach (PlayerController player in players)
+                {
+                    players[0].gameObject.transform.position = spawn1;
+                    players[1].gameObject.transform.position = spawn2;
+                    players[2].gameObject.transform.position = spawn3;
+                    players[3].gameObject.transform.position = spawn4;
+                }
+            }
+            else if (bomberManger.playerCountBomber == 1)
+            {
+                foreach (PlayerController player in players)
+                {
+                    players[0].gameObject.transform.position = spawn1;
+                    players[1].gameObject.transform.position = spawn2;
+                    //players[1].gameObject.transform.position = spawn3;
+                    //players[1].gameObject.transform.position = spawn4;
+                }
+            }
+
+            
 
             
             hasSpawned = true;
