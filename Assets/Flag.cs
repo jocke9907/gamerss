@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Flag : MonoBehaviour
@@ -10,6 +11,8 @@ public class Flag : MonoBehaviour
     private float flagDropTime;
     private GameObject playerWithFlag;
     private bool isFlagPickedUp;
+    Dictionary<PlayerController, int> flagsCount = new Dictionary<PlayerController, int>();
+    
 
     void Start()
     {
@@ -28,6 +31,14 @@ public class Flag : MonoBehaviour
                 transform.parent = other.transform;
                 transform.localPosition = new Vector3(0, 1f, -0.40f); //where the flag ends up on the back
                 isFlagPickedUp = true;
+                if(flagsCount.ContainsKey(player))
+                {
+                    flagsCount[player]++;
+                }
+                else
+                {
+                    flagsCount[player] = 0;
+                }
             }
         }
         else if (isFlagPickedUp && other.CompareTag("FlagDropZone"))
@@ -42,8 +53,12 @@ public class Flag : MonoBehaviour
                 flagDropTime = Time.time;
                 isFlagPickedUp = false;
                 StartCoroutine(FlagRespawn());
+                player.FlagScore++;
+                Debug.Log(player.FlagScore);
             }
         }
+        
+        
     }
 
     private IEnumerator FlagRespawn()
@@ -61,4 +76,5 @@ public class Flag : MonoBehaviour
     {
         return Time.time > flagDropTime + flagRespawnTime;
     }
+    
 }
