@@ -15,6 +15,7 @@ public class Ground : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("collided with"+other.name);
         if (other.CompareTag("Player"))
         {
             other.transform.position = new Vector3(0, 40, 0);

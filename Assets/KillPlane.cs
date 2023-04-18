@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class KillPlane : MonoBehaviour
 {
-    PlayerController playerController;
-    public void Awake()
-    {
-
-        playerController = FindObjectOfType<PlayerController>();
-        
-
-    }
-
+    public Transform teleportTarget;
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("Player"))
         {
-            other.transform.position = new Vector3(-14, -13, -5);
+            other.transform.position = teleportTarget.position;
            
 
         }
 
-
+        Debug.Log("Collided with" + other.name);
     }
 }

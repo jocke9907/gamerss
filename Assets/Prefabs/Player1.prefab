@@ -7911,6 +7911,7 @@ MonoBehaviour:
   playerTwo: 0
   playerThree: 0
   playerFour: 0
+  no: 0
   gameInput: {fileID: 0}
   markerLayerMask:
     serializedVersion: 2
@@ -7929,6 +7930,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   alreadyGrabbed: 0
+  dropLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  placeBomb: 0
+  canPlaceBomb: 1
+  veryDead: 0
 --- !u!65 &8464007729040168787
 BoxCollider:
   m_ObjectHideFlags: 0
