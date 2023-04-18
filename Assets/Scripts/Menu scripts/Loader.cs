@@ -11,6 +11,7 @@ public static class Loader
     public static bool bomberGamePlaying;
     public static bool TheMazePlaying;
     public static bool wallClimberPlaying;
+    public static bool captureTheFlagPlaying;
     public enum Scene
     {
         Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze, SamScen, PostLobby

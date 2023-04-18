@@ -141,6 +141,7 @@ public class ChangeMap : MonoBehaviour
             {
                 
                 Loader.Load(Loader.Scene.CaptureTheFlag);
+                Loader.captureTheFlagPlaying= true;
 
             }
 

@@ -38,6 +38,10 @@ public class PlayerLevel : MonoBehaviour
         }
 
     }
+    private void FixedUpdate()
+    {
+        onCaptureTheFlag();
+    }
 
     private void OnGroundIsFalling()
     {
@@ -77,6 +81,10 @@ public class PlayerLevel : MonoBehaviour
             Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
             alive = false;
         }
+        if(Loader.captureTheFlagPlaying == true && other.CompareTag("Killbox"))
+        {
+            alive = false;
+        }
 
 
     }
@@ -93,6 +101,14 @@ public class PlayerLevel : MonoBehaviour
             playerScore.currentScore = playerScore.currentScore + bomberManger.bomberPoints;
             playerController.totalScore += bomberManger.bomberPoints;
             scoreGiven = true;
+        }
+    }
+    public void onCaptureTheFlag()
+    {
+        if(!alive)
+        {
+            transform.position=new Vector3(-8, 12, -23);
+            alive = true;
         }
     }
 }

@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93070391}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 342db525dacf7864282f7d248d8f67e4, type: 3}
   m_Name: 
@@ -13456,7 +13456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f244c437731014842904e6195f45d2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 1
+  timer: 60
 --- !u!4 &1501851789
 Transform:
   m_ObjectHideFlags: 0
@@ -13482,10 +13482,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1504772248}
   - component: {fileID: 1504772250}
-  - component: {fileID: 1504772249}
   m_Layer: 0
   m_Name: plane
-  m_TagString: Untagged
+  m_TagString: Killbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13505,19 +13504,6 @@ Transform:
   m_Father: {fileID: 2024168371}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1504772249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504772247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01a10e5bda6a94f4cad24f6e62cc485c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportTarget: {fileID: 1191671711}
 --- !u!65 &1504772250
 BoxCollider:
   m_ObjectHideFlags: 0

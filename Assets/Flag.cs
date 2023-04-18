@@ -34,6 +34,7 @@ public class Flag : MonoBehaviour
                 if(flagsCount.ContainsKey(player))
                 {
                     flagsCount[player]++;
+                    Debug.Log(flagsCount);
                 }
                 else
                 {
@@ -60,6 +61,11 @@ public class Flag : MonoBehaviour
         
         
     }
+    public void AssignScore()
+    {
+        //var sortedPlayers=
+    }
+
 
     private IEnumerator FlagRespawn()
     {
