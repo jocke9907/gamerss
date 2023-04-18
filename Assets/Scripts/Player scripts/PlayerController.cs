@@ -175,12 +175,17 @@ public class PlayerController : MonoBehaviour
         //HandleInteractions();
         //bomberInput.UpdateTo();
 
-        if (Loader.bomberGamePlaying == true) 
-        { 
-             UpdateTo();
-            
+        if (Loader.bomberGamePlaying == true)
+        {
+            UpdateTo();
+            GetComponent<BoxCollider>().enabled = true;
+
         }
-        if(Loader.wallClimberPlaying == true)
+        else
+        {
+            GetComponent<BoxCollider>().enabled = false;
+        }
+        if (Loader.wallClimberPlaying == true)
         {
             //wallClimberInput.UpdateWallClimberTo();
             GrabObject();
