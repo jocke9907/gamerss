@@ -277,23 +277,23 @@ public class MarkerInteract : MonoBehaviour
         inputVector = new Vector2(0f, -8f);
         Explode();
         
-        inputVector = new Vector2(7f, 1f);
-        Explode();
-        inputVector = new Vector2(1f, 7f);
-        Explode();
-        inputVector = new Vector2(-7f, -1f);
-        Explode();
-        inputVector = new Vector2(-1f, -7f);
-        Explode();
+        //inputVector = new Vector2(7f, 1f);
+        //Explode();
+        //inputVector = new Vector2(1f, 7f);
+        //Explode();
+        //inputVector = new Vector2(-7f, -1f);
+        //Explode();
+        //inputVector = new Vector2(-1f, -7f);
+        //Explode();
         
-        inputVector = new Vector2(9f, -1f);
-        Explode();
-        inputVector = new Vector2(-1f, 9f);
-        Explode();
-        inputVector = new Vector2(-9f, 1f);
-        Explode();
-        inputVector = new Vector2(1f, -9f);
-        Explode();
+        //inputVector = new Vector2(9f, -1f);
+        //Explode();
+        //inputVector = new Vector2(-1f, 9f);
+        //Explode();
+        //inputVector = new Vector2(-9f, 1f);
+        //Explode();
+        //inputVector = new Vector2(1f, -9f);
+        //Explode();
 
         //förstör markern och det som har spawnat på den
 

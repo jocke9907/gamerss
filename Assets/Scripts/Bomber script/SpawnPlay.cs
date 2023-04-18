@@ -47,6 +47,7 @@ public class SpawnPlay : MonoBehaviour
             {
                 foreach (PlayerController player in players)
                 {
+                    Debug.Log("spawnPlay3");
                     players[0].gameObject.transform.position = spawn1;
                     players[1].gameObject.transform.position = spawn2;
                     players[2].gameObject.transform.position = spawn3;
@@ -57,6 +58,7 @@ public class SpawnPlay : MonoBehaviour
             {
                 foreach (PlayerController player in players)
                 {
+                    Debug.Log("spawnPlay4");
                     players[0].gameObject.transform.position = spawn1;
                     players[1].gameObject.transform.position = spawn2;
                     players[2].gameObject.transform.position = spawn3;
@@ -67,6 +69,7 @@ public class SpawnPlay : MonoBehaviour
             {
                 foreach (PlayerController player in players)
                 {
+                    Debug.Log("spawnPlay2");
                     players[0].gameObject.transform.position = spawn1;
                     players[1].gameObject.transform.position = spawn2;
                     //players[1].gameObject.transform.position = spawn3;

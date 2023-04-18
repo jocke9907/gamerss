@@ -20,7 +20,7 @@ public class Ground : MonoBehaviour
 
             other.transform.position = new Vector3(0, 40, 0);
             Debug.Log(other.transform.position);
-            Debug.Log("transform");
+            Debug.Log("ground");
             //other.transform.position = new Vector3(0, 40, 0);
             //other.transform.position = new Vector3(0, 40, 0);
 
