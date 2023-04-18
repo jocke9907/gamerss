@@ -764,10 +764,10 @@ MonoBehaviour:
   player3: {fileID: 0}
   player4: {fileID: 0}
   playersRequired: 1
-  sceneTimer: 40
-  scoreTimer: 30
+  sceneTimer: 125
+  scoreTimer: 120
   goalTimer: 5
-  timerActivated: 0
+  timerActivated: 1
   numberPlayers: 0
 --- !u!65 &581085077
 BoxCollider:
