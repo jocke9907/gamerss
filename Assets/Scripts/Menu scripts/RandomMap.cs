@@ -24,7 +24,10 @@ public class RandomMap : MonoBehaviour
         Loader.TheMazePlaying = false;
         bomberManger = FindObjectOfType<BomberManger>();
         int randMap = Random.Range(1, 6);
-        randMap = 5;
+
+        // ändra denna för att byta map
+        randMap = 2;
+        //
         if (randMap == 1)
         {
             Loader.PlatformGamePlaying = true;

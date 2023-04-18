@@ -7,6 +7,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class BomberManger : MonoBehaviour
 {
     public int playerCountBomber;
+    public int nrOfPlayers;
     public  int bomberPoints = 1;
     public  int bombUppgrade = 0;
 
@@ -38,7 +39,7 @@ public class BomberManger : MonoBehaviour
     {
         //trd = new Thread(ThreadS);
 
-        Debug.Log(playerCount);
+        //Debug.Log(playerCount);
         if (playerCountBomber <= 0)
         {
             playerCount = true;

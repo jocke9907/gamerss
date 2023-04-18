@@ -17,10 +17,12 @@ public class Ground : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
             other.transform.position = new Vector3(0, 40, 0);
             Debug.Log(other.transform.position);
-            other.transform.position = new Vector3(0, 40, 0);
-            other.transform.position = new Vector3(0, 40, 0);
+            Debug.Log("transform");
+            //other.transform.position = new Vector3(0, 40, 0);
+            //other.transform.position = new Vector3(0, 40, 0);
 
         }
 
