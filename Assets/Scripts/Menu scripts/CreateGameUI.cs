@@ -46,7 +46,7 @@ public class CreateGameUI : MonoBehaviour
         
         bomberManger.playerCountBomber = 1;
        // BomberManger.playerCountBomber = 1;
-        KillerBox.playercounter = 2;
+        KillerBox.playercounter = 1;
         Loader.Load(Loader.Scene.Lobby);
         
 
@@ -59,7 +59,7 @@ public class CreateGameUI : MonoBehaviour
         twoPlayer = true;
 
         bomberManger.playerCountBomber += 1;
-        KillerBox.playercounter = 4;
+        KillerBox.playercounter = 2;
         Loader.Load(Loader.Scene.Lobby);
     }
     public void ThreePlayer()
@@ -70,7 +70,7 @@ public class CreateGameUI : MonoBehaviour
         threePlayer = true;
 
         bomberManger.playerCountBomber = 2;
-        KillerBox.playercounter = 6;
+        KillerBox.playercounter = 3;
         Loader.Load(Loader.Scene.Lobby);
     }
     public void FourPlayer()
@@ -80,7 +80,7 @@ public class CreateGameUI : MonoBehaviour
         fourPlayer = true;
 
         bomberManger.playerCountBomber = 3;
-        KillerBox.playercounter = 8;
+        KillerBox.playercounter = 4;
         Loader.Load(Loader.Scene.Lobby);
     }
 }
