@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
     float test;
     public bool alreadyGrabbed = false;
     public bool finished = false;
+    public int wallClimberScore = 0;
 
     //--------------------------------------------------
     //[SerializeField] private GameInput gameInput;
@@ -254,6 +255,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddScore(int score)
     {
+        wallClimberScore = score;
         totalScore = totalScore + score;
     }
 
