@@ -43,7 +43,7 @@ public class MazeSpawnPoint : MonoBehaviour
 
             //int[] array1 = new int[5];
 
-            if (bomberManger.playerCountBomber == 2)
+            if (bomberManger.nrOfPlayers == 2)
             {
                 foreach (PlayerController player in players)
                 {
@@ -54,7 +54,7 @@ public class MazeSpawnPoint : MonoBehaviour
                     //players[1].gameObject.transform.position = spawn4;
                 }
             }
-            else if (bomberManger.playerCountBomber == 3)
+            else if (bomberManger.nrOfPlayers == 3)
             {
                 foreach (PlayerController player in players)
                 {
@@ -65,7 +65,7 @@ public class MazeSpawnPoint : MonoBehaviour
                     players[3].gameObject.transform.position = spawn4;
                 }
             }
-            else if (bomberManger.playerCountBomber == 1)
+            else if (bomberManger.nrOfPlayers == 1)
             {
                 foreach (PlayerController player in players)
                 {

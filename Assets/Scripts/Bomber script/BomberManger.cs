@@ -20,7 +20,11 @@ public class BomberManger : MonoBehaviour
     public bool redusePlayers;
     public float targetTime2 = 4.0f;
     BomberScript bomberScript;
-
+    public bool bomberPlayed;
+    public bool fallinggroundPlayed;
+    public bool wallClimerPlayed;
+    public bool mazePlayed;
+    public bool captureTheFlagPlayed;
     ////
     ///
     private void Awake()

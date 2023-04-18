@@ -91,7 +91,8 @@ public class PlayerLevel : MonoBehaviour
 
     private void OnMaze()
     {
-        if (Loader.TheMazePlaying == true && alive)
+        //&& alive
+        if (Loader.TheMazePlaying == true )
         {
             gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         }
