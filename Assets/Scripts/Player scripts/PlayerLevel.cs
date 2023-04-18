@@ -93,7 +93,7 @@ public class PlayerLevel : MonoBehaviour
     {
         if (Loader.TheMazePlaying == true && alive)
         {
-            gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
         else
         {
