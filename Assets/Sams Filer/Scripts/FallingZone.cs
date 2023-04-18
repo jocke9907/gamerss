@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class FallingZone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float randX;
+    public float randZ;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    List<GameObject> listObject = new List<GameObject>();
+
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Movable object"))
+        if (other.gameObject.CompareTag("Movable object"))
         {
-            other.transform.position = new Vector3(0, 10, 0);
+            randX = Random.Range(-10, 10);
+            randZ= Random.Range(-10, 5);
+            other.transform.position = new Vector3(randX, 30, randZ);
+        }
+        else if (other.gameObject.CompareTag("Player"))
+        {
+            randX = Random.Range(-10, 10);
+            randZ = Random.Range(-10, 5);
+            other.transform.position = new Vector3(randX, 10, randZ);
         }
     }
 }

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class scoreSystem1 : MonoBehaviour
 {
     public GameObject[] players;
-    //public List<GameObject> players = new List<GameObject>();
+    
+
 
     public GameObject player1;
     public GameObject player2;
@@ -16,8 +18,9 @@ public class scoreSystem1 : MonoBehaviour
     public TMP_Text scoreText;
     //public TextMeshPro scoreText;
     int placement = 0;
-    bool hej = true;
+    //bool hej = true;
     private List<GameObject> finishOrder = new List<GameObject>();
+    private List<GameObject> playerScore = new List<GameObject>();
     public enum NumberPlayers { one, two, three, four }
     public NumberPlayers numberPlayers = NumberPlayers.one;
 
@@ -33,6 +36,7 @@ public class scoreSystem1 : MonoBehaviour
         players[1] = player2;
         players[2] = player3;
         players[3] = player4;
+        UpdateScoreText();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -47,8 +51,9 @@ public class scoreSystem1 : MonoBehaviour
                     other.GetComponent<PlayerController>().finished = true;
 
                     finishOrder.Add(other.gameObject);
-
+                    
                     finishOrder[placement].GetComponent<PlayerController>().AddScore(4);
+                    
 
                     UpdateScoreText();
                 }
@@ -171,10 +176,7 @@ public class scoreSystem1 : MonoBehaviour
 
     }
 
-
-
-
-    private void UpdateScoreText()
+    public void UpdateScoreText()
     {
         switch (numberPlayers)
         {
@@ -183,7 +185,7 @@ public class scoreSystem1 : MonoBehaviour
                 scoreText.text = "";
                 for (int i = 0; i < 1; i++)
                 {
-                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().totalScore + "\n";
+                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().wallClimberScore + "\n";
 
                 }
                 break;
@@ -195,7 +197,7 @@ public class scoreSystem1 : MonoBehaviour
 
                 for (int i = 0; i < 2; i++)
                 {
-                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().totalScore + "\n";
+                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().wallClimberScore + "\n";
                 }
                 break;
 
@@ -205,7 +207,7 @@ public class scoreSystem1 : MonoBehaviour
 
                 for (int i = 0; i < 3; i++)
                 {
-                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().totalScore + "\n";
+                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().wallClimberScore + "\n";
                 }
                 break;
 
@@ -215,7 +217,7 @@ public class scoreSystem1 : MonoBehaviour
 
                 for (int i = 0; i < 4; i++)
                 {
-                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().totalScore + "\n";
+                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().wallClimberScore + "\n";
                 }
                 break;
 
