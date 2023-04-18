@@ -199,22 +199,22 @@
                 },
                 {
                     "name": "",
-                    "id": "8e05c407-79b5-45ad-8eee-d52d44f51f94",
-                    "path": "<Keyboard>/q",
+                    "id": "20644430-7868-44da-a447-8c19a0324b68",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Controller",
                     "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "20644430-7868-44da-a447-8c19a0324b68",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "a76d2152-4684-4db1-9703-ab57be9fd840",
+                    "path": "<Keyboard>/#(K)",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Keyboard",
                     "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
