@@ -8,7 +8,7 @@ public class RandomMap : MonoBehaviour
     float targetTime3 = 5f;
     private void Awake()
     {
-        
+        bomberManger = FindObjectOfType<BomberManger>();
     }
     void Update()
     {
@@ -22,16 +22,22 @@ public class RandomMap : MonoBehaviour
     void ChangeMaps()
     {
         Loader.TheMazePlaying = false;
-        bomberManger = FindObjectOfType<BomberManger>();
+
         int randMap = Random.Range(1, 6);
-        randMap = 5;
-        if (randMap == 1)
+        bomberManger.captureTheFlagPlayed = true;
+        // ändra denna för att byta map
+        //randMap = 2;
+        //
+        if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
+            bomberManger.fallinggroundPlayed = true;
             Loader.PlatformGamePlaying = true;
             Loader.Load(Loader.Scene.ViggesScene);
+
         }
-        else if (randMap == 2)
+        else if (!bomberManger.bomberPlayed && randMap == 2)
         {
+            bomberManger.bomberPlayed = true;
             bomberManger.GameStart();
             if (CreateGameUI.onePlayer == true)
             {
@@ -52,21 +58,28 @@ public class RandomMap : MonoBehaviour
             Loader.bomberGamePlaying = true;
             Loader.Load(Loader.Scene.BomberGame);
         }
-        else if (randMap == 4)
+        else if (!bomberManger.captureTheFlagPlayed && randMap == 4)
         {
+            bomberManger.captureTheFlagPlayed = true;
             Loader.Load(Loader.Scene.CaptureTheFlag);
         }
-        else if (randMap == 3)
+        else if (!bomberManger.mazePlayed && randMap == 3)
         {
+            bomberManger.mazePlayed = true;
             Loader.TheMazePlaying = true;
             Loader.wallClimberPlaying = false;
             Loader.Load(Loader.Scene.TheMaze);
         }
-        else if (randMap == 5)
+        else if (!bomberManger.wallClimerPlayed && randMap == 5)
         {
+            bomberManger.wallClimerPlayed = true;
             Loader.wallClimberPlaying = true;
-            Loader.TheMazePlaying = false;
+            //Loader.TheMazePlaying = false;
             Loader.Load(Loader.Scene.SamScen);
+        }
+        else
+        {
+
         }
     }
 }

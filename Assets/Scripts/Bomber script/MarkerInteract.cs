@@ -256,7 +256,7 @@ public class MarkerInteract : MonoBehaviour
     }
     void timerEnded()
     {
-        vectorZ = 0.1f;
+        vectorZ = 0.4f;
         //Debug.Log("bomb explod");
         inputVector = new Vector2(8f, 0f);
         Explode();
@@ -276,6 +276,24 @@ public class MarkerInteract : MonoBehaviour
         Explode();
         inputVector = new Vector2(0f, -8f);
         Explode();
+        
+        //inputVector = new Vector2(7f, 1f);
+        //Explode();
+        //inputVector = new Vector2(1f, 7f);
+        //Explode();
+        //inputVector = new Vector2(-7f, -1f);
+        //Explode();
+        //inputVector = new Vector2(-1f, -7f);
+        //Explode();
+        
+        //inputVector = new Vector2(9f, -1f);
+        //Explode();
+        //inputVector = new Vector2(-1f, 9f);
+        //Explode();
+        //inputVector = new Vector2(-9f, 1f);
+        //Explode();
+        //inputVector = new Vector2(1f, -9f);
+        //Explode();
 
         //förstör markern och det som har spawnat på den
 

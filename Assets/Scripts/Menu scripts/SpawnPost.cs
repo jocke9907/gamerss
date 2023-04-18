@@ -27,6 +27,7 @@ public class SpawnPost : MonoBehaviour
             foreach (PlayerController player in players)
             {
                 player.gameObject.transform.position = spawnPointPost;
+                Debug.Log("spawnPost");
             }
             hasSpawned = true;
         }

@@ -43,30 +43,33 @@ public class SpawnPlay : MonoBehaviour
 
             //int[] array1 = new int[5];
 
-            if (bomberManger.playerCountBomber == 2)
+            if (bomberManger.nrOfPlayers == 2)
             {
                 foreach (PlayerController player in players)
                 {
+                    Debug.Log("spawnPlay3");
                     players[0].gameObject.transform.position = spawn1;
                     players[1].gameObject.transform.position = spawn2;
                     players[2].gameObject.transform.position = spawn3;
                     //players[1].gameObject.transform.position = spawn4;
                 }
             }
-            else if(bomberManger.playerCountBomber == 3)
+            else if(bomberManger.nrOfPlayers == 3)
             {
                 foreach (PlayerController player in players)
                 {
+                    Debug.Log("spawnPlay4");
                     players[0].gameObject.transform.position = spawn1;
                     players[1].gameObject.transform.position = spawn2;
                     players[2].gameObject.transform.position = spawn3;
                     players[3].gameObject.transform.position = spawn4;
                 }
             }
-            else if (bomberManger.playerCountBomber == 1)
+            else if (bomberManger.nrOfPlayers == 1)
             {
                 foreach (PlayerController player in players)
                 {
+                    Debug.Log("spawnPlay2");
                     players[0].gameObject.transform.position = spawn1;
                     players[1].gameObject.transform.position = spawn2;
                     //players[1].gameObject.transform.position = spawn3;

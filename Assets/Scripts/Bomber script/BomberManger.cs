@@ -7,6 +7,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class BomberManger : MonoBehaviour
 {
     public int playerCountBomber;
+    public int nrOfPlayers;
     public  int bomberPoints = 1;
     public  int bombUppgrade = 0;
 
@@ -19,7 +20,11 @@ public class BomberManger : MonoBehaviour
     public bool redusePlayers;
     public float targetTime2 = 4.0f;
     BomberScript bomberScript;
-
+    public bool bomberPlayed;
+    public bool fallinggroundPlayed;
+    public bool wallClimerPlayed;
+    public bool mazePlayed;
+    public bool captureTheFlagPlayed;
     ////
     ///
     private void Awake()
@@ -38,7 +43,7 @@ public class BomberManger : MonoBehaviour
     {
         //trd = new Thread(ThreadS);
 
-        Debug.Log(playerCount);
+        //Debug.Log(playerCount);
         if (playerCountBomber <= 0)
         {
             playerCount = true;
