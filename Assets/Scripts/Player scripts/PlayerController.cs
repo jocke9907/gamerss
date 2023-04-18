@@ -146,7 +146,9 @@ public class PlayerController : MonoBehaviour
         if (move != Vector3.zero)
         {
             anim.SetBool("Running", true);
-            gameObject.transform.forward = move;
+            Quaternion targetRotation = Quaternion.LookRotation(move);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 10);
+            //gameObject.transform.forward = move;
         }
         else
             anim.SetBool("Running", false);
