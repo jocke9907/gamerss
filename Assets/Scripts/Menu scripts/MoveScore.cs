@@ -121,7 +121,7 @@ public class MoveScore : MonoBehaviour
         }
         else if(player.playerTwo)
         {
-            //GetComponent<Renderer>().material.color = Color.blue;
+            GetComponent<Renderer>().material.color = Color.green;
         }
         else if (player.playerThree)
         {
