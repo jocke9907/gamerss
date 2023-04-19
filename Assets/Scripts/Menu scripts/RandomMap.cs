@@ -34,7 +34,7 @@ public class RandomMap : MonoBehaviour
         int randMap = Random.Range(1, 5);
         //bomberManger.captureTheFlagPlayed = true;
         // ändra denna för att byta map
-        randMap = 1;
+        //randMap = 1;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
