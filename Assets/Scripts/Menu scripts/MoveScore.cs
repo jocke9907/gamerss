@@ -11,10 +11,10 @@ public class MoveScore : MonoBehaviour
     PlayerLevel playerLevel;
     PlayerScore playerScore;
     [SerializeField] int height;
-    [SerializeField] bool pl1;
-    [SerializeField] bool pl2;
-    [SerializeField] bool pl3;
-    [SerializeField] bool pl4;
+    [SerializeField] bool pl1s;
+    [SerializeField] bool pl2s;
+    [SerializeField] bool pl3s;
+    [SerializeField] bool pl4s;
     float y;
     public void Awake()
     {
@@ -29,39 +29,44 @@ public class MoveScore : MonoBehaviour
     {
 
 
-        PlayerController[] player = playerManager.GetPlayers().ToArray();
+        PlayerController[] players = playerManager.GetPlayers().ToArray();
       
-        foreach (PlayerController player1 in player)
+        foreach (PlayerController player in players)
         {
             
 
-            if (pl1)
+            if (pl1s)
             {
-                height = player[0].totalScore;
+                height = players[0].totalScore;
+                
                 y = -10.5f;
             }
-            if (pl2)
+            if (pl2s)
             {
-                if (playerController.playerTwo)
-                {
-                    height = player[1].totalScore;
-                    y = -3.5f;
-                }
+               
+                height = players[1].totalScore;
+                y = -3.5f;
+                //if (playerController.playerTwo)
+                //{
+                   
+                //}
             }
-            if (pl3 )
+            if (pl3s )
             {
+                height = players[2].totalScore;
+                y = 3.5f;
                 if (playerController.playerThree)
                 {
-                    height = player[2].totalScore;
-                    y = 3.5f;
+                   
                 }
             }
-            if (pl4)
+            if (pl4s)
             {
+                height = players[3].totalScore;
+                y = 10.5f;
                 if (playerController.playerFour)
                 {
-                    height = player[3].totalScore;
-                    y = 10.5f;
+                   
                 }
             }
 
