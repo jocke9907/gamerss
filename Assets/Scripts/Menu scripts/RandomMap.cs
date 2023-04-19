@@ -7,6 +7,7 @@ public class RandomMap : MonoBehaviour
     BomberManger bomberManger;
     float targetTime3 = 5f;
     bool giveScore = true;
+    int randMap;
     private void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
@@ -43,10 +44,11 @@ public class RandomMap : MonoBehaviour
         
         Loader.TheMazePlaying = false;
 
-        int randMap = Random.Range(1, 5);
+        //randMap = Random.Range(1, 5);
         //bomberManger.captureTheFlagPlayed = true;
         // ändra denna för att byta map
-        //randMap = 2;
+        randMap = 2;
+        //randMap = 4; //Sam
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
@@ -78,11 +80,11 @@ public class RandomMap : MonoBehaviour
             Loader.bomberGamePlaying = true;
             Loader.Load(Loader.Scene.BomberGame);
         }
-        //else if (!bomberManger.captureTheFlagPlayed && randMap == 5)
-        //{
-        //    bomberManger.captureTheFlagPlayed = true;
-        //    Loader.Load(Loader.Scene.CaptureTheFlag);
-        //}
+        else if (!bomberManger.captureTheFlagPlayed && randMap == 5)
+        {
+            bomberManger.captureTheFlagPlayed = true;
+            Loader.Load(Loader.Scene.CaptureTheFlag);
+        }
         else if (!bomberManger.mazePlayed && randMap == 3)
         {
             bomberManger.mazePlayed = true;
