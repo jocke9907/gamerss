@@ -6,13 +6,30 @@ public class RandomMap : MonoBehaviour
 {
     BomberManger bomberManger;
     float targetTime3 = 5f;
+    bool giveScore = true;
     private void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
+        PlayerManager manager = FindObjectOfType<PlayerManager>();
+        // PlayerController[] players = FindObjectsOfType<PlayerController>();
+        foreach (PlayerController player in manager.GetPlayers())
+        {
+            player.gameObject.SetActive(true);
+        }
+        giveScore = true;
+        
 
+    }
+    private void Start()
+    {
+        
     }
     void Update()
     {
+
+        
+
+
         targetTime3 -= Time.deltaTime;
 
         if (targetTime3 < 0)
@@ -22,19 +39,14 @@ public class RandomMap : MonoBehaviour
     }
     void ChangeMaps()
     {
-        PlayerManager manager = FindObjectOfType<PlayerManager>();
-       // PlayerController[] players = FindObjectsOfType<PlayerController>();
-        foreach (PlayerController player in manager.GetPlayers())
-        {
-            player.gameObject.SetActive(true);
-        }
+       
         
         Loader.TheMazePlaying = false;
 
         int randMap = Random.Range(1, 5);
         //bomberManger.captureTheFlagPlayed = true;
         // ändra denna för att byta map
-        //randMap = 1;
+        //randMap = 2;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
@@ -87,7 +99,7 @@ public class RandomMap : MonoBehaviour
         }
         else
         {
-
+            randMap = Random.Range(1, 5);
         }
     }
 }

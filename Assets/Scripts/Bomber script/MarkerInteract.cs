@@ -31,6 +31,8 @@ public class MarkerInteract : MonoBehaviour
     float vectorZ = .1f;
     bool bomPlaced;
     public bool canPlaceBomb = true;
+
+    int uppgrade = 9;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -68,7 +70,7 @@ public class MarkerInteract : MonoBehaviour
         //    playerController.canPlaceBomb = false;
         //}
 
-        if (bomberManger.bombUppgrade > 4)
+        if (bomberManger.bombUppgrade > uppgrade)
         {
             Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
             bombTransform.localPosition = Vector3.zero;
@@ -123,7 +125,7 @@ public class MarkerInteract : MonoBehaviour
     void Explode()
     {
         //+BomberManger.bombUppgrade*2
-        float maxDistans = 10f ;
+        float maxDistans = 14f ;
        
        
         Vector3 explodeDir = new Vector3(inputVector.x, vectorZ, inputVector.y);
@@ -159,7 +161,7 @@ public class MarkerInteract : MonoBehaviour
                 //bomberManger.playerCountBomber ;
                 bomberManger.redusePlayers = true;
                 bomberManger.bomberPoints += 1;
-                playerController.totalScore += bomberManger.bomberPoints;
+                playerController.totalScore -= bomberManger.bomberPoints;
                 //bomberManger.playerCountBomber--;
                 //if (playerDead && scoreGiven == false)
                 //{
@@ -257,48 +259,53 @@ public class MarkerInteract : MonoBehaviour
     }
     void timerEnded()
     {
-        vectorZ = 0.4f;
-        //Debug.Log("bomb explod");
-        inputVector = new Vector2(8f, 0f);
+        
+        //vectorZ = 0.4f;
+        ////Debug.Log("bomb explod");
+        //inputVector = new Vector2(8f, 0f);
+        //Explode();
+        //inputVector = new Vector2(0f, 8f);
+        //Explode();
+        //inputVector = new Vector2(-8f, 0f);
+        //Explode();
+        //inputVector = new Vector2(0f, -8f);
+        //Explode();
+
+        vectorZ = 1f;
+        inputVector = new Vector2(10f, 0f);
         Explode();
-        inputVector = new Vector2(0f, 8f);
+        inputVector = new Vector2(0f, 10f);
         Explode();
-        inputVector = new Vector2(-8f, 0f);
+        inputVector = new Vector2(-10f, 0f);
         Explode();
-        inputVector = new Vector2(0f, -8f);
+        inputVector = new Vector2(0f, -10f);
         Explode();
 
-        vectorZ = 1.2f;
-        inputVector = new Vector2(8f, 0f);
-        Explode();
-        inputVector = new Vector2(0f, 8f);
-        Explode();
-        inputVector = new Vector2(-8f, 0f);
-        Explode();
-        inputVector = new Vector2(0f, -8f);
-        Explode();
+        if(bomberManger.bombUppgrade > uppgrade)
+        {
+            inputVector = new Vector2(8f, 8f);
+            Explode();
+            inputVector = new Vector2(-8f, -8f);
+            Explode();
+            inputVector = new Vector2(-8f, 8f);
+            Explode();
+            inputVector = new Vector2(8f, -8f);
+            Explode();
+        }
+        
 
-        inputVector = new Vector2(7f, 1f);
+        inputVector = new Vector2(10f, -2f);
         Explode();
-        inputVector = new Vector2(1f, 7f);
+        inputVector = new Vector2(-2f, 10f);
         Explode();
-        inputVector = new Vector2(-7f, -1f);
+        inputVector = new Vector2(-10f, 2f);
         Explode();
-        inputVector = new Vector2(-1f, -7f);
-        Explode();
-
-        inputVector = new Vector2(9f, -1f);
-        Explode();
-        inputVector = new Vector2(-1f, 9f);
-        Explode();
-        inputVector = new Vector2(-9f, 1f);
-        Explode();
-        inputVector = new Vector2(1f, -9f);
+        inputVector = new Vector2(2f, -10f);
         Explode();
 
         //förstör markern och det som har spawnat på den
 
-        if (bomberManger.bombUppgrade >5)
+        if (bomberManger.bombUppgrade >uppgrade)
         {
 
             DestroyMarker();

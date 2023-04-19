@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement = Vector2.zero;
     public bool canPlaceBomb = true;
     public bool veryDead = false;
+    bool scoreGiven = false;
     public void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
@@ -278,9 +279,19 @@ public class PlayerController : MonoBehaviour
     {
         //playerController = FindObjectOfType<PlayerController>();
         HandleInteractions();
+        GiveScoreBomb();
         //CheckIfPlayerDead();
     }
+    public void GiveScoreBomb()
+    {
+       
 
+        if(!scoreGiven && bomberManger.bomberPlayed)
+        {
+            totalScore += 4;
+            scoreGiven = true;
+        }
+    }
     public void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
 

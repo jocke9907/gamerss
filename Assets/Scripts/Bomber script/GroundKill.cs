@@ -15,13 +15,14 @@ public class GroundKill : MonoBehaviour
        
         
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
 
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") )
         {
             Debug.Log("fell on ground");
+            other.gameObject.SetActive(false);
             //other.transform.position = new Vector3(0, 60, 0);
             //bomberManger.playerCountBomber--;
             //bomberManger.bomberPoints += 1;
@@ -30,6 +31,11 @@ public class GroundKill : MonoBehaviour
 
             bomberManger.redusePlayers = true;
             bomberManger.bomberPoints += 1;
+            if( other == playerController)
+            {
+                playerController.totalScore -= bomberManger.bomberPoints;
+            }
+           
 
             bomberManger.PlayerCounter();
         }
