@@ -9,6 +9,7 @@ public class RandomMap : MonoBehaviour
     private void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
+
     }
     void Update()
     {
@@ -21,12 +22,19 @@ public class RandomMap : MonoBehaviour
     }
     void ChangeMaps()
     {
+        PlayerManager manager = FindObjectOfType<PlayerManager>();
+       // PlayerController[] players = FindObjectsOfType<PlayerController>();
+        foreach (PlayerController player in manager.GetPlayers())
+        {
+            player.gameObject.SetActive(true);
+        }
+        
         Loader.TheMazePlaying = false;
 
         int randMap = Random.Range(1, 5);
         //bomberManger.captureTheFlagPlayed = true;
         // ändra denna för att byta map
-        randMap = 3;
+        //randMap = 2;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {

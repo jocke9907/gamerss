@@ -148,17 +148,18 @@ public class MarkerInteract : MonoBehaviour
         }
         if (Physics.Raycast(transform.position + new Vector3(0, 1, 0), explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {           
-            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController1))
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
                 
                 //playerController.transform.position = new Vector3(0,40,0);
                 //Debug.Log("playerDead");
-                playerController1.transform.position = new Vector3(0, 90, 0);
-
+                //playerController.transform.position += new Vector3(0, 90, 0);
+                //Debug.Log("move"+ playerController1.transform.position);
+                playerController.gameObject.SetActive(false);
                 //bomberManger.playerCountBomber ;
                 bomberManger.redusePlayers = true;
                 bomberManger.bomberPoints += 1;
-                playerController1.totalScore += bomberManger.bomberPoints;
+                playerController.totalScore += bomberManger.bomberPoints;
                 //bomberManger.playerCountBomber--;
                 //if (playerDead && scoreGiven == false)
                 //{

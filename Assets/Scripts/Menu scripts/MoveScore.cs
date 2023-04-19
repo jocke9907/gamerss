@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MoveScore : MonoBehaviour
 {
 
     PlayerController playerController;
+    PlayerManager playerManager;
     PlayerLevel playerLevel;
     PlayerScore playerScore;
     [SerializeField] int height;
@@ -19,25 +21,30 @@ public class MoveScore : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
         playerLevel = FindObjectOfType<PlayerLevel>();
         playerScore = FindObjectOfType<PlayerScore>();
+        playerManager = FindObjectOfType<PlayerManager>();
+        
     }
 
     public void MoveBlock()
     {
-        PlayerController[] players = FindObjectsOfType<PlayerController>();
-        foreach (PlayerController player in players)
-        {
 
+
+        PlayerController[] player = playerManager.GetPlayers().ToArray();
+      
+        foreach (PlayerController player1 in player)
+        {
+            
 
             if (pl1)
             {
-                height = players[0].totalScore;
+                height = player[0].totalScore;
                 y = -10.5f;
             }
             if (pl2)
             {
                 if (playerController.playerTwo)
                 {
-                    height = players[1].totalScore;
+                    height = player[1].totalScore;
                     y = -3.5f;
                 }
             }
@@ -45,7 +52,7 @@ public class MoveScore : MonoBehaviour
             {
                 if (playerController.playerThree)
                 {
-                    height = players[2].totalScore;
+                    height = player[2].totalScore;
                     y = 3.5f;
                 }
             }
@@ -53,7 +60,7 @@ public class MoveScore : MonoBehaviour
             {
                 if (playerController.playerFour)
                 {
-                    height = players[3].totalScore;
+                    height = player[3].totalScore;
                     y = 10.5f;
                 }
             }

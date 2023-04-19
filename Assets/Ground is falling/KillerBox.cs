@@ -13,8 +13,8 @@ public class KillerBox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            points++;
-            playercounter--;
+            //points++;
+            //playercounter--;
             other.gameObject.transform.position = new Vector3(0, 3, 0);
             //other.gameObject.SetActive(false);
         }

@@ -107,7 +107,9 @@ public class PlayerController : MonoBehaviour
         
         controller = gameObject.GetComponent<CharacterController>();
 
-        
+        FindObjectOfType<PlayerManager>().AddToList(this);
+
+
         //gameInput.OnInteractAction += bomberInput.GameInput_OnInteractAction;
     }
 
