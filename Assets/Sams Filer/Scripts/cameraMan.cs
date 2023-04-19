@@ -83,7 +83,7 @@ public class cameraMan : MonoBehaviour
 
                
 
-                cameraPos = new Vector3(((players[0].gameObject.transform.position.x+ players[1].gameObject.transform.position.x)/2)+4,
+                cameraPos = new Vector3(((players[0].gameObject.transform.position.x+ players[1].gameObject.transform.position.x)/2),
                     40,
                     ((players[0].gameObject.transform.position.z+ players[1].gameObject.transform.position.z)/2) - 15);
 
