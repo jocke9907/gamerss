@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 {
     //
 
+    
     public bool playerOne;
     public bool playerTwo;    
     public bool playerThree;
@@ -24,7 +25,6 @@ public class PlayerController : MonoBehaviour
     //{
     //    public MarkerInteract selectedMarker;
     //}
-
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
+        
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -377,6 +377,8 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("-");
         }
     }
+
+    
 
 
     ///!!!!!!! ta inte bort

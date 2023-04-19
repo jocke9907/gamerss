@@ -7931,6 +7931,7 @@ MonoBehaviour:
     m_Bits: 256
   alreadyGrabbed: 0
   finished: 0
+  wallClimberScore: 0
   dropLayerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -7976,7 +7977,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDead: 0
   scoreGiven: 0
-  alive: 1
 --- !u!114 &8922607167554005553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11700,6 +11700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5417937270516290312}
   - component: {fileID: 3138389083707354876}
+  - component: {fileID: 2017482563110031553}
   m_Layer: 17
   m_Name: MainBody04
   m_TagString: Untagged
@@ -11742,7 +11743,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 68969ffab2e346a0a58207170aa902e9, type: 2}
+  - {fileID: 2100000, guid: da8bd16282c5a394bb7345563e78f1ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11830,6 +11831,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00000011920929, y: 0.04528922, z: 0.8206737}
     m_Extent: {x: 1.3458344, y: 0.61795, z: 0.8410951}
   m_DirtyAABB: 0
+--- !u!114 &2017482563110031553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366801071453286888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ec680702f32cc4d8d46818dcb34b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 6114338646223142829}
+  renderer: {fileID: 3138389083707354876}
 --- !u!1 &8430386425190027012
 GameObject:
   m_ObjectHideFlags: 0
