@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class MoveScore : MonoBehaviour
 {
@@ -40,34 +41,27 @@ public class MoveScore : MonoBehaviour
                 height = players[0].totalScore;
                 
                 y = -10.5f;
+                CollorPillar(players[0]);
             }
             if (pl2s)
             {
                
                 height = players[1].totalScore;
                 y = -3.5f;
-                //if (playerController.playerTwo)
-                //{
-                   
-                //}
+                CollorPillar(players[1]);
+
             }
             if (pl3s )
             {
                 height = players[2].totalScore;
                 y = 3.5f;
-                if (playerController.playerThree)
-                {
-                   
-                }
+                CollorPillar(players[2]);
             }
             if (pl4s)
             {
                 height = players[3].totalScore;
                 y = 10.5f;
-                if (playerController.playerFour)
-                {
-                   
-                }
+                CollorPillar(players[3]);
             }
 
         }
@@ -116,5 +110,28 @@ public class MoveScore : MonoBehaviour
         transform.position = new Vector3(y, (height) - 5, 8);
         
 
+    }
+    public void CollorPillar(PlayerController player)
+    {
+
+        if (player.playerOne)
+        {
+            GetComponent<Renderer>().material.color = Color.blue;
+
+        }
+        else if(player.playerTwo)
+        {
+            //GetComponent<Renderer>().material.color = Color.blue;
+        }
+        else if (player.playerThree)
+        {
+            GetComponent<Renderer>().material.color = Color.yellow;
+        }
+        else if (player.playerFour)
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+        }
+
+       
     }
 }
