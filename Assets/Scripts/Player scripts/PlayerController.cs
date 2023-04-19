@@ -197,10 +197,15 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //Bara respawn ifall man ramlar utanför
-        if(transform.position.y <= -40)
-        {
-            transform.position = new Vector3(0,3,0);
-        }
+
+        //if (Loader.PlatformGamePlaying)
+        //{
+        //    if (transform.position.y <= -40)
+        //    {
+        //        transform.position = new Vector3(0, 3, 0);
+        //    }
+        //}
+        
     }
 
     //----------------------------------------SAM-----------------------------------------------------------------------

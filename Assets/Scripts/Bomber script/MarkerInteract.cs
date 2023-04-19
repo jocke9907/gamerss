@@ -146,14 +146,14 @@ public class MarkerInteract : MonoBehaviour
         {
             lastInteractDir = explodeDir;
         }
-        if (Physics.Raycast(transform.position, explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
+        if (Physics.Raycast(transform.position + new Vector3(0, 1, 0), explodeDir, out RaycastHit raycastHitPlayer, maxDistans, playerLayer))
         {           
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController1))
             {
                 
                 //playerController.transform.position = new Vector3(0,40,0);
                 //Debug.Log("playerDead");
-                //playerController.transform.position = new Vector3(0, 40, 0);
+                playerController1.transform.position = new Vector3(0, 90, 0);
 
                 //bomberManger.playerCountBomber ;
                 bomberManger.redusePlayers = true;
@@ -217,7 +217,7 @@ public class MarkerInteract : MonoBehaviour
         Vector3 explodeDir = new Vector3(inputVector.x, vectorZ, inputVector.y);
         Gizmos.color = Color.yellow;
         //Gizmos.DrawSphere(transform.position, 8f);
-        Gizmos.DrawRay(transform.position, explodeDir);
+        Gizmos.DrawRay(transform.position +new Vector3(0,1,0), explodeDir);
     }
     void Update()
     {
@@ -276,28 +276,28 @@ public class MarkerInteract : MonoBehaviour
         Explode();
         inputVector = new Vector2(0f, -8f);
         Explode();
-        
-        //inputVector = new Vector2(7f, 1f);
-        //Explode();
-        //inputVector = new Vector2(1f, 7f);
-        //Explode();
-        //inputVector = new Vector2(-7f, -1f);
-        //Explode();
-        //inputVector = new Vector2(-1f, -7f);
-        //Explode();
-        
-        //inputVector = new Vector2(9f, -1f);
-        //Explode();
-        //inputVector = new Vector2(-1f, 9f);
-        //Explode();
-        //inputVector = new Vector2(-9f, 1f);
-        //Explode();
-        //inputVector = new Vector2(1f, -9f);
-        //Explode();
+
+        inputVector = new Vector2(7f, 1f);
+        Explode();
+        inputVector = new Vector2(1f, 7f);
+        Explode();
+        inputVector = new Vector2(-7f, -1f);
+        Explode();
+        inputVector = new Vector2(-1f, -7f);
+        Explode();
+
+        inputVector = new Vector2(9f, -1f);
+        Explode();
+        inputVector = new Vector2(-1f, 9f);
+        Explode();
+        inputVector = new Vector2(-9f, 1f);
+        Explode();
+        inputVector = new Vector2(1f, -9f);
+        Explode();
 
         //förstör markern och det som har spawnat på den
 
-        if (bomberManger.bombUppgrade >2)
+        if (bomberManger.bombUppgrade >5)
         {
 
             DestroyMarker();

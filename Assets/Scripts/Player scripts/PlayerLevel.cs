@@ -28,18 +28,22 @@ public class PlayerLevel : MonoBehaviour
     void Update()
     {
 
-        //Ground is falling
-        OnGroundIsFalling();
+        //Ground is falling  && alive
         OnBomber();
 
-        if (Loader.TheMazePlaying == true && alive)
+        if (Loader.TheMazePlaying == true )
         {
-            gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else
+        {
+            gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
         }
 
     }
     private void FixedUpdate()
     {
+        OnGroundIsFalling();
         onCaptureTheFlag();
     }
 
@@ -56,17 +60,21 @@ public class PlayerLevel : MonoBehaviour
                     transform.position = new Vector3(0, 2, 0);
 
                 }
-                //if (transform.position.y < -20)
-                //{
-                //    playerScore.currentScore = playerScore.currentScore + KillerBox.points;
-                //    Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
-                //    alive = false;
-                //}
+                if (transform.position.y < -20)
+                {
+                    playerController.totalScore = playerController.totalScore + KillerBox.points;
+                    Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
+                    KillerBox.points++;
+                    KillerBox.playercounter--;
+
+                    alive = false;
+                }
             }
 
             if (!alive)
             {
                 transform.position = new Vector3(0, 4, 0);
+                alive = true;
             }
 
         }
@@ -105,7 +113,7 @@ public class PlayerLevel : MonoBehaviour
     }
     public void onCaptureTheFlag()
     {
-        if(!alive)
+        if(!alive && Loader.captureTheFlagPlaying)
         {
             transform.position=new Vector3(-8, 12, -23);
             alive = true;

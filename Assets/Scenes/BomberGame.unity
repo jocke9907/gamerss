@@ -14899,6 +14899,7 @@ MonoBehaviour:
     m_Bits: 0
   alreadyGrabbed: 0
   finished: 0
+  wallClimberScore: 0
   dropLayerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -21626,14 +21627,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191493760}
-  m_LocalRotation: {x: -0.36579767, y: 0.0456374, z: -0.026476352, w: -0.92919767}
-  m_LocalPosition: {x: -1.9999999, y: 20.03, z: -52.39}
+  m_LocalRotation: {x: 0.57253593, y: -0.042935893, z: 0.03530574, w: 0.8179931}
+  m_LocalPosition: {x: -1.9999999, y: 51.5, z: -21.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 43.017, y: -5.135, z: 1.239}
+  m_LocalEulerAnglesHint: {x: 70, y: -5.001, z: 1.44}
 --- !u!1001 &1192272981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34222,7 +34223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093440711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1, y: 59.2, z: 4}
+  m_LocalPosition: {x: -6.1, y: 81.49, z: 4}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 1
   m_Children: []

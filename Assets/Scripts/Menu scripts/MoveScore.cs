@@ -26,6 +26,8 @@ public class MoveScore : MonoBehaviour
         PlayerController[] players = FindObjectsOfType<PlayerController>();
         foreach (PlayerController player in players)
         {
+
+
             if (pl1)
             {
                 height = players[0].totalScore;
@@ -43,7 +45,7 @@ public class MoveScore : MonoBehaviour
             {
                 if (playerController.playerThree)
                 {
-                    height = players[1].totalScore;
+                    height = players[2].totalScore;
                     y = 3.5f;
                 }
             }
@@ -51,7 +53,7 @@ public class MoveScore : MonoBehaviour
             {
                 if (playerController.playerFour)
                 {
-                    height = players[1].totalScore;
+                    height = players[3].totalScore;
                     y = 10.5f;
                 }
             }

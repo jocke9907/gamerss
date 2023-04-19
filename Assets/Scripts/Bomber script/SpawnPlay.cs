@@ -76,10 +76,21 @@ public class SpawnPlay : MonoBehaviour
                     //players[1].gameObject.transform.position = spawn4;
                 }
             }
+            else if (bomberManger.nrOfPlayers == 0)
+            {
+                foreach (PlayerController player in players)
+                {
+                    Debug.Log("spawnPlay2");
+                    players[0].gameObject.transform.position = spawn1;
+                    //players[1].gameObject.transform.position = spawn2;
+                    //players[1].gameObject.transform.position = spawn3;
+                    //players[1].gameObject.transform.position = spawn4;
+                }
+            }
 
-            
 
-            
+
+
             hasSpawned = true;
         }
     }

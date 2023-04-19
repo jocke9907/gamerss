@@ -17,7 +17,7 @@ public class SpawnPoint : MonoBehaviour
     void Update()
     {
         //Debug.Log("Current Count"+collisionCount);
-        if(gameStarted == true)
+        if(gameStarted == true && Loader.PlatformGamePlaying)
         {
         Debug.Log("Game has started");
         collider.enabled = true;

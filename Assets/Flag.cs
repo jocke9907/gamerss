@@ -10,7 +10,7 @@ public class Flag : MonoBehaviour
     private Vector3 flagOriginalPosition;
     private float flagDropTime;
     private GameObject playerWithFlag;
-    private bool isFlagPickedUp;
+    public bool isFlagPickedUp;
     Dictionary<PlayerController, int> flagsCount = new Dictionary<PlayerController, int>();
     
 

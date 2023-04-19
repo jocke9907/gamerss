@@ -23,10 +23,10 @@ public class RandomMap : MonoBehaviour
     {
         Loader.TheMazePlaying = false;
 
-        int randMap = Random.Range(1, 6);
-        bomberManger.captureTheFlagPlayed = true;
+        int randMap = Random.Range(1, 5);
+        //bomberManger.captureTheFlagPlayed = true;
         // ändra denna för att byta map
-        //randMap = 2;
+        randMap = 3;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
@@ -58,11 +58,11 @@ public class RandomMap : MonoBehaviour
             Loader.bomberGamePlaying = true;
             Loader.Load(Loader.Scene.BomberGame);
         }
-        else if (!bomberManger.captureTheFlagPlayed && randMap == 4)
-        {
-            bomberManger.captureTheFlagPlayed = true;
-            Loader.Load(Loader.Scene.CaptureTheFlag);
-        }
+        //else if (!bomberManger.captureTheFlagPlayed && randMap == 5)
+        //{
+        //    bomberManger.captureTheFlagPlayed = true;
+        //    Loader.Load(Loader.Scene.CaptureTheFlag);
+        //}
         else if (!bomberManger.mazePlayed && randMap == 3)
         {
             bomberManger.mazePlayed = true;
@@ -70,7 +70,7 @@ public class RandomMap : MonoBehaviour
             Loader.wallClimberPlaying = false;
             Loader.Load(Loader.Scene.TheMaze);
         }
-        else if (!bomberManger.wallClimerPlayed && randMap == 5)
+        else if (!bomberManger.wallClimerPlayed && randMap == 4)
         {
             bomberManger.wallClimerPlayed = true;
             Loader.wallClimberPlaying = true;
