@@ -13,7 +13,7 @@ public class PlayerLevel : MonoBehaviour
     public bool playerDead;
     public bool scoreGiven;
     BomberManger bomberManger;
-    [SerializeField] bool alive = true;
+    bool alive = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -27,9 +27,20 @@ public class PlayerLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Ground is falling
         OnGroundIsFalling();
         OnBomber();
-        OnMaze();
+
+        if (Loader.TheMazePlaying == true && alive)
+        {
+            gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        }
+
+    }
+    private void FixedUpdate()
+    {
+        onCaptureTheFlag();
     }
 
     private void OnGroundIsFalling()
@@ -66,8 +77,12 @@ public class PlayerLevel : MonoBehaviour
         //Ground is falling
         if (Loader.PlatformGamePlaying == true && other.CompareTag("Killbox"))
         {
-            playerController.totalScore = playerController.totalScore + KillerBox.points;
+            playerScore.currentScore = playerScore.currentScore + KillerBox.points;
             Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
+            alive = false;
+        }
+        if(Loader.captureTheFlagPlaying == true && other.CompareTag("Killbox"))
+        {
             alive = false;
         }
 
@@ -88,17 +103,12 @@ public class PlayerLevel : MonoBehaviour
             scoreGiven = true;
         }
     }
-
-    private void OnMaze()
+    public void onCaptureTheFlag()
     {
-        //&& alive
-        if (Loader.TheMazePlaying == true )
+        if(!alive)
         {
-            gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        }
-        else
-        {
-            gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.position=new Vector3(-8, 12, -23);
+            alive = true;
         }
     }
 }
