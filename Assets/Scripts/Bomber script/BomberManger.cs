@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class BomberManger : MonoBehaviour
@@ -27,6 +28,7 @@ public class BomberManger : MonoBehaviour
     public bool captureTheFlagPlayed;
 
     bool given = false;
+    public float timer = 202f;
     ////
     ///
     private void Awake()
@@ -56,11 +58,22 @@ public class BomberManger : MonoBehaviour
 
             //Loader.Load(Loader.Scene.PostLobby);
         }
+        
 
 
     }
     void Update()
     {
+        if(Loader.bomberGamePlaying)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                playerCountBomber -= 4;
+            }
+        }
+       
+
         PlayerCounter();
        
         
