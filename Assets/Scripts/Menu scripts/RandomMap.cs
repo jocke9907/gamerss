@@ -47,7 +47,7 @@ public class RandomMap : MonoBehaviour
         //bomberManger.captureTheFlagPlayed = true;
 
         // ändra denna för att byta map
-        randMap = 1;
+        randMap = 4;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {

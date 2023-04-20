@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     public CharacterController controller;
     private Vector3 playerVelocity;
     public bool groundedPlayer;
-    private float playerSpeed = 5.0f;
+    public float playerSpeed = 5.0f;
     private float jumpHeight = 2.75f;
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
 
     //------------Sam----------------------------------
+    public bool sam = false;
     public float maxGrabDistance = 1f;
     public KeyCode grabButton = KeyCode.Tab;
     //public KeyCode testButton;
@@ -194,6 +195,10 @@ public class PlayerController : MonoBehaviour
             GrabObject();
         }
 
+        if (sam == true)
+        {
+            GrabObject();
+        }
         
     }
 
@@ -228,7 +233,7 @@ public class PlayerController : MonoBehaviour
                     grabbedObject = hit.collider.gameObject;
 
                     bc = grabbedObject.GetComponent<BoxCollider>();
-                    //rb = grabbedObject.GetComponent<Rigidbody>();
+                    rb = grabbedObject.GetComponent<Rigidbody>();
                     alreadyGrabbed = true;
                 }
                 
@@ -244,20 +249,23 @@ public class PlayerController : MonoBehaviour
 
         if (grabbedObject != null)
         {
-            bc.isTrigger = true;
+
+            rb.mass = 1;
+            //bc.isTrigger = true;
             //grabbedObject.transform.rotation = Quaternion.identity.x;
             //grabbedObject.transform.rotation = Quaternion.Euler(0, 90, 0);
             Quaternion newRotation = Quaternion.Euler(0f, grabPoint.rotation.eulerAngles.y, 0f);
             grabbedObject.transform.rotation = newRotation;
             //rb.useGravity = false;
-            //movementScript.speed = (int)2.5;
+            playerSpeed = 2.5f;
             grabbedObject.transform.position = grabPoint.position;
 
         }
         else
         {
-            bc.isTrigger = false;
-            //rb.useGravity = true;
+            playerSpeed = 5f;
+            //bc.isTrigger = false;
+            rb.mass = 1000;
             //movementScript.speed = (int)5;
         }
 

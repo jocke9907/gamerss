@@ -22,7 +22,7 @@ public class FallingZone : MonoBehaviour
         {
             randX = Random.Range(-10, 10);
             randZ = Random.Range(-10, 5);
-            other.transform.position = new Vector3(randX, 10, randZ);
+            other.gameObject.transform.position = new Vector3(randX, 10, randZ);
         }
     }
 }

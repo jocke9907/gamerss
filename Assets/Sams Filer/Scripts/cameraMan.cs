@@ -41,7 +41,10 @@ public class cameraMan : MonoBehaviour
     {
         cam = GetComponent<Camera>();
 
+        //inaktivera denna ifall ni vill testa med egna gubbar i er scen. dvs inte gå via menyn för att köra er bana.
         numberPlayers = (NumberPlayers)FindObjectOfType<nrPlayers>().playerCount - 1; //sätter värden på enum med int
+
+
         player1 = GameObject.Find("Player1");
         player2 = GameObject.Find("Player2");
         player3 = GameObject.Find("Player3");

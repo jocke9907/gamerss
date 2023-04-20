@@ -21,6 +21,13 @@ public class MazeTimer : MonoBehaviour
     public TimerFormats formats;
     private Dictionary<TimerFormats, string> timeFormats = new Dictionary<TimerFormats, string>();
 
+    //--------------Sam---------------------------------------
+
+    bool yellowActivated = false;
+    bool redActivated = false;
+
+    //---------------------------------------------------------
+
     private void Start()
     {
         timeFormats.Add(TimerFormats.Whole, "0");
@@ -32,9 +39,25 @@ public class MazeTimer : MonoBehaviour
 
     private void Update()
     {
+
+//-----------------------SAM--------------------------------------
+        if (currentTime <= 30 && yellowActivated == false)
+        {
+            yellowActivated = true;
+            timerText.color = Color.yellow;
+        }
+        if (currentTime <= 10 && redActivated == false)
+        {
+            redActivated = true;
+            timerText.color = Color.red;
+        }
+
+//----------------------------------------------------------------
         currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
 
-        if(hasLimit && (countDown &&  currentTime < timerLimit) || (!countDown && currentTime >= timerLimit))
+        
+
+        if (hasLimit && (countDown &&  currentTime < timerLimit) || (!countDown && currentTime >= timerLimit))
         {
             currentTime = timerLimit;
             SetTimerText();
