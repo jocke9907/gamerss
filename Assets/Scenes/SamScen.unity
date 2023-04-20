@@ -1749,7 +1749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5381741025298503160, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6114338646223142829, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: sam
@@ -1801,7 +1801,7 @@ MonoBehaviour:
   sceneTimer: 155
   scoreTimer: 150
   goalTimer: 5
-  timerActivated: 0
+  timerActivated: 1
   numberPlayers: 0
 --- !u!65 &581085077
 BoxCollider:
@@ -2592,7 +2592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5381741025298503160, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6114338646223142829, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: sam
@@ -3454,7 +3454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5381741025298503160, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6114338646223142829, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: sam
@@ -4964,7 +4964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5381741025298503160, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6114338646223142819, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: m_Drag
