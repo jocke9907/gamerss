@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -16,6 +17,7 @@ public class BomberManger : MonoBehaviour
     public  bool playerCount;
     public  bool changeGame;
     PlayerController playerController;
+    InputSystemEnabler enabler;
     PlayerLevel playerLevel;
     // byt från static
     public bool redusePlayers;
@@ -30,11 +32,15 @@ public class BomberManger : MonoBehaviour
     bool given = false;
     public float timer = 202f;
     ////
-    ///
+    int waitForFrames = 3;
+    int frameCounter;
+    bool hasActivated = false;
+    bool active = false;
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
         playerLevel = FindObjectOfType<PlayerLevel>();
+        enabler = FindObjectOfType<InputSystemEnabler>();
         //playerCountBomber--;
     }
 
@@ -101,34 +107,79 @@ public class BomberManger : MonoBehaviour
             bomberPlayed = true;
             //bomberScript.Winner();
         }
-        
+        if(targetTime2 <= 3f)
+        {
+            //ActivatePlayers();
+        }
+
         if (targetTime2 <= 0f  )
         {
 
-            ActivatePlayers();
+            //ActivatePlayers();
             //playerController.transform.position = new Vector3(0, 40, 0);
             Loader.bomberGamePlaying = false;
             playerCount = false;
             ////playerLevel.playerDead = true;
             bombUppgrade = 0;
            
-            Loader.Load(Loader.Scene.PostLobby);
+            //if (hasActivated)
+            //{
+            //    return;
+            //}
+            frameCounter++;
+            frameCounter++;
+            frameCounter++;
+            Debug.Log(frameCounter);
+            if (frameCounter >= waitForFrames)
+            {
+                Loader.Load(Loader.Scene.PostLobby);
+            }
+            hasActivated = true;
+            
+
+           
+           
             targetTime2 = 5.0f;
             
         }
 
     }
+    //private void FixedUpdate()
+    //{
+    //    if(targetTime2 <= 0f)
+    //    {
+    //        if (hasActivated)
+    //        {
+    //            return;
+    //        }
+    //        frameCounter++;
+    //        if (frameCounter >= waitForFrames)
+    //        {
+    //            ActivatePlayers();
+    //        }
+    //        hasActivated = true;
+    //    }
+        
+    //}
     public void ActivatePlayers()
     {
         PlayerManager manager = FindObjectOfType<PlayerManager>();
+        
 
         Debug.Log(manager.GetPlayers());
-
+        
         // PlayerController[] players = FindObjectsOfType<PlayerController>();
-        foreach (PlayerController player in manager.GetPlayers())
+        if(!active)
         {
-            player.gameObject.SetActive(true);
+            foreach (PlayerController player in manager.GetPlayers())
+            {
+                
+                //enabler.gameObject.SetActive(true);
+                player.gameObject.SetActive(true);
+            }
         }
+        active = true;
+        
         
 
     }

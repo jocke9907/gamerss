@@ -31,13 +31,14 @@ public class MarkerInteract : MonoBehaviour
     float vectorZ = .1f;
     bool bomPlaced;
     public bool canPlaceBomb = true;
-
+    InputSystemEnabler enabler;
     int uppgrade = 9;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
         bomberInput = FindObjectOfType<BomberInput>();
         bomberManger = FindObjectOfType<BomberManger>();
+        enabler = FindObjectOfType<InputSystemEnabler>();
     }
 
     //public void DropBombs()
@@ -152,12 +153,15 @@ public class MarkerInteract : MonoBehaviour
         {           
             if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
             {
-                
+
                 //playerController.transform.position = new Vector3(0,40,0);
                 //Debug.Log("playerDead");
                 //playerController.transform.position += new Vector3(0, 90, 0);
                 //Debug.Log("move"+ playerController1.transform.position);
-                playerController.gameObject.SetActive(false);
+                playerController.veryDead = true;
+                //playerController.gameObject.SetActive(false);
+                //enabler.gameObject.SetActive(false);
+                //playerController.DeactivateInput();
                 //bomberManger.playerCountBomber ;
                 bomberManger.redusePlayers = true;
                 bomberManger.bomberPoints += 1;

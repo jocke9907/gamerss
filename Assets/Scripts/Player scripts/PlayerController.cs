@@ -94,9 +94,17 @@ public class PlayerController : MonoBehaviour
     public bool canPlaceBomb = true;
     public bool veryDead = false;
     bool scoreGiven = false;
+
+
+    public PlayerInput playerInput;
+
+
+
+    
     public void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
+        playerInput = GetComponent<PlayerInput>();
     }
     private void Start()
     {
@@ -113,7 +121,15 @@ public class PlayerController : MonoBehaviour
 
         //gameInput.OnInteractAction += bomberInput.GameInput_OnInteractAction;
     }
+    public void DisableInput()
+    {
+        playerInput.DeactivateInput();
+    }
 
+    public void EnableInput()
+    {
+        playerInput.ActivateInput();
+    }
     public void AddPoints(int pointsToAdd)
     {
         totalScore += pointsToAdd;
@@ -141,6 +157,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(veryDead)
+        {
+            return;
+        }
         
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)

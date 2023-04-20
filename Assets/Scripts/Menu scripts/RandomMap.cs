@@ -14,7 +14,8 @@ public class RandomMap : MonoBehaviour
         // PlayerController[] players = FindObjectsOfType<PlayerController>();
         foreach (PlayerController player in manager.GetPlayers())
         {
-            player.gameObject.SetActive(true);
+            player.veryDead = false;
+            //player.gameObject.SetActive(true);
         }
         giveScore = true;
         
@@ -47,7 +48,7 @@ public class RandomMap : MonoBehaviour
         //bomberManger.captureTheFlagPlayed = true;
 
         // ändra denna för att byta map
-        randMap = 1;
+        randMap = 2;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
