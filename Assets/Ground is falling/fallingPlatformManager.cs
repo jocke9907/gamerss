@@ -13,10 +13,12 @@ public class fallingPlatformManager : MonoBehaviour
     int randomObj;
     float speedup = 0f;
     [SerializeField] SpawnPoint spawnPoint;
+    AudioSource audio;
 
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         foreach (Transform child in transform)
         {
             if (child.gameObject.tag == "Ground")
@@ -55,6 +57,9 @@ public class fallingPlatformManager : MonoBehaviour
             {
                 fallingTimer = 4.0f - speedup;
                 rbs[randomObj].useGravity = true;
+                audio.Play();
+
+
                 randomObj = Random.Range(0, platforms.Count);
                 particles[randomObj].Play();
 

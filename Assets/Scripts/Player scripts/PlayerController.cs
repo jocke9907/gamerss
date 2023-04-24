@@ -11,12 +11,12 @@ public class PlayerController : MonoBehaviour
 {
     //
 
-    
+
     public bool playerOne;
-    public bool playerTwo;    
+    public bool playerTwo;
     public bool playerThree;
     public bool playerFour;
-    public bool no;
+    public bool no; //icke bra
     public static PlayerController Instance { get; private set; }
     public static Component component { get; private set; }
 
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask markerLayerMask;
     private PlayerController action;
-    
+
     public bool HasFlag { get; set; } //picked up flag or not
     public int FlagScore { get; set; }
 
@@ -50,7 +50,10 @@ public class PlayerController : MonoBehaviour
 
     //Animator
     [SerializeField] Animator anim;
-    
+
+    //Sound
+    [SerializeField] AudioSource jumpAudio;
+    [SerializeField] AudioSource bombAudio;
 
     public CharacterController controller;
     private Vector3 playerVelocity;
@@ -59,7 +62,7 @@ public class PlayerController : MonoBehaviour
     private float jumpHeight = 2.75f;
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
-    
+
     private bool jumped = false;
     public bool inputE = false;
     public bool grab = false;
@@ -90,7 +93,6 @@ public class PlayerController : MonoBehaviour
     //private PlayerController action;
     [SerializeField] bool placeBomb = false;
     private MarkerInteract selectedMarker;
-    //BomberManger bomberManger;
     private Vector2 movement = Vector2.zero;
     public bool canPlaceBomb = true;
     public bool veryDead = false;
@@ -101,7 +103,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    
+
     public void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
@@ -109,12 +111,14 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        
+        
         bomberInput = FindObjectOfType<BomberInput>();
 
         wallClimberInput = FindObjectOfType<WallClimberInput>();
 
         changeMap = FindObjectOfType<ChangeMap>();
-        
+
         controller = gameObject.GetComponent<CharacterController>();
 
         FindObjectOfType<PlayerManager>().AddToList(this);
@@ -143,26 +147,26 @@ public class PlayerController : MonoBehaviour
     public void OnInteract(InputAction.CallbackContext context)
     {
         anim.SetTrigger("Interacting");
-        inputE = context.action.triggered;        
+        inputE = context.action.triggered;
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        
+
         jumped = context.action.triggered;
     }
     public void OnGrab(InputAction.CallbackContext context)
     {
         grab = context.action.triggered;
-        
+
     }
 
     void Update()
     {
-        if(veryDead)
+        if (veryDead)
         {
             return;
         }
-        
+
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -185,6 +189,7 @@ public class PlayerController : MonoBehaviour
         // Changes the height position of the player..
         if (jumped && groundedPlayer)
         {
+            jumpAudio.Play();
             anim.SetBool("Jumping", true);
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
@@ -219,7 +224,7 @@ public class PlayerController : MonoBehaviour
         {
             GrabObject();
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -233,7 +238,7 @@ public class PlayerController : MonoBehaviour
         //        transform.position = new Vector3(0, 3, 0);
         //    }
         //}
-        
+
     }
 
     //----------------------------------------SAM-----------------------------------------------------------------------
@@ -256,11 +261,11 @@ public class PlayerController : MonoBehaviour
                     rb = grabbedObject.GetComponent<Rigidbody>();
                     alreadyGrabbed = true;
                 }
-                
+
 
             }
         }
-        if (!grab && grabbedObject != null && alreadyGrabbed==true)
+        if (!grab && grabbedObject != null && alreadyGrabbed == true)
         {
             //anim.SetBool("Grabbing", false);
             grabbedObject = null;
@@ -291,7 +296,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-//----------------SAM-----------------------------------------------------------------------------------------------
+    //----------------SAM-----------------------------------------------------------------------------------------------
 
 
     public void AddScore(int score)
@@ -312,9 +317,9 @@ public class PlayerController : MonoBehaviour
     }
     public void GiveScoreBomb()
     {
-       
 
-        if(!scoreGiven && bomberManger.bomberPlayed)
+
+        if (!scoreGiven && bomberManger.bomberPlayed)
         {
             totalScore += 4;
             scoreGiven = true;
@@ -356,6 +361,7 @@ public class PlayerController : MonoBehaviour
 
         if (inputE == true)
         {
+            bombAudio.Play();
             placeBomb = true;
         }
         else if (inputE == false)
@@ -417,7 +423,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+
 
 
     ///!!!!!!! ta inte bort

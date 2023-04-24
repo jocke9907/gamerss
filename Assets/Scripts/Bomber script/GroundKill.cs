@@ -6,6 +6,7 @@ public class GroundKill : MonoBehaviour
 {
     PlayerController playerController;
     BomberManger bomberManger;
+    bool groundKill;
     public void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
@@ -17,27 +18,48 @@ public class GroundKill : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        
+
 
 
         if (other.CompareTag("Player") )
         {
-            Debug.Log("fell on ground");
-            
-            //other.gameObject.SetActive(false);
-            //other.transform.position = new Vector3(0, 60, 0);
-            //bomberManger.playerCountBomber--;
-            //bomberManger.bomberPoints += 1;
-            //Debug.Log(bomberManger.playerCountBomber);
-            //bomberManger.PlayerCounter();
+            other.transform.TryGetComponent(out PlayerController playerController);
 
-            bomberManger.redusePlayers = true;
-            bomberManger.bomberPoints += 1;
-            if( other == playerController)
+            if (playerController.veryDead == false )
             {
+                bomberManger.bomberPoints += 1;
                 playerController.totalScore -= bomberManger.bomberPoints;
+                bomberManger.redusePlayers = true;
                 playerController.veryDead = true;
+                playerController.veryDead = true;
+               
             }
+            
+
+            //if (other == TryGetComponent(out PlayerController playerController) )
+            //{
+                
+            //}
+                Debug.Log("fell on ground");
+            
+            
+
+
+            //bomberManger.bomberPoints += 1;
+            //if( other == playerController)
+            //{
+            //    playerController.totalScore -= bomberManger.bomberPoints;
+            //    bomberManger.redusePlayers = true;
+            //    //if (groundKill == false )
+            //    //{
+                    
+            //    //    groundKill = true;
+            //    //}
+               
+            //}
            
+
 
             bomberManger.PlayerCounter();
         }
