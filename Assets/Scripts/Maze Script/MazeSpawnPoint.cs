@@ -12,8 +12,8 @@ public class MazeSpawnPoint : MonoBehaviour
     PlayerController playerController;
     BomberManger bomberManger;
     Vector3 spawn1 = new Vector3(1, 2, 18);
-    Vector3 spawn2 = new Vector3(17, 2, 18);
-    Vector3 spawn3 = new Vector3(17, 2, 1);
+    Vector3 spawn2 = new Vector3(17, 2, 1);
+    Vector3 spawn3 = new Vector3(17, 2, 18);
     Vector3 spawn4 = new Vector3(1, 2, 1);
 
     private void Awake()
