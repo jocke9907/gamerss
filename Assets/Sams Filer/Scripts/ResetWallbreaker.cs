@@ -27,13 +27,20 @@ public class ResetWallbreaker : MonoBehaviour
         players[2] = player3;
         players[3] = player4;
 
-        foreach(GameObject player in players)
+      
+        foreach (GameObject player in players)
         {
-            player.GetComponent<PlayerController>().finished = false;
-            player.GetComponent<PlayerController>().wallClimberScore = 0;
-        }
+            if (!player)
+            {
+                continue; //går till nästa objekt i foreach loopen.
+            }
+            if (player.CompareTag("Player"))
+            {
+                player.GetComponent<PlayerController>().finished = false;
+                player.GetComponent<PlayerController>().wallClimberScore = 0;
 
-        
+            }
+        }
     }
 
 }
