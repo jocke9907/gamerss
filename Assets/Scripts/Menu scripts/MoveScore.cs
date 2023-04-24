@@ -36,14 +36,14 @@ public class MoveScore : MonoBehaviour
         {
             
 
-            if (pl1s)
+            if (pl1s && players.Length > 1)
             {
                 height = players[0].totalScore;
                 
                 y = -10.5f;
                 CollorPillar(players[0]);
             }
-            if (pl2s)
+            if (pl2s && players.Length >= 2)
             {
                
                 height = players[1].totalScore;
@@ -51,13 +51,13 @@ public class MoveScore : MonoBehaviour
                 CollorPillar(players[1]);
 
             }
-            if (pl3s )
+            if (pl3s && players.Length >= 3)
             {
                 height = players[2].totalScore;
                 y = 3.5f;
                 CollorPillar(players[2]);
             }
-            if (pl4s)
+            if (pl4s && players.Length >= 4)
             {
                 height = players[3].totalScore;
                 y = 10.5f;
@@ -107,7 +107,7 @@ public class MoveScore : MonoBehaviour
     public void Update()
     {
         MoveBlock();
-        transform.position = new Vector3(y, (height) - 5, 8);
+        transform.position = new Vector3(y, (height*0.7f) - 5.01f, 8);
         
 
     }

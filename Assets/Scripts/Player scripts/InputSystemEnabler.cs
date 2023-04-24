@@ -5,24 +5,24 @@ using UnityEngine.InputSystem.UI;
 
 public class InputSystemEnabler : MonoBehaviour
 {
-    private InputSystemUIInputModule inputModule;
-    private GameObject inputSystemController;
+    //private InputSystemUIInputModule inputModule;
+    //private GameObject inputSystemController;
 
-    private void Awake()
-    {
-        inputModule = GetComponent<InputSystemUIInputModule>();
-        inputSystemController = FindObjectOfType<InputSystemUIInputModule>().gameObject;
-    }
+    //private void Awake()
+    //{
+    //    inputModule = GetComponent<InputSystemUIInputModule>();
+    //    inputSystemController = FindObjectOfType<InputSystemUIInputModule>().gameObject;
+    //}
 
-    private void OnEnable()
-    {
-        inputModule.enabled = true;
-        inputSystemController.SetActive(true);
-    }
+    //private void OnEnable()
+    //{
+    //    inputModule.enabled = true;
+    //    inputSystemController.SetActive(true);
+    //}
 
-    private void OnDisable()
-    {
-        inputModule.enabled = false;
-        inputSystemController.SetActive(false);
-    }
+    //private void OnDisable()
+    //{
+    //    inputModule.enabled = false;
+    //    inputSystemController.SetActive(false);
+    //}
 }

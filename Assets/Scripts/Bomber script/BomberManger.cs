@@ -17,10 +17,10 @@ public class BomberManger : MonoBehaviour
     public  bool playerCount;
     public  bool changeGame;
     PlayerController playerController;
-    InputSystemEnabler enabler;
+    //InputSystemEnabler enabler;
     PlayerLevel playerLevel;
     // byt från static
-    public bool redusePlayers;
+    public bool redusePlayers = false;
     public float targetTime2 = 4.0f;
     BomberScript bomberScript;
     public bool bomberPlayed;
@@ -40,7 +40,7 @@ public class BomberManger : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         playerLevel = FindObjectOfType<PlayerLevel>();
-        enabler = FindObjectOfType<InputSystemEnabler>();
+        //enabler = FindObjectOfType<InputSystemEnabler>();
         //playerCountBomber--;
     }
 
@@ -86,6 +86,7 @@ public class BomberManger : MonoBehaviour
         if (redusePlayers)
         {
             playerCountBomber--;
+            redusePlayers = false;
             redusePlayers = false;
         }
        
