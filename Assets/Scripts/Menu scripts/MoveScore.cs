@@ -36,7 +36,7 @@ public class MoveScore : MonoBehaviour
         {
             
 
-            if (pl1s && players.Length >= 1)
+            if (pl1s && players.Length > 1)
             {
                 height = players[0].totalScore;
                 
@@ -107,7 +107,7 @@ public class MoveScore : MonoBehaviour
     public void Update()
     {
         MoveBlock();
-        transform.position = new Vector3(y, (height) - 4.99f, 8);
+        transform.position = new Vector3(y, (height*0.7f) - 5.01f, 8);
         
 
     }
