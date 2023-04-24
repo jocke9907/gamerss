@@ -7921,8 +7921,10 @@ MonoBehaviour:
   anim: {fileID: 6114338646223142822}
   controller: {fileID: 0}
   groundedPlayer: 0
+  playerSpeed: 5
   inputE: 0
   grab: 0
+  sam: 0
   maxGrabDistance: 1
   grabButton: 9
   grabbedObject: {fileID: 0}
@@ -7939,6 +7941,7 @@ MonoBehaviour:
   placeBomb: 0
   canPlaceBomb: 1
   veryDead: 0
+  playerInput: {fileID: 0}
 --- !u!65 &8464007729040168787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7950,8 +7953,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1577384, y: 1.9947858, z: 2.8438354}
-  m_Center: {x: -0.09427941, y: 1.1201556, z: -0.11316943}
+  m_Size: {x: 3.7916281, y: 1.9947858, z: 3.7688146}
+  m_Center: {x: -0.10104239, y: 1.1201556, z: -0.2217412}
 --- !u!114 &5914984515958225208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7998,7 +8001,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5381741025298503160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b34332398b5093b45b53267f1637fb16, type: 3}
   m_Name: 
