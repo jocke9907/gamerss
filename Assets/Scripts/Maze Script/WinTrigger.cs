@@ -22,8 +22,11 @@ public class WinTrigger : MonoBehaviour
     //PlayerScore playerScore;
     PlayerController playerController;
 
+    AudioSource audio;
+
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
         playerController = GameObject.FindObjectOfType<PlayerController>();
         if (playerController == null)
         {
@@ -45,6 +48,7 @@ public class WinTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && !playerPoints.ContainsKey(other.gameObject))
         {
+            audio.Play();   
             int pointsToAdd = CalculatePoints();
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
             playerController.AddPoints(pointsToAdd);

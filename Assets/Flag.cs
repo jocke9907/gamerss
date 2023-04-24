@@ -12,10 +12,12 @@ public class Flag : MonoBehaviour
     private GameObject playerWithFlag;
     public bool isFlagPickedUp;
     Dictionary<PlayerController, int> flagsCount = new Dictionary<PlayerController, int>();
+    AudioSource audio;
     
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         flagOriginalPosition = transform.position;
     }
 
@@ -26,6 +28,7 @@ public class Flag : MonoBehaviour
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
             if (player != null && !player.HasFlag)
             {
+                audio.Play();
                 player.HasFlag = true;
                 playerWithFlag = other.gameObject;
                 transform.parent = other.transform;
@@ -47,6 +50,7 @@ public class Flag : MonoBehaviour
             PlayerController player = playerWithFlag.GetComponent<PlayerController>();
             if (player != null && player.HasFlag)
             {
+                audio.Play();
                 player.HasFlag = false;
                 transform.parent = null;
                 transform.position = other.transform.position;
