@@ -40,6 +40,6 @@ public class SpawnPosition : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if()
+        
     }
 }
