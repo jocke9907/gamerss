@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
     public bool canPlaceBomb = true;
     public bool veryDead = false;
     bool scoreGiven = false;
+    bool scoreGivenLava = false;
 
 
     public PlayerInput playerInput;
@@ -203,7 +204,7 @@ public class PlayerController : MonoBehaviour
 
         //HandleInteractions();
         //bomberInput.UpdateTo();
-
+        GiveScoreLavaGround();
         if (Loader.bomberGamePlaying == true)
         {
             UpdateTo();
@@ -323,6 +324,16 @@ public class PlayerController : MonoBehaviour
         {
             totalScore += 4;
             scoreGiven = true;
+        }
+    }
+    public void GiveScoreLavaGround()
+    {
+
+
+        if (!scoreGivenLava && bomberManger.lavaGroundPlayed)
+        {
+            totalScore += 4;
+            scoreGivenLava = true;
         }
     }
     public void GameInput_OnInteractAction(object sender, System.EventArgs e)

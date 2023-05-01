@@ -44,11 +44,11 @@ public class RandomMap : MonoBehaviour
         
         Loader.TheMazePlaying = false;
 
-        int randMap = Random.Range(1, 5);
+        int randMap = Random.Range(1, 6);
         //bomberManger.captureTheFlagPlayed = true;
 
         // ändra denna för att byta map
-        randMap = 4;
+        randMap = 5;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
@@ -61,6 +61,7 @@ public class RandomMap : MonoBehaviour
         {
             bomberManger.bomberPlayed = true;
             bomberManger.GameStart();
+            bomberManger.bomberPoints = 4;
             if (CreateGameUI.onePlayer == true)
             {
                 bomberManger.playerCountBomber = 1;
@@ -80,7 +81,7 @@ public class RandomMap : MonoBehaviour
             Loader.bomberGamePlaying = true;
             Loader.Load(Loader.Scene.BomberGame);
         }
-        else if (!bomberManger.captureTheFlagPlayed && randMap == 5)
+        else if (!bomberManger.captureTheFlagPlayed && randMap == 6)
         {
             bomberManger.captureTheFlagPlayed = true;
             Loader.Load(Loader.Scene.CaptureTheFlag);
@@ -99,9 +100,33 @@ public class RandomMap : MonoBehaviour
             //Loader.TheMazePlaying = false;
             Loader.Load(Loader.Scene.SamScen);
         }
+        else if (!bomberManger.lavaGroundPlayed && randMap == 5)
+        {
+            bomberManger.lavaGroundPlayed = true;
+            bomberManger.GameStart();
+            bomberManger.bomberPoints = 4;
+            if (CreateGameUI.onePlayer == true)
+            {
+                bomberManger.playerCountBomber = 1;
+            }
+            if (CreateGameUI.twoPlayer == true)
+            {
+                bomberManger.playerCountBomber = 1;
+            }
+            if (CreateGameUI.threePlayer == true)
+            {
+                bomberManger.playerCountBomber = 2;
+            }
+            if (CreateGameUI.fourPlayer == true)
+            {
+                bomberManger.playerCountBomber = 3;
+            }
+            Loader.LavaGroundPlaying = true;
+            Loader.Load(Loader.Scene.LavaGround);
+        }
         else
         {
-            randMap = Random.Range(1, 5);
+            randMap = Random.Range(1, 6);
         }
     }
 }

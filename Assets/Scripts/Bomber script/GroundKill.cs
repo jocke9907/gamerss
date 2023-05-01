@@ -28,7 +28,7 @@ public class GroundKill : MonoBehaviour
 
             if (playerController.veryDead == false )
             {
-                bomberManger.bomberPoints += 1;
+                bomberManger.bomberPoints -= 1;
                 playerController.totalScore -= bomberManger.bomberPoints;
                 bomberManger.redusePlayers = true;
                 playerController.veryDead = true;

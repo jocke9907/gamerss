@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SamScen.unity
     guid: af29f371a2721c14ca269797c8ac193e
+  - enabled: 1
+    path: Assets/Scenes/LavaGround.unity
+    guid: a23e20b21468970449ae139a61c68225
   m_configObjects: {}

@@ -12,9 +12,10 @@ public static class Loader
     public static bool TheMazePlaying;
     public static bool wallClimberPlaying;
     public static bool captureTheFlagPlaying;
+    public static bool LavaGroundPlaying;
     public enum Scene
     {
-        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze, SamScen, PostLobby
+        Loading, Menu, CreateGame, BomberGame, ViggesScene, Lobby, CaptureTheFlag, TheMaze, SamScen, PostLobby, LavaGround
     }
     //Scene curentGameState = Scene.Menu;
 

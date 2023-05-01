@@ -26,7 +26,7 @@ public class MarkerInteract : MonoBehaviour
     //playerController = FindObjectOfType<BomberInput>();
     public bool randomBomb = true;
 
-    public float targetTime = 4.0f;
+    public float targetTime = 4.1f;
     Vector2 inputVector = new Vector2(8f, 0f);
     float vectorZ = .1f;
     bool bomPlaced;
@@ -75,18 +75,18 @@ public class MarkerInteract : MonoBehaviour
         {
             Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
             bombTransform.localPosition = Vector3.zero;
-            targetTime = 4.0f;
+            targetTime = 4.1f;
         }
         else
         {
             Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
             bombTransform.localPosition = Vector3.zero;
-            targetTime = 4.0f;
+            targetTime = 4.1f;
         }
 
 
 
-        targetTime = 4.0f;
+        targetTime = 4.1f;
         bomPlaced = true;
 
         canPlaceBomb = false;
@@ -100,13 +100,13 @@ public class MarkerInteract : MonoBehaviour
         {
             Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
             bombTransform.localPosition = Vector3.zero;
-            targetTime = 4.0f;
+            targetTime = 4.1f;
         }
         else
         {
             Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
             bombTransform.localPosition = Vector3.zero;
-            targetTime = 4.0f;
+            targetTime = 4.1f;
         }
     }
     //public void StrongBomb()
@@ -156,7 +156,7 @@ public class MarkerInteract : MonoBehaviour
                 if (playerController.veryDead == false)
                 {
                     bomberManger.redusePlayers = true;
-                    bomberManger.bomberPoints += 1;
+                    bomberManger.bomberPoints -= 1;
                     playerController.totalScore -= bomberManger.bomberPoints;
                     playerController.veryDead = true;
                 }

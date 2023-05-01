@@ -10,7 +10,7 @@ public class BomberManger : MonoBehaviour
 {
     public int playerCountBomber;
     public int nrOfPlayers;
-    public  int bomberPoints = 0;
+    public  int bomberPoints = 4;
     public  int bombUppgrade = 0;
 
   
@@ -28,6 +28,7 @@ public class BomberManger : MonoBehaviour
     public bool wallClimerPlayed;
     public bool mazePlayed;
     public bool captureTheFlagPlayed;
+    public bool lavaGroundPlayed;
 
     bool given = false;
     public float timer = 202f;
@@ -108,7 +109,14 @@ public class BomberManger : MonoBehaviour
             bomberPlayed = true;
             //bomberScript.Winner();
         }
-        if(targetTime2 <= 3f)
+        if (playerCount && Loader.LavaGroundPlaying)
+        {
+            targetTime2 -= Time.deltaTime;
+
+            lavaGroundPlayed = true;
+            
+        }
+        if (targetTime2 <= 3f)
         {
             //ActivatePlayers();
         }
@@ -119,6 +127,7 @@ public class BomberManger : MonoBehaviour
             //ActivatePlayers();
             //playerController.transform.position = new Vector3(0, 40, 0);
             Loader.bomberGamePlaying = false;
+            Loader.LavaGroundPlaying = false;
             playerCount = false;
             ////playerLevel.playerDead = true;
             bombUppgrade = 0;
