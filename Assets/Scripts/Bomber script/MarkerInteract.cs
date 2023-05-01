@@ -32,7 +32,7 @@ public class MarkerInteract : MonoBehaviour
     bool bomPlaced;
     public bool canPlaceBomb = true;
     InputSystemEnabler enabler;
-    int uppgrade = 9;
+    int uppgrade = 8;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -96,7 +96,7 @@ public class MarkerInteract : MonoBehaviour
 
     public void RandomBombs()
     {
-        if (bomberManger.bombUppgrade > 4)
+        if (bomberManger.bombUppgrade > 8)
         {
             Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
             bombTransform.localPosition = Vector3.zero;
@@ -115,7 +115,7 @@ public class MarkerInteract : MonoBehaviour
     //}
     private void DropChance()
     {
-        int dropChance = Random.Range(1, 8);
+        int dropChance = Random.Range(1, 7);
         if (dropChance == 1 ) 
         {
             Transform dropTansform = Instantiate(dropPrefab, dropSpawn);
