@@ -48,10 +48,11 @@ public class RandomMap : MonoBehaviour
         //bomberManger.captureTheFlagPlayed = true;
 
         // ändra denna för att byta map
-        randMap = 5;
+        //randMap = 5;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
+            bomberManger.redusePlayers = false;
             bomberManger.fallinggroundPlayed = true;
             Loader.PlatformGamePlaying = true;
             Loader.Load(Loader.Scene.ViggesScene);
@@ -59,6 +60,7 @@ public class RandomMap : MonoBehaviour
         }
         else if (!bomberManger.bomberPlayed && randMap == 2)
         {
+            bomberManger.redusePlayers = false;
             bomberManger.bomberPlayed = true;
             bomberManger.GameStart();
             bomberManger.bomberPoints = 4;
@@ -102,6 +104,7 @@ public class RandomMap : MonoBehaviour
         }
         else if (!bomberManger.lavaGroundPlayed && randMap == 5)
         {
+            bomberManger.redusePlayers = false;
             bomberManger.lavaGroundPlayed = true;
             bomberManger.GameStart();
             bomberManger.bomberPoints = 4;
