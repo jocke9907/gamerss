@@ -11,7 +11,7 @@ public class MoveScore : MonoBehaviour
     PlayerManager playerManager;
     PlayerLevel playerLevel;
     PlayerScore playerScore;
-    [SerializeField] int height;
+    [SerializeField] float height;
     [SerializeField] bool pl1s;
     [SerializeField] bool pl2s;
     [SerializeField] bool pl3s;
@@ -39,7 +39,7 @@ public class MoveScore : MonoBehaviour
 
             if (pl1s)
             {
-                height = players[0].totalScore;
+                height = players[0].totalScore - 0.1f;
                 
                 x = -2.5f;
                 z = 2.5f;
@@ -48,7 +48,7 @@ public class MoveScore : MonoBehaviour
             if (pl2s)
             {
                
-                height = players[1].totalScore;
+                height = players[1].totalScore - 0.1f;
                 x = 2.5f;
                 z = -2.5f;
                 CollorPillar(players[1]);
@@ -56,14 +56,14 @@ public class MoveScore : MonoBehaviour
             }
             if (pl3s )
             {
-                height = players[2].totalScore;
+                height = players[2].totalScore - 0.1f;
                 x = -2.5f;
                 z = -2.5f;
                 CollorPillar(players[2]);
             }
             if (pl4s)
             {
-                height = players[3].totalScore;
+                height = players[3].totalScore - 0.1f;
                 x = 2.5f;
                 z = 2.5f;
                 CollorPillar(players[3]);

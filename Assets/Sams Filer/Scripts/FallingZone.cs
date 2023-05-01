@@ -20,13 +20,7 @@ public class FallingZone : MonoBehaviour
             randZ = Random.Range(-10, 5);
             other.transform.position = new Vector3(randX, 30, randZ);
         }
-        else if (other.gameObject.CompareTag("Player"))
-        {
-            randX = Random.Range(-10, 10);
-            randZ = Random.Range(-10, 5);
-            other.gameObject.transform.position = new Vector3(randX, 10, randZ);
-            Debug.Log("Hallå!!!!");
-        }
+        
     }
 
     private void FixedUpdate()
@@ -37,7 +31,9 @@ public class FallingZone : MonoBehaviour
         {
             if (player.gameObject.transform.position.y < -20)
             {
-                player.gameObject.transform.position = new Vector3(0, 7, 0);
+                randX = Random.Range(-10, 10);
+                randZ = Random.Range(-10, 5);
+                player.gameObject.transform.position = new Vector3(randX, 7, randZ);
             }
             
         }
