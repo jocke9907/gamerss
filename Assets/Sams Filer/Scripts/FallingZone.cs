@@ -10,7 +10,12 @@ public class FallingZone : MonoBehaviour
     public float randZ;
 
     List<GameObject> listObject = new List<GameObject>();
+    
 
+    private void Start()
+    {
+        
+    }
 
     private void OnTriggerEnter(Collider other)
     {

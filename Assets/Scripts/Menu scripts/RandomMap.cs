@@ -6,7 +6,7 @@ public class RandomMap : MonoBehaviour
 {
     BomberManger bomberManger;
     float targetTime3 = 5f;
-    bool giveScore = true;
+    //bool giveScore = true;
     private void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
@@ -17,7 +17,7 @@ public class RandomMap : MonoBehaviour
             player.veryDead = false;
             //player.gameObject.SetActive(true);
         }
-        giveScore = true;
+        //giveScore = true;
         
 
     }

@@ -12,7 +12,7 @@ public class SpawnPosition : MonoBehaviour
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
-    bool spawned = false;
+    //bool spawned = false;
 
     //public enum NumberPlayers { one, two, three, four }
     //public NumberPlayers numberPlayers = NumberPlayers.one;
