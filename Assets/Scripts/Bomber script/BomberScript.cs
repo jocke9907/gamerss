@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class BomberScript : MonoBehaviour
 {
-    public  int playerLeft ;
+    public int playerLeft ;
    
     public TextMeshProUGUI players;
     public TextMeshProUGUI winner;
