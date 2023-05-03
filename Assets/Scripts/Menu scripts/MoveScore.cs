@@ -112,7 +112,7 @@ public class MoveScore : MonoBehaviour
     public void Update()
     {
         MoveBlock();
-        transform.position = new Vector3(x, (height) - 5, z);
+        transform.position = new Vector3(x, (height) - 5.1f, z);
         
 
     }

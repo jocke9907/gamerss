@@ -19,7 +19,7 @@ public class FallingZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Movable object"))
+        if (other.gameObject.CompareTag("Movable object") || other.gameObject.CompareTag("Player"))
         {
             randX = Random.Range(-10, 10);
             randZ = Random.Range(-10, 5);
@@ -28,21 +28,24 @@ public class FallingZone : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
-    {
-        PlayerController[] players = FindObjectsOfType<PlayerController>();
+    //private void Update()
+    //{
+    //    PlayerController[] players = FindObjectsOfType<PlayerController>();
 
-        foreach (PlayerController player in players)
-        {
-            if (player.gameObject.transform.position.y < -20)
-            {
-                randX = Random.Range(-10, 10);
-                randZ = Random.Range(-10, 5);
-                player.gameObject.transform.position = new Vector3(randX, 7, randZ);
-            }
+    //    foreach (PlayerController player in players)
+    //    {
+    //        if (player.gameObject.transform.position.y < -20)
+    //        {
+    //            player.gameObject.GetComponent<PlayerController>().transported = true;
+    //            randX = Random.Range(-10, 10);
+    //            randZ = Random.Range(-10, 5);
+    //            //player.gameObject.GetComponent<PlayerController>().groundedPlayer = true;
+    //            //player.gameObject.GetComponent<PlayerController>().playerVelocity = Vector3.zero;
+    //            player.gameObject.transform.position = new Vector3(randX, 7, randZ);
+    //        }
             
-        }
+    //    }
 
         
-    }
+    //}
 }
