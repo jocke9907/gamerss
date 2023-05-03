@@ -15,8 +15,8 @@ public class MoveLava : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lavaSpeed += 0.00007f;
+        lavaSpeed += 0.0001f;
         transform.position += transform.up * lavaSpeed * Time.deltaTime;
-        transform.position += transform.forward * lavaSpeed * Time.deltaTime *2.4f ;
+        transform.position += transform.forward * lavaSpeed * Time.deltaTime *2.7f ;
     }
 }

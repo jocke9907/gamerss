@@ -5,8 +5,8 @@ using UnityEngine;
 public class MoveCamera : MonoBehaviour
 {
     //private Rigidbody rigidBody;
-    public float speed = 1f;
-    public float upForce = 1.2f;
+    public float speed = 1.1f;
+    public float upForce = 1.1f;
     void Start()
     {
 
@@ -15,8 +15,8 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed += 0.0001f;
-        upForce += 0.000005f;
+        speed += 0.00018f;
+        upForce += 0.000015f;
         transform.position += transform.up * speed * Time.deltaTime;
         transform.position += transform.forward * speed * Time.deltaTime * upForce;
     }
