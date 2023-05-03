@@ -37,7 +37,7 @@ public class MoveScore : MonoBehaviour
         {
             
 
-            if (pl1s)
+            if (pl1s && players.Length > 1)
             {
                 height = players[0].totalScore - 0.1f;
                 
@@ -45,7 +45,7 @@ public class MoveScore : MonoBehaviour
                 z = 2.5f;
                 CollorPillar(players[0]);
             }
-            if (pl2s)
+            if (pl2s && players.Length > 2)
             {
                
                 height = players[1].totalScore - 0.1f;
@@ -54,14 +54,14 @@ public class MoveScore : MonoBehaviour
                 CollorPillar(players[1]);
 
             }
-            if (pl3s )
+            if (pl3s && players.Length > 3)
             {
                 height = players[2].totalScore - 0.1f;
                 x = -2.5f;
                 z = -2.5f;
                 CollorPillar(players[2]);
             }
-            if (pl4s)
+            if (pl4s && players.Length > 4)
             {
                 height = players[3].totalScore - 0.1f;
                 x = 2.5f;
