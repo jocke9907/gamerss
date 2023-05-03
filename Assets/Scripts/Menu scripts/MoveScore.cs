@@ -11,12 +11,13 @@ public class MoveScore : MonoBehaviour
     PlayerManager playerManager;
     PlayerLevel playerLevel;
     PlayerScore playerScore;
-    [SerializeField] int height;
+    [SerializeField] float height;
     [SerializeField] bool pl1s;
     [SerializeField] bool pl2s;
     [SerializeField] bool pl3s;
     [SerializeField] bool pl4s;
-    float y;
+    float x;
+    float z;
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -36,31 +37,35 @@ public class MoveScore : MonoBehaviour
         {
             
 
-            if (pl1s && players.Length > 1)
+            if (pl1s)
             {
-                height = players[0].totalScore;
+                height = players[0].totalScore - 0.1f;
                 
-                y = -10.5f;
+                x = -2.5f;
+                z = 2.5f;
                 CollorPillar(players[0]);
             }
-            if (pl2s && players.Length >= 2)
+            if (pl2s)
             {
                
-                height = players[1].totalScore;
-                y = -3.5f;
+                height = players[1].totalScore - 0.1f;
+                x = 2.5f;
+                z = -2.5f;
                 CollorPillar(players[1]);
 
             }
-            if (pl3s && players.Length >= 3)
+            if (pl3s )
             {
-                height = players[2].totalScore;
-                y = 3.5f;
+                height = players[2].totalScore - 0.1f;
+                x = -2.5f;
+                z = -2.5f;
                 CollorPillar(players[2]);
             }
-            if (pl4s && players.Length >= 4)
+            if (pl4s)
             {
-                height = players[3].totalScore;
-                y = 10.5f;
+                height = players[3].totalScore - 0.1f;
+                x = 2.5f;
+                z = 2.5f;
                 CollorPillar(players[3]);
             }
 
@@ -107,7 +112,7 @@ public class MoveScore : MonoBehaviour
     public void Update()
     {
         MoveBlock();
-        transform.position = new Vector3(y, (height*0.7f) - 5.01f, 8);
+        transform.position = new Vector3(x, (height) - 5, z);
         
 
     }
