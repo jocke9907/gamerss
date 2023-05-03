@@ -5,7 +5,7 @@ using UnityEngine;
 public class KillerBox : MonoBehaviour
 {
     static public int points = 0;
-    public static int playercounter = 4;
+    [SerializeField] public static int playercounter = 4;
 
     // Start is called before the first frame update
     
@@ -15,7 +15,7 @@ public class KillerBox : MonoBehaviour
         {
             //points++;
             //playercounter--;
-            other.gameObject.transform.position = new Vector3(0, 3, 0);
+            //other.gameObject.transform.position = new Vector3(0, 3, 0);
             //other.gameObject.SetActive(false);
         }
         if(playercounter <= 0)
