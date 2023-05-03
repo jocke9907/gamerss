@@ -66,8 +66,8 @@ public class PlayerLevel : MonoBehaviour
                     Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
                     KillerBox.points++;
                     KillerBox.playercounter--;
-                    alive = false;
 
+                    alive = false;
                 }
             }
 
