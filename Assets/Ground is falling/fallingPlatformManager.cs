@@ -46,30 +46,33 @@ public class fallingPlatformManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (spawnPoint.gameStarted)
-        {
-            fallingTimer -= Time.deltaTime;
-            particleTimer -= Time.deltaTime;
+    
 
-            if (fallingTimer <= 0.0f)
-            {
-                fallingTimer = 4.0f - speedup;
-                rbs[randomObj].useGravity = true;
-                audio.Play();
+    //Old Update
+    //void Update()
+    //{
+    //    if (spawnPoint.gameStarted)
+    //    {
+    //        fallingTimer -= Time.deltaTime;
+    //        particleTimer -= Time.deltaTime;
 
-
-                randomObj = Random.Range(0, platforms.Count);
-                particles[randomObj].Play();
-
-                if (speedup <= 3.0f)
-                {
-                    speedup = speedup + 0.5f;
-                }
-            }
-        }
+    //        if (fallingTimer <= 0.0f)
+    //        {
+    //            fallingTimer = 4.0f - speedup;
+    //            rbs[randomObj].useGravity = true;
+    //            audio.Play();
 
 
-    }
+    //            randomObj = Random.Range(0, platforms.Count);
+    //            particles[randomObj].Play();
+
+    //            if (speedup <= 3.0f)
+    //            {
+    //                speedup = speedup + 0.5f;
+    //            }
+    //        }
+    //    }
+
+
+    //}
 }

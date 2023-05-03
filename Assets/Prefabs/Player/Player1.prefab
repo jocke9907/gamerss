@@ -4086,6 +4086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2713136308427392021}
   - component: {fileID: 3622422589266302403}
+  - component: {fileID: 514464776894673061}
   m_Layer: 17
   m_Name: Tail05
   m_TagString: Untagged
@@ -4128,7 +4129,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 68969ffab2e346a0a58207170aa902e9, type: 2}
+  - {fileID: 2100000, guid: ff985dc9c1a20254cbb4891c38b37e30, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4216,6 +4217,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000017881393, y: 0.6095441, z: 0.3261041}
     m_Extent: {x: 0.37893307, y: 0.45926413, z: 0.4135489}
   m_DirtyAABB: 0
+--- !u!114 &514464776894673061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2792836442745771528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ec680702f32cc4d8d46818dcb34b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 6114338646223142829}
+  renderer: {fileID: 3622422589266302403}
 --- !u!1 &2902155046258084460
 GameObject:
   m_ObjectHideFlags: 0
