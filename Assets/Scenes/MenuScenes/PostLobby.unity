@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041748b5b67dc8c4a8a4fb2565ec3be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randMap: 0
+  randMap: 6
 --- !u!4 &186299246
 Transform:
   m_ObjectHideFlags: 0
