@@ -65,10 +65,22 @@ public class Flag : MonoBehaviour
         
         
     }
-    public void AssignScore()
+    public Dictionary<PlayerController,int> AssignPoints()
     {
-        //var sortedPlayers=
+        var sortedPLayers = flagsCount.OrderByDescending(x => x.Value);
+        var groups=sortedPLayers.GroupBy(x => x.Value);
+        int points = flagsCount.Count;
+        foreach (var group in groups)
+        {
+            foreach (var player in group)
+            {
+                player.Key.FlagScore += points;
+            }
+            points--;
+        }
+        return flagsCount;
     }
+   
 
 
     private IEnumerator FlagRespawn()
