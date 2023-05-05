@@ -289,9 +289,12 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+           
             playerSpeed = 5f;
             //bc.isTrigger = false;
             rb.mass = 1000;
+            if (rb)
+                rb.mass = 1000;
             //movementScript.speed = (int)5;
         }
 
