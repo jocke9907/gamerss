@@ -12,64 +12,201 @@ public class MoveScore : MonoBehaviour
     PlayerLevel playerLevel;
     PlayerScore playerScore;
     [SerializeField] float height;
-    [SerializeField] bool pl1s;
-    [SerializeField] bool pl2s;
-    [SerializeField] bool pl3s;
-    [SerializeField] bool pl4s;
+    [SerializeField] bool playerOne;
+    [SerializeField] bool playerTwo;
+    [SerializeField] bool playerThree;
+    [SerializeField] bool playerFour;
+    //PlayerController[] players;
+
+    //---------------SAM--------------------------------
+
     float x;
     float z;
+    public enum NumberPlayers { one, two, three, four }
+    public NumberPlayers numberPlayers = NumberPlayers.two;
+
+    public GameObject[] players;
+    GameObject player1;
+    GameObject player2;
+    GameObject player3;
+    GameObject player4;
+
+    //--------------------------------------------------
     public void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
         playerLevel = FindObjectOfType<PlayerLevel>();
         playerScore = FindObjectOfType<PlayerScore>();
         playerManager = FindObjectOfType<PlayerManager>();
-        
+
+//-------------------------SAM-------------------------------------------------------
+
+        numberPlayers = (NumberPlayers)FindObjectOfType<nrPlayers>().playerCount - 1;
+        player1 = GameObject.Find("Player1");
+        player2 = GameObject.Find("Player2");
+        player3 = GameObject.Find("Player3");
+        player4 = GameObject.Find("Player4");
+        players[0] = player1;
+        players[1] = player2;
+        players[2] = player3;
+        players[3] = player4;
+//------------------------------------------------------------------------------------
     }
+
 
     public void MoveBlock()
     {
 
-
-        PlayerController[] players = playerManager.GetPlayers().ToArray();
-      
-        foreach (PlayerController player in players)
+        switch (numberPlayers)
         {
-            
 
-            if (pl1s && players.Length > 1)
-            {
-                height = players[0].totalScore - 0.1f;
-                
-                x = -2.5f;
-                z = 2.5f;
-                CollorPillar(players[0]);
-            }
-            if (pl2s && players.Length > 2)
-            {
-               
-                height = players[1].totalScore - 0.1f;
-                x = 2.5f;
-                z = -2.5f;
-                CollorPillar(players[1]);
+            case NumberPlayers.one:
 
-            }
-            if (pl3s && players.Length > 3)
-            {
-                height = players[2].totalScore - 0.1f;
-                x = -2.5f;
-                z = -2.5f;
-                CollorPillar(players[2]);
-            }
-            if (pl4s && players.Length > 4)
-            {
-                height = players[3].totalScore - 0.1f;
-                x = 2.5f;
-                z = 2.5f;
-                CollorPillar(players[3]);
-            }
+                foreach (GameObject player in players)
+                {
+                    if (playerOne)
+                    {
+                        height = players[0].GetComponent<PlayerController>().totalScore - 0.1f;
+                        x = -2.5f;
+                        z = 2.5f;
+                        //ColorPillar(player);
+                    }
+                }
+                break;
 
+            case NumberPlayers.two:
+
+                foreach (GameObject player in players)
+                {
+
+
+                    if (playerOne)
+                    {
+                        height = players[0].GetComponent<PlayerController>().totalScore - 0.1f;
+                        x = -2.5f;
+                        z = 2.5f;
+                        //ColorPillar(player);
+                    }
+                    else if (playerTwo)
+                    {
+                        height = players[1].GetComponent<PlayerController>().totalScore - 0.1f;
+                        x = 2.5f;
+                        z = -2.5f;
+                        //ColorPillar(player);
+                    }
+                }
+                break;
+
+            case NumberPlayers.three:
+
+                foreach (GameObject player in players)
+                {
+                    if (playerOne)
+                    {
+                        height = players[0].GetComponent<PlayerController>().totalScore - 0.1f;
+                        x = -2.5f;
+                        z = 2.5f;
+                        //ColorPillar(player);
+                    }
+                    else if (playerTwo)
+                    {
+                        height = players[1].GetComponent<PlayerController>().totalScore - 0.1f;
+                        x = 2.5f;
+                        z = -2.5f;
+                        //ColorPillar(player);
+                    }
+                    else if (playerThree)
+                    {
+                        height = players[2].GetComponent<PlayerController>().totalScore - 0.1f;
+                        x = -2.5f;
+                        z = -2.5f;
+                        //ColorPillar(player);
+                    }
+                }
+                break;
+
+            case NumberPlayers.four:
+
+                foreach (GameObject player in players)
+                {
+                    if (playerOne)
+                    {
+                        height = players[0].GetComponent<PlayerController>().totalScore - 0.1f;
+
+                        x = -2.5f;
+                        z = 2.5f;
+                        //ColorPillar(player);
+                    }
+                    else if (playerTwo)
+                    {
+
+                        height = players[1].GetComponent<PlayerController>().totalScore - 0.1f;
+                        x = 2.5f;
+                        z = -2.5f;
+                        //ColorPillar(player);
+
+                    }
+                    else if (playerThree)
+                    {
+                        height = players[2].GetComponent<PlayerController>().totalScore - 0.1f;
+                        x = -2.5f;
+                        z = -2.5f;
+                        //ColorPillar(player);
+                    }
+                    else if (playerFour)
+                    {
+                        height = players[3].GetComponent<PlayerController>().totalScore - 0.1f;
+                        x = 2.5f;
+                        z = 2.5f;
+                        //ColorPillar(player);
+                    }
+                }
+                break;
         }
+
+        //------------------------ARVIDS SENASTE (FUNKAR INTE)-----------------------------
+
+        //PlayerController[] players = playerManager.GetPlayers().ToArray();
+
+        //foreach (PlayerController player in players)
+        //{
+
+
+        //    if (playerOne && players.Length > 1)
+        //    {
+        //        height = players[0].totalScore - 0.1f;
+
+        //        x = -2.5f;
+        //        z = 2.5f;
+        //        CollorPillar(players[0]);
+        //    }
+        //    if (playerTwo && players.Length > 2)
+        //    {
+
+        //        height = players[1].totalScore - 0.1f;
+        //        x = 2.5f;
+        //        z = -2.5f;
+        //        CollorPillar(players[1]);
+
+        //    }
+        //    if (playerThree && players.Length > 3)
+        //    {
+        //        height = players[2].totalScore - 0.1f;
+        //        x = -2.5f;
+        //        z = -2.5f;
+        //        CollorPillar(players[2]);
+        //    }
+        //    if (playerFour && players.Length > 4)
+        //    {
+        //        height = players[3].totalScore - 0.1f;
+        //        x = 2.5f;
+        //        z = 2.5f;
+        //        CollorPillar(players[3]);
+        //    }
+        //}
+
+        //---------------------------------------------------------------------------------
+
         //if (pl1)
         //{
         //    if (playerController.playerOne)
@@ -112,31 +249,61 @@ public class MoveScore : MonoBehaviour
     public void Update()
     {
         MoveBlock();
-        transform.position = new Vector3(x, (height) - 5.1f, z);
-        
-
+        transform.position = new Vector3(x, (height) - 5.1f, z);        
     }
-    public void CollorPillar(PlayerController player)
+
+
+    public void ColorPillar(GameObject player)
     {
 
-        if (player.playerOne)
+        if (playerOne)
         {
-            GetComponent<Renderer>().material.color = Color.blue;
+            GetComponent<Renderer>().material.color = player.GetComponent<Renderer>().material.color;
 
         }
-        else if(player.playerTwo)
+        else if (playerTwo)
         {
-            GetComponent<Renderer>().material.color = Color.green;
+            GetComponent<Renderer>().material.color = player.GetComponent<Renderer>().material.color;
         }
-        else if (player.playerThree)
+        else if (playerThree)
         {
-            GetComponent<Renderer>().material.color = Color.yellow;
+            GetComponent<Renderer>().material.color = player.GetComponent<Renderer>().material.color;
         }
-        else if (player.playerFour)
+        else if (playerFour)
         {
-            GetComponent<Renderer>().material.color = Color.red;
+            GetComponent<Renderer>().material.color = player.GetComponent<Renderer>().material.color;
         }
 
-       
+
     }
+
 }
+    
+    
+
+
+    //}
+    //public void CollorPillar(PlayerController player)
+    //{
+
+    //    if (player.playerOne)
+    //    {
+    //        GetComponent<Renderer>().material.color = Color.blue;
+
+    //    }
+    //    else if(player.playerTwo)
+    //    {
+    //        GetComponent<Renderer>().material.color = Color.green;
+    //    }
+    //    else if (player.playerThree)
+    //    {
+    //        GetComponent<Renderer>().material.color = Color.yellow;
+    //    }
+    //    else if (player.playerFour)
+    //    {
+    //        GetComponent<Renderer>().material.color = Color.red;
+    //    }
+
+
+    //}
+

@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
 
 
     //------------Sam----------------------------------
+
     public bool sam = false;
     public float maxGrabDistance = 1f;
     public KeyCode grabButton = KeyCode.Tab;
@@ -76,7 +77,6 @@ public class PlayerController : MonoBehaviour
     public GameObject grabbedObject = null;
     private Vector3 objectOffset = Vector3.zero;
 
-    //public movementPilar movementScript;
     public Transform grabPoint;
     public LayerMask movable;
     BoxCollider bc;
