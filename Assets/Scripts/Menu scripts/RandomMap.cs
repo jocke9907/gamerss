@@ -124,7 +124,6 @@ public class RandomMap : MonoBehaviour
             {
                 bomberManger.wallClimerPlayed = true;
                 Loader.wallClimberPlaying = true;
-                //Loader.TheMazePlaying = false;
                 Loader.Load(Loader.Scene.SamScen);
             }
 
@@ -158,6 +157,7 @@ public class RandomMap : MonoBehaviour
                 Loader.Load(Loader.Scene.LavaGround);
             }
         }
+        
         else
         {
             if (mapSelected == false)

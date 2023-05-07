@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LavaGround.unity
     guid: a23e20b21468970449ae139a61c68225
+  - enabled: 1
+    path: Assets/Scenes/SpinningWheel.unity
+    guid: b0ca8a1e375cf114388cea3894390c8a
   m_configObjects: {}
