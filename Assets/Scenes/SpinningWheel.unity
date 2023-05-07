@@ -2076,7 +2076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6114338646223142819, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6114338646223142819, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: m_UseGravity
@@ -2088,7 +2088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6114338646223142819, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: m_CollisionDetection
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6114338646223142829, guid: 224c3d55406f1dd4cb7c2259bc0b571f, type: 3}
       propertyPath: m_Enabled
