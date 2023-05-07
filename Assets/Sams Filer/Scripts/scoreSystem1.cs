@@ -16,9 +16,9 @@ public class scoreSystem1 : MonoBehaviour
     public GameObject player4;
 
     public TMP_Text scoreText;
-    //public TextMeshPro scoreText;
+
     int placement = 0;
-    //bool hej = true;
+
     private List<GameObject> finishOrder = new List<GameObject>();
     private List<GameObject> playerScore = new List<GameObject>();
     public enum NumberPlayers { one, two, three, four }
