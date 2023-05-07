@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
-public class scoreSystem1 : MonoBehaviour
+public class scoreSystem2 : MonoBehaviour
 {
     public GameObject[] players;
-    
+
 
 
     GameObject player1;
@@ -26,7 +25,7 @@ public class scoreSystem1 : MonoBehaviour
 
     private void Start()
     {
-        numberPlayers = (NumberPlayers)FindObjectOfType<nrPlayers>().playerCount-1; //sätter värden på enum med int
+        numberPlayers = (NumberPlayers)FindObjectOfType<nrPlayers>().playerCount - 1; //sätter värden på enum med int
         player1 = GameObject.Find("Player1");
         player2 = GameObject.Find("Player2");
         player3 = GameObject.Find("Player3");
@@ -51,9 +50,9 @@ public class scoreSystem1 : MonoBehaviour
                     other.GetComponent<PlayerController>().finished = true;
 
                     finishOrder.Add(other.gameObject);
-                    
+
                     finishOrder[placement].GetComponent<PlayerController>().AddScore(1);
-                    
+
 
                     UpdateScoreText();
                 }
@@ -68,7 +67,7 @@ public class scoreSystem1 : MonoBehaviour
 
                     if (placement == 0)
                     {
-                        finishOrder[placement].GetComponent<PlayerController>().AddScore(2);
+                        finishOrder[placement].GetComponent<PlayerController>().AddScore(1);
                     }
                     placement++;
                     UpdateScoreText();
@@ -85,7 +84,7 @@ public class scoreSystem1 : MonoBehaviour
                         if (player.CompareTag("Player") && player.GetComponent<PlayerController>().finished == false)
                         {
                             player.GetComponent<PlayerController>().finished = true;
-                            player.GetComponent<PlayerController>().AddScore(1);
+                            player.GetComponent<PlayerController>().AddScore(2);
 
                         }
                     }
@@ -104,7 +103,7 @@ public class scoreSystem1 : MonoBehaviour
 
                     if (placement == 0)
                     {
-                        finishOrder[placement].GetComponent<PlayerController>().AddScore(3);
+                        finishOrder[placement].GetComponent<PlayerController>().AddScore(1);
                     }
                     else if (placement == 1)
                     {
@@ -124,7 +123,7 @@ public class scoreSystem1 : MonoBehaviour
                         if (player.GetComponent<PlayerController>().finished == false)
                         {
                             player.GetComponent<PlayerController>().finished = true;
-                            player.GetComponent<PlayerController>().AddScore(1);
+                            player.GetComponent<PlayerController>().AddScore(3);
                         }
                     }
                     UpdateScoreText();
@@ -142,15 +141,15 @@ public class scoreSystem1 : MonoBehaviour
 
                     if (placement == 0)
                     {
-                        finishOrder[placement].GetComponent<PlayerController>().AddScore(4);
+                        finishOrder[placement].GetComponent<PlayerController>().AddScore(1);
                     }
                     else if (placement == 1)
                     {
-                        finishOrder[placement].GetComponent<PlayerController>().AddScore(3);
+                        finishOrder[placement].GetComponent<PlayerController>().AddScore(2);
                     }
                     else if (placement == 2)
                     {
-                        finishOrder[placement].GetComponent<PlayerController>().AddScore(2);
+                        finishOrder[placement].GetComponent<PlayerController>().AddScore(3);
                     }
                     placement++;
                     UpdateScoreText();
@@ -166,7 +165,7 @@ public class scoreSystem1 : MonoBehaviour
                         if (player.GetComponent<PlayerController>().finished == false)
                         {
                             player.GetComponent<PlayerController>().finished = true;
-                            player.GetComponent<PlayerController>().AddScore(1);
+                            player.GetComponent<PlayerController>().AddScore(4);
                         }
                     }
                     UpdateScoreText();

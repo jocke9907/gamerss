@@ -19,7 +19,7 @@ public class FallingZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Movable object") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Movable object"))
         {
             randX = Random.Range(-10, 10);
             randZ = Random.Range(-10, 5);

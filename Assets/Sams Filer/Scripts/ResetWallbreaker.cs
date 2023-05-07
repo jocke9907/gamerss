@@ -37,7 +37,7 @@ public class ResetWallbreaker : MonoBehaviour
             if (player.CompareTag("Player"))
             {
                 player.GetComponent<PlayerController>().finished = false;
-                player.GetComponent<PlayerController>().wallClimberScore = 0;
+                player.GetComponent<PlayerController>().tempScore = 0;
 
             }
         }

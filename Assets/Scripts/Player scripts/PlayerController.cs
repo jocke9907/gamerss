@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     float test;
     public bool alreadyGrabbed = false;
     public bool finished = false;
-    public int wallClimberScore = 0;
+    public int tempScore = 0;
 
     //--------------------------------------------------
     //[SerializeField] private GameInput gameInput;
@@ -152,7 +152,6 @@ public class PlayerController : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-
         jumped = context.action.triggered;
     }
     public void OnGrab(InputAction.CallbackContext context)
@@ -188,6 +187,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Running", false);
 
         // Changes the height position of the player..
+        
         if (jumped && groundedPlayer)
         {
             jumpAudio.Play();
@@ -196,6 +196,7 @@ public class PlayerController : MonoBehaviour
         }
         else
             anim.SetBool("Jumping", false);
+
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
@@ -305,7 +306,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddScore(int score)
     {
-        wallClimberScore = score;
+        tempScore = score;
         totalScore = totalScore + score;
     }
 

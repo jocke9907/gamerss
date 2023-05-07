@@ -9,10 +9,10 @@ public class sceneSwitch : MonoBehaviour
     public GameObject[] players;
 
 
-    public GameObject player1;
-    public GameObject player2;
-    public GameObject player3;
-    public GameObject player4;
+    GameObject player1;
+    GameObject player2;
+    GameObject player3;
+    GameObject player4;
 
 
     scoreSystem1 system1;
@@ -114,10 +114,7 @@ public class sceneSwitch : MonoBehaviour
 
 
     }
-    private void TimerForScene()
-    {
-        
-    }
+   
     private void Update()
     {
         if (sceneCountDown == true)

@@ -1262,7 +1262,7 @@ GameObject:
   - component: {fileID: 594067983}
   - component: {fileID: 594067982}
   m_Layer: 0
-  m_Name: WallBreakerReset
+  m_Name: SamsBanorReset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

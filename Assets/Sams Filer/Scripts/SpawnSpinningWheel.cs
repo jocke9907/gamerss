@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnWallClimber : MonoBehaviour
+public class SpawnSpinningWheel : MonoBehaviour
 {
     public GameObject spawnPlayer1;
     public GameObject spawnPlayer2;
@@ -53,7 +53,7 @@ public class SpawnWallClimber : MonoBehaviour
                     player.gameObject.transform.position = player4Pos;
                 }
 
-               
+
             }
             hasSpawned = true;
         }
