@@ -55,7 +55,7 @@ public class RandomMap : MonoBehaviour
         //bomberManger.captureTheFlagPlayed = true;
 
         // ändra denna för att byta map
-        //randMap = 7;
+        randMap = 4;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
@@ -124,7 +124,6 @@ public class RandomMap : MonoBehaviour
             {
                 bomberManger.wallClimerPlayed = true;
                 Loader.wallClimberPlaying = true;
-                //Loader.TheMazePlaying = false;
                 Loader.Load(Loader.Scene.SamScen);
             }
 
@@ -165,7 +164,6 @@ public class RandomMap : MonoBehaviour
             {
                 bomberManger.spinningWheelPlayed = true;
                 Loader.spinningWheelPlaying = true;
-                //Loader.TheMazePlaying = false;
                 Loader.Load(Loader.Scene.SpinningWheel);
             }
 
