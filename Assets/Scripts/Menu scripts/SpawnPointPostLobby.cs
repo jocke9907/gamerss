@@ -14,8 +14,8 @@ public class SpawnPointPostLobby : MonoBehaviour
    
     Vector3 spawn1 = new Vector3(2.5f, 12, -2.5f);
     Vector3 spawn2 = new Vector3(-2.5f, 12, 2.5f);
-    Vector3 spawn3 = new Vector3(-2.5f, 12, -2.5f);
-    Vector3 spawn4 = new Vector3(2.5f, 12, 2.5f);
+    Vector3 spawn3 = new Vector3(2.5f, 12, 2.5f);
+    Vector3 spawn4 = new Vector3(-2.5f, 12, -2.5f);
 
     private void Awake()
     {

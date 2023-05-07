@@ -29,6 +29,7 @@ public class BomberManger : MonoBehaviour
     public bool mazePlayed;
     public bool captureTheFlagPlayed;
     public bool lavaGroundPlayed;
+    public bool spinningWheelPlayed;
 
     bool given = false;
     public float timer = 202f;
