@@ -47,15 +47,15 @@ public class RandomMap : MonoBehaviour
 
 
         Loader.TheMazePlaying = false;
-        //if (mapSelected == false)
-        //{
-        //    randMap = Random.Range(1, 6);
-        //}
+        if (mapSelected == false)
+        {
+            randMap = Random.Range(1, 8);
+        }
 
         //bomberManger.captureTheFlagPlayed = true;
 
         // ändra denna för att byta map
-        randMap = 4;
+        //randMap = 7;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
@@ -157,12 +157,22 @@ public class RandomMap : MonoBehaviour
                 Loader.Load(Loader.Scene.LavaGround);
             }
         }
-        
+        else if (!bomberManger.wallClimerPlayed && randMap == 7)
+        {
+            mapSelected = true;
+            if (changeMap)
+            {
+                bomberManger.spinningWheelPlayed = true;
+                Loader.spinningWheelPlaying = true;
+                Loader.Load(Loader.Scene.SpinningWheel);
+            }
+
+        }
         else
         {
             if (mapSelected == false)
             {
-                randMap = Random.Range(1, 6);
+                randMap = Random.Range(1, 8);
             }
         }
     }
