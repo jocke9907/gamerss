@@ -47,15 +47,15 @@ public class RandomMap : MonoBehaviour
 
 
         Loader.TheMazePlaying = false;
-        //if (mapSelected == false)
-        //{
-        //    randMap = Random.Range(1, 6);
-        //}
+        if (mapSelected == false)
+        {
+            randMap = Random.Range(1, 6);
+        }
 
         //bomberManger.captureTheFlagPlayed = true;
 
         // ändra denna för att byta map
-        randMap = 4;
+        //randMap = 4;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
