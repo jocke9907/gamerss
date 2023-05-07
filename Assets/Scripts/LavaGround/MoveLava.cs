@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveLava : MonoBehaviour
 {
     //private Rigidbody rigidBody;
-    public float lavaSpeed = 1f;
+    public float lavaSpeed = 1.7f;
    
     void Start()
     {
