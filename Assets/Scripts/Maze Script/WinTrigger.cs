@@ -16,10 +16,13 @@ public class WinTrigger : MonoBehaviour
 
     public static int points;
 
+    //int numOfPlayers = FindObjectsOfType<PlayerController>().Length; // Count the number of players in the scene
+
     List<GameObject> playersEnteredTrigger = new List<GameObject>();
+    List<GameObject> playersDidNotEnterTrigger = new List<GameObject>();
 
     Dictionary<GameObject, int> playerPoints = new Dictionary<GameObject, int>();
-    //PlayerScore playerScore;
+
     PlayerController playerController;
 
     AudioSource audio;
@@ -32,28 +35,60 @@ public class WinTrigger : MonoBehaviour
         {
             Debug.LogError("Could not find PlayerScore component.");
         }
+
+        // Initialize playersDidNotEnterTrigger to contain all players at the start
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
+        {
+            playersDidNotEnterTrigger.Add(player);
+        }
     }
 
     private void Update()
     {
         timer -= Time.deltaTime;
-        if (/*playersEnteredTrigger.Count == numOfPlayers ||*/ timer <= 0)
+        if (timer <= 0)
+        {
+            // Give 1 point to each player who has not entered the trigger
+            foreach (GameObject player in playersDidNotEnterTrigger)
+            {
+                PlayerController playerController = player.GetComponent<PlayerController>();
+                playerController.AddPoints(1);
+            }
+
+
+            // Give additional points to players who have entered the trigger, based on the order they entered
+            int pointsToAdd = playersEnteredTrigger.Count;
+            foreach (GameObject player in playersEnteredTrigger)
+            {
+                PlayerController playerController = player.GetComponent<PlayerController>();
+                playerController.AddPoints(pointsToAdd);
+                pointsToAdd--;
+            }
+
+
+            Loader.TheMazePlaying = false;
+            SceneManager.LoadScene(7);
+        }
+
+        int numOfPlayersLeft = playersDidNotEnterTrigger.Count;
+        if (numOfPlayersLeft == 1) // Check if only one player is left
         {
             Loader.TheMazePlaying = false;
             SceneManager.LoadScene(7);
         }
+
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && !playerPoints.ContainsKey(other.gameObject))
         {
-            audio.Play();   
+            audio.Play();
             int pointsToAdd = CalculatePoints();
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
             playerController.AddPoints(pointsToAdd);
             playerPoints.Add(other.gameObject, pointsToAdd);
-
 
             // Add the player to the list if it's not already there
             if (!playersEnteredTrigger.Contains(other.gameObject))
@@ -61,15 +96,17 @@ public class WinTrigger : MonoBehaviour
                 playersEnteredTrigger.Add(other.gameObject);
             }
 
-            // Count the number of players in the scene
-            int numOfPlayers = FindObjectsOfType<PlayerController>().Length;
+            // Remove the player from the list of players who have not entered the trigger
+            if (playersDidNotEnterTrigger.Contains(other.gameObject))
+            {
+                playersDidNotEnterTrigger.Remove(other.gameObject);
+            }
 
-            // Check if all players have entered the trigger
-            if (playersEnteredTrigger.Count == numOfPlayers)
+            int numOfPlayers = FindObjectsOfType<PlayerController>().Length;
+            if (playersEnteredTrigger.Count == numOfPlayers)  // Check if all players have entered the trigger
             {
                 Loader.TheMazePlaying = false;
                 SceneManager.LoadScene(7);
-
             }
 
         }
