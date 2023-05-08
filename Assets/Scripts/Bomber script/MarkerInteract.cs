@@ -141,7 +141,7 @@ public class MarkerInteract : MonoBehaviour
             {
                 
                 barral.InteractB(); 
-                DropChance();
+                //DropChance();
             }
             
         }
@@ -222,14 +222,7 @@ public class MarkerInteract : MonoBehaviour
         //    }
         //}
     }
-    //sphereCollider
-    //private void OnDrawGizmosSelected()
-    //{
-    //    Vector3 explodeDir = new Vector3(inputVector.x, vectorZ, inputVector.y);
-    //    Gizmos.color = Color.yellow;
-    //    //Gizmos.DrawSphere(transform.position, 8f);
-    //    Gizmos.DrawRay(transform.position +new Vector3(0,1,0), explodeDir);
-    //}
+    
     void Update()
     {
 
@@ -267,17 +260,6 @@ public class MarkerInteract : MonoBehaviour
     }
     void timerEnded()
     {
-        
-        //vectorZ = 0.4f;
-        ////Debug.Log("bomb explod");
-        //inputVector = new Vector2(8f, 0f);
-        //Explode();
-        //inputVector = new Vector2(0f, 8f);
-        //Explode();
-        //inputVector = new Vector2(-8f, 0f);
-        //Explode();
-        //inputVector = new Vector2(0f, -8f);
-        //Explode();
 
         vectorZ = 1f;
         inputVector = new Vector2(10f, 0f);
@@ -289,27 +271,7 @@ public class MarkerInteract : MonoBehaviour
         inputVector = new Vector2(0f, -10f);
         Explode();
 
-        //if(bomberManger.bombUppgrade > uppgrade)
-        //{
-        //    inputVector = new Vector2(8f, 8f);
-        //    Explode();
-        //    inputVector = new Vector2(-8f, -8f);
-        //    Explode();
-        //    inputVector = new Vector2(-8f, 8f);
-        //    Explode();
-        //    inputVector = new Vector2(8f, -8f);
-        //    Explode();
-        //}
-        
-
-        //inputVector = new Vector2(10f, -2f);
-        //Explode();
-        //inputVector = new Vector2(-2f, 10f);
-        //Explode();
-        //inputVector = new Vector2(-10f, 2f);
-        //Explode();
-        //inputVector = new Vector2(2f, -10f);
-        //Explode();
+    
 
         //förstör markern och det som har spawnat på den
 

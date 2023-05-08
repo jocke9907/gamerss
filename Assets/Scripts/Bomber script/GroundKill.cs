@@ -32,34 +32,14 @@ public class GroundKill : MonoBehaviour
                 playerController.totalScore -= bomberManger.bomberPoints;
                 bomberManger.redusePlayers = true;
                 playerController.veryDead = true;
-                playerController.veryDead = true;
+               
                
             }
             
 
-            //if (other == TryGetComponent(out PlayerController playerController) )
-            //{
-                
-            //}
+          
                 Debug.Log("fell on ground");
             
-            
-
-
-            //bomberManger.bomberPoints += 1;
-            //if( other == playerController)
-            //{
-            //    playerController.totalScore -= bomberManger.bomberPoints;
-            //    bomberManger.redusePlayers = true;
-            //    //if (groundKill == false )
-            //    //{
-                    
-            //    //    groundKill = true;
-            //    //}
-               
-            //}
-           
-
 
             bomberManger.PlayerCounter();
         }
