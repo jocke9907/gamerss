@@ -164,7 +164,7 @@ public class MoveScore : MonoBehaviour
                 break;
         }
 
-        //------------------------ARVIDS SENASTE (FUNKAR INTE)-----------------------------
+        //------------------------ARVIDS SENASTE -----------------------------
 
         //PlayerController[] players = playerManager.GetPlayers().ToArray();
 

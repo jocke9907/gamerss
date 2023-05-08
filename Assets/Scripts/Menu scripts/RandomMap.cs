@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomMap : MonoBehaviour
 {
     BomberManger bomberManger;
-    float targetTime3 = 11f;
+    float targetTime3 = 13f;
     bool giveScore = true;
     bool changeMap = false;
     bool mapSelected;
@@ -54,7 +54,7 @@ public class RandomMap : MonoBehaviour
 
         targetTime3 -= Time.deltaTime;
 
-        if (targetTime3 < 10)
+        if (targetTime3 < 12)
         {
             ChangeMaps();
         }
