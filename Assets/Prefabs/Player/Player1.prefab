@@ -7954,6 +7954,7 @@ MonoBehaviour:
   alreadyGrabbed: 0
   finished: 0
   tempScore: 0
+  jumpingAllowed: 1
   dropLayerMask:
     serializedVersion: 2
     m_Bits: 0

@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
     public bool alreadyGrabbed = false;
     public bool finished = false;
     public int tempScore = 0;
+    public bool jumpingAllowed = true;
 
     //--------------------------------------------------
     //[SerializeField] private GameInput gameInput;
@@ -152,7 +153,10 @@ public class PlayerController : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        jumped = context.action.triggered;
+        if (jumpingAllowed)
+        {
+            jumped = context.action.triggered;
+        }
     }
     public void OnGrab(InputAction.CallbackContext context)
     {
