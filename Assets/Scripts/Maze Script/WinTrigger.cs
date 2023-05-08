@@ -26,6 +26,8 @@ public class WinTrigger : MonoBehaviour
     PlayerController playerController;
 
     AudioSource audio;
+    public ScoreText scoreText;
+
 
     private void Start()
     {
@@ -42,6 +44,7 @@ public class WinTrigger : MonoBehaviour
         {
             playersDidNotEnterTrigger.Add(player);
         }
+
     }
 
     private void Update()
@@ -56,8 +59,7 @@ public class WinTrigger : MonoBehaviour
                 playerController.AddPoints(1);
             }
 
-
-            // Give additional points to players who have entered the trigger, based on the order they entered
+            //  Give additional points to players who have entered the trigger, based on the order they entered
             int pointsToAdd = playersEnteredTrigger.Count;
             foreach (GameObject player in playersEnteredTrigger)
             {
@@ -74,6 +76,13 @@ public class WinTrigger : MonoBehaviour
         int numOfPlayersLeft = playersDidNotEnterTrigger.Count;
         if (numOfPlayersLeft == 1) // Check if only one player is left
         {
+            // Give 1 point to the player who has not entered the trigger
+            foreach (GameObject player in playersDidNotEnterTrigger)
+            {
+                PlayerController playerController = player.GetComponent<PlayerController>();
+                playerController.AddPoints(1);
+            }
+
             Loader.TheMazePlaying = false;
             SceneManager.LoadScene(7);
         }
@@ -100,6 +109,12 @@ public class WinTrigger : MonoBehaviour
             if (playersDidNotEnterTrigger.Contains(other.gameObject))
             {
                 playersDidNotEnterTrigger.Remove(other.gameObject);
+            }
+
+            // Add the player to the list of players who have not entered the trigger
+            if (!playersEnteredTrigger.Contains(other.gameObject) && !playersDidNotEnterTrigger.Contains(other.gameObject))
+            {
+                playersDidNotEnterTrigger.Add(other.gameObject);
             }
 
             int numOfPlayers = FindObjectsOfType<PlayerController>().Length;

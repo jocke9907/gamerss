@@ -5,18 +5,34 @@ using UnityEngine.UI;
 
 public class ScoreText : MonoBehaviour
 {
-    public List<Text> scoreTexts;
-    void Start()
-    {
-        // Get all player controllers in the scene
-        PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
+    // Reference to the player controller script for each player
+    public List<PlayerController> players;
 
-        // Display each player's score
-        for (int i = 0; i < playerControllers.Length; i++)
-        {
-            Text scoreText = scoreTexts[i];
-            scoreText.text = "Player " + (i + 1) + " Score: " + playerControllers[i].totalScore;
-        }
+    // Reference to the text component to display the scores
+    public Text scoreText;
+
+    // Update the score text with the current scores
+    void LateUpdate()
+    {
+        UpdateScoreText();
     }
 
+    void UpdateScoreText()
+    {
+        if (scoreText == null)
+        {
+            Debug.LogError("ScoreText component not assigned.");
+            return;
+        }
+
+        string text = "";
+        for (int i = 0; i < players.Count; i++)
+        {
+            int score = players[i].GetScore();
+            text += string.Format("Player {0}: {1}\n", i + 1, score);
+        }
+        scoreText.text = text;
+    }
 }
+
+

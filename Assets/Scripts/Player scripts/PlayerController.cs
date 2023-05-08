@@ -141,6 +141,10 @@ public class PlayerController : MonoBehaviour
     {
         totalScore += pointsToAdd;
     }
+    public int GetScore()
+    {
+        return totalScore;
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
