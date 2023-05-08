@@ -52,6 +52,10 @@ public class SpawnPlay : MonoBehaviour
                     players[1].gameObject.transform.position = spawn2;
                     players[2].gameObject.transform.position = spawn3;
                     //players[1].gameObject.transform.position = spawn4;
+                    players[0].veryDead = false;
+                    players[1].veryDead = false;
+                    players[2].veryDead = false;
+                    //players[3].veryDead = false;
                 }
             }
             else if(bomberManger.nrOfPlayers == 3)
@@ -63,6 +67,10 @@ public class SpawnPlay : MonoBehaviour
                     players[1].gameObject.transform.position = spawn2;
                     players[2].gameObject.transform.position = spawn3;
                     players[3].gameObject.transform.position = spawn4;
+                    players[0].veryDead = false;
+                    players[1].veryDead = false;
+                    players[2].veryDead = false;
+                    players[3].veryDead = false;
                 }
             }
             else if (bomberManger.nrOfPlayers == 1)
@@ -74,6 +82,10 @@ public class SpawnPlay : MonoBehaviour
                     players[1].gameObject.transform.position = spawn2;
                     //players[1].gameObject.transform.position = spawn3;
                     //players[1].gameObject.transform.position = spawn4;
+                    players[0].veryDead = false;
+                    players[1].veryDead = false;
+                    //players[2].veryDead = false;
+                    //players[3].veryDead = false;
                 }
             }
             else if (bomberManger.nrOfPlayers == 0)
@@ -85,6 +97,10 @@ public class SpawnPlay : MonoBehaviour
                     //players[1].gameObject.transform.position = spawn2;
                     //players[1].gameObject.transform.position = spawn3;
                     //players[1].gameObject.transform.position = spawn4;
+                    players[0].veryDead = false;
+                    //players[1].veryDead = false;
+                    //players[2].veryDead = false;
+                    //players[3].veryDead = false;
                 }
             }
 

@@ -8,7 +8,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class BomberManger : MonoBehaviour
 {
-    public int playerCountBomber;
+    public int playerCountBomber =1;
     public int nrOfPlayers;
     public  int bomberPoints = 4;
     public  int bombUppgrade = 0;
@@ -34,7 +34,7 @@ public class BomberManger : MonoBehaviour
     bool given = false;
     public float timer = 202f;
     ////
-    int waitForFrames = 3;
+    int waitForFrames = 2;
     int frameCounter;
     bool hasActivated = false;
     bool active = false;
@@ -132,7 +132,7 @@ public class BomberManger : MonoBehaviour
             playerCount = false;
             ////playerLevel.playerDead = true;
             bombUppgrade = 0;
-           
+
             //if (hasActivated)
             //{
             //    return;
@@ -172,28 +172,28 @@ public class BomberManger : MonoBehaviour
     //    }
         
     //}
-    public void ActivatePlayers()
-    {
-        PlayerManager manager = FindObjectOfType<PlayerManager>();
+    //public void ActivatePlayers()
+    //{
+    //    PlayerManager manager = FindObjectOfType<PlayerManager>();
         
 
-        Debug.Log(manager.GetPlayers());
+    //    Debug.Log(manager.GetPlayers());
         
-        // PlayerController[] players = FindObjectsOfType<PlayerController>();
-        if(!active)
-        {
-            foreach (PlayerController player in manager.GetPlayers())
-            {
+    //    // PlayerController[] players = FindObjectsOfType<PlayerController>();
+    //    if(!active)
+    //    {
+    //        foreach (PlayerController player in manager.GetPlayers())
+    //        {
                 
-                //enabler.gameObject.SetActive(true);
-                player.gameObject.SetActive(true);
-            }
-        }
-        active = true;
+    //            //enabler.gameObject.SetActive(true);
+    //            player.gameObject.SetActive(true);
+    //        }
+    //    }
+    //    active = true;
         
         
 
-    }
+    //}
     
     
 }

@@ -50,7 +50,7 @@ public class MarkerInteract : MonoBehaviour
     //}
     public void Interact()
     {
-        Debug.Log("Interact marker!");
+        //Debug.Log("Interact marker!");
         //if (playerController.canPlaceBomb == true)
         //{
         //    if (bomberManger.bombUppgrade > 1)
@@ -77,7 +77,7 @@ public class MarkerInteract : MonoBehaviour
             bombTransform.localPosition = Vector3.zero;
             targetTime = 4.1f;
         }
-        else
+        else if(bomberManger.bombUppgrade <= uppgrade)
         {
             Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
             bombTransform.localPosition = Vector3.zero;
@@ -94,21 +94,21 @@ public class MarkerInteract : MonoBehaviour
         //bomberInput.canPlaceBomb = false;
     }
 
-    public void RandomBombs()
-    {
-        if (bomberManger.bombUppgrade > 8)
-        {
-            Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
-            bombTransform.localPosition = Vector3.zero;
-            targetTime = 4.1f;
-        }
-        else
-        {
-            Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
-            bombTransform.localPosition = Vector3.zero;
-            targetTime = 4.1f;
-        }
-    }
+    //public void RandomBombs()
+    //{
+    //    if (bomberManger.bombUppgrade > 8)
+    //    {
+    //        Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
+    //        bombTransform.localPosition = Vector3.zero;
+    //        targetTime = 4.1f;
+    //    }
+    //    else if(bomberManger.bombUppgrade <= 8)
+    //    {
+    //        Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
+    //        bombTransform.localPosition = Vector3.zero;
+    //        targetTime = 4.1f;
+    //    }
+    //}
     //public void StrongBomb()
     //{
     //    Debug.Log("pickUp");
@@ -223,13 +223,13 @@ public class MarkerInteract : MonoBehaviour
         //}
     }
     //sphereCollider
-    private void OnDrawGizmosSelected()
-    {
-        Vector3 explodeDir = new Vector3(inputVector.x, vectorZ, inputVector.y);
-        Gizmos.color = Color.yellow;
-        //Gizmos.DrawSphere(transform.position, 8f);
-        Gizmos.DrawRay(transform.position +new Vector3(0,1,0), explodeDir);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Vector3 explodeDir = new Vector3(inputVector.x, vectorZ, inputVector.y);
+    //    Gizmos.color = Color.yellow;
+    //    //Gizmos.DrawSphere(transform.position, 8f);
+    //    Gizmos.DrawRay(transform.position +new Vector3(0,1,0), explodeDir);
+    //}
     void Update()
     {
 
@@ -289,27 +289,27 @@ public class MarkerInteract : MonoBehaviour
         inputVector = new Vector2(0f, -10f);
         Explode();
 
-        if(bomberManger.bombUppgrade > uppgrade)
-        {
-            inputVector = new Vector2(8f, 8f);
-            Explode();
-            inputVector = new Vector2(-8f, -8f);
-            Explode();
-            inputVector = new Vector2(-8f, 8f);
-            Explode();
-            inputVector = new Vector2(8f, -8f);
-            Explode();
-        }
+        //if(bomberManger.bombUppgrade > uppgrade)
+        //{
+        //    inputVector = new Vector2(8f, 8f);
+        //    Explode();
+        //    inputVector = new Vector2(-8f, -8f);
+        //    Explode();
+        //    inputVector = new Vector2(-8f, 8f);
+        //    Explode();
+        //    inputVector = new Vector2(8f, -8f);
+        //    Explode();
+        //}
         
 
-        inputVector = new Vector2(10f, -2f);
-        Explode();
-        inputVector = new Vector2(-2f, 10f);
-        Explode();
-        inputVector = new Vector2(-10f, 2f);
-        Explode();
-        inputVector = new Vector2(2f, -10f);
-        Explode();
+        //inputVector = new Vector2(10f, -2f);
+        //Explode();
+        //inputVector = new Vector2(-2f, 10f);
+        //Explode();
+        //inputVector = new Vector2(-10f, 2f);
+        //Explode();
+        //inputVector = new Vector2(2f, -10f);
+        //Explode();
 
         //förstör markern och det som har spawnat på den
 

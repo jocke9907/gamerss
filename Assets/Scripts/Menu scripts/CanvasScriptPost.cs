@@ -47,6 +47,10 @@ public class CanvasScriptPost : MonoBehaviour
         {
             nextMap.text = "The next map is Capture the Flag. ";
         }
+        if (randomMap.randMap == 7)
+        {
+            nextMap.text = "The next map is Spinning Wheel. ";
+        }
 
     }
 }

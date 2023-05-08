@@ -18,7 +18,7 @@ public class RandomMap : MonoBehaviour
         foreach (PlayerController player in manager.GetPlayers())
         {
             player.veryDead = false;
-            //player.gameObject.SetActive(true);
+            
         }
         giveScore = true;
 
@@ -26,7 +26,28 @@ public class RandomMap : MonoBehaviour
     }
     private void Start()
     {
-
+        PlayerManager manager = FindObjectOfType<PlayerManager>();
+        foreach (PlayerController player in manager.GetPlayers())
+        {
+            player.veryDead = false;
+            //player.gameObject.SetActive(true);
+        }
+        if (CreateGameUI.onePlayer == true)
+        {
+            bomberManger.playerCountBomber = 1;
+        }
+        if (CreateGameUI.twoPlayer == true)
+        {
+            bomberManger.playerCountBomber = 1;
+        }
+        if (CreateGameUI.threePlayer == true)
+        {
+            bomberManger.playerCountBomber = 2;
+        }
+        if (CreateGameUI.fourPlayer == true)
+        {
+            bomberManger.playerCountBomber = 3;
+        }
     }
     void Update()
     {
@@ -55,7 +76,7 @@ public class RandomMap : MonoBehaviour
         //bomberManger.captureTheFlagPlayed = true;
 
         // ändra denna för att byta map
-        randMap = 5;
+        //randMap = 2;
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
@@ -157,7 +178,7 @@ public class RandomMap : MonoBehaviour
                 Loader.Load(Loader.Scene.LavaGround);
             }
         }
-        else if (!bomberManger.wallClimerPlayed && randMap == 7)
+        else if (!bomberManger.spinningWheelPlayed && randMap == 7)
         {
             mapSelected = true;
             if (changeMap)
