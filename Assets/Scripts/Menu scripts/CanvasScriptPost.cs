@@ -35,14 +35,40 @@ public class CanvasScriptPost : MonoBehaviour
     {
         PlayerController[] players = playerManager.GetPlayers().ToArray();
 
-        foreach (PlayerController player in players)
+        if (bomberManger.nrOfPlayers == 3)
         {
-            player1.text = players[0].totalScore.ToString();
-            player2.text = players[1].totalScore.ToString();
-            player3.text = players[2].totalScore.ToString();
-            player4.text = players[3].totalScore.ToString();
+            foreach (PlayerController player in players)
+            {
+                player1.text = players[0].totalScore.ToString();
+                player2.text = players[1].totalScore.ToString();
+                player3.text = players[2].totalScore.ToString();
+                player4.text = players[3].totalScore.ToString();
 
+            }
         }
+        if (bomberManger.nrOfPlayers == 2)
+        {
+            foreach (PlayerController player in players)
+            {
+                player1.text = players[0].totalScore.ToString();
+                player2.text = players[1].totalScore.ToString();
+                player3.text = players[2].totalScore.ToString();
+               // player4.text = players[3].totalScore.ToString();
+
+            }
+        }
+        if (bomberManger.nrOfPlayers == 1)
+        {
+            foreach (PlayerController player in players)
+            {
+                player1.text = players[0].totalScore.ToString();
+                player2.text = players[1].totalScore.ToString();
+                //player3.text = players[2].totalScore.ToString();
+                //player4.text = players[3].totalScore.ToString();
+
+            }
+        }
+
     }
     public void Instruction()
     {
