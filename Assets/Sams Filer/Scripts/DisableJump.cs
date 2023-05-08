@@ -1,21 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class ResetWallbreaker : MonoBehaviour
+public class DisableJump : MonoBehaviour
 {
 
     public GameObject[] players;
-
 
     GameObject player1;
     GameObject player2;
     GameObject player3;
     GameObject player4;
 
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player1 = GameObject.Find("Player1");
         player2 = GameObject.Find("Player2");
@@ -27,21 +25,24 @@ public class ResetWallbreaker : MonoBehaviour
         players[2] = player3;
         players[3] = player4;
 
-      
+        DisablePlayerJumping();
+    }
+
+    private void DisablePlayerJumping()
+    {
         foreach (GameObject player in players)
         {
             if (!player)
             {
                 continue; //går till nästa objekt i foreach loopen.
             }
-            if (player.CompareTag("Player"))
+            else
             {
-                player.GetComponent<PlayerController>().finished = false;
-                player.GetComponent<PlayerController>().tempScore = 0;
-                player.GetComponent<PlayerController>().jumpingAllowed = true;
-
+                player.GetComponent<PlayerController>().jumpingAllowed = false;
             }
+            
         }
     }
-
+    // Update is called once per frame
+    
 }

@@ -15,7 +15,7 @@ public class scoreSystem2 : MonoBehaviour
     GameObject player4;
 
     public TMP_Text scoreText;
-
+    string playerName;
     int placement = 0;
 
     private List<GameObject> finishOrder = new List<GameObject>();
@@ -184,7 +184,24 @@ public class scoreSystem2 : MonoBehaviour
                 scoreText.text = "";
                 for (int i = 0; i < 1; i++)
                 {
-                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().tempScore + "\n";
+                    if (i == 0)
+                    {
+                        playerName = "Blue";
+                    }
+                    else if (i == 1)
+                    {
+                        playerName = "Green";
+                    }
+                    else if (i == 2)
+                    {
+                        playerName="Yellow";
+                    }
+                    else if (i == 3)
+                    {
+                        playerName = "Red";
+                    }
+
+                    scoreText.text += playerName + ": " + players[i].GetComponent<PlayerController>().tempScore + "\n";
 
                 }
                 break;
@@ -196,7 +213,25 @@ public class scoreSystem2 : MonoBehaviour
 
                 for (int i = 0; i < 2; i++)
                 {
-                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().tempScore + "\n";
+                    if (i == 0)
+                    {
+                        playerName = "Blue";
+                    }
+                    else if (i == 1)
+                    {
+                        playerName = "Green";
+                    }
+                    else if (i == 2)
+                    {
+                        playerName = "Yellow";
+                    }
+                    else if (i == 3)
+                    {
+                        playerName = "Red";
+                    }
+
+                    scoreText.text += playerName + ": " + players[i].GetComponent<PlayerController>().tempScore + "\n";
+
                 }
                 break;
 
@@ -206,17 +241,52 @@ public class scoreSystem2 : MonoBehaviour
 
                 for (int i = 0; i < 3; i++)
                 {
-                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().tempScore + "\n";
+                    if (i == 0)
+                    {
+                        playerName = "Blue";
+                    }
+                    else if (i == 1)
+                    {
+                        playerName = "Green";
+                    }
+                    else if (i == 2)
+                    {
+                        playerName = "Yellow";
+                    }
+                    else if (i == 3)
+                    {
+                        playerName = "Red";
+                    }
+
+                    scoreText.text += playerName + ": " + players[i].GetComponent<PlayerController>().tempScore + "\n";
+
                 }
                 break;
 
             case NumberPlayers.four:
 
                 scoreText.text = "";
-
                 for (int i = 0; i < 4; i++)
                 {
-                    scoreText.text += "Player " + (i + 1) + ": " + players[i].GetComponent<PlayerController>().tempScore + "\n";
+                    if (i == 0)
+                    {
+                        playerName = "Blue";
+                    }
+                    else if (i == 1)
+                    {
+                        playerName = "Green";
+                    }
+                    else if (i == 2)
+                    {
+                        playerName = "Yellow";
+                    }
+                    else if (i == 3)
+                    {
+                        playerName = "Red";
+                    }
+
+                    scoreText.text += playerName + ": " + players[i].GetComponent<PlayerController>().tempScore + "\n";
+
                 }
                 break;
 
