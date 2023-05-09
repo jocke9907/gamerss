@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
     float jumpCooldown = 0;
-    float jumpTimer = 1.5f;
+    float jumpTimer = 1f;
     private bool jumped = false;
     public bool inputE = false;
     public bool grab = false;
