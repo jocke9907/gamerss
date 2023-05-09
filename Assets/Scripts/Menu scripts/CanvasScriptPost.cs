@@ -24,7 +24,7 @@ public class CanvasScriptPost : MonoBehaviour
     string player3Collor;
     string player4Collor;
     string winnerScore;
-    int maxGames = 6;
+    int maxGames = 7;
     PlayerManager playerManager;
     public void Awake()
     {
@@ -75,7 +75,7 @@ public class CanvasScriptPost : MonoBehaviour
                 }
             }
         }
-        if (bomberManger.gamesPlayed > maxGames)
+        if (bomberManger.gamesPlayed >= maxGames)
         {
             nextMap.text = "The Winner is " + winnerScore + "!!!";
         }
