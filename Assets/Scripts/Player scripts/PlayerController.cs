@@ -62,7 +62,8 @@ public class PlayerController : MonoBehaviour
     private float jumpHeight = 2.75f;
     private float gravityValue = -9.81f;
     public Vector2 movementInput { get; private set; } = Vector2.zero;
-
+    float jumpCooldown = 0;
+    float jumpTimer = 1.5f;
     private bool jumped = false;
     public bool inputE = false;
     public bool grab = false;
@@ -113,8 +114,8 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        
-        
+
+
         bomberInput = FindObjectOfType<BomberInput>();
 
         wallClimberInput = FindObjectOfType<WallClimberInput>();
@@ -159,7 +160,10 @@ public class PlayerController : MonoBehaviour
     {
         if (jumpingAllowed)
         {
+
             jumped = context.action.triggered;
+            
+
         }
     }
     public void OnGrab(InputAction.CallbackContext context)
@@ -170,6 +174,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(jumpCooldown);
+
         if (veryDead)
         {
             return;
@@ -195,15 +201,24 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Running", false);
 
         // Changes the height position of the player..
-        
+
         if (jumped && groundedPlayer)
         {
-            jumpAudio.Play();
-            anim.SetBool("Jumping", true);
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            if (jumpCooldown <= 0)
+            {
+                jumpAudio.Play();
+                anim.SetBool("Jumping", true);
+                playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+
+                jumpCooldown = jumpTimer;
+            }
         }
         else
             anim.SetBool("Jumping", false);
+        if (jumpCooldown > 0)
+        {
+            jumpCooldown -= Time.deltaTime;
+        }
 
 
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -298,7 +313,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-           
+
             playerSpeed = 5f;
             //bc.isTrigger = false;
             //rb.mass = 1000;
