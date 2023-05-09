@@ -5,6 +5,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+
 public class CanvasScriptPost : MonoBehaviour
 {
     PlayerController playerController;
@@ -21,7 +23,8 @@ public class CanvasScriptPost : MonoBehaviour
     string player2Collor;
     string player3Collor;
     string player4Collor;
-
+    string winnerScore;
+    int maxGames = 7;
     PlayerManager playerManager;
     public void Awake()
     {
@@ -29,6 +32,7 @@ public class CanvasScriptPost : MonoBehaviour
         bomberManger = FindObjectOfType<BomberManger>();
         randomMap = FindObjectOfType<RandomMap>();
         playerManager = FindObjectOfType<PlayerManager>();
+
     }
     void Update()
     {
@@ -36,9 +40,48 @@ public class CanvasScriptPost : MonoBehaviour
         ShowNexMap();
         Instruction();
         ShowPlayerScore();
+        CheckWinner();
+    }
+    public void CheckWinner()
+    {
+        PlayerController[] players = playerManager.GetPlayers().ToArray();
+
+        int maxInt = Int32.MinValue;
+        int maxIndex = -1;
+        for (int i = 0; i < players.Length; i++)
+        {
+            int value = players[i].totalScore;
+            if (value > maxInt)
+            {
+                maxInt = value;
+                maxIndex = i;
+
+
+                if (players[maxIndex].playerOne)
+                {
+                    winnerScore = "Blue!!!";
+                }
+                else if (players[maxIndex].playerTwo)
+                {
+                    winnerScore = "Green!!!";
+                }
+                else if (players[maxIndex].playerThree)
+                {
+                    winnerScore = "Yellow!!!";
+                }
+                else if (players[maxIndex].playerFour)
+                {
+                    winnerScore = "Red!!!";
+                }
+            }
+        }
+        if (bomberManger.gamesPlayed > maxGames)
+        {
+            nextMap.text = "The Winner is " + winnerScore + "!!!";
+        }
+        Debug.Log(winnerScore);
        
     }
-
     public void ShowPlayerScore()
     {
         PlayerController[] players = playerManager.GetPlayers().ToArray();
@@ -61,7 +104,7 @@ public class CanvasScriptPost : MonoBehaviour
                 player1.text = player1Collor + players[0].totalScore.ToString();
                 player2.text = player2Collor + players[1].totalScore.ToString();
                 player3.text = player3Collor + players[2].totalScore.ToString();
-               // player4.text = players[3].totalScore.ToString();
+               
 
             }
         }
@@ -71,8 +114,7 @@ public class CanvasScriptPost : MonoBehaviour
             {
                 player1.text = player1Collor + players[0].totalScore.ToString();
                 player2.text = player2Collor + players[1].totalScore.ToString();
-                //player3.text = players[2].totalScore.ToString();
-                //player4.text = players[3].totalScore.ToString();
+                
 
             }
         }
@@ -80,6 +122,10 @@ public class CanvasScriptPost : MonoBehaviour
     }
     public void Instruction()
     {
+        if (bomberManger.gamesPlayed >= maxGames)
+        {
+            return;
+        }
         if (randomMap.randMap == 1)
         {
             // ground is falling
@@ -118,7 +164,13 @@ public class CanvasScriptPost : MonoBehaviour
     }
     public void ShowNexMap()
     {
-        if(randomMap.randMap == 1)
+
+        if (bomberManger.gamesPlayed >= maxGames)
+        {
+            return;
+        }
+
+        if (randomMap.randMap == 1)
         {
             nextMap.text = "The next map is Ground is Falling. ";
         }
@@ -160,7 +212,7 @@ public class CanvasScriptPost : MonoBehaviour
             {
                 if (players[0].playerOne)
                 {
-                    player1Collor = "Bleu ";
+                    player1Collor = "Blue ";
                 }
                 else if (players[0].playerTwo)
                 {
@@ -177,7 +229,7 @@ public class CanvasScriptPost : MonoBehaviour
 
                 if (players[1].playerOne)
                 {
-                    player2Collor = "Bleu ";
+                    player2Collor = "Blue  ";
                 }
                 else if (players[1].playerTwo)
                 {
@@ -194,7 +246,7 @@ public class CanvasScriptPost : MonoBehaviour
 
                 if (players[2].playerOne)
                 {
-                    player3Collor = "Bleu ";
+                    player3Collor = "Blue ";
                 }
                 else if (players[2].playerTwo)
                 {
@@ -217,7 +269,7 @@ public class CanvasScriptPost : MonoBehaviour
             {
                 if (players[0].playerOne)
                 {
-                    player1Collor = "Bleu ";
+                    player1Collor = "Blue ";
                 }
                 else if (players[0].playerTwo)
                 {
@@ -234,7 +286,7 @@ public class CanvasScriptPost : MonoBehaviour
 
                 if (players[1].playerOne)
                 {
-                    player2Collor = "Bleu ";
+                    player2Collor = "Blue ";
                 }
                 else if (players[1].playerTwo)
                 {
@@ -251,7 +303,7 @@ public class CanvasScriptPost : MonoBehaviour
 
                 if (players[2].playerOne)
                 {
-                    player3Collor = "Bleu ";
+                    player3Collor = "Blue ";
                 }
                 else if (players[2].playerTwo)
                 {
@@ -268,7 +320,7 @@ public class CanvasScriptPost : MonoBehaviour
 
                 if (players[3].playerOne)
                 {
-                    player4Collor = "Bleu ";
+                    player4Collor = "Blue ";
                 }
                 else if (players[3].playerTwo)
                 {
@@ -291,7 +343,7 @@ public class CanvasScriptPost : MonoBehaviour
             {
                 if (players[0].playerOne)
                 {
-                    player1Collor = "Bleu ";
+                    player1Collor = "Blue ";
                 }
                 else if (players[0].playerTwo)
                 {
@@ -308,7 +360,7 @@ public class CanvasScriptPost : MonoBehaviour
 
                 if (players[1].playerOne)
                 {
-                    player2Collor = "Bleu ";
+                    player2Collor = "Blue ";
                 }
                 else if (players[1].playerTwo)
                 {

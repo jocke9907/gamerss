@@ -71,8 +71,10 @@ public class RandomMap : MonoBehaviour
         if (mapSelected == false)
         {
             randMap = Random.Range(1, 8);
+            Debug.Log(bomberManger.gamesPlayed);
+            
         }
-        randMap = 2;
+        //randMap = 2;
         //bomberManger.captureTheFlagPlayed = true;
         //if (!bomberManger.fallinggroundPlayed)
         //{
@@ -87,9 +89,11 @@ public class RandomMap : MonoBehaviour
         //
         if (!bomberManger.fallinggroundPlayed && randMap == 1)
         {
+            
             mapSelected = true;
             if (changeMap)
             {
+                bomberManger.gamesPlayed++;
                 bomberManger.redusePlayers = false;
                 bomberManger.fallinggroundPlayed = true;
                 Loader.PlatformGamePlaying = true;
@@ -98,9 +102,11 @@ public class RandomMap : MonoBehaviour
         }
         else if (!bomberManger.bomberPlayed && randMap == 2)
         {
+            
             mapSelected = true;
             if (changeMap)
             {
+                bomberManger.gamesPlayed++;
                 bomberManger.redusePlayers = false;
                 bomberManger.bomberPlayed = true;
                 bomberManger.GameStart();
@@ -127,18 +133,22 @@ public class RandomMap : MonoBehaviour
         }
         else if (!bomberManger.captureTheFlagPlayed && randMap == 6)
         {
+           
             mapSelected = true;
             if (changeMap)
             {
+                bomberManger.gamesPlayed++;
                 bomberManger.captureTheFlagPlayed = true;
                 Loader.Load(Loader.Scene.CaptureTheFlag);
             }
         }
         else if (!bomberManger.mazePlayed && randMap == 3)
         {
+            
             mapSelected = true;
             if (changeMap)
             {
+                bomberManger.gamesPlayed++;
                 bomberManger.mazePlayed = true;
                 Loader.TheMazePlaying = true;
                 Loader.wallClimberPlaying = false;
@@ -147,9 +157,11 @@ public class RandomMap : MonoBehaviour
         }
         else if (!bomberManger.wallClimerPlayed && randMap == 4)
         {
+            
             mapSelected = true;
             if (changeMap)
             {
+                bomberManger.gamesPlayed++;
                 bomberManger.wallClimerPlayed = true;
                 Loader.wallClimberPlaying = true;
                 Loader.Load(Loader.Scene.SamScen);
@@ -158,9 +170,11 @@ public class RandomMap : MonoBehaviour
         }
         else if (!bomberManger.lavaGroundPlayed && randMap == 5)
         {
+          
             mapSelected = true;
             if (changeMap)
             {
+                bomberManger.gamesPlayed++;
                 bomberManger.redusePlayers = false;
                 bomberManger.lavaGroundPlayed = true;
                 bomberManger.GameStart();
@@ -187,9 +201,11 @@ public class RandomMap : MonoBehaviour
         }
         else if (!bomberManger.spinningWheelPlayed && randMap == 7)
         {
+            
             mapSelected = true;
             if (changeMap)
             {
+                bomberManger.gamesPlayed++;
                 bomberManger.spinningWheelPlayed = true;
                 Loader.spinningWheelPlaying = true;
                 Loader.Load(Loader.Scene.SpinningWheel);
