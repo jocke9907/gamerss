@@ -126,7 +126,7 @@ public class MarkerInteract : MonoBehaviour
     void Explode()
     {
         //+BomberManger.bombUppgrade*2
-        float maxDistans = 14f ;
+        float maxDistans = 13f ;
        
        
         Vector3 explodeDir = new Vector3(inputVector.x, vectorZ, inputVector.y);
@@ -271,7 +271,43 @@ public class MarkerInteract : MonoBehaviour
         inputVector = new Vector2(0f, -10f);
         Explode();
 
-    
+        inputVector = new Vector2(10f, -3f);
+        Explode();
+        inputVector = new Vector2(-3f, 10f);
+        Explode();
+        inputVector = new Vector2(-10f, 3f);
+        Explode();
+        inputVector = new Vector2(3f, -10f);
+        Explode();
+
+        inputVector = new Vector2(10f, 3f);
+        Explode();
+        inputVector = new Vector2(3f, 10f);
+        Explode();
+        inputVector = new Vector2(-10f, -3f);
+        Explode();
+        inputVector = new Vector2(-3f, -10f);
+        Explode();
+
+        //inputVector = new Vector2(8f, 2f);
+        //Explode();
+        //inputVector = new Vector2(2f, 8f);
+        //Explode();
+        //inputVector = new Vector2(-8f, -2f);
+        //Explode();
+        //inputVector = new Vector2(-2f, -8f);
+        //Explode();
+
+        //inputVector = new Vector2(12f, -2f);
+        //Explode();
+        //inputVector = new Vector2(-2f, 12f);
+        //Explode();
+        //inputVector = new Vector2(-12f, 2f);
+        //Explode();
+        //inputVector = new Vector2(2f, -12f);
+        //Explode();
+
+
 
         //förstör markern och det som har spawnat på den
 
