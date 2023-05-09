@@ -9,7 +9,7 @@ public class RandomMap : MonoBehaviour
     bool giveScore = true;
     bool changeMap = false;
     bool mapSelected;
-    public int randMap;
+    public int randMap = 6;
     private void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
@@ -160,10 +160,10 @@ public class RandomMap : MonoBehaviour
         }
         else
         {
-            if (mapSelected == false)
-            {
-                randMap = Random.Range(1, 6);
-            }
+            //if (mapSelected == false)
+            //{
+            //    randMap = Random.Range(1, 6);
+            //}
         }
     }
 }

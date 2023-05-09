@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
+using System.Text;
 
 public class Flag : MonoBehaviour
 {
@@ -13,12 +15,14 @@ public class Flag : MonoBehaviour
     public bool isFlagPickedUp;
     Dictionary<PlayerController, int> flagsCount = new Dictionary<PlayerController, int>();
     AudioSource audio;
-    
+    public TextMeshProUGUI flagsCountText;
+
 
     void Start()
     {
         audio = GetComponent<AudioSource>();
         flagOriginalPosition = transform.position;
+        flagsCountText.text = "Player 1:"+flagsCount;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -98,5 +102,6 @@ public class Flag : MonoBehaviour
     {
         return Time.time > flagDropTime + flagRespawnTime;
     }
-    
+
+
 }
