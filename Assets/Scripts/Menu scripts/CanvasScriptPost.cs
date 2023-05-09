@@ -24,7 +24,7 @@ public class CanvasScriptPost : MonoBehaviour
     string player3Collor;
     string player4Collor;
     string winnerScore;
-    int maxGames = 7;
+    int maxGames = 6;
     PlayerManager playerManager;
     public void Awake()
     {
