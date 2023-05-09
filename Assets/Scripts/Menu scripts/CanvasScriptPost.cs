@@ -16,6 +16,12 @@ public class CanvasScriptPost : MonoBehaviour
     public TextMeshProUGUI player2;
     public TextMeshProUGUI player3;
     public TextMeshProUGUI player4;
+
+    string player1Collor;
+    string player2Collor;
+    string player3Collor;
+    string player4Collor;
+
     PlayerManager playerManager;
     public void Awake()
     {
@@ -26,9 +32,11 @@ public class CanvasScriptPost : MonoBehaviour
     }
     void Update()
     {
+        ShowPlayerCollor();
         ShowNexMap();
         Instruction();
         ShowPlayerScore();
+       
     }
 
     public void ShowPlayerScore()
@@ -39,10 +47,10 @@ public class CanvasScriptPost : MonoBehaviour
         {
             foreach (PlayerController player in players)
             {
-                player1.text = players[0].totalScore.ToString();
-                player2.text = players[1].totalScore.ToString();
-                player3.text = players[2].totalScore.ToString();
-                player4.text = players[3].totalScore.ToString();
+                player1.text = player1Collor + players[0].totalScore.ToString();
+                player2.text = player2Collor + players[1].totalScore.ToString();
+                player3.text = player3Collor + players[2].totalScore.ToString();
+                player4.text = player4Collor + players[3].totalScore.ToString();
 
             }
         }
@@ -50,9 +58,9 @@ public class CanvasScriptPost : MonoBehaviour
         {
             foreach (PlayerController player in players)
             {
-                player1.text = players[0].totalScore.ToString();
-                player2.text = players[1].totalScore.ToString();
-                player3.text = players[2].totalScore.ToString();
+                player1.text = player1Collor + players[0].totalScore.ToString();
+                player2.text = player2Collor + players[1].totalScore.ToString();
+                player3.text = player3Collor + players[2].totalScore.ToString();
                // player4.text = players[3].totalScore.ToString();
 
             }
@@ -61,8 +69,8 @@ public class CanvasScriptPost : MonoBehaviour
         {
             foreach (PlayerController player in players)
             {
-                player1.text = players[0].totalScore.ToString();
-                player2.text = players[1].totalScore.ToString();
+                player1.text = player1Collor + players[0].totalScore.ToString();
+                player2.text = player2Collor + players[1].totalScore.ToString();
                 //player3.text = players[2].totalScore.ToString();
                 //player4.text = players[3].totalScore.ToString();
 
@@ -139,5 +147,184 @@ public class CanvasScriptPost : MonoBehaviour
             nextMap.text = "The next map is Spinning Wheel. ";
         }
 
+    }
+    public void ShowPlayerCollor()
+    {
+        PlayerController[] players = playerManager.GetPlayers().ToArray();
+
+
+
+        if (bomberManger.nrOfPlayers == 2)
+        {
+            foreach (PlayerController player in players)
+            {
+                if (players[0].playerOne)
+                {
+                    player1Collor = "Bleu ";
+                }
+                else if (players[0].playerTwo)
+                {
+                    player1Collor = "Green ";
+                }
+                else if (players[0].playerThree)
+                {
+                    player1Collor = "Yellow ";
+                }
+                else if (players[0].playerFour)
+                {
+                    player1Collor = "Red ";
+                }
+
+                if (players[1].playerOne)
+                {
+                    player2Collor = "Bleu ";
+                }
+                else if (players[1].playerTwo)
+                {
+                    player2Collor = "Green ";
+                }
+                else if (players[1].playerThree)
+                {
+                    player2Collor = "Yellow ";
+                }
+                else if (players[1].playerFour)
+                {
+                    player2Collor = "Red ";
+                }
+
+                if (players[2].playerOne)
+                {
+                    player3Collor = "Bleu ";
+                }
+                else if (players[2].playerTwo)
+                {
+                    player3Collor = "Green ";
+                }
+                else if (players[2].playerThree)
+                {
+                    player3Collor = "Yellow ";
+                }
+                else if (players[2].playerFour)
+                {
+                    player3Collor = "Red ";
+                }
+
+            }
+        }
+        else if (bomberManger.nrOfPlayers == 3)
+        {
+            foreach (PlayerController player in players)
+            {
+                if (players[0].playerOne)
+                {
+                    player1Collor = "Bleu ";
+                }
+                else if (players[0].playerTwo)
+                {
+                    player1Collor = "Green ";
+                }
+                else if (players[0].playerThree)
+                {
+                    player1Collor = "Yellow ";
+                }
+                else if (players[0].playerFour)
+                {
+                    player1Collor = "Red ";
+                }
+
+                if (players[1].playerOne)
+                {
+                    player2Collor = "Bleu ";
+                }
+                else if (players[1].playerTwo)
+                {
+                    player2Collor = "Green ";
+                }
+                else if (players[1].playerThree)
+                {
+                    player2Collor = "Yellow ";
+                }
+                else if (players[1].playerFour)
+                {
+                    player2Collor = "Red ";
+                }
+
+                if (players[2].playerOne)
+                {
+                    player3Collor = "Bleu ";
+                }
+                else if (players[2].playerTwo)
+                {
+                    player3Collor = "Green ";
+                }
+                else if (players[2].playerThree)
+                {
+                    player3Collor = "Yellow ";
+                }
+                else if (players[2].playerFour)
+                {
+                    player3Collor = "Red ";
+                }
+
+                if (players[3].playerOne)
+                {
+                    player4Collor = "Bleu ";
+                }
+                else if (players[3].playerTwo)
+                {
+                    player4Collor = "Green ";
+                }
+                else if (players[3].playerThree)
+                {
+                    player4Collor = "Yellow ";
+                }
+                else if (players[3].playerFour)
+                {
+                    player4Collor = "Red ";
+                }
+
+            }
+        }
+        else if (bomberManger.nrOfPlayers == 1)
+        {
+            foreach (PlayerController player in players)
+            {
+                if (players[0].playerOne)
+                {
+                    player1Collor = "Bleu ";
+                }
+                else if (players[0].playerTwo)
+                {
+                    player1Collor = "Green ";
+                }
+                else if (players[0].playerThree)
+                {
+                    player1Collor = "Yellow ";
+                }
+                else if (players[0].playerFour)
+                {
+                    player1Collor = "Red ";
+                }
+
+                if (players[1].playerOne)
+                {
+                    player2Collor = "Bleu ";
+                }
+                else if (players[1].playerTwo)
+                {
+                    player2Collor = "Green ";
+                }
+                else if (players[1].playerThree)
+                {
+                    player2Collor = "Yellow ";
+                }
+                else if (players[1].playerFour)
+                {
+                    player2Collor = "Red ";
+                }
+
+            }
+        }
+        //checkCollor = false;
     }
 }

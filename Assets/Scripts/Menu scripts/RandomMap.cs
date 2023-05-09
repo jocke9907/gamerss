@@ -72,7 +72,7 @@ public class RandomMap : MonoBehaviour
         {
             randMap = Random.Range(1, 8);
         }
-        randMap = 7;
+        randMap = 2;
         //bomberManger.captureTheFlagPlayed = true;
         //if (!bomberManger.fallinggroundPlayed)
         //{
