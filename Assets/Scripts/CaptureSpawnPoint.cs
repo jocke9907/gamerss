@@ -11,10 +11,10 @@ public class CaptureSpawnPoint : MonoBehaviour
 
     PlayerController playerController;
     BomberManger bomberManger;
-    Vector3 spawn1 = new Vector3(24, 3, -24);
-    Vector3 spawn2 = new Vector3(-24, 3, -24);
-    Vector3 spawn3 = new Vector3(24, 3, 24);
-    Vector3 spawn4 = new Vector3(-24, 3, 24);
+    [SerializeField] GameObject spawn1;
+    [SerializeField] GameObject spawn2;
+    [SerializeField] GameObject spawn3;
+    [SerializeField] GameObject spawn4;
 
     private void Awake()
     {
@@ -48,9 +48,9 @@ public class CaptureSpawnPoint : MonoBehaviour
                 foreach (PlayerController player in players)
                 {
                     Debug.Log("spawnPlay3");
-                    players[0].gameObject.transform.position = spawn1;
-                    players[1].gameObject.transform.position = spawn2;
-                    players[2].gameObject.transform.position = spawn3;
+                    players[0].gameObject.transform.position = spawn1.transform.position;
+                    players[1].gameObject.transform.position = spawn2.transform.position;
+                    players[2].gameObject.transform.position = spawn3.transform.position;
                     //players[1].gameObject.transform.position = spawn4;
                 }
             }
@@ -59,10 +59,10 @@ public class CaptureSpawnPoint : MonoBehaviour
                 foreach (PlayerController player in players)
                 {
                     Debug.Log("spawnPlay4");
-                    players[0].gameObject.transform.position = spawn1;
-                    players[1].gameObject.transform.position = spawn2;
-                    players[2].gameObject.transform.position = spawn3;
-                    players[3].gameObject.transform.position = spawn4;
+                    players[0].gameObject.transform.position = spawn1.transform.position;
+                    players[1].gameObject.transform.position = spawn2.transform.position;
+                    players[2].gameObject.transform.position = spawn3.transform.position;
+                    players[3].gameObject.transform.position = spawn4.transform.position;
                 }
             }
             else if (bomberManger.nrOfPlayers == 1)
@@ -70,8 +70,8 @@ public class CaptureSpawnPoint : MonoBehaviour
                 foreach (PlayerController player in players)
                 {
                     Debug.Log("spawnPlay2");
-                    players[0].gameObject.transform.position = spawn1;
-                    players[1].gameObject.transform.position = spawn2;
+                    players[0].gameObject.transform.position = spawn1.transform.position;
+                    players[1].gameObject.transform.position = spawn2.transform.position;
                     //players[1].gameObject.transform.position = spawn3;
                     //players[1].gameObject.transform.position = spawn4;
                 }
@@ -81,7 +81,7 @@ public class CaptureSpawnPoint : MonoBehaviour
                 foreach (PlayerController player in players)
                 {
                     Debug.Log("spawnPlay2");
-                    players[0].gameObject.transform.position = spawn1;
+                    players[0].gameObject.transform.position = spawn1.transform.position;
                     //players[1].gameObject.transform.position = spawn2;
                     //players[1].gameObject.transform.position = spawn3;
                     //players[1].gameObject.transform.position = spawn4;

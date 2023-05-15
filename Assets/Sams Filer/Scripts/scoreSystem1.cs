@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class scoreSystem1 : MonoBehaviour
 {
-    public GameObject[] players;
     
+    public GameObject[] players;
 
 
     GameObject player1;

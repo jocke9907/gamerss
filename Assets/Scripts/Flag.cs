@@ -16,13 +16,32 @@ public class Flag : MonoBehaviour
     Dictionary<PlayerController, int> flagsCount = new Dictionary<PlayerController, int>();
     AudioSource audio;
     public TextMeshProUGUI flagsCountText;
+    //public GameObject[] players;
+
+
+    //GameObject player1;
+    //GameObject player2;
+    //GameObject player3;
+    //GameObject player4;
+
 
 
     void Start()
     {
+        int flagscore=flagsCount.Count;
         audio = GetComponent<AudioSource>();
         flagOriginalPosition = transform.position;
-        flagsCountText.text = "Player 1:"+flagsCount;
+        //flagsCountText.text = "Blue" + players[0] +flagscore;
+       
+        //player1 = GameObject.Find("Player1");
+        //player2 = GameObject.Find("Player2");
+        //player3 = GameObject.Find("Player3");
+        //player4 = GameObject.Find("Player4");
+
+        //players[0] = player1;
+        //players[1] = player2;
+        //players[2] = player3;
+        //players[3] = player4;
     }
 
     private void OnTriggerEnter(Collider other)
