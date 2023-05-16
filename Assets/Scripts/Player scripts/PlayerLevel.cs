@@ -60,7 +60,7 @@ public class PlayerLevel : MonoBehaviour
                     transform.position = new Vector3(0, 2, 0);
 
                 }
-                if (transform.position.y < -20)
+                if (transform.position.y < -50)
                 {
                     //playerController.totalScore = playerController.totalScore + KillerBox.points;
                     //Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
