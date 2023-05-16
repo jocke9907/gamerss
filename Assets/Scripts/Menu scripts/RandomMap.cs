@@ -56,7 +56,7 @@ public class RandomMap : MonoBehaviour
 
         if (targetTime3 < 12)
         {
-            ChangeMaps();
+            //ChangeMaps();
         }
         if (targetTime3 <= 0)
         {
