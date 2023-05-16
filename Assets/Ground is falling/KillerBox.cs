@@ -18,12 +18,12 @@ public class KillerBox : MonoBehaviour
             //other.gameObject.transform.position = new Vector3(0, 3, 0);
             //other.gameObject.SetActive(false);
         }
-        if(playercounter <= 0)
-        {
-            Loader.PlatformGamePlaying = false;
-            Loader.Load(Loader.Scene.PostLobby);
+        //if(playercounter <= 0)
+        //{
+        //    Loader.PlatformGamePlaying = false;
+        //    Loader.Load(Loader.Scene.PostLobby);
             
-        }
+        //}
         
     }
 

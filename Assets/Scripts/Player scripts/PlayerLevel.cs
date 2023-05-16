@@ -62,9 +62,9 @@ public class PlayerLevel : MonoBehaviour
                 }
                 if (transform.position.y < -20)
                 {
-                    playerController.totalScore = playerController.totalScore + KillerBox.points;
-                    Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
-                    KillerBox.points++;
+                    //playerController.totalScore = playerController.totalScore + KillerBox.points;
+                    //Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
+                    //KillerBox.points++;
                     KillerBox.playercounter--;
                     alive = false;
 
