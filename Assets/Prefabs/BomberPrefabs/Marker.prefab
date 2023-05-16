@@ -284,8 +284,10 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 131072
+  reset: {x: 0, y: 40, z: 0}
   randomBomb: 1
   targetTime: 20
+  canPlaceBomb: 1
 --- !u!65 &2252978729440680896
 BoxCollider:
   m_ObjectHideFlags: 0
