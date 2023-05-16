@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     public bool finished = false;
     public int tempScore = 0;
     public bool jumpingAllowed = true;
+    public string mapSelected = "";
 
     //--------------------------------------------------
     //[SerializeField] private GameInput gameInput;
@@ -174,7 +175,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(jumpCooldown);
+        //if (mapSelected != "")
+        //{
+        //    Debug.Log(mapSelected);
+        //}
 
         if (veryDead)
         {

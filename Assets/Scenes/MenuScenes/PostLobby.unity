@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1273,7 +1273,7 @@ GameObject:
   - component: {fileID: 530359407}
   - component: {fileID: 530359408}
   m_Layer: 0
-  m_Name: map6
+  m_Name: WheelSpinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1316,11 +1316,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 530359405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e884b524009964aabcc82363abbecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillarVoteSystem: {fileID: 1496194175}
-  pillarIndex: 6
+  RandomMap: 0
+  GroundIsFalling: 0
+  MazeRunner: 0
+  WallClimber: 0
+  BomberMan: 0
+  CaptureFlag: 0
+  WheelSpinner: 1
+  LavaRun: 0
 --- !u!1 &551566469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,7 +1339,7 @@ GameObject:
   - component: {fileID: 551566471}
   - component: {fileID: 551566472}
   m_Layer: 0
-  m_Name: map3
+  m_Name: WallClimber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1376,11 +1382,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 551566469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e884b524009964aabcc82363abbecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillarVoteSystem: {fileID: 1496194175}
-  pillarIndex: 3
+  RandomMap: 0
+  GroundIsFalling: 0
+  MazeRunner: 0
+  WallClimber: 1
+  BomberMan: 0
+  CaptureFlag: 0
+  WheelSpinner: 0
+  LavaRun: 0
 --- !u!1 &594067981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,7 +2183,7 @@ GameObject:
   - component: {fileID: 749222349}
   - component: {fileID: 749222350}
   m_Layer: 0
-  m_Name: map7
+  m_Name: LavaRun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2214,11 +2226,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 749222347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e884b524009964aabcc82363abbecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillarVoteSystem: {fileID: 1496194175}
-  pillarIndex: 7
+  RandomMap: 0
+  GroundIsFalling: 0
+  MazeRunner: 0
+  WallClimber: 0
+  BomberMan: 0
+  CaptureFlag: 0
+  WheelSpinner: 0
+  LavaRun: 1
 --- !u!1 &756981992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3193,7 +3211,7 @@ GameObject:
   - component: {fileID: 1187685498}
   - component: {fileID: 1187685499}
   m_Layer: 0
-  m_Name: map1
+  m_Name: GroundIsFalling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3236,11 +3254,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1187685496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e884b524009964aabcc82363abbecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillarVoteSystem: {fileID: 1496194175}
-  pillarIndex: 1
+  RandomMap: 0
+  GroundIsFalling: 1
+  MazeRunner: 0
+  WallClimber: 0
+  BomberMan: 0
+  CaptureFlag: 0
+  WheelSpinner: 0
+  LavaRun: 0
 --- !u!1 &1197192170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,7 +3497,7 @@ GameObject:
   - component: {fileID: 1307255444}
   - component: {fileID: 1307255445}
   m_Layer: 0
-  m_Name: map4
+  m_Name: BomberMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3516,11 +3540,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1307255442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e884b524009964aabcc82363abbecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillarVoteSystem: {fileID: 1496194175}
-  pillarIndex: 4
+  RandomMap: 0
+  GroundIsFalling: 0
+  MazeRunner: 0
+  WallClimber: 0
+  BomberMan: 1
+  CaptureFlag: 0
+  WheelSpinner: 0
+  LavaRun: 0
 --- !u!1 &1345360033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3678,7 +3708,7 @@ GameObject:
   - component: {fileID: 1386340739}
   - component: {fileID: 1386340740}
   m_Layer: 0
-  m_Name: mapRandom
+  m_Name: RandomMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3721,11 +3751,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1386340737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e884b524009964aabcc82363abbecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillarVoteSystem: {fileID: 1496194175}
-  pillarIndex: 0
+  RandomMap: 1
+  GroundIsFalling: 0
+  MazeRunner: 0
+  WallClimber: 0
+  BomberMan: 0
+  CaptureFlag: 0
+  WheelSpinner: 0
+  LavaRun: 0
 --- !u!1 &1387692304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3982,11 +4018,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1496194172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d86e31794e7ef5a469a15cd30c8d3465, type: 3}
+  m_Script: {fileID: 11500000, guid: a4be0e09c94b1f844bf196eef4ead350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownDuration: 5
-  pillars:
+  pillarList:
   - {fileID: 1386340737}
   - {fileID: 1187685496}
   - {fileID: 1512397624}
@@ -3995,7 +4030,6 @@ MonoBehaviour:
   - {fileID: 1678708627}
   - {fileID: 530359405}
   - {fileID: 749222347}
-  requiredPlayersOnPillar: 1
 --- !u!1 &1512397624
 GameObject:
   m_ObjectHideFlags: 0
@@ -4008,7 +4042,7 @@ GameObject:
   - component: {fileID: 1512397626}
   - component: {fileID: 1512397627}
   m_Layer: 0
-  m_Name: map2
+  m_Name: MazeRunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4051,11 +4085,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1512397624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e884b524009964aabcc82363abbecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillarVoteSystem: {fileID: 1496194175}
-  pillarIndex: 2
+  RandomMap: 0
+  GroundIsFalling: 0
+  MazeRunner: 1
+  WallClimber: 0
+  BomberMan: 0
+  CaptureFlag: 0
+  WheelSpinner: 0
+  LavaRun: 0
 --- !u!1 &1568992249
 GameObject:
   m_ObjectHideFlags: 0
@@ -4290,7 +4330,7 @@ GameObject:
   - component: {fileID: 1678708629}
   - component: {fileID: 1678708630}
   m_Layer: 0
-  m_Name: map5
+  m_Name: CaptureFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4333,11 +4373,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1678708627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e884b524009964aabcc82363abbecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pillarVoteSystem: {fileID: 1496194175}
-  pillarIndex: 5
+  RandomMap: 0
+  GroundIsFalling: 0
+  MazeRunner: 0
+  WallClimber: 0
+  BomberMan: 0
+  CaptureFlag: 1
+  WheelSpinner: 0
+  LavaRun: 0
 --- !u!1 &1690614818
 GameObject:
   m_ObjectHideFlags: 0
