@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1271,6 +1271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 530359406}
   - component: {fileID: 530359407}
+  - component: {fileID: 530359408}
   m_Layer: 0
   m_Name: map6
   m_TagString: Untagged
@@ -1306,6 +1307,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &530359408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530359405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillarVoteSystem: {fileID: 1496194175}
+  pillarIndex: 6
 --- !u!1 &551566469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,6 +1331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 551566470}
   - component: {fileID: 551566471}
+  - component: {fileID: 551566472}
   m_Layer: 0
   m_Name: map3
   m_TagString: Untagged
@@ -1351,6 +1367,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &551566472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551566469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillarVoteSystem: {fileID: 1496194175}
+  pillarIndex: 3
 --- !u!1 &594067981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,6 +2169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 749222348}
   - component: {fileID: 749222349}
+  - component: {fileID: 749222350}
   m_Layer: 0
   m_Name: map7
   m_TagString: Untagged
@@ -2174,6 +2205,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &749222350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749222347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillarVoteSystem: {fileID: 1496194175}
+  pillarIndex: 7
 --- !u!1 &756981992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3146,6 +3191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187685497}
   - component: {fileID: 1187685498}
+  - component: {fileID: 1187685499}
   m_Layer: 0
   m_Name: map1
   m_TagString: Untagged
@@ -3181,6 +3227,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1187685499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187685496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillarVoteSystem: {fileID: 1496194175}
+  pillarIndex: 1
 --- !u!1 &1197192170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,6 +3471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307255443}
   - component: {fileID: 1307255444}
+  - component: {fileID: 1307255445}
   m_Layer: 0
   m_Name: map4
   m_TagString: Untagged
@@ -3446,6 +3507,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1307255445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307255442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillarVoteSystem: {fileID: 1496194175}
+  pillarIndex: 4
 --- !u!1 &1345360033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,6 +3676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1386340738}
   - component: {fileID: 1386340739}
+  - component: {fileID: 1386340740}
   m_Layer: 0
   m_Name: mapRandom
   m_TagString: Untagged
@@ -3636,6 +3712,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1386340740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386340737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillarVoteSystem: {fileID: 1496194175}
+  pillarIndex: 0
 --- !u!1 &1387692304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +3995,7 @@ MonoBehaviour:
   - {fileID: 1678708627}
   - {fileID: 530359405}
   - {fileID: 749222347}
+  requiredPlayersOnPillar: 1
 --- !u!1 &1512397624
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,6 +4006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512397625}
   - component: {fileID: 1512397626}
+  - component: {fileID: 1512397627}
   m_Layer: 0
   m_Name: map2
   m_TagString: Untagged
@@ -3950,6 +4042,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1512397627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512397624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillarVoteSystem: {fileID: 1496194175}
+  pillarIndex: 2
 --- !u!1 &1568992249
 GameObject:
   m_ObjectHideFlags: 0
@@ -4182,6 +4288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1678708628}
   - component: {fileID: 1678708629}
+  - component: {fileID: 1678708630}
   m_Layer: 0
   m_Name: map5
   m_TagString: Untagged
@@ -4217,6 +4324,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1678708630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678708627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2183a3426a4cf1c4f97fd6dcb9f0086a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pillarVoteSystem: {fileID: 1496194175}
+  pillarIndex: 5
 --- !u!1 &1690614818
 GameObject:
   m_ObjectHideFlags: 0
