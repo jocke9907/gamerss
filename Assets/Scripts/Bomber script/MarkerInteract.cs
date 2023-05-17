@@ -1,7 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.UI.Image;
+using UnityEngine.UIElements;
+
+using UnityEditor;
+using TreeEditor;
 
 public class MarkerInteract : MonoBehaviour
 {
@@ -26,9 +32,12 @@ public class MarkerInteract : MonoBehaviour
     //playerController = FindObjectOfType<BomberInput>();
     public bool randomBomb = true;
 
+    Vector3 explodeDir = new Vector3(1, 0, 0);
+
     public float targetTime = 4.1f;
     Vector2 inputVector = new Vector2(8f, 0f);
     float vectorZ = .1f;
+    bool firstBombPlaced;
     bool bomPlaced;
     public bool canPlaceBomb = true;
     InputSystemEnabler enabler;
@@ -88,6 +97,7 @@ public class MarkerInteract : MonoBehaviour
 
         targetTime = 4.1f;
         bomPlaced = true;
+        firstBombPlaced = true;
 
         canPlaceBomb = false;
 
@@ -123,6 +133,67 @@ public class MarkerInteract : MonoBehaviour
         }
     }
 
+    void ExplotionCollider()
+    {
+        float maxDistans = 6f;
+        
+
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        Vector3 volym = new Vector3(1.7f, 4f, 1.7f);
+        //Vector3 explodeDir = new Vector3(1, 0, 0);
+        //if (explodeDir != Vector3.zero)
+        //{
+        //    lastInteractDir = explodeDir;
+        //}
+        //Physics.BoxCastAll(transform.position, transform.lossyScale, explodeDir, transform.rotation, maxDistans, barralLayerMask, QueryTriggerInteraction.Collide);
+        
+
+        
+        
+        Vector3 area = new Vector3(3,3,3);
+        if (explodeDir != Vector3.zero)
+        {
+            lastInteractDir = explodeDir;
+        }
+        if (Physics.BoxCast(transform.position, volym , explodeDir, out RaycastHit raycastHit, transform.rotation, maxDistans, barralLayerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out Barral barral))
+            {
+                barral.InteractB();
+                //DropChance();
+            }
+        }
+
+        if (Physics.BoxCast(transform.position, volym, explodeDir, out RaycastHit raycastHitPlayer, transform.rotation, maxDistans, playerLayer))
+        {
+            if (raycastHitPlayer.transform.TryGetComponent(out PlayerController playerController))
+            {
+                if (playerController.veryDead == false)
+                {
+                    bomberManger.redusePlayers = true;
+                    bomberManger.bomberPoints -= 1;
+                    playerController.totalScore -= bomberManger.bomberPoints;
+                    playerController.veryDead = true;
+                }
+            }
+        }
+
+        
+
+    }
+    private void OnDrawGizmos()
+    {
+        Vector3 volym = new Vector3(2f, 4f, 2f);
+        //Vector3 explodeDir = new Vector3(1, 0, 0);
+        Quaternion rotation = new Quaternion(0, 0, 0, 0);
+        Vector3 area = new Vector3(5, 5, 5);
+        Gizmos.color = new UnityEngine.Color(1, 0, 0, 0.5f);
+        Gizmos.DrawWireCube(transform.position+ explodeDir , volym );
+    }
+    public  void DrawBoxCastOnHit()
+    {
+       
+    }
     void Explode()
     {
         //+BomberManger.bombUppgrade*2
@@ -191,9 +262,6 @@ public class MarkerInteract : MonoBehaviour
                 //    //playerController.transform.position = reset;
                 //    bomberInput.veryDead = true;
                 //}
-
-
-
             }
         }
 
@@ -225,7 +293,7 @@ public class MarkerInteract : MonoBehaviour
     
     void Update()
     {
-
+        //OnDrawGizmos();
         //Debug.Log(bomberInput.canPlaceBomb);
         if (bomPlaced)
         {
@@ -244,6 +312,13 @@ public class MarkerInteract : MonoBehaviour
         //    bomPlaced =false;
         //    bomberInput.canPlaceBomb = true;
         //}
+        
+        if (firstBombPlaced && targetTime <= 0.5f)
+        {
+            timerEnded();
+            firstBombPlaced = false;
+        }
+
         if ( bomPlaced && targetTime <= 0.0f)
         {
             timerEnded();
@@ -260,52 +335,46 @@ public class MarkerInteract : MonoBehaviour
     }
     void timerEnded()
     {
+        explodeDir = new Vector3(1, 0, 0);
+        ExplotionCollider();
+        explodeDir = new Vector3(-1, 0, 0);
+        ExplotionCollider();
+        explodeDir = new Vector3(0, 0, 1);
+        ExplotionCollider();
+        explodeDir = new Vector3(0, 0, -1);
+        ExplotionCollider();
 
-        vectorZ = 1f;
-        inputVector = new Vector2(10f, 0f);
-        Explode();
-        inputVector = new Vector2(0f, 10f);
-        Explode();
-        inputVector = new Vector2(-10f, 0f);
-        Explode();
-        inputVector = new Vector2(0f, -10f);
-        Explode();
 
-        inputVector = new Vector2(10f, -3f);
-        Explode();
-        inputVector = new Vector2(-3f, 10f);
-        Explode();
-        inputVector = new Vector2(-10f, 3f);
-        Explode();
-        inputVector = new Vector2(3f, -10f);
-        Explode();
 
-        inputVector = new Vector2(10f, 3f);
-        Explode();
-        inputVector = new Vector2(3f, 10f);
-        Explode();
-        inputVector = new Vector2(-10f, -3f);
-        Explode();
-        inputVector = new Vector2(-3f, -10f);
-        Explode();
-
-        //inputVector = new Vector2(8f, 2f);
+        //vectorZ = 1f;
+        //inputVector = new Vector2(10f, 0f);
         //Explode();
-        //inputVector = new Vector2(2f, 8f);
+        //inputVector = new Vector2(0f, 10f);
         //Explode();
-        //inputVector = new Vector2(-8f, -2f);
+        //inputVector = new Vector2(-10f, 0f);
         //Explode();
-        //inputVector = new Vector2(-2f, -8f);
+        //inputVector = new Vector2(0f, -10f);
         //Explode();
 
-        //inputVector = new Vector2(12f, -2f);
+        //inputVector = new Vector2(10f, -3f);
         //Explode();
-        //inputVector = new Vector2(-2f, 12f);
+        //inputVector = new Vector2(-3f, 10f);
         //Explode();
-        //inputVector = new Vector2(-12f, 2f);
+        //inputVector = new Vector2(-10f, 3f);
         //Explode();
-        //inputVector = new Vector2(2f, -12f);
+        //inputVector = new Vector2(3f, -10f);
         //Explode();
+
+        //inputVector = new Vector2(10f, 3f);
+        //Explode();
+        //inputVector = new Vector2(3f, 10f);
+        //Explode();
+        //inputVector = new Vector2(-10f, -3f);
+        //Explode();
+        //inputVector = new Vector2(-3f, -10f);
+        //Explode();
+
+
 
 
 
