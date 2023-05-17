@@ -4030,6 +4030,14 @@ MonoBehaviour:
   - {fileID: 1678708627}
   - {fileID: 530359405}
   - {fileID: 749222347}
+  players:
+  - {fileID: 1197192170}
+  - {fileID: 1462787291}
+  - {fileID: 844984587}
+  - {fileID: 529285566}
+  countDown: 20
+  startCountDown: 0
+  numberPlayers: 0
 --- !u!1 &1512397624
 GameObject:
   m_ObjectHideFlags: 0
