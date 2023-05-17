@@ -23,42 +23,42 @@ public class selectMap : MonoBehaviour
     {
         if (RandomMap)
         {
-            player.GetComponent<PlayerController>().mapSelected = "RandomMap";
+            player.GetComponent<PlayerController>().mapSelected = "Random Map";
             player.GetComponent<PlayerController>().mapSelectedInt = 0;
         }
         else if (GroundIsFalling)
         {
-            player.GetComponent<PlayerController>().mapSelected = "GroundIsFalling";
+            player.GetComponent<PlayerController>().mapSelected = "Falling Ground";
             player.GetComponent<PlayerController>().mapSelectedInt = 1;
         }
         else if (MazeRunner)
         {
-            player.GetComponent<PlayerController>().mapSelected = "MazeRunner";
+            player.GetComponent<PlayerController>().mapSelected = "Maze Runner";
             player.GetComponent<PlayerController>().mapSelectedInt = 2;
         }
         else if (WallClimber)
         {
-            player.GetComponent<PlayerController>().mapSelected = "WallClimber";
+            player.GetComponent<PlayerController>().mapSelected = "Wall Climber";
             player.GetComponent<PlayerController>().mapSelectedInt = 3;
         }
         else if (BomberMan)
         {
-            player.GetComponent<PlayerController>().mapSelected = "BomberMan";
+            player.GetComponent<PlayerController>().mapSelected = "Bomber Man";
             player.GetComponent<PlayerController>().mapSelectedInt = 4;
         }
         else if (CaptureFlag)
         {
-            player.GetComponent<PlayerController>().mapSelected = "CaptureFlag";
+            player.GetComponent<PlayerController>().mapSelected = "Capture Flag";
             player.GetComponent<PlayerController>().mapSelectedInt = 5;
         }
         else if (WheelSpinner)
         {
-            player.GetComponent<PlayerController>().mapSelected = "WheelSpinner";
+            player.GetComponent<PlayerController>().mapSelected = "Wheel Spinner";
             player.GetComponent<PlayerController>().mapSelectedInt = 6;
         }
         else if (LavaRun)
         {
-            player.GetComponent<PlayerController>().mapSelected = "LavaRun";
+            player.GetComponent<PlayerController>().mapSelected = "Lava Run";
             player.GetComponent<PlayerController>().mapSelectedInt = 7;
         }
 

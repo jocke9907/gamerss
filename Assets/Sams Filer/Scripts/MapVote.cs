@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MapVote : MonoBehaviour
@@ -12,15 +13,20 @@ public class MapVote : MonoBehaviour
     int nrPlayers;
     int choosePlayer;
     int mapChosen;
+    bool mapAlreadyChosen = false;
     string mapChosenString;
-    public float countDown = 20;
+    public float countDown = 10;
     public float countDownLength = 10;
     bool voteOver = false;
+  
 
     GameObject player1;
     GameObject player2;
     GameObject player3;
     GameObject player4;
+
+    [SerializeField] TMP_Text textCountDown;
+    [SerializeField] TMP_Text textSelectedMap;
 
     float sceneCountDown = 3;
 
@@ -53,6 +59,7 @@ public class MapVote : MonoBehaviour
                 continue;
             }
             player.GetComponent<PlayerController>().mapSelectedInt = -1;
+            player.GetComponent<PlayerController>().mapSelected = "";
         }
 
         switch (numberPlayers)
@@ -79,6 +86,8 @@ public class MapVote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        textCountDown.text = ((int)countDown).ToString();
+        textSelectedMap.text = mapChosenString;
         checkIfPlayersReady();
 
 
@@ -123,9 +132,14 @@ public class MapVote : MonoBehaviour
 
     private void ChoosingMap()
     {
-        choosePlayer = Random.Range(0, 2);
-        mapChosen = players[choosePlayer].GetComponent<PlayerController>().mapSelectedInt;
-        mapChosenString = players[choosePlayer].GetComponent<PlayerController>().mapSelected;
+        if (mapAlreadyChosen == false)
+        {
+            mapAlreadyChosen = true;
+            choosePlayer = Random.Range(0, 2);
+            mapChosen = players[choosePlayer].GetComponent<PlayerController>().mapSelectedInt;
+            mapChosenString = players[choosePlayer].GetComponent<PlayerController>().mapSelected;
+        }
+        
 
         sceneCountDown -= Time.deltaTime;
 
@@ -133,6 +147,7 @@ public class MapVote : MonoBehaviour
         {
             if (mapChosen == 0)
             {
+                
                 mapChosen = Random.Range(1, 8);
             }
 
