@@ -539,7 +539,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128076508}
   m_LocalRotation: {x: 0.5735764, y: -0, z: -0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 0, z: -150.6}
+  m_LocalPosition: {x: 0, y: 0, z: -150.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1606,6 +1606,13 @@ MonoBehaviour:
   CaptureFlag: 0
   WheelSpinner: 1
   LavaRun: 0
+  groundFallingText: {fileID: 0}
+  mazeRunnerText: {fileID: 0}
+  wallClimberText: {fileID: 0}
+  bomberManText: {fileID: 0}
+  captureFlagText: {fileID: 0}
+  wheelSpinner: {fileID: 128076509}
+  lavaRunText: {fileID: 0}
 --- !u!1 &551566469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,6 +1679,13 @@ MonoBehaviour:
   CaptureFlag: 0
   WheelSpinner: 0
   LavaRun: 0
+  groundFallingText: {fileID: 0}
+  mazeRunnerText: {fileID: 0}
+  wallClimberText: {fileID: 1648039955}
+  bomberManText: {fileID: 0}
+  captureFlagText: {fileID: 0}
+  wheelSpinner: {fileID: 0}
+  lavaRunText: {fileID: 0}
 --- !u!1 &555619370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,7 +1862,7 @@ MonoBehaviour:
   m_text: Wheel Spin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1937,7 +1951,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2823,6 +2837,13 @@ MonoBehaviour:
   CaptureFlag: 0
   WheelSpinner: 0
   LavaRun: 1
+  groundFallingText: {fileID: 0}
+  mazeRunnerText: {fileID: 0}
+  wallClimberText: {fileID: 0}
+  bomberManText: {fileID: 0}
+  captureFlagText: {fileID: 0}
+  wheelSpinner: {fileID: 0}
+  lavaRunText: {fileID: 1468560646}
 --- !u!1 &755700708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,7 +2885,7 @@ MonoBehaviour:
   m_text: '?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2894,7 +2915,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2953,7 +2974,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3790,7 +3811,7 @@ MonoBehaviour:
   m_text: Falling Ground
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3879,7 +3900,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4060,7 +4081,7 @@ MonoBehaviour:
   m_text: Maze Runner
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4149,7 +4170,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4542,6 +4563,13 @@ MonoBehaviour:
   CaptureFlag: 0
   WheelSpinner: 0
   LavaRun: 0
+  groundFallingText: {fileID: 1803624970}
+  mazeRunnerText: {fileID: 0}
+  wallClimberText: {fileID: 0}
+  bomberManText: {fileID: 0}
+  captureFlagText: {fileID: 0}
+  wheelSpinner: {fileID: 0}
+  lavaRunText: {fileID: 0}
 --- !u!1 &1197067609
 GameObject:
   m_ObjectHideFlags: 0
@@ -5042,6 +5070,13 @@ MonoBehaviour:
   CaptureFlag: 0
   WheelSpinner: 0
   LavaRun: 0
+  groundFallingText: {fileID: 0}
+  mazeRunnerText: {fileID: 0}
+  wallClimberText: {fileID: 0}
+  bomberManText: {fileID: 1917106611}
+  captureFlagText: {fileID: 0}
+  wheelSpinner: {fileID: 0}
+  lavaRunText: {fileID: 0}
 --- !u!1 &1310716490
 GameObject:
   m_ObjectHideFlags: 0
@@ -5381,6 +5416,13 @@ MonoBehaviour:
   CaptureFlag: 0
   WheelSpinner: 0
   LavaRun: 0
+  groundFallingText: {fileID: 1803624970}
+  mazeRunnerText: {fileID: 1197067610}
+  wallClimberText: {fileID: 1648039955}
+  bomberManText: {fileID: 1917106611}
+  captureFlagText: {fileID: 895856166}
+  wheelSpinner: {fileID: 128076509}
+  lavaRunText: {fileID: 1468560646}
 --- !u!1 &1387692304
 GameObject:
   m_ObjectHideFlags: 0
@@ -5461,7 +5503,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42e26e838cb21e944aa7de2aae4edefc, type: 2}
+  - {fileID: 2100000, guid: 2f3d3a0760bbf024bb4234d71b5cb464, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5939,7 +5981,7 @@ MonoBehaviour:
   m_text: Lava Run
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6028,7 +6070,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6208,6 +6250,13 @@ MonoBehaviour:
   CaptureFlag: 0
   WheelSpinner: 0
   LavaRun: 0
+  groundFallingText: {fileID: 0}
+  mazeRunnerText: {fileID: 1197067610}
+  wallClimberText: {fileID: 0}
+  bomberManText: {fileID: 0}
+  captureFlagText: {fileID: 0}
+  wheelSpinner: {fileID: 0}
+  lavaRunText: {fileID: 0}
 --- !u!1 &1560777934
 GameObject:
   m_ObjectHideFlags: 0
@@ -6249,7 +6298,7 @@ MonoBehaviour:
   m_text: Wall Climber
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6338,7 +6387,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6816,7 +6865,7 @@ MonoBehaviour:
   m_text: Capture Flag
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6905,7 +6954,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7013,6 +7062,13 @@ MonoBehaviour:
   CaptureFlag: 1
   WheelSpinner: 0
   LavaRun: 0
+  groundFallingText: {fileID: 0}
+  mazeRunnerText: {fileID: 0}
+  wallClimberText: {fileID: 0}
+  bomberManText: {fileID: 0}
+  captureFlagText: {fileID: 895856166}
+  wheelSpinner: {fileID: 0}
+  lavaRunText: {fileID: 0}
 --- !u!1 &1690614818
 GameObject:
   m_ObjectHideFlags: 0
@@ -7436,7 +7492,7 @@ MonoBehaviour:
   m_text: Bomber Man
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7525,7 +7581,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7868,8 +7924,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "OBJECTIVE:\nBe the last one standing either by either placing or dodging
-    bombs for as long as possible. Press \xA4 to place bombs."
+  m_text: "OBJECTIVE:\nBe the last one standing  by either placing or dodging bombs
+    for as long as possible. Press \xA4 to place bombs."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 9ad269c99dcf42b7aedefd83dd5a7b9d, type: 2}
