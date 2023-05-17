@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -115,7 +116,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
 
-
+        GetComponentInChildren<ParticleSystem>().enableEmission = false;
+        GetComponentInChildren<Light>().enabled = false;
         bomberInput = FindObjectOfType<BomberInput>();
 
         wallClimberInput = FindObjectOfType<WallClimberInput>();
@@ -174,13 +176,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(jumpCooldown);
 
+        //GetComponent<ParticleSystem>().enableEmission = false;
         if (veryDead)
         {
+            GetComponentInChildren<ParticleSystem>().enableEmission = true;
+            GetComponentInChildren<Light>().enabled = true;
+
             return;
         }
 
+        Debug.Log(jumpCooldown);
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {

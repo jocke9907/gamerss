@@ -19,6 +19,9 @@ public class RandomMap : MonoBehaviour
         {
             player.veryDead = false;
             
+            player.GetComponentInChildren<ParticleSystem>().enableEmission = false;
+            player.GetComponentInChildren<Light>().enabled = false;
+
         }
         giveScore = true;
 
@@ -74,7 +77,7 @@ public class RandomMap : MonoBehaviour
             Debug.Log(bomberManger.gamesPlayed);
             
         }
-        randMap = 1;
+        randMap = 2;
         //bomberManger.captureTheFlagPlayed = true;
         //if (!bomberManger.fallinggroundPlayed)
         //{
