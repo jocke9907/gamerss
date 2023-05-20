@@ -139,7 +139,7 @@ public class MarkerInteract : MonoBehaviour
         
 
         Quaternion rotation = new Quaternion(0, 0, 0, 0);
-        Vector3 volym = new Vector3(1.7f, 4f, 1.7f);
+        Vector3 volym = new Vector3(1.5f, 4f, 1.5f);
         //Vector3 explodeDir = new Vector3(1, 0, 0);
         //if (explodeDir != Vector3.zero)
         //{

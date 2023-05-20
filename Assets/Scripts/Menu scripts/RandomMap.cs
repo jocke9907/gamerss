@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class RandomMap : MonoBehaviour
 {
@@ -18,8 +19,12 @@ public class RandomMap : MonoBehaviour
         foreach (PlayerController player in manager.GetPlayers())
         {
             player.veryDead = false;
-            
-            player.GetComponentInChildren<ParticleSystem>().enableEmission = false;
+
+            var particleSystem = player.GetComponentInChildren<ParticleSystem>();
+            var emissionModule = particleSystem.emission;
+            emissionModule.enabled = false;
+
+            //player.GetComponentInChildren<ParticleSystem>().enableEmission = false;
             player.GetComponentInChildren<Light>().enabled = false;
 
         }
@@ -77,7 +82,7 @@ public class RandomMap : MonoBehaviour
             Debug.Log(bomberManger.gamesPlayed);
             
         }
-        randMap = 2;
+        //randMap = 2;
         //bomberManger.captureTheFlagPlayed = true;
         //if (!bomberManger.fallinggroundPlayed)
         //{

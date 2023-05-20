@@ -112,12 +112,18 @@ public class PlayerController : MonoBehaviour
     {
         bomberManger = FindObjectOfType<BomberManger>();
         playerInput = GetComponent<PlayerInput>();
+
+        var particleSystem = GetComponentInChildren<ParticleSystem>();
+        var emissionModule = particleSystem.emission;
+        emissionModule.enabled = false;
+
+        //GetComponentInChildren<ParticleSystem>().enableEmission = false;
+        GetComponentInChildren<Light>().enabled = false;
     }
     private void Start()
     {
 
-        GetComponentInChildren<ParticleSystem>().enableEmission = false;
-        GetComponentInChildren<Light>().enabled = false;
+        
         bomberInput = FindObjectOfType<BomberInput>();
 
         wallClimberInput = FindObjectOfType<WallClimberInput>();
@@ -180,7 +186,10 @@ public class PlayerController : MonoBehaviour
         //GetComponent<ParticleSystem>().enableEmission = false;
         if (veryDead)
         {
-            GetComponentInChildren<ParticleSystem>().enableEmission = true;
+            var particleSystem = GetComponentInChildren<ParticleSystem>();
+            var emissionModule = particleSystem.emission;
+            emissionModule.enabled = true;
+            //GetComponentInChildren<ParticleSystem>().enableEmission = true;
             GetComponentInChildren<Light>().enabled = true;
 
             return;
