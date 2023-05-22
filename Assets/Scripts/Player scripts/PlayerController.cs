@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Debug.Log(jumpCooldown);
+        //Debug.Log(jumpCooldown);
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {

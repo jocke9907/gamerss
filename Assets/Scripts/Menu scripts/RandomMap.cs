@@ -10,7 +10,7 @@ public class RandomMap : MonoBehaviour
     bool giveScore = true;
     bool changeMap = false;
     bool mapSelected;
-    public int randMap;
+    public int randMap = 6;
     private void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();
@@ -76,12 +76,12 @@ public class RandomMap : MonoBehaviour
 
 
         Loader.TheMazePlaying = false;
-        if (mapSelected == false)
-        {
-            randMap = Random.Range(1, 8);
-            Debug.Log(bomberManger.gamesPlayed);
+        //if (mapSelected == false)
+        //{
+        //    randMap = Random.Range(1, 8);
+        //    Debug.Log(bomberManger.gamesPlayed);
             
-        }
+        //}
         //randMap = 2;
         //bomberManger.captureTheFlagPlayed = true;
         //if (!bomberManger.fallinggroundPlayed)
