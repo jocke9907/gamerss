@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     //Sound
     [SerializeField] AudioSource jumpAudio;
-    [SerializeField] AudioSource bombAudio;
+   
 
     public CharacterController controller;
     private Vector3 playerVelocity;
@@ -414,7 +414,7 @@ public class PlayerController : MonoBehaviour
 
         if (inputE == true)
         {
-            bombAudio.Play();
+           
             placeBomb = true;
         }
         else if (inputE == false)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00034478641, g: 0.00032592643, b: 0.0003541093, a: 1}
+  m_IndirectSpecularColor: {r: 0.0003442154, g: 0.00032587603, b: 0.000353568, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2193,8 +2193,8 @@ MonoBehaviour:
   player3: {fileID: 0}
   player4: {fileID: 0}
   cameraPos: {x: 0, y: 0, z: 0}
-  minFOV: 50
-  maxFOV: 60
+  minFOV: 55
+  maxFOV: 70
   numberPlayers: 0
 --- !u!1 &292074441
 GameObject:

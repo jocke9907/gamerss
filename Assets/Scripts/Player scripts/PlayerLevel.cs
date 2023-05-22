@@ -13,7 +13,7 @@ public class PlayerLevel : MonoBehaviour
     public bool playerDead;
     public bool scoreGiven;
     BomberManger bomberManger;
-    bool alive = true;
+    public bool alive = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -73,8 +73,8 @@ public class PlayerLevel : MonoBehaviour
 
             if (!alive)
             {
-                transform.position = new Vector3(0, 4, 0);
-                alive = true;
+                //transform.position = new Vector3(0, 4, 0);
+                //alive = true;
             }
 
         }

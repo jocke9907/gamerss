@@ -82,7 +82,7 @@ public class RandomMap : MonoBehaviour
             Debug.Log(bomberManger.gamesPlayed);
             
         }
-        //randMap = 2;
+        //randMap = 4;
         //bomberManger.captureTheFlagPlayed = true;
         //if (!bomberManger.fallinggroundPlayed)
         //{

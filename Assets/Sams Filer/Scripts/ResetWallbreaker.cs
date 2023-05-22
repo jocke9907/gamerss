@@ -39,6 +39,7 @@ public class ResetWallbreaker : MonoBehaviour
                 player.GetComponent<PlayerController>().finished = false;
                 player.GetComponent<PlayerController>().tempScore = 0;
                 player.GetComponent<PlayerController>().jumpingAllowed = true;
+                player.GetComponent<PlayerLevel>().alive = true;
 
             }
         }
