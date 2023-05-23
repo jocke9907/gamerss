@@ -155,8 +155,7 @@ public class MoveScore : MonoBehaviour
                     }
                     else if (playerFour)
                     {
-                        height = (float)
-                            players[3].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[3].GetComponent<PlayerController>().totalScore/2;
                         x = 2.5f;
                         z = 2.5f;
                         //ColorPillar(player);
