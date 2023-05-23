@@ -66,7 +66,7 @@ public class MoveScore : MonoBehaviour
                 {
                     if (playerOne)
                     {
-                        height = players[0].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[0].GetComponent<PlayerController>().totalScore/2;
                         x = -2.5f;
                         z = 2.5f;
                         //ColorPillar(player);
@@ -82,14 +82,14 @@ public class MoveScore : MonoBehaviour
 
                     if (playerOne)
                     {
-                        height = players[0].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[0].GetComponent<PlayerController>().totalScore/2;
                         x = -2.5f;
                         z = 2.5f;
                         //ColorPillar(player);
                     }
                     else if (playerTwo)
                     {
-                        height = players[1].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[1].GetComponent<PlayerController>().totalScore/2;
                         x = 2.5f;
                         z = -2.5f;
                         //ColorPillar(player);
@@ -103,21 +103,21 @@ public class MoveScore : MonoBehaviour
                 {
                     if (playerOne)
                     {
-                        height = players[0].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[0].GetComponent<PlayerController>().totalScore/2;
                         x = -2.5f;
                         z = 2.5f;
                         //ColorPillar(player);
                     }
                     else if (playerTwo)
                     {
-                        height = players[1].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[1].GetComponent<PlayerController>().totalScore/2;
                         x = 2.5f;
                         z = -2.5f;
                         //ColorPillar(player);
                     }
                     else if (playerThree)
                     {
-                        height = players[2].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[2].GetComponent<PlayerController>().totalScore/2;
                         x = -2.5f;
                         z = -2.5f;
                         //ColorPillar(player);
@@ -131,7 +131,7 @@ public class MoveScore : MonoBehaviour
                 {
                     if (playerOne)
                     {
-                        height = players[0].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[0].GetComponent<PlayerController>().totalScore/2;
 
                         x = -2.5f;
                         z = 2.5f;
@@ -140,7 +140,7 @@ public class MoveScore : MonoBehaviour
                     else if (playerTwo)
                     {
 
-                        height = players[1].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[1].GetComponent<PlayerController>().totalScore/2;
                         x = 2.5f;
                         z = -2.5f;
                         //ColorPillar(player);
@@ -148,14 +148,14 @@ public class MoveScore : MonoBehaviour
                     }
                     else if (playerThree)
                     {
-                        height = players[2].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[2].GetComponent<PlayerController>().totalScore/2;
                         x = -2.5f;
                         z = -2.5f;
                         //ColorPillar(player);
                     }
                     else if (playerFour)
                     {
-                        height = players[3].GetComponent<PlayerController>().totalScore/2;
+                        height = (float)players[3].GetComponent<PlayerController>().totalScore/2;
                         x = 2.5f;
                         z = 2.5f;
                         //ColorPillar(player);
