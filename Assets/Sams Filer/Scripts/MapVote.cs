@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class MapVote : MonoBehaviour
 {
+    BomberManger bomberManger;
+
+
     public GameObject[] pillarList;
 
     public GameObject[] players;
@@ -18,6 +21,7 @@ public class MapVote : MonoBehaviour
     public float countDown = 10;
     public float countDownLength = 10;
     bool voteOver = false;
+    bool winnerActivated = false;
   
 
     GameObject player1;
@@ -27,16 +31,36 @@ public class MapVote : MonoBehaviour
 
     [SerializeField] TMP_Text textCountDown;
     [SerializeField] TMP_Text textSelectedMap;
-
+    [SerializeField] TMP_Text textWinner;
+    [SerializeField] TMP_Text textNrGames;
+    [SerializeField] int nrGames;
     float sceneCountDown = 3;
+    int bestScore;
+    string winner;
+    bool gameOver = false;
 
     public bool startCountDown = false;
+    PlayerManager manager;
 
     public enum NumberPlayers { one, two, three, four }
     public NumberPlayers numberPlayers = NumberPlayers.one;
 
     void Start()
     {
+
+        //--------------ARVID------------------------------------------------
+
+        bomberManger = FindObjectOfType<BomberManger>();
+
+        manager = FindObjectOfType<PlayerManager>();
+
+        foreach (PlayerController player in manager.GetPlayers())
+        {
+            player.veryDead = false;
+            //player.gameObject.SetActive(true);
+        }
+        //-------------------------------------------------------------------
+        
         numberPlayers = (NumberPlayers)FindObjectOfType<nrPlayers>().playerCount - 1;
         
 
@@ -54,6 +78,7 @@ public class MapVote : MonoBehaviour
 
         foreach(GameObject player in players)
         {
+
             if (!player)
             {
                 continue;
@@ -67,17 +92,20 @@ public class MapVote : MonoBehaviour
             case NumberPlayers.two:
 
                 nrPlayers = 2;
+                bomberManger.playerCountBomber = 1; //ARVID
 
                 break;
 
             case NumberPlayers.three:
 
                 nrPlayers = 3;
+                bomberManger.playerCountBomber = 2; //ARVID
 
                 break;
             case NumberPlayers.four:
 
                 nrPlayers = 4;
+                bomberManger.playerCountBomber = 3; //ARVID
 
                 break;
         }
@@ -86,6 +114,14 @@ public class MapVote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        textNrGames.text = "Round " + manager.gamesPlayed.ToString() + "/" + nrGames.ToString();
+
+        
+        if (manager.gamesPlayed == nrGames)
+        {
+            
+            ScoreResult();               
+        }
         textCountDown.text = ((int)countDown).ToString();
         textSelectedMap.text = mapChosenString;
         checkIfPlayersReady();
@@ -145,6 +181,7 @@ public class MapVote : MonoBehaviour
 
         if (sceneCountDown <= 0)
         {
+            manager.gamesPlayed++;
             if (mapChosen == 0)
             {
                 
@@ -153,30 +190,45 @@ public class MapVote : MonoBehaviour
 
             if (mapChosen == 1)
             {
+                Loader.PlatformGamePlaying = true;
                 Loader.Load(Loader.Scene.ViggesScene);
             }
             else if (mapChosen == 2)
             {
+                Loader.TheMazePlaying = true;
                 Loader.Load(Loader.Scene.TheMaze);
             }
             else if (mapChosen == 3)
             {
+                Loader.wallClimberPlaying = true;
                 Loader.Load(Loader.Scene.SamScen);
             }
             else if (mapChosen == 4)
             {
+                bomberManger.redusePlayers = false;
+                //bomberManger.bomberPlayed = true;
+                bomberManger.GameStart();
+                bomberManger.bomberPoints = 4;
+                Loader.bomberGamePlaying = true;
                 Loader.Load(Loader.Scene.BomberGame);
             }
             else if (mapChosen == 5)
             {
+                Loader.captureTheFlagPlaying = true;
                 Loader.Load(Loader.Scene.CaptureTheFlag);
             }
             else if (mapChosen == 6)
             {
+                Loader.spinningWheelPlaying = true;
                 Loader.Load(Loader.Scene.SpinningWheel);
             }
             else if (mapChosen == 7)
             {
+                bomberManger.redusePlayers = false;
+                //bomberManger.lavaGroundPlayed = true;
+                bomberManger.GameStart();
+                bomberManger.bomberPoints = 4;
+                Loader.LavaGroundPlaying = true;
                 Loader.Load(Loader.Scene.LavaGround);
             }
         }
@@ -210,6 +262,247 @@ public class MapVote : MonoBehaviour
                 
             }
         }
+    }
+    private void ScoreResult()
+    {
+
+        //gameOver = true;
+        //bestScore = players[0].GetComponent<PlayerController>().totalScore;
+        //winner = "Player1";
+        //foreach (GameObject player in players)
+        //{
+        //    if (!player)
+        //    {
+        //        continue;
+        //    }
+        //    if (player.GetComponent<PlayerController>().totalScore > bestScore)
+        //    {
+        //        bestScore = player.GetComponent<PlayerController>().totalScore;
+        //        winner = player.transform.name;
+        //    }
+        //}
+
+        
+        //if (winner == "Player1")
+        //{
+        //    winner = "Blue";
+        //}
+        //else if (winner == "Player2")
+        //{
+        //    winner = "Green";
+        //}
+        //else if (winner == "Player3")
+        //{
+        //    winner = "Yellow";
+        //}
+        //else if (winner == "Player4")
+        //{
+        //    winner = "Red";
+        //}
+        //textWinner.text = winner + " is the ultimate color!";
+
+
+
+
+
+
+        switch (numberPlayers)
+        {
+            case NumberPlayers.two:
+
+                gameOver = true;
+                bestScore = players[0].GetComponent<PlayerController>().totalScore;
+                winner = "Player1";
+                foreach (GameObject player in players)
+                {
+                    if (!player)
+                    {
+                        continue;
+                    }
+                    if (player.GetComponent<PlayerController>().totalScore > bestScore)
+                    {
+                        bestScore = player.GetComponent<PlayerController>().totalScore;
+                        winner = player.transform.name;
+                    }
+                }
+                if (winner == "Player1")
+                {
+                    winner = "Blue";
+                    if (players[0].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Blue and Green are equally nice colors!";
+                    }
+                }
+                else if (winner == "Player2")
+                {
+                    winner = "Green";
+                    if (players[1].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Green and Blue are equally nice colors!";
+                    }
+                }
+                else
+                {
+                    textWinner.text = winner + " is the ultimate color!";
+                }
+                break;
+
+
+
+            case NumberPlayers.three:
+
+
+                gameOver = true;
+                bestScore = players[0].GetComponent<PlayerController>().totalScore;
+                winner = "Player1";
+                foreach (GameObject player in players)
+                {
+                    if (!player)
+                    {
+                        continue;
+                    }
+                    if (player.GetComponent<PlayerController>().totalScore > bestScore)
+                    {
+                        bestScore = player.GetComponent<PlayerController>().totalScore;
+                        winner = player.transform.name;
+                    }
+                }
+                if (winner == "Player1")
+                {
+                    winner = "Blue";
+                    if (players[0].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Blue and Green are equally nice colors!";
+                    }
+                    else if (players[0].GetComponent<PlayerController>().totalScore == players[2].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Blue and Yellow are equally nice colors!";
+                    }
+
+                }
+                else if (winner == "Player2")
+                {
+                    winner = "Green";
+                    if (players[1].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Green and Blue are equally nice colors!";
+                    }
+                    else if (players[1].GetComponent<PlayerController>().totalScore == players[2].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Green and Yellow are equally nice colors!";
+                    }
+                }
+                else if (winner == "Player3")
+                {
+                    winner = "Yellow";
+                    if (players[2].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Yellow and Blue are equally nice colors!";
+                    }
+                    else if (players[2].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Yellow and Green are equally nice colors!";
+                    }
+                }
+                else
+                {
+                    textWinner.text = winner + " is the ultimate color!";
+                }
+                break;
+
+
+
+            case NumberPlayers.four:
+
+
+                gameOver = true;
+                bestScore = players[0].GetComponent<PlayerController>().totalScore;
+                winner = "Player1";
+                foreach (GameObject player in players)
+                {
+                    if (!player)
+                    {
+                        continue;
+                    }
+                    if (player.GetComponent<PlayerController>().totalScore > bestScore)
+                    {
+                        bestScore = player.GetComponent<PlayerController>().totalScore;
+                        winner = player.transform.name;
+                    }
+                }
+                if (winner == "Player1")
+                {
+                    winner = "Blue";
+                    if (players[0].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Blue and Green are equally nice colors!";
+                    }
+                    else if (players[0].GetComponent<PlayerController>().totalScore == players[2].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Blue and Yellow are equally nice colors!";
+                    }
+                    else if (players[0].GetComponent<PlayerController>().totalScore == players[3].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Blue and Red are equally nice colors!";
+                    }
+
+                }
+                else if (winner == "Player2")
+                {
+                    winner = "Green";
+                    if (players[1].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Green and Blue are equally nice colors!";
+                    }
+                    else if (players[1].GetComponent<PlayerController>().totalScore == players[2].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Green and Yellow are equally nice colors!";
+                    }
+                    else if (players[1].GetComponent<PlayerController>().totalScore == players[3].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Green and Red are equally nice colors!";
+                    }
+                }
+                else if (winner == "Player3")
+                {
+                    winner = "Yellow";
+                    if (players[2].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Yellow and Blue are equally nice colors!";
+                    }
+                    else if (players[2].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Yellow and Green are equally nice colors!";
+                    }
+                    else if (players[2].GetComponent<PlayerController>().totalScore == players[3].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Yellow and Red are equally nice colors!";
+                    }
+                }
+                else if (winner == "Player4")
+                {
+                    winner = "Red";
+                    if (players[3].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Red and Blue are equally nice colors!";
+                    }
+                    else if (players[3].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Red and Green are equally nice colors!";
+                    }
+                    else if (players[3].GetComponent<PlayerController>().totalScore == players[2].GetComponent<PlayerController>().totalScore)
+                    {
+                        textWinner.text = "Red and Yellow are equally nice colors!";
+                    }
+                }
+                else
+                {
+                    textWinner.text = winner + " is the ultimate color!";
+                }
+
+                break;
+        }
+
     }
 
 }

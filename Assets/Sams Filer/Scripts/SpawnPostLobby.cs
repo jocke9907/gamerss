@@ -34,8 +34,7 @@ public class SpawnPostLobby : MonoBehaviour
         player2Pos = spawnPlayer2.transform.position;
         player3Pos = spawnPlayer3.transform.position;
         player4Pos = spawnPlayer4.transform.position;
-        
-
+       
     }
 
     private void FixedUpdate()
@@ -78,7 +77,7 @@ public class SpawnPostLobby : MonoBehaviour
                     scoreText4.text = player.GetComponent<PlayerController>().totalScore.ToString();
                 }
                 
-                Debug.Log("spawnPost");
+                //Debug.Log("spawnPost");
             }
             hasSpawned = true;
         }
