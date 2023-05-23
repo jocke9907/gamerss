@@ -39,7 +39,7 @@ public class MapVote : MonoBehaviour
     string winner;
     bool gameOver = false;
 
-    public bool startCountDown = false;
+    bool startCountDown = false;
     PlayerManager manager;
 
     public enum NumberPlayers { one, two, three, four }
@@ -331,6 +331,7 @@ public class MapVote : MonoBehaviour
                     if (players[0].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Blue and Green are equally nice colors!";
+                        break;
                     }
                 }
                 else if (winner == "Player2")
@@ -339,12 +340,11 @@ public class MapVote : MonoBehaviour
                     if (players[1].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Green and Blue are equally nice colors!";
+                        break;
                     }
                 }
-                else
-                {
-                    textWinner.text = winner + " is the ultimate color!";
-                }
+
+                textWinner.text = winner + " is the ultimate color!";
                 break;
 
 
@@ -373,10 +373,12 @@ public class MapVote : MonoBehaviour
                     if (players[0].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Blue and Green are equally nice colors!";
+                        break;
                     }
                     else if (players[0].GetComponent<PlayerController>().totalScore == players[2].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Blue and Yellow are equally nice colors!";
+                        break;
                     }
 
                 }
@@ -386,10 +388,12 @@ public class MapVote : MonoBehaviour
                     if (players[1].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Green and Blue are equally nice colors!";
+                        break;
                     }
                     else if (players[1].GetComponent<PlayerController>().totalScore == players[2].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Green and Yellow are equally nice colors!";
+                        break;
                     }
                 }
                 else if (winner == "Player3")
@@ -398,16 +402,16 @@ public class MapVote : MonoBehaviour
                     if (players[2].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Yellow and Blue are equally nice colors!";
+                        break;
                     }
                     else if (players[2].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Yellow and Green are equally nice colors!";
+                        break;
                     }
                 }
-                else
-                {
-                    textWinner.text = winner + " is the ultimate color!";
-                }
+
+                textWinner.text = winner + " is the ultimate color!";
                 break;
 
 
@@ -436,14 +440,17 @@ public class MapVote : MonoBehaviour
                     if (players[0].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Blue and Green are equally nice colors!";
+                        break;
                     }
                     else if (players[0].GetComponent<PlayerController>().totalScore == players[2].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Blue and Yellow are equally nice colors!";
+                        break;
                     }
                     else if (players[0].GetComponent<PlayerController>().totalScore == players[3].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Blue and Red are equally nice colors!";
+                        break;
                     }
 
                 }
@@ -453,14 +460,17 @@ public class MapVote : MonoBehaviour
                     if (players[1].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Green and Blue are equally nice colors!";
+                        break;
                     }
                     else if (players[1].GetComponent<PlayerController>().totalScore == players[2].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Green and Yellow are equally nice colors!";
+                        break;
                     }
                     else if (players[1].GetComponent<PlayerController>().totalScore == players[3].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Green and Red are equally nice colors!";
+                        break;
                     }
                 }
                 else if (winner == "Player3")
@@ -469,14 +479,17 @@ public class MapVote : MonoBehaviour
                     if (players[2].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Yellow and Blue are equally nice colors!";
+                        break;
                     }
                     else if (players[2].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Yellow and Green are equally nice colors!";
+                        break;
                     }
                     else if (players[2].GetComponent<PlayerController>().totalScore == players[3].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Yellow and Red are equally nice colors!";
+                        break;
                     }
                 }
                 else if (winner == "Player4")
@@ -485,20 +498,20 @@ public class MapVote : MonoBehaviour
                     if (players[3].GetComponent<PlayerController>().totalScore == players[0].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Red and Blue are equally nice colors!";
+                        break;
                     }
                     else if (players[3].GetComponent<PlayerController>().totalScore == players[1].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Red and Green are equally nice colors!";
+                        break;
                     }
                     else if (players[3].GetComponent<PlayerController>().totalScore == players[2].GetComponent<PlayerController>().totalScore)
                     {
                         textWinner.text = "Red and Yellow are equally nice colors!";
+                        break;
                     }
                 }
-                else
-                {
-                    textWinner.text = winner + " is the ultimate color!";
-                }
+                textWinner.text = winner + " is the ultimate color!";
 
                 break;
         }
