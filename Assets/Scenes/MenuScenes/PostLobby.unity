@@ -895,7 +895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &186299245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -903,7 +903,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186299244}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 041748b5b67dc8c4a8a4fb2565ec3be7, type: 3}
   m_Name: 
@@ -4023,10 +4023,6 @@ MonoBehaviour:
   spawnPlayer2: {fileID: 1568992249}
   spawnPlayer3: {fileID: 895848090}
   spawnPlayer4: {fileID: 2036587908}
-  scoreText1: {fileID: 1682247105}
-  scoreText2: {fileID: 1555943210}
-  scoreText3: {fileID: 1323037966}
-  scoreText4: {fileID: 683755191}
 --- !u!4 &1034661199
 Transform:
   m_ObjectHideFlags: 0
