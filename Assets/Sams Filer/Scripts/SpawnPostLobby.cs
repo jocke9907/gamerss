@@ -1,5 +1,7 @@
+
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpawnPostLobby : MonoBehaviour
@@ -15,8 +17,14 @@ public class SpawnPostLobby : MonoBehaviour
     Vector3 player3Pos;
     Vector3 player4Pos;
 
+    [SerializeField] TMP_Text scoreText1;
+    [SerializeField] TMP_Text scoreText2;
+    [SerializeField] TMP_Text scoreText3;
+    [SerializeField] TMP_Text scoreText4;
+
     bool hasSpawned = false;
 
+    
 
 
 
@@ -26,8 +34,7 @@ public class SpawnPostLobby : MonoBehaviour
         player2Pos = spawnPlayer2.transform.position;
         player3Pos = spawnPlayer3.transform.position;
         player4Pos = spawnPlayer4.transform.position;
-        
-
+       
     }
 
     private void FixedUpdate()
@@ -39,26 +46,38 @@ public class SpawnPostLobby : MonoBehaviour
             {
                 if(player.gameObject.name == "Player1")
                 {
-                    player1Pos.y=player.GetComponent<PlayerController>().totalScore+2;
+                    player1Pos.y=(float)player.GetComponent<PlayerController>().totalScore/2+2;
                     player.gameObject.transform.position = player1Pos;
+                    player1Pos.y = (float)player1Pos.y - 1.8f;
+                    scoreText1.transform.position = player1Pos;
+                    scoreText1.text = player.GetComponent<PlayerController>().totalScore.ToString();
                 }
                 else if (player.gameObject.name == "Player2")
                 {
-                    player2Pos.y = player.GetComponent<PlayerController>().totalScore+2;
+                    player2Pos.y = (float)player.GetComponent<PlayerController>().totalScore/2+2;
                     player.gameObject.transform.position = player2Pos;
+                    player2Pos.y = (float)player2Pos.y - 1.8f;
+                    scoreText2.transform.position = player2Pos;
+                    scoreText2.text = player.GetComponent<PlayerController>().totalScore.ToString();
                 }
                 else if (player.gameObject.name == "Player3")
                 {
-                    player3Pos.y = player.GetComponent<PlayerController>().totalScore+2;
+                    player3Pos.y = (float)player.GetComponent<PlayerController>().totalScore/2+2;
                     player.gameObject.transform.position = player3Pos;
+                    player3Pos.y = (float)player3Pos.y - 1.8f;
+                    scoreText3.transform.position = player3Pos;
+                    scoreText3.text = player.GetComponent<PlayerController>().totalScore.ToString();
                 }
                 else if (player.gameObject.name == "Player4")
                 {
-                    player4Pos.y = player.GetComponent<PlayerController>().totalScore+2;
+                    player4Pos.y = (float)player.GetComponent<PlayerController>().totalScore/2+2;
                     player.gameObject.transform.position = player4Pos;
+                    player4Pos.y = (float)player4Pos.y - 1.8f;
+                    scoreText4.transform.position = player4Pos;
+                    scoreText4.text = player.GetComponent<PlayerController>().totalScore.ToString();
                 }
                 
-                Debug.Log("spawnPost");
+                //Debug.Log("spawnPost");
             }
             hasSpawned = true;
         }
