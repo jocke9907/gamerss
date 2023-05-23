@@ -60,11 +60,7 @@ public class PlayerLevel : MonoBehaviour
                     transform.position = new Vector3(0, 2, 0);
 
                 }
-<<<<<<< HEAD
                 if (transform.position.y < -50)
-=======
-                if (transform.position.y < -40)
->>>>>>> Post-Lobby-Remake
                 {
                     //playerController.totalScore = playerController.totalScore + KillerBox.points;
                     //Debug.Log("Player x is now out and is awarded " + KillerBox.points + " points!");
