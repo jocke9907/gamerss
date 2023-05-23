@@ -27,7 +27,16 @@ public class ResetWallbreaker : MonoBehaviour
         players[2] = player3;
         players[3] = player4;
 
-      
+        Loader.TheMazePlaying = false;
+        Loader.PlatformGamePlaying = false;
+        Loader.wallClimberPlaying = false;
+        Loader.bomberGamePlaying = false;
+        Loader.captureTheFlagPlaying = false;
+        Loader.spinningWheelPlaying = false;
+        Loader.LavaGroundPlaying = false;
+
+
+
         foreach (GameObject player in players)
         {
             if (!player)
@@ -39,7 +48,11 @@ public class ResetWallbreaker : MonoBehaviour
                 player.GetComponent<PlayerController>().finished = false;
                 player.GetComponent<PlayerController>().tempScore = 0;
                 player.GetComponent<PlayerController>().jumpingAllowed = true;
+<<<<<<< HEAD
                 player.GetComponent<PlayerLevel>().alive = true;
+=======
+                
+>>>>>>> Post-Lobby-Remake
 
             }
         }
