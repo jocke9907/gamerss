@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Low Poly Fire/Scenes/Demo_Profiles/Post FX Profile.asset.meta
-guid: 649e6987edb180241b0752d31977551c
-========
-guid: 1ddb8027801271642b09c0961007dfc5
->>>>>>>> Post-Lobby-Remake:Assets/Materials/Ground textures pack/Grass 02/Materials/normal.mat.meta
+guid: b14689c940e6b344ca7deffd43bc8df2
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

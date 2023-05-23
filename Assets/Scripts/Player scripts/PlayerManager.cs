@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     List<PlayerController> controls = new List<PlayerController>();
-    public int gamesPlayed = 0;
+
 
     public List<PlayerController> GetPlayers()
     {
