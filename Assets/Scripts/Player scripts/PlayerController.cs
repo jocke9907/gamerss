@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
     public bool finished = false;
     public int tempScore = 0;
     public bool jumpingAllowed = true;
+    public string mapSelected = "";
+    public int mapSelectedInt = -1;
 
     //--------------------------------------------------
     //[SerializeField] private GameInput gameInput;
