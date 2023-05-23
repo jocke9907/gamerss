@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: f2d08b29abc444346916782c222f2c4a
+<<<<<<<< HEAD:Assets/Low Poly Fire/Materials/Fire Wood.mat.meta
+guid: eb97a12943dd8e949a448e25ac1a4d76
+========
+guid: 88d9ce40cc2dc1b429b602f567ed9fdc
+>>>>>>>> Post-Lobby-Remake:Assets/Materials/AllSkyFree/Cold Night/Materials/Cold Night__Cam_3_Right-X.mat.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000

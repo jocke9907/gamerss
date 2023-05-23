@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     //------------Sam----------------------------------
 
-    public bool sam = false;
+    //public bool EnableGrabbing = true;
     public float maxGrabDistance = 1f;
     public KeyCode grabButton = KeyCode.Tab;
     //public KeyCode testButton;
@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
     public bool finished = false;
     public int tempScore = 0;
     public bool jumpingAllowed = true;
+    public string mapSelected = "";
+    public int mapSelectedInt = -1;
 
     //--------------------------------------------------
     //[SerializeField] private GameInput gameInput;
@@ -182,6 +184,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+<<<<<<< HEAD
+=======
+        //if (mapSelected != "")
+        //{
+        //    Debug.Log(mapSelected);
+        //}
+>>>>>>> Post-Lobby-Remake
 
         //GetComponent<ParticleSystem>().enableEmission = false;
         if (veryDead)
@@ -260,10 +269,10 @@ public class PlayerController : MonoBehaviour
             GrabObject();
         }
 
-        if (sam == true)
-        {
-            GrabObject();
-        }
+        //if (EnableGrabbing == true)
+        //{
+        //    GrabObject();
+        //}
 
     }
 
@@ -288,13 +297,13 @@ public class PlayerController : MonoBehaviour
         {
 
             RaycastHit hit;
-            Debug.Log("casting");
+            //Debug.Log("casting");
             if (Physics.Raycast(transform.position, transform.forward, out hit, maxGrabDistance, movable))
             {
                 //anim.SetBool("Grabbing", true);
                 if (alreadyGrabbed == false)
                 {
-                    Debug.Log("hit");
+                    //Debug.Log("hit");
                     grabbedObject = hit.collider.gameObject;
 
                     bc = grabbedObject.GetComponent<BoxCollider>();

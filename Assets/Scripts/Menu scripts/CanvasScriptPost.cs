@@ -79,7 +79,7 @@ public class CanvasScriptPost : MonoBehaviour
         {
             nextMap.text = "The Winner is " + winnerScore + "!!!";
         }
-        Debug.Log(winnerScore);
+        //Debug.Log(winnerScore);
        
     }
     public void ShowPlayerScore()
