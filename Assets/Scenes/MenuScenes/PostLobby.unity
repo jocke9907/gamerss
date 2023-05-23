@@ -3926,6 +3926,10 @@ MonoBehaviour:
   spawnPlayer2: {fileID: 1568992249}
   spawnPlayer3: {fileID: 895848090}
   spawnPlayer4: {fileID: 2036587908}
+  scoreText1: {fileID: 1682247105}
+  scoreText2: {fileID: 1555943210}
+  scoreText3: {fileID: 1323037966}
+  scoreText4: {fileID: 683755191}
 --- !u!4 &1034661199
 Transform:
   m_ObjectHideFlags: 0
