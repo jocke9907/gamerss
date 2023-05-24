@@ -6,13 +6,31 @@ public class ResetWallbreaker : MonoBehaviour
 {
 
     public GameObject[] players;
-
+    BomberManger bomberManger;
 
     GameObject player1;
     GameObject player2;
     GameObject player3;
     GameObject player4;
-
+    private void Awake()
+    {
+       
+        PlayerManager manager = FindObjectOfType<PlayerManager>();
+        bomberManger = FindObjectOfType<BomberManger>();
+        foreach (PlayerController player in manager.GetPlayers())
+        {
+            player.veryDead = false;
+            player.scoreGivenLava = false;
+            player.scoreGiven = false;
+            var particleSystem = player.GetComponentInChildren<ParticleSystem>();
+            var emissionModule = particleSystem.emission;
+            emissionModule.enabled = false;          
+            player.GetComponentInChildren<Light>().enabled = false;
+            bomberManger.lavaGroundPlayed = false;
+            bomberManger.bomberPlayed = false;
+        }
+        
+    }
 
     // Start is called before the first frame update
     void Start()

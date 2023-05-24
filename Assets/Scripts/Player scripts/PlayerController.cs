@@ -101,8 +101,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement = Vector2.zero;
     public bool canPlaceBomb = true;
     public bool veryDead = false;
-    bool scoreGiven = false;
-    bool scoreGivenLava = false;
+    public bool scoreGiven = false;
+    public bool scoreGivenLava = false;
 
 
     public PlayerInput playerInput;
