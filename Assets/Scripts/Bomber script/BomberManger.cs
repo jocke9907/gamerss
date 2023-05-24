@@ -8,11 +8,11 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class BomberManger : MonoBehaviour
 {
-    public int playerCountBomber =1;
+    public int playerCountBomber;
     public int nrOfPlayers;
-    public  int bomberPoints = 4;
-    public  int bombUppgrade = 0;
-
+    public int bomberPoints ;
+    public  int bombUppgrade ;
+    public int giveScore ;
   
     public  bool playerCount;
     public  bool changeGame;

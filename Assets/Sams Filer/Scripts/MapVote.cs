@@ -93,6 +93,8 @@ public class MapVote : MonoBehaviour
 
                 nrPlayers = 2;
                 bomberManger.playerCountBomber = 1; //ARVID
+                bomberManger.giveScore = 2;
+                bomberManger.bomberPoints = 2;
 
                 break;
 
@@ -100,12 +102,16 @@ public class MapVote : MonoBehaviour
 
                 nrPlayers = 3;
                 bomberManger.playerCountBomber = 2; //ARVID
+                bomberManger.giveScore = 3;
+                bomberManger.bomberPoints = 3;
 
                 break;
             case NumberPlayers.four:
 
                 nrPlayers = 4;
                 bomberManger.playerCountBomber = 3; //ARVID
+                bomberManger.giveScore = 4;
+                bomberManger.bomberPoints = 4;
 
                 break;
         }
@@ -208,8 +214,10 @@ public class MapVote : MonoBehaviour
                 bomberManger.redusePlayers = false;
                 //bomberManger.bomberPlayed = true;
                 bomberManger.GameStart();
-                bomberManger.bomberPoints = 4;
+                //bomberManger.bomberPoints = 4;
+                bomberManger.bomberPlayed = true;
                 Loader.bomberGamePlaying = true;
+
                 Loader.Load(Loader.Scene.BomberGame);
             }
             else if (mapChosen == 5)
@@ -227,7 +235,8 @@ public class MapVote : MonoBehaviour
                 bomberManger.redusePlayers = false;
                 //bomberManger.lavaGroundPlayed = true;
                 bomberManger.GameStart();
-                bomberManger.bomberPoints = 4;
+                //bomberManger.bomberPoints = 4;
+                bomberManger.lavaGroundPlayed = true;
                 Loader.LavaGroundPlaying = true;
                 Loader.Load(Loader.Scene.LavaGround);
             }

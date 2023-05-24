@@ -366,7 +366,7 @@ public class PlayerController : MonoBehaviour
 
         if (!scoreGiven && bomberManger.bomberPlayed)
         {
-            totalScore += 4;
+            totalScore += bomberManger.giveScore;
             scoreGiven = true;
         }
     }
@@ -376,7 +376,7 @@ public class PlayerController : MonoBehaviour
 
         if (!scoreGivenLava && bomberManger.lavaGroundPlayed)
         {
-            totalScore += 4;
+            totalScore += bomberManger.giveScore;
             scoreGivenLava = true;
         }
     }
