@@ -6,16 +6,19 @@ using Random = UnityEngine.Random;
 
 public class FallingZone : MonoBehaviour
 {
+    //----------WRITTEN BY SAM----------------------
+
+    // this script is used for teleporting the movable objects that fall outside of the map back into the map.
+    // They spawn randomly back into a certain area within the map.
+    // This script is used in WallClimber.
+
+
     public float randX;
     public float randZ;
 
     List<GameObject> listObject = new List<GameObject>();
     
 
-    private void Start()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,24 +31,4 @@ public class FallingZone : MonoBehaviour
         
     }
 
-    //private void Update()
-    //{
-    //    PlayerController[] players = FindObjectsOfType<PlayerController>();
-
-    //    foreach (PlayerController player in players)
-    //    {
-    //        if (player.gameObject.transform.position.y < -20)
-    //        {
-    //            player.gameObject.GetComponent<PlayerController>().transported = true;
-    //            randX = Random.Range(-10, 10);
-    //            randZ = Random.Range(-10, 5);
-    //            //player.gameObject.GetComponent<PlayerController>().groundedPlayer = true;
-    //            //player.gameObject.GetComponent<PlayerController>().playerVelocity = Vector3.zero;
-    //            player.gameObject.transform.position = new Vector3(randX, 7, randZ);
-    //        }
-            
-    //    }
-
-        
-    //}
 }

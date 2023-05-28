@@ -6,6 +6,15 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class DisableJump : MonoBehaviour
 {
 
+    //--------WRITTEN BY SAM----------------------------------
+
+    //-This script allows me to disable the jump feature on each playable character when a scene starts.
+    // by accessing the script "PlayerController" in each player and changing "jumpingAllowed" to false.
+    // this is later reset back to true everytime we switch back to the postlobby.
+
+    // It is only used in the WheelSpinner Minigame.
+
+
     public GameObject[] players;
 
     GameObject player1;
@@ -43,6 +52,6 @@ public class DisableJump : MonoBehaviour
             
         }
     }
-    // Update is called once per frame
+ 
     
 }

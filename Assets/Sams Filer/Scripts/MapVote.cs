@@ -5,8 +5,35 @@ using UnityEngine;
 
 public class MapVote : MonoBehaviour
 {
-    BomberManger bomberManger;
 
+    //---------------WRITTEN BY SAM-------------------
+
+    //This script does three things:
+
+    // 1. It allows players to vote which minigame should be chosen next
+    // 2. After chosing what minigame, it switches to that specific scene.
+    // 3. It checks how many rounds has been played. Upon reaching a set amount of games, a winner will be declared.
+
+    // The voting system is made of two scripts. Please check the "selectMap" script first before reading this one.
+
+    // This scripts starts when every player stands on a pillar.
+    // Upon start, a countdown from 5 starts. Players have to stand on their respective pillar for 5 whole seconds before the script takes effect.
+    // Should anyone jump before that, the countdown resets and starts when everyone has chosen a pillar again.
+    // Should the countdown reach 0, it will start the voting phase.
+    // In this phase, the script firstly checks how many players have joined, and chooses one of these players with RNG, each one having equally big chance of being chosen.
+    // When the script has chosen a player. It checks what minigame said player have chosen by looking in <Playercontroller> script and checking the variables "MapChosen" and "MapChosenString"
+    // It checks to see what number "MapChosen" has, and uses this variable in if-statement to see which map has been chosen, and switches to that scene.
+
+    // Upon reaching certain rounds, the script will also check which players has the highest score, and will afterwards display that 
+    // in a 3d text on the map. Should 1st place and 2nd have the same amount of score, both are declared winners.
+
+
+
+
+
+
+
+    BomberManger bomberManger;
 
     public GameObject[] pillarList;
 
@@ -177,7 +204,7 @@ public class MapVote : MonoBehaviour
         if (mapAlreadyChosen == false)
         {
             mapAlreadyChosen = true;
-            choosePlayer = Random.Range(0, 2);
+            choosePlayer = Random.Range(0, nrPlayers);
             mapChosen = players[choosePlayer].GetComponent<PlayerController>().mapSelectedInt;
             mapChosenString = players[choosePlayer].GetComponent<PlayerController>().mapSelected;
         }

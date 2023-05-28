@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class nrPlayers : MonoBehaviour
 {
+
+    //----------WRITTEN BY SAM---------------
+
+    // this script checks to see how many players have been selected in the meny script
+    // and declares that in playerCount.
+
+    // This variable is gathered in all my other scripts in order for them to know how many players are playing.
+
     public enum NumberOfPlayers { one, two, three, four }
     public NumberOfPlayers numberPlayers;
 

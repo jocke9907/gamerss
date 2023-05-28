@@ -10,7 +10,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    //
+    // SAM: row 288-355: GrabObject() and AddScore. See their descriptions in that section.
 
 
     public bool playerOne;
@@ -70,7 +70,9 @@ public class PlayerController : MonoBehaviour
     public bool grab = false;
 
 
-    //------------Sam----------------------------------
+    //------------SAM----------------------------------
+
+    // These are variables I use either in my methods, are in other scripts i've written.
 
     public bool sam = false;
     public float maxGrabDistance = 1f;
@@ -284,6 +286,14 @@ public class PlayerController : MonoBehaviour
     }
 
     //----------------------------------------SAM-----------------------------------------------------------------------
+
+
+    // This script is used in the minigame WallClimber. It allows players in that scene to grab objects in front of them and move them around.
+    // Each time the grab button is pressed, the method checks to see wheter there is an object in front of the player or not.
+    // If there is. The object teleports in front of the player in the same direction and the same rotation as the player until he releases the button.
+    // Upon grabbing an object, it also changes the mass of the object from 1000 to 1, making the player unable to push around objects with the one it is holding.
+
+
     private void GrabObject()
     {
         if (grab)
@@ -343,6 +353,8 @@ public class PlayerController : MonoBehaviour
 
     //----------------SAM-----------------------------------------------------------------------------------------------
 
+    // This method is accessed by my scoresystem scripts. When my scoresystem has delegated points, it sends the amount to this script
+    // which adds it to the totalscore of a player. "TotalScore" is then accessed by other scripts in the postlobby such as "Move Score"
 
     public void AddScore(int score)
     {

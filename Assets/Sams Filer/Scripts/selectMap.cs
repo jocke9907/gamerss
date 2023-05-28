@@ -1,11 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
 public class selectMap : MonoBehaviour
 {
+
+    //-----------Written by SAM-----------------
+
+    // This script allows the player to choose what minigame they want to vote on next round.
+    // And will also showcase descriptions for each map.
+    // It does this by standing on one of the 8 pillars in the postlobby, each pillar having a trigger placed on them.
+    // As long as they stand on a pillar, the script will assign two variables in each "playerController" script.
+
+    // These two variables will later be used in the "MapVote" script, where it tells the script which minigame each player has chosen.
+    // Should they leave a pillar, these two variables are reset until they stand upon a pillar again. The MapVote script 
+    // also cannot start again until each player stands on a pillar again.
+
+    // When a player stands on a specific pillar, a description of that minigame connected to said pillar will show up next to it,
+    // until a player leaves the pillar again.
+
+
+
+
+
+
+
+
+
     public bool RandomMap;
     public bool GroundIsFalling;
     public bool MazeRunner;

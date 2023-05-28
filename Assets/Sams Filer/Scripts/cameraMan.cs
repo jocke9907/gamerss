@@ -7,22 +7,24 @@ public class cameraMan : MonoBehaviour
 
 
 
+    // ------------------WRITTEN BY SAM----------------------------------------
+
+    // This script calculates two things:
+    // 1. It calculates the average position on the map between all players into a variable, 
+    // which is then used to centralize the camera between the moving players continueously.
+
+    // 2. It calculates the average distance between all the players into a variable,
+    // which is then used to either decrease/increase the camera fov, depending on the size of the variable.
+
+
+
+     
     public GameObject[] players;
-
-
 
     public GameObject player1;
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
-
-
-    // Start is called before the first frame update
-    //public Transform player1;
-    //public Transform player2;
-    //public Transform player3;
-    //public Transform player4;
-
 
     public Vector3 cameraPos;
 

@@ -7,6 +7,17 @@ using UnityEngine.InputSystem.XR;
 public class MoveScore : MonoBehaviour
 {
 
+    //----------WRITTEN BY SAM AND ARVID-----------------------
+
+    // This scripts takes the total score from each player and uses that number increase the size of the 4 score blocks in the postlobby.
+
+    // It does this by accessing the "totalScore" variable in the <playerController> script using that number
+    // in transforming the y-dimension on the scale of every scoreblock.
+    // Thus players are able to see the score of each player by looking at the sizes of each score block.
+
+
+
+
     PlayerController playerController;
     PlayerManager playerManager;
     PlayerLevel playerLevel;
