@@ -10,7 +10,7 @@ public class FallingZone : MonoBehaviour
 
     // this script is used for teleporting the movable objects that fall outside of the map back into the map.
     // They spawn randomly back into a certain area within the map.
-    // This script is used in WallClimber.
+    // It is only used in wallclimber.
 
 
     public float randX;

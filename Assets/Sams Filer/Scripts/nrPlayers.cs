@@ -10,7 +10,8 @@ public class nrPlayers : MonoBehaviour
     // this script checks to see how many players have been selected in the meny script
     // and declares that in playerCount.
 
-    // This variable is gathered in all my other scripts in order for them to know how many players are playing.
+    // This variable is then used in all my other scripts to know how many players are in game,
+    // so they can choose the correct enum states while in game.
 
     public enum NumberOfPlayers { one, two, three, four }
     public NumberOfPlayers numberPlayers;

@@ -12,7 +12,7 @@ public class DisableJump : MonoBehaviour
     // by accessing the script "PlayerController" in each player and changing "jumpingAllowed" to false.
     // this is later reset back to true everytime we switch back to the postlobby.
 
-    // It is only used in the WheelSpinner Minigame.
+    // It is only used in the WheelSpinner Minigame, but can be implemented in any scene.
 
 
     public GameObject[] players;

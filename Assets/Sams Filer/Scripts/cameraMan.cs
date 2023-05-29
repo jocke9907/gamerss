@@ -15,7 +15,7 @@ public class cameraMan : MonoBehaviour
 
     // 2. It calculates the average distance between all the players into a variable,
     // which is then used to either decrease/increase the camera fov, depending on the size of the variable.
-
+    // The code is separated in enum states, depending on how many players are in game.
 
 
      

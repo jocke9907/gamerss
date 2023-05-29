@@ -6160,7 +6160,7 @@ MonoBehaviour:
   textSelectedMap: {fileID: 1430755097}
   textWinner: {fileID: 182221205}
   textNrGames: {fileID: 1207263309}
-  nrGames: 2
+  nrGames: 10
   numberPlayers: 0
 --- !u!1 &1512397624
 GameObject:

@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class sceneSwitch2 : MonoBehaviour
 {
-    public GameObject[] players;
+    //---------------WRITTEN BY SAM------------------------------------------
 
+    // this script does 2 things. 
+    // 1. It checks to see which players are still alive after the timer on specific minigames runs out.
+    // When the timer runs it, it gives out maximum amount of to all those players.
+    // Afterwards it changes scene to the postlobby.
+
+    // 2. It checks to see how many players are left in the minigame. It automatically gives out point to the player
+    // in first place when the player before him finishes, making it so players do not have to wait for the player in first place to finish.
+    // afterwards it changes scene to the postlobby.
+
+    public GameObject[] players;
 
     GameObject player1;
     GameObject player2;
@@ -226,28 +236,7 @@ public class sceneSwitch2 : MonoBehaviour
                 break;
 
         }
-        
-        //if (scoreTimer <= 0 && timerActivated == true)
-        //{
-        //    foreach (GameObject player in players)
-        //    {
-        //        if (!player)
-        //        {
-        //            continue; //går till nästa objekt i foreach loopen.
-        //        }
-        //        if (player.CompareTag("Player") && player.GetComponent<PlayerController>().finished == false)
-        //        {
-        //            player.GetComponent<PlayerController>().finished = true;
-        //            player.GetComponent<PlayerController>().AddScore(1);
-        //            system1 = FindObjectOfType<scoreSystem1>();
-        //            system1.UpdateScoreText();
-        //        }
-        //    }
-        //}
-        //if (sceneTimer <= 0 && timerActivated == true)
-        //{
-        //    Loader.Load(Loader.Scene.PostLobby);
-        //}
+    
 
     }
 }

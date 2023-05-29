@@ -5,6 +5,13 @@ using UnityEngine;
 public class ResetWallbreaker : MonoBehaviour
 {
 
+    //---------------WRITTEN BY SAM------------------------------
+
+    //What this script does it to reset some variables that are used in certain minigames,
+    //Every time players join the postlobby. This is done so maps can be played over and over again.
+
+
+
     public GameObject[] players;
     BomberManger bomberManger;
 
@@ -14,7 +21,8 @@ public class ResetWallbreaker : MonoBehaviour
     GameObject player4;
     private void Awake()
     {
-       
+       //------------------ARVID------------------------------------------------------
+
         PlayerManager manager = FindObjectOfType<PlayerManager>();
         bomberManger = FindObjectOfType<BomberManger>();
         foreach (PlayerController player in manager.GetPlayers())
@@ -29,7 +37,7 @@ public class ResetWallbreaker : MonoBehaviour
             bomberManger.lavaGroundPlayed = false;
             bomberManger.bomberPlayed = false;
         }
-        
+       //----------------------------------------------------------------------------
     }
 
     // Start is called before the first frame update

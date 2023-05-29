@@ -5,9 +5,15 @@ using UnityEngine.InputSystem.Controls;
 
 public class RotateSpinner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float rotationSpeed = 10f; // initial rotation speed
-    public float acceleration = 0.1f; // rate of acceleration
+    //---------------WRITTEN BY SAM----------------------------
+
+    //this script makes the spinner objects in the minigame "wheelspinner" rotate faster and faster around its centerpoint.
+    // It does this by multiplaying a very slow acceleration to deltatime 60 times a second.
+    // while also having a minimum and maximum acceleration speed.
+
+
+    public float rotationSpeed = 10f; 
+    public float acceleration = 0.1f; 
 
 
     private void OnTriggerEnter(Collider other)
@@ -16,18 +22,23 @@ public class RotateSpinner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-
-        // rotate the parent object around its own Y-axis
-        //transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
-
         transform.Rotate(0, rotationSpeed, 0, Space.World);
+        if (rotationSpeed > 1.6f)
+        {
+            rotationSpeed = 1.75f;
+        }
+        else if(rotationSpeed < -1.6f)
+        {
+            rotationSpeed = -1.75f;
+        }
+        else
+        {
+            rotationSpeed += acceleration * Time.deltaTime;
 
-
-        // increase the rotation speed by the acceleration rate
-        rotationSpeed += acceleration * Time.deltaTime;
+        }
+       
 
        
     }
