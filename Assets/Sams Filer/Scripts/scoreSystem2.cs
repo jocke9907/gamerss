@@ -5,6 +5,19 @@ using TMPro;
 
 public class scoreSystem2 : MonoBehaviour
 {
+
+    //------------WRITTEN BY SAM-----------------------------------------
+
+
+    // This script does 2 things. 
+    // 1. It gives out a score to each player when they reach the finish line. The longer they avoid the finish line the more points they get.
+    // it does this by firstly calculating how many players are playing, and use that too choose the proper enum state.
+    // Afterwards it memorizes the order players finish from last to first, handing out the proper amount of points everytime they finish.
+
+    // 2. It showcases in text what players has received how much score in a correct order on the minigame.
+    // Everytime someone finishes the text updates.
+
+    // games that use this score script are GroundIsFalling and WheelSpinner.
     public GameObject[] players;
 
 

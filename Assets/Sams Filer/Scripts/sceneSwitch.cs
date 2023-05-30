@@ -11,12 +11,14 @@ public class sceneSwitch : MonoBehaviour
 
     // this script does 2 things. 
     // 1. It checks to see which players are still alive after the timer on specific minigames runs out.
-    // When the timer runs it, it gives out minimum amount of to all those players.
+    // When the timer runs it, it gives out 1 point to those who haven't finished in time.
     // Afterwards it changes scene to the postlobby.
 
-    // 2. It checks to see how many players are left in the minigame. It automatically gives out point to the player
+    // 2. It checks to see how many players are left in the minigame. It automatically gives out points to the player
     // in last place when the player before him finishes, making it so players do not have to wait for the last player to finish.
     // afterwards it changes scene to postlobby
+
+    // games that use this score script are mazerunner and wallclimber.
     public GameObject[] players;
 
 

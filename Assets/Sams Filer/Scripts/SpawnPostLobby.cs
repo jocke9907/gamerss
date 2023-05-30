@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class SpawnPostLobby : MonoBehaviour
 {
+    //-------------------------WRITTEN BY SAM--------------------------
+
+    // This scripts makes sure that players 1-4 start on specific positions
+    // every time the the scene switches to the postlobby.
+    // It spawns each on their specific scoreblock, also taking to account the height of the blocks.
 
     public GameObject spawnPlayer1;
     public GameObject spawnPlayer2;

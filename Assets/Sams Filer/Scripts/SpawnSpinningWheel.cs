@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SpawnSpinningWheel : MonoBehaviour
 {
+    //-------------------------WRITTEN BY SAM--------------------------
+
+    // This scripts makes sure that players 1-4 start on specific positions
+    // every time the minigame spinning wheel starts.
+
     public GameObject spawnPlayer1;
     public GameObject spawnPlayer2;
     public GameObject spawnPlayer3;
