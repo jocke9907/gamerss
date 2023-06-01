@@ -53,16 +53,26 @@ public class MazeTimer : MonoBehaviour
         }
 
 //----------------------------------------------------------------
-        currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
 
-        
+       
+        currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
+        // Update the current time based on the countDown flag.
+        // If countDown is true, subtract Time.deltaTime from currentTime.
+        // If countDown is false, add Time.deltaTime to currentTime.
+        // Time.deltaTime represents the time elapsed since the last frame.
 
         if (hasLimit && (countDown &&  currentTime < timerLimit) || (!countDown && currentTime >= timerLimit))
         {
             currentTime = timerLimit;
             SetTimerText();
             timerText.color = Color.red;
-            enabled = false; 
+            enabled = false;
+
+            // If there is a timer limit and the current time is within the limit:
+            // - Set currentTime to the timerLimit.
+            // - Call the SetTimerText() method to update the timer text.
+            // - Set the color of timerText to red.
+            // - Disable the script by setting enabled to false, stopping the timer.
         }
 
         SetTimerText();
@@ -71,10 +81,14 @@ public class MazeTimer : MonoBehaviour
 
     private void SetTimerText()
     {
-        timerText.text = hasFormat ? currentTime.ToString(timeFormats[formats]) : currentTime.ToString(); 
-         
+        timerText.text = hasFormat ? currentTime.ToString(timeFormats[formats]) : currentTime.ToString();
+        // Update the text displayed for the timer.
+        // If hasFormat is true, format the currentTime using the format specified in timeFormats[formats].
+        // Otherwise, convert currentTime to a string without any specific format.
     }
+
 }
+
 
 public enum TimerFormats
 {

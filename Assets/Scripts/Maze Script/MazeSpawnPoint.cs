@@ -23,10 +23,7 @@ public class MazeSpawnPoint : MonoBehaviour
         bomberManger = FindObjectOfType<BomberManger>();
 
     }
-    //private void Start()
-    //{
-    //    bomberManger.GameStart();
-    //}
+
     private void FixedUpdate()
     {
 
@@ -41,22 +38,19 @@ public class MazeSpawnPoint : MonoBehaviour
             PlayerController[] players = FindObjectsOfType<PlayerController>();
             playerController = FindObjectOfType<PlayerController>();
 
-            //int[] array1 = new int[5];
-
             if (bomberManger.nrOfPlayers == 2)
             {
-                foreach (PlayerController player in players)
+                foreach (PlayerController player in players) // if there is  3 players 
                 {
                     Debug.Log("mazespawn");
                     players[0].gameObject.transform.position = spawn1;
                     players[1].gameObject.transform.position = spawn2;
                     players[2].gameObject.transform.position = spawn3;
-                    //players[1].gameObject.transform.position = spawn4;
                 }
             }
             else if (bomberManger.nrOfPlayers == 3)
             {
-                foreach (PlayerController player in players)
+                foreach (PlayerController player in players) // 4 players
                 {
                     Debug.Log("mazespawn");
                     players[0].gameObject.transform.position = spawn1;
@@ -65,55 +59,19 @@ public class MazeSpawnPoint : MonoBehaviour
                     players[3].gameObject.transform.position = spawn4;
                 }
             }
-            else if (bomberManger.nrOfPlayers == 1)
+            else if (bomberManger.nrOfPlayers == 1) // 2 players
             {
                 foreach (PlayerController player in players)
                 {
                     Debug.Log("mazespawn");
                     players[0].gameObject.transform.position = spawn1;
                     players[1].gameObject.transform.position = spawn2;
-                    //players[1].gameObject.transform.position = spawn3;
-                    //players[1].gameObject.transform.position = spawn4;
+                  
                 }
             }
-
-
-
 
             hasSpawned = true;
         }
     }
-    //public static Vector3 mazeSpawnPoint;
-    //bool hasSpawned = false;
-    //int waitForFrames = 3;
-    //int frameCounter;
-    //private void Awake()
-    //{
-    //    mazeSpawnPoint = transform.position;
-    //    Debug.Log("Maze spawn point set to " + mazeSpawnPoint);
-
-    //}
-    //private void Start()
-    //{
-
-    //}
-    //private void Update()
-    //{
-    //    if (hasSpawned)
-    //    {
-    //        return;
-    //    }
-    //    frameCounter++;
-    //    if (frameCounter >= waitForFrames)
-    //    {
-    //        PlayerController[] players = FindObjectsOfType<PlayerController>();
-    //        Debug.Log("Found " + players.Length + " player objects in scene.");
-    //        foreach (PlayerController player in players)
-    //        {
-    //            player.gameObject.transform.position = mazeSpawnPoint;
-    //            Debug.Log("Set player object position to " + mazeSpawnPoint);
-    //        }
-    //        hasSpawned = true;
-    //    }
-    //}
+  
 }
