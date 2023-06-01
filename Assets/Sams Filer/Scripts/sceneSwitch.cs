@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class sceneSwitch : MonoBehaviour
 {
 
-    //---------------WRITTEN BY SAM------------------------------------------
+    //---------------SCRIPT WRITTEN BY SAM------------------------------------------
 
     // this script does 2 things. 
     // 1. It checks to see which players are still alive after the timer on specific minigames runs out.
@@ -146,7 +146,7 @@ public class sceneSwitch : MonoBehaviour
             {
                 if (!player)
                 {
-                    continue; //går till nästa objekt i foreach loopen.
+                    continue; 
                 }
                 if (player.CompareTag("Player") && player.GetComponent<PlayerController>().finished == false)
                 {

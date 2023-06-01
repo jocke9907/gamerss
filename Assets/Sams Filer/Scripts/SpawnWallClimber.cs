@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnWallClimber : MonoBehaviour
 {
-    //-------------------------WRITTEN BY SAM--------------------------
+    //--------------------SCRIPT WRITTEN BY SAM--------------------------
 
     // This scripts makes sure that players 1-4 start on specific positions
     // every time the minigame wallclimber starts.

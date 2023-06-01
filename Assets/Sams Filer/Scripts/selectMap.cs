@@ -4,7 +4,7 @@ using UnityEngine;
 public class selectMap : MonoBehaviour
 {
 
-    //-----------Written by SAM-----------------
+    //---------------SCRIPT WRITTEN BY SAM-------------
 
     // This script allows the player to choose what minigame they want to vote on next round.
     // And will also showcase descriptions for each map.

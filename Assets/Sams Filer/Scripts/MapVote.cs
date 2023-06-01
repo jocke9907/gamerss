@@ -6,7 +6,7 @@ using UnityEngine;
 public class MapVote : MonoBehaviour
 {
 
-    //---------------WRITTEN BY SAM-------------------
+    //---------------SCRIPT WRITTEN BY SAM--------------------------------------------------------------------
 
     //This script does three things:
 
@@ -27,9 +27,27 @@ public class MapVote : MonoBehaviour
     // Upon reaching the winning condition round, the script will also check which players has the highest score, and will afterwards display that 
     // in a 3d text on the map. Should 1st place and 2nd have the same amount of score, both are declared winners.
 
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    //    Here's a breakdown of what it does:
 
+    //  The script defines several variables including references to game objects, countdown timers, player count, map selection, scores, and game over status.
 
+    //  The Start() function initializes some variables, sets the number of players based on the selected option, and assigns player objects to an array.
+
+    //  The Update() function updates the UI elements for the countdown, selected map, and number of games played.
+    //  It also checks if the game is over and calls the ScoreResult() function if all rounds have been played.
+
+    //  The VotingMap() function handles the countdown and checks if players are ready to start the game.
+
+    //  The ChoosingMap() function chooses a random player to select a map and loads the corresponding scene based on the selected map.
+
+    //  The checkIfPlayersReady() function counts the number of players who have selected a map and determines if the countdown should start or stop.
+
+    //  The ScoreResult() function calculates the winner based on the total score of each player and displays the result on the UI.
+
+    //  Overall, this script manages the voting and selection of game maps, handles game start and scene loading based on the chosen map,
+    //  and determines the winner based on the players' scores.
 
 
 
@@ -302,45 +320,7 @@ public class MapVote : MonoBehaviour
     private void ScoreResult()
     {
 
-        //gameOver = true;
-        //bestScore = players[0].GetComponent<PlayerController>().totalScore;
-        //winner = "Player1";
-        //foreach (GameObject player in players)
-        //{
-        //    if (!player)
-        //    {
-        //        continue;
-        //    }
-        //    if (player.GetComponent<PlayerController>().totalScore > bestScore)
-        //    {
-        //        bestScore = player.GetComponent<PlayerController>().totalScore;
-        //        winner = player.transform.name;
-        //    }
-        //}
-
-
-        //if (winner == "Player1")
-        //{
-        //    winner = "Blue";
-        //}
-        //else if (winner == "Player2")
-        //{
-        //    winner = "Green";
-        //}
-        //else if (winner == "Player3")
-        //{
-        //    winner = "Yellow";
-        //}
-        //else if (winner == "Player4")
-        //{
-        //    winner = "Red";
-        //}
-        //textWinner.text = winner + " is the ultimate color!";
-
-
-
-
-
+        
 
         switch (numberPlayers)
         {

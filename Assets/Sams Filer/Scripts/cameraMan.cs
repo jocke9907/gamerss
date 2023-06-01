@@ -7,18 +7,49 @@ public class cameraMan : MonoBehaviour
 
 
 
-    // ------------------WRITTEN BY SAM----------------------------------------
+    // ------------------SCRIPT WRITTEN BY SAM----------------------------------------
 
-    // This script calculates two things:
-    // 1. It calculates the average position on the map between all players into a variable, 
-    // which is then used to centralize the camera between the moving players continueously.
+//This script is responsible for controlling the camera in a game based on the number of players present in the scene.
+//It adjusts the camera position, field of view (FOV), and zoom level based on the players' positions.
 
-    // 2. It calculates the average distance between all the players into a variable,
-    // which is then used to either decrease/increase the camera fov, depending on the size of the variable.
-    // The code is separated in enum states, depending on how many players are in game.
+//Let's go through the script step by step:
+
+//The script declares several public variables and objects:
+
+// players is an array of GameObjects to store references to the players in the scene.
+// player1, player2, player3, player4 are GameObject variables to assign specific players in the scene.
+// cameraPos is a Vector3 variable to store the desired camera position.
+// averageDistance is a float variable to calculate the average distance between players.
+// minFOV and maxFOV are floats representing the minimum and maximum field of view values.
+// zoom is a float representing the calculated zoom level.
+// cam is a reference to the Camera component attached to the same GameObject as this script.
+// distance is a float to store the calculated distance between players.
+// numberPlayers is an enum representing the number of players in the scene.
+// In the Start function:
+
+//The cam variable is assigned the reference to the Camera component.
+//The numberPlayers enum value is obtained from a nrPlayers object
+//(which is an another script of mine that checks how many players are in game) and subtracted by 1.
+//This is used to set the number of players based on a menu selection.
+
+//In the Update function:
+
+//A switch statement is used to handle different cases based on the number of players.
+//For each case:
+//The distance between the players is calculated using Vector3.Distance.
+//The camera's fieldOfView is set to minFOV.
+//The cameraPos variable is assigned a new Vector3 position based on the players' positions.
+//Finally, the camera's position is set to cameraPos.
+//The cases are as follows:
+
+//Case NumberPlayers.one: For a single player, the camera position is set to the position of player 1, and no zoom is applied.
+
+//Case NumberPlayers.two-four: For these states, the average distance between the players is calculated.The camera position is set to the midpoint between the players, and the zoom level is adjusted based on the average distance.
 
 
-     
+
+
+
     public GameObject[] players;
 
     public GameObject player1;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ResetWallbreaker : MonoBehaviour
 {
 
-    //---------------WRITTEN BY SAM------------------------------
+    //---------------SCRIPT WRITTEN BY SAM------------------------------
 
     //What this script does it to reset some variables that are used in certain minigames,
     //Every time players join the postlobby. This is done so maps can be played over and over again.

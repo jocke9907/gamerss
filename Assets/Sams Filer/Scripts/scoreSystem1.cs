@@ -7,7 +7,7 @@ using UnityEngine;
 public class scoreSystem1 : MonoBehaviour
 {
 
-    //------------WRITTEN BY SAM-----------------------------------------
+    //--------------------SCRIPT WRITTEN BY SAM---------------------------------
 
 
     // This script does 2 things. 

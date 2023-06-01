@@ -6,7 +6,7 @@ using TMPro;
 public class scoreSystem2 : MonoBehaviour
 {
 
-    //------------WRITTEN BY SAM-----------------------------------------
+    //---------------------SCRIPT WRITTEN BY SAM-----------------------------
 
 
     // This script does 2 things. 

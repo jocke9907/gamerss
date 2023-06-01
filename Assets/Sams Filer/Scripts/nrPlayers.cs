@@ -5,7 +5,7 @@ using UnityEngine;
 public class nrPlayers : MonoBehaviour
 {
 
-    //----------WRITTEN BY SAM---------------
+    //----------SCRIPT WRITTEN BY SAM---------------
 
     // this script checks to see how many players have been selected in the meny script
     // and declares that in playerCount.

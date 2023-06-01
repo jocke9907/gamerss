@@ -6,10 +6,10 @@ using Random = UnityEngine.Random;
 
 public class FallingZone : MonoBehaviour
 {
-    //----------WRITTEN BY SAM----------------------
+    //----------SCRIPT WRITTEN BY SAM----------------------
 
     // this script is used for teleporting the movable objects that fall outside of the map back into the map.
-    // They spawn randomly back into a certain area within the map.
+    // They spawn randomly back into a certain area within the map, upon touching the trigger underneat the map.
     // It is only used in wallclimber.
 
 

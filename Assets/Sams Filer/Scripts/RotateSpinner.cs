@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.Controls;
 
 public class RotateSpinner : MonoBehaviour
 {
-    //---------------WRITTEN BY SAM----------------------------
+    //---------------SCRIPT WRITTEN BY SAM----------------------------
 
     //this script makes the spinner objects in the minigame "wheelspinner" rotate faster and faster around its centerpoint.
     // It does this by multiplaying a very slow acceleration to deltatime 60 times a second.

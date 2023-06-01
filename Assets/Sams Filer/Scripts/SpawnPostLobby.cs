@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpawnPostLobby : MonoBehaviour
 {
-    //-------------------------WRITTEN BY SAM--------------------------
+    //-------------------SCRIPT WRITTEN BY SAM--------------------------
 
     // This scripts makes sure that players 1-4 start on specific positions
     // every time the the scene switches to the postlobby.

@@ -6,7 +6,7 @@ using UnityEngine;
 public class DisableJump : MonoBehaviour
 {
 
-    //--------WRITTEN BY SAM----------------------------------
+    //-----------SCRIPT WRITTEN BY SAM----------------------
 
     //-This script allows me to disable the jump feature on each playable character when a scene starts.
     // by accessing the script "PlayerController" in each player and changing "jumpingAllowed" to false.
