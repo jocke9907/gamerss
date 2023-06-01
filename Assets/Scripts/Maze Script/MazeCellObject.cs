@@ -16,4 +16,6 @@ public class MazeCellObject : MonoBehaviour
         rightWall.SetActive(right);
         leftWall.SetActive(left);
     }
+
+    // handles which of the walls we get to see
 }
