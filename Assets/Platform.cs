@@ -9,7 +9,10 @@ public class Platform : MonoBehaviour
     [SerializeField] ParticleSystem particles;
     bool timerStarted = false;
     double timerMax = 2;
-    // Start is called before the first frame update
+
+
+    //This script checks collision between player and platform. If found the particles of that platform will start and so will a timer
+    //When the timer has reached 0 the platforms rigidbody will activate and the platform will then fall.
     void Start()
     {
         spawn = FindObjectOfType<SpawnPoint>();

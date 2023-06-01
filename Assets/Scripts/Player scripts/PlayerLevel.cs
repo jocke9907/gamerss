@@ -14,7 +14,8 @@ public class PlayerLevel : MonoBehaviour
     public bool scoreGiven;
     BomberManger bomberManger;
     public bool alive = true;
-    // Start is called before the first frame update
+    // This script includes level specific scripts for the player. Such as changing the scale of the player when playíng the maze,
+    // Setting alive to false under level specific conditions, and awarding score.
     private void Awake()
     {
         bomberManger = FindObjectOfType<BomberManger>();

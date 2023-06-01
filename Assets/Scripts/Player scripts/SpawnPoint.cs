@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
+
+    //This script count every player that joins saves that int. When a player then jumps off the platform that int decreases. 
+    //When it reaches 0 every player has left the platform and the game can begin.
+
     public bool gameStarted = false;
     int collisionCount = 0;
     [SerializeField] BoxCollider collider;

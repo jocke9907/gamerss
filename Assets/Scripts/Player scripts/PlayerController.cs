@@ -10,7 +10,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    //
+    //This scirpt is primarily a controller script for the player. But it also handles player specific things.
+
+
+    // SAM: row 288-355: GrabObject() and AddScore. See their descriptions in that section.
 
 
     public bool playerOne;
@@ -170,21 +173,16 @@ public class PlayerController : MonoBehaviour
     {
         if (jumpingAllowed)
         {
-
             jumped = context.action.triggered;
-            
-
         }
     }
     public void OnGrab(InputAction.CallbackContext context)
     {
         grab = context.action.triggered;
-
     }
 
     void Update()
     {
-
         //GetComponent<ParticleSystem>().enableEmission = false;
         if (veryDead)
         {
@@ -242,8 +240,6 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-
-
         //HandleInteractions();
         //bomberInput.UpdateTo();
         GiveScoreLavaGround();
@@ -272,15 +268,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Bara respawn ifall man ramlar utanför
-
-        //if (Loader.PlatformGamePlaying)
-        //{
-        //    if (transform.position.y <= -40)
-        //    {
-        //        transform.position = new Vector3(0, 3, 0);
-        //    }
-        //}
 
     }
 
@@ -317,7 +304,6 @@ public class PlayerController : MonoBehaviour
 
         if (grabbedObject != null)
         {
-
             rb.mass = 1;
             //bc.isTrigger = true;
             //grabbedObject.transform.rotation = Quaternion.identity.x;
@@ -373,8 +359,6 @@ public class PlayerController : MonoBehaviour
     }
     public void GiveScoreLavaGround()
     {
-
-
         if (!scoreGivenLava && bomberManger.lavaGroundPlayed)
         {
             totalScore += bomberManger.giveScore;
@@ -432,25 +416,6 @@ public class PlayerController : MonoBehaviour
 
         float intercartDistace = 2f;
 
-        //Checks air
-        //if (moveDirGround != Vector3.zero)
-        //{
-        //    lastInteractDir = moveDir;
-        //}
-
-        //if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitAir, intercartDistace, markerLayerMask))
-        //{
-        //    if (raycastHitAir.transform.TryGetComponent(out MarkerInteract marker))
-        //    {
-        //        //marker.Interact();
-        //    }
-        //    if (raycastHitAir.transform.TryGetComponent(out Bomb bomb))
-        //    {
-        //        bomb.Interact();
-        //    }
-        //}
-
-        // Checks ground
         if (moveDirGround != Vector3.zero)
         {
             lastInteractDir = moveDirGround;
@@ -473,125 +438,5 @@ public class PlayerController : MonoBehaviour
 
 
         }
-        else
-        {
-            //Debug.Log("-");
-        }
     }
-
-
-
-
-    ///!!!!!!! ta inte bort
-
-
-    ////new
-    //private void GameInput_OnInteractAction(object sender, System.EventArgs e)
-    //{
-    //    if (selectedMarker != null)
-    //    {
-
-    //        selectedMarker.Interact(); 
-    //    }
-
-    //    Vector2 inputVector = movementInput;
-
-    //    Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-
-
-    //    if (moveDir != Vector3.zero)
-    //    {
-    //        lastInteractDir = moveDir;
-    //    }
-
-    //    float intercartDistace = 2f;
-    //    if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, intercartDistace, markerLayerMask))
-    //    {
-    //        if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
-    //        {
-    //            // has CelarCouter
-    //            marker.Interact();
-    //        }
-    //    }
-    //}
-    //private void SetSelctedMarker(MarkerInteract selectedMarker)
-    //{
-    //    this.selectedMarker = selectedMarker;
-    //    OnSelectedMarkerChanged?.Invoke(this, new OnSelectedCounterChangedEventargs
-    //    {
-    //        selectedMarker = selectedMarker
-    //    });
-    //}
-    //private Vector3 lastInteractDir;
-
-
-    ///// <summary>
-    ///// /
-    ///// </summary>
-
-    //private void HandleInteractions()
-    //{
-
-    //    if (inputE == true)
-    //    {
-    //        Debug.Log("e");
-    //    }
-
-
-    //    Vector2 inputVector = movementInput;
-
-    //    Vector3 moveDirGround = new Vector3(inputVector.x, -1f, inputVector.y);
-    //    Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-
-    //    float intercartDistace = 2f;
-
-    //    //Checks air
-    //    if (moveDirGround != Vector3.zero)
-    //    {
-    //        lastInteractDir = moveDir;
-    //    }
-
-    //    if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHitAir, intercartDistace, markerLayerMask))
-    //    {
-    //        if (raycastHitAir.transform.TryGetComponent(out MarkerInteract marker))
-    //        {
-    //            // has marker
-    //            marker.Interact();
-    //        }
-    //        if (raycastHitAir.transform.TryGetComponent(out Bomb bomb))
-    //        {
-    //            // 
-    //            bomb.Interact();
-    //        }
-    //        //Debug.Log(raycastHit.transform);
-
-    //    }
-
-    //    // Checks ground
-    //    if (moveDirGround != Vector3.zero)
-    //    {
-    //        lastInteractDir = moveDirGround;
-    //    }
-
-    //    if (Physics.Raycast(transform.position, moveDirGround, out RaycastHit raycastHit, intercartDistace))
-    //    {
-    //        if (raycastHit.transform.TryGetComponent(out MarkerInteract marker))
-    //        {
-    //            // has marker
-    //            marker.Interact();                
-    //        }
-    //        if (raycastHit.transform.TryGetComponent(out Bomb bomb))
-    //        {
-    //            // Has bomb
-    //            bomb.Interact();
-    //        }
-    //        //Debug.Log(raycastHit.transform);
-
-    //    }       
-    //    else
-    //    {
-    //        Debug.Log("-");
-    //    }        
-    //}
-
 }

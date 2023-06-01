@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     PlayerInputManager inputManager;
     List<GameObject> playerList = new List<GameObject>();
-    // Start is called before the first frame update
+    //Adds every player to a list to easier give them score later on.
     void Start()
     {
     }
