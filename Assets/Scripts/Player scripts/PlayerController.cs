@@ -10,11 +10,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    //This script handles all the different type of movement and abilites for the player prefab. Different methods activate and de-activate,
-    //depending on what scene is running.
+    //This scirpt is primarily a controller script for the player. But it also handles player specific things.
 
 
-    // SAM: row 276-350: GrabObject() and AddScore. See their descriptions in that section.
+    // SAM: row 288-355: GrabObject() and AddScore. See their descriptions in that section.
 
 
     public bool playerOne;
@@ -75,8 +74,6 @@ public class PlayerController : MonoBehaviour
 
 
     //------------Sam----------------------------------
-
-    // These are variables that are used by me, either in the methods I wrote in this script, or is called upon in my other scripts.
 
     public bool sam = false;
     public float maxGrabDistance = 1f;
@@ -275,12 +272,6 @@ public class PlayerController : MonoBehaviour
     }
 
     //----------------------------------------SAM-----------------------------------------------------------------------
-
-
-    // This method is used for the minigame WallClimber. It allows players in that scene to grab objects in front of them and move them around.
-    // Each time the grab button is pressed, the method checks to see wheter there is an object in front of the player or not.
-    // If there is. The object teleports in front of the player in the same direction and the same rotation as the player until he releases the button.
-    // Upon grabbing an object, it also changes the mass of the object from 1000 to 1, making the player unable to push around objects with the one it is holding.
     private void GrabObject()
     {
         if (grab)
@@ -339,8 +330,7 @@ public class PlayerController : MonoBehaviour
 
     //----------------SAM-----------------------------------------------------------------------------------------------
 
-    // This method is accessed by my scoresystem scripts. When my scoresystem has delegated points, it sends the amount to this script
-    // which adds it to the totalscore of a player. "TotalScore" is then accessed by other scripts in the postlobby such as "Move Score"
+
     public void AddScore(int score)
     {
         tempScore = score;
@@ -377,6 +367,7 @@ public class PlayerController : MonoBehaviour
     }
     public void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
+        // bombergame
 
 
         if (selectedMarker != null)
@@ -406,6 +397,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 lastInteractDir;
 
+
+    // bomber game placing bombs
     private void HandleInteractions()
     {
 

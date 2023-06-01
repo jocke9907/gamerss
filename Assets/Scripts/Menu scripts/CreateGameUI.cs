@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CreateGameUI : MonoBehaviour
 {
+    //Changes bool depending on how meny players in the game
 
     public static bool onePlayer;
     public static bool twoPlayer;
@@ -12,7 +13,7 @@ public class CreateGameUI : MonoBehaviour
     BomberManger bomberManger;
     nrPlayers _nrPlayers;
 
-
+    
     
     public void Awake()
     {

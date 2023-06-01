@@ -6,7 +6,7 @@ using System;
 
 public static class Loader
 {
-    // skirve med små bokstäver i början?
+    // Switching between scenes
     public static bool PlatformGamePlaying;
     public static bool bomberGamePlaying;
     public static bool TheMazePlaying;

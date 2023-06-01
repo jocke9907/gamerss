@@ -5,6 +5,8 @@ using UnityEngine;
 public class Drop : MonoBehaviour
 {
 
+    // this scipts was uses for when barrels where destroy. They would then drop diffrent bosters. This is however not useed
+
     BomberManger bomberManger;
     PlayerController playerController;
     private void Awake()

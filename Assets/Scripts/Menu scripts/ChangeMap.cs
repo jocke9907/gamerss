@@ -6,6 +6,10 @@ using UnityEngine;
 public class ChangeMap : MonoBehaviour
 {
 
+    // resets and turn of diffrent variables when changin from game modes
+
+
+
     [SerializeField] private LayerMask playerLayer;
 
 

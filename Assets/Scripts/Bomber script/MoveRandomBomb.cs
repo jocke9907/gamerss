@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MoveRandomBomb : MonoBehaviour
 {
+    // not uesed 
+    // moves bombs from one side to the other
     [SerializeField] private LayerMask randomBombLayerMask;
     [SerializeField] private LayerMask markerLayerMask;
     MarkerInteract marker;

@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class BomberManger : MonoBehaviour
 {
+    // Handels bools and game play for bomber and Ground is Lava
+
     public int playerCountBomber;
     public int nrOfPlayers;
     public int bomberPoints ;
@@ -43,8 +45,6 @@ public class BomberManger : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         playerLevel = FindObjectOfType<PlayerLevel>();
-        //enabler = FindObjectOfType<InputSystemEnabler>();
-        //playerCountBomber--;
     }
 
     public void GameStart()
@@ -62,10 +62,6 @@ public class BomberManger : MonoBehaviour
             playerCount = true;
 
             playerLevel = FindObjectOfType<PlayerLevel>();
-
-            //bomberScript = GetComponent<BomberScript>();
-
-            //Loader.Load(Loader.Scene.PostLobby);
         }
         
 
@@ -94,16 +90,6 @@ public class BomberManger : MonoBehaviour
         }
        
 
-        //if (playerCountBomber == 0)
-        //{
-        //    ch = true;
-
-        //    bombUppgrade = 0;
-        //    playerLevel.playerDead = true;
-        //    //bomberScript = GetComponent<BomberScript>();
-        //    //bomberScript.Winner();
-        //    targetTime2 -= Time.deltaTime;
-        //}
         if (playerCount && Loader.bomberGamePlaying)
         {
             targetTime2 -= Time.deltaTime;
@@ -125,9 +111,6 @@ public class BomberManger : MonoBehaviour
 
         if (targetTime2 <= 0f  )
         {
-
-            //ActivatePlayers();
-            //playerController.transform.position = new Vector3(0, 40, 0);
             Loader.bomberGamePlaying = false;
             Loader.LavaGroundPlaying = false;
             playerCount = false;
@@ -156,45 +139,6 @@ public class BomberManger : MonoBehaviour
         }
 
     }
-    //private void FixedUpdate()
-    //{
-    //    if(targetTime2 <= 0f)
-    //    {
-    //        if (hasActivated)
-    //        {
-    //            return;
-    //        }
-    //        frameCounter++;
-    //        if (frameCounter >= waitForFrames)
-    //        {
-    //            ActivatePlayers();
-    //        }
-    //        hasActivated = true;
-    //    }
-        
-    //}
-    //public void ActivatePlayers()
-    //{
-    //    PlayerManager manager = FindObjectOfType<PlayerManager>();
-        
-
-    //    Debug.Log(manager.GetPlayers());
-        
-    //    // PlayerController[] players = FindObjectsOfType<PlayerController>();
-    //    if(!active)
-    //    {
-    //        foreach (PlayerController player in manager.GetPlayers())
-    //        {
-                
-    //            //enabler.gameObject.SetActive(true);
-    //            player.gameObject.SetActive(true);
-    //        }
-    //    }
-    //    active = true;
-        
-        
-
-    //}
     
     
 }

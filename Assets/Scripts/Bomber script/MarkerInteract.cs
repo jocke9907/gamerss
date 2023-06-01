@@ -11,6 +11,9 @@ using UnityEditor;
 
 public class MarkerInteract : MonoBehaviour
 {
+    // handels all the interactions with the player and the markers. 
+    // handels bombExplotions 
+
     [SerializeField] private Transform bombPrefab;
     [SerializeField] private Transform bombUp1Prefab;
     [SerializeField] private Transform bombSpawn;
@@ -50,35 +53,10 @@ public class MarkerInteract : MonoBehaviour
         enabler = FindObjectOfType<InputSystemEnabler>();
     }
 
-    //public void DropBombs()
-    //{
-    //    Debug.Log("yes");
-    //    Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
-    //    bombTransform.localPosition = Vector3.zero;
-    //    randomBomb = false;
-    //}
+    
     public void Interact()
     {
-        //Debug.Log("Interact marker!");
-        //if (playerController.canPlaceBomb == true)
-        //{
-        //    if (bomberManger.bombUppgrade > 1)
-        //    {
-        //        Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
-        //        bombTransform.localPosition = Vector3.zero;
-        //    }
-        //    else
-        //    {
-        //        Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
-        //        bombTransform.localPosition = Vector3.zero;
-        //    }
-
-
-
-        //    targetTime = 4.0f;
-        //    bomPlaced = true;
-        //    playerController.canPlaceBomb = false;
-        //}
+       
 
         if (bomberManger.bombUppgrade > uppgrade)
         {
@@ -104,25 +82,7 @@ public class MarkerInteract : MonoBehaviour
         //bomberInput.canPlaceBomb = false;
     }
 
-    //public void RandomBombs()
-    //{
-    //    if (bomberManger.bombUppgrade > 8)
-    //    {
-    //        Transform bombTransform = Instantiate(bombUp1Prefab, bombSpawn);
-    //        bombTransform.localPosition = Vector3.zero;
-    //        targetTime = 4.1f;
-    //    }
-    //    else if(bomberManger.bombUppgrade <= 8)
-    //    {
-    //        Transform bombTransform = Instantiate(bombPrefab, bombSpawn);
-    //        bombTransform.localPosition = Vector3.zero;
-    //        targetTime = 4.1f;
-    //    }
-    //}
-    //public void StrongBomb()
-    //{
-    //    Debug.Log("pickUp");
-    //}
+    
     private void DropChance()
     {
         int dropChance = Random.Range(1, 7);
@@ -194,9 +154,12 @@ public class MarkerInteract : MonoBehaviour
     {
        
     }
+
+
     void Explode()
     {
-        //+BomberManger.bombUppgrade*2
+        // same script as above but with Raycast
+       
         float maxDistans = 13f ;
        
        
@@ -231,64 +194,10 @@ public class MarkerInteract : MonoBehaviour
                     playerController.totalScore -= bomberManger.bomberPoints;
                     playerController.veryDead = true;
                 }
-                //playerController.transform.position = new Vector3(0,40,0);
-                //Debug.Log("playerDead");
-                //playerController.transform.position += new Vector3(0, 90, 0);
-                //Debug.Log("move"+ playerController1.transform.position);
-               
-                //playerController.gameObject.SetActive(false);
-                //enabler.gameObject.SetActive(false);
-                //playerController.DeactivateInput();
-                //bomberManger.playerCountBomber ;
                 
-                //bomberManger.playerCountBomber--;
-                //if (playerDead && scoreGiven == false)
-                //{
-                //    Debug.Log("score given");
-                //    playerScore.currentScore = playerScore.currentScore + bomberManger.bomberPoints;
-                //    playerController.totalScore += bomberManger.bomberPoints;
-                //    scoreGiven = true;
-                //}
-                //bomberManger.PlayerCounter();
-                
-                //if (!bomberInput.veryDead )
-                //{
-                //    //playerController.transform.position = reset;
-                //    
-                //    bomberManger.bomberPoints += 1;
-                //    Debug.Log(bomberManger.playerCountBomber);
-                //    bomberManger.PlayerCounter();
-
-                //    //playerController.transform.position = reset;
-                //    bomberInput.veryDead = true;
-                //}
             }
         }
 
-        //if (Physics.SphereCast(transform.position, 8f, Vector3.zero, out RaycastHit hit, Mathf.Infinity))
-        //{
-
-        //    if (hit.transform.TryGetComponent(out Barral barral))
-        //    {
-        //        //Debug.Log("found obj");
-        //        barral.InteractB();
-        //        DropChance();
-        //    }
-        //}
-        //if (Physics.SphereCast(transform.position, 8f, Vector3.zero, out RaycastHit hit2, Mathf.Infinity))
-        //{
-
-        //    if (hit2.transform.TryGetComponent(out PlayerController playerController))
-        //    {
-        //        Debug.Log("playerDead");
-        //        playerController.transform.position = new Vector3(0, 40, 0);
-        //        playerController.transform.position = new Vector3(0, 40, 0);
-        //        bomberManger.playerCountBomber--;
-        //        bomberManger.bomberPoints += 1;
-        //        Debug.Log(bomberManger.playerCountBomber);
-        //        bomberManger.PlayerCounter();
-        //    }
-        //}
     }
     
     void Update()
@@ -304,14 +213,6 @@ public class MarkerInteract : MonoBehaviour
             targetTime -= Time.deltaTime;
         }
 
-
-        //&& bomPlaced == true
-        //if (targetTime >= -0.2f && targetTime <= 0.0f && bomPlaced == true)
-        //{
-        //    timerEnded();
-        //    bomPlaced =false;
-        //    bomberInput.canPlaceBomb = true;
-        //}
         
         if (firstBombPlaced && targetTime <= 0.5f)
         {
@@ -346,40 +247,8 @@ public class MarkerInteract : MonoBehaviour
 
 
 
-        //vectorZ = 1f;
-        //inputVector = new Vector2(10f, 0f);
-        //Explode();
-        //inputVector = new Vector2(0f, 10f);
-        //Explode();
-        //inputVector = new Vector2(-10f, 0f);
-        //Explode();
-        //inputVector = new Vector2(0f, -10f);
-        //Explode();
-
-        //inputVector = new Vector2(10f, -3f);
-        //Explode();
-        //inputVector = new Vector2(-3f, 10f);
-        //Explode();
-        //inputVector = new Vector2(-10f, 3f);
-        //Explode();
-        //inputVector = new Vector2(3f, -10f);
-        //Explode();
-
-        //inputVector = new Vector2(10f, 3f);
-        //Explode();
-        //inputVector = new Vector2(3f, 10f);
-        //Explode();
-        //inputVector = new Vector2(-10f, -3f);
-        //Explode();
-        //inputVector = new Vector2(-3f, -10f);
-        //Explode();
-
-
-
-
-
         //förstör markern och det som har spawnat på den
-
+        // destroys the ground- not used
         if (bomberManger.bombUppgrade >uppgrade)
         {
 

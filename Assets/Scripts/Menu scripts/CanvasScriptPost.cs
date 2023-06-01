@@ -9,6 +9,10 @@ using System;
 
 public class CanvasScriptPost : MonoBehaviour
 {
+    // not uesed
+
+
+
     PlayerController playerController;
     BomberManger bomberManger;
     RandomMap randomMap;

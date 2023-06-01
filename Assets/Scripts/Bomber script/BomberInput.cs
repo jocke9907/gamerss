@@ -9,6 +9,9 @@ using UnityEngine.InputSystem;
 public class BomberInput : MonoBehaviour
 {
 
+
+    // this script is not in use. Moved to PlayerController
+
     //public static PlayerController Instance { get; private set; }  [SerializeField]
 
     private PlayerController playerController;

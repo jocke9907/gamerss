@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class BomberScript : MonoBehaviour
 {
+    // Shows difffrent canvas texts
+
     public int playerLeft ;
     PlayerManager playerManager;
     public TextMeshProUGUI players;

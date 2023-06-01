@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GroundKill : MonoBehaviour
 {
+    // not usesd 
     PlayerController playerController;
     BomberManger bomberManger;
     bool groundKill;
@@ -21,7 +22,7 @@ public class GroundKill : MonoBehaviour
         
 
 
-
+        // this scripts is bugged
         if (other.CompareTag("Player") )
         {
             other.transform.TryGetComponent(out PlayerController playerController);

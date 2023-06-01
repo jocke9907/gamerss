@@ -5,6 +5,9 @@ using UnityEngine.Android;
 
 public class RandomMap : MonoBehaviour
 {
+    // not used
+    // Selectes a random map
+
     BomberManger bomberManger;
     float targetTime3 = 13f;
     bool giveScore = true;

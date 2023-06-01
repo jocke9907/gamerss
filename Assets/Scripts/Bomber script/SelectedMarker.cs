@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SelectedMarker : MonoBehaviour
 {
+    // not uesd
     [SerializeField] private MarkerInteract marker;
     [SerializeField] private GameObject visualGameObject;
     private void Start()

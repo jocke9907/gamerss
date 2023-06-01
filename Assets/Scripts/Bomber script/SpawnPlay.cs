@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnPlay : MonoBehaviour
 {
+    // spawns players
     public static Vector3 spawn;
     bool hasSpawned = false;
     int waitForFrames = 3;
